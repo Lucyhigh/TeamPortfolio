@@ -48,5 +48,10 @@ void MainGame::render(void) // 그려줘
 	wsprintf(str, "초대만 빨리 확인했어도...");
 	TextOut(getMemDC(), 450, 400, str, strlen(str));
 
+    //종욱이의 자리
+
+    wsprintf(str, "그래도 이제는 된당");
+    TextOut(getMemDC(), 700, 100, str, strlen(str));
+
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
 }
