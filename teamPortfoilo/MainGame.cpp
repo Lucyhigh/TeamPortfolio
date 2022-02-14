@@ -25,6 +25,8 @@ void MainGame::render(void) // 그려줘
 	//PatBlt() : 사각형 영역을 브러쉬로 채우는 함수
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 	IMAGEMANAGER->findImage("슈팅 맵")->render(getMemDC());
-
+    char str[128];
+    wsprintf(str, "꼬깔 원정대 영차영차");
+    TextOut(getMemDC(), 100, 100, str, strlen(str));
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
 }
