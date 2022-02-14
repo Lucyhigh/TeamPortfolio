@@ -53,5 +53,8 @@ void MainGame::render(void) // 그려줘
     wsprintf(str, "그래도 이제는 된당");
     TextOut(getMemDC(), 700, 100, str, strlen(str));
 
+	wsprintf(str, "여기 분위기 조아 사물함에 가방 잘들어가서 다행");
+	TextOut(getMemDC(), 650, 150, str, strlen(str));
+
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
 }
