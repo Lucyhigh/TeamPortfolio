@@ -36,7 +36,7 @@ void MainGame::render(void) // 그려줘
 	wsprintf(str, "난 깃허브 토큰이 싫다...");
 	TextOut(getMemDC(), 230, 200, str, strlen(str));
 
-	wsprintf(str, "웨안됌?");
+	wsprintf(str, "이제 됨");
 	TextOut(getMemDC(), 320, 250, str, strlen(str));
 
     wsprintf(str, "컴파일러가 나를 비웃는 느낌이다");
