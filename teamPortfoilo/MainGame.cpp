@@ -28,8 +28,6 @@ void MainGame::render(void) // 그려줘
     char str[128];
     wsprintf(str, "꼬깔 원정대 영차영차");
     TextOut(getMemDC(), 100, 100, str, strlen(str));
-
-
 	wsprintf(str, "힘내 꼬깔... 넌 할 수 있어 :D ");
 	TextOut(getMemDC(), 140, 150, str, strlen(str));
 
@@ -48,7 +46,8 @@ void MainGame::render(void) // 그려줘
 	wsprintf(str, "초대만 빨리 확인했어도...");
 	TextOut(getMemDC(), 450, 400, str, strlen(str));
 
-    //종욱이의 자리
+	wsprintf(str, "이 쉬운걸 너무 어렵게햇다...");
+	TextOut(getMemDC(), 450, 400, str, strlen(str));
 
     wsprintf(str, "그래도 이제는 된당");
     TextOut(getMemDC(), 700, 100, str, strlen(str));
@@ -59,7 +58,8 @@ void MainGame::render(void) // 그려줘
 	wsprintf(str, "거기에 있던 규칙보다는 좀 조용한 분위기인가 보네요");
 	TextOut(getMemDC(), 650, 200, str, strlen(str));
 
-    //종욱이의 자리
+	wsprintf(str, "난 일단 오피스 신청햇어");
+	TextOut(getMemDC(), 650, 200, str, strlen(str));
 
     wsprintf(str, "의석이 언제 출발하닝");
     TextOut(getMemDC(), 450, 280, str, strlen(str));
@@ -69,8 +69,6 @@ void MainGame::render(void) // 그려줘
 
 	wsprintf(str, "오늘만 집에서 휴식을...");
 	TextOut(getMemDC(), 140, 450, str, strlen(str));
-
-
 
 
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
