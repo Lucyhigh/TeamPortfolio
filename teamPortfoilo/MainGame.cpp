@@ -67,6 +67,10 @@ void MainGame::render(void) // 그려줘
 	wsprintf(str, "치킨먹고싶당....");
 	TextOut(getMemDC(), 220, 380, str, strlen(str));
 
+	wsprintf(str, "오늘만 집에서 휴식을...");
+	TextOut(getMemDC(), 140, 450, str, strlen(str));
+
+
 
 
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
