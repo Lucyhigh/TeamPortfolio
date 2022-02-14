@@ -37,5 +37,8 @@ void MainGame::render(void) // 그려줘
 	wsprintf(str, "난 깃허브 토큰이 싫다...");
 	TextOut(getMemDC(), 230, 200, str, strlen(str));
 
+	wsprintf(str, "웨안됌?");
+	TextOut(getMemDC(), 320, 250, str, strlen(str));
+
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
 }
