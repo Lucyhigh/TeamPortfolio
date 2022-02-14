@@ -41,5 +41,9 @@ void MainGame::render(void) // 그려줘
 
     wsprintf(str, "컴파일러가 나를 비웃는 느낌이다");
     TextOut(getMemDC(), 350, 300, str, strlen(str));
+
+	wsprintf(str, "디버그 파일 같이 올려서 오류 터졌음.. 다음부터는 조심해줘");
+	TextOut(getMemDC(), 400, 350, str, strlen(str));
+
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
 }
