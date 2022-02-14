@@ -47,7 +47,7 @@ void MainGame::render(void) // 그려줘
 	TextOut(getMemDC(), 450, 400, str, strlen(str));
 
 	wsprintf(str, "이 쉬운걸 너무 어렵게햇다...");
-	TextOut(getMemDC(), 450, 400, str, strlen(str));
+	TextOut(getMemDC(), 550, 450, str, strlen(str));
 
     wsprintf(str, "그래도 이제는 된당");
     TextOut(getMemDC(), 700, 100, str, strlen(str));
@@ -59,7 +59,7 @@ void MainGame::render(void) // 그려줘
 	TextOut(getMemDC(), 650, 200, str, strlen(str));
 
 	wsprintf(str, "난 일단 오피스 신청햇어");
-	TextOut(getMemDC(), 650, 200, str, strlen(str));
+	TextOut(getMemDC(), 550, 250, str, strlen(str));
 
     wsprintf(str, "의석이 언제 출발하닝");
     TextOut(getMemDC(), 450, 280, str, strlen(str));
