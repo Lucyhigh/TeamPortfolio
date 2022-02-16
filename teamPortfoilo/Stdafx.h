@@ -122,3 +122,7 @@ using namespace MY_UTIL;
 extern HINSTANCE	_hInstance;
 extern HWND			_hWnd;
 extern POINT		_ptMouse;
+
+#define GAMESPEED 5
+#define GETERROR -666
+#include <functional>

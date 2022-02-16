@@ -145,6 +145,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Characters.h" />
+    <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="CommonMarcroFuntion.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="GameNode.h" />
@@ -152,6 +154,7 @@
     <ClInclude Include="ImageManager.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="RandomFunction.h" />
     <ClInclude Include="SecondScene.h" />
     <ClInclude Include="SingletonBase.h" />
@@ -160,12 +163,15 @@
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Characters.cpp" />
+    <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageManager.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="SecondScene.cpp" />
     <ClCompile Include="StartScene.cpp" />
     <ClCompile Include="Stdafx.cpp">
