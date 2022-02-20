@@ -64,6 +64,12 @@
     <ClInclude Include="ProgressBar.h">
       <Filter>API FrameWork\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="GameManger.h">
+      <Filter>Blasphemous\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="BossWarden.h">
+      <Filter>Blasphemous\Characters\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameNode.cpp">
@@ -123,6 +129,12 @@
     <ClCompile Include="ProgressBar.cpp">
       <Filter>API FrameWork\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="GameManger.cpp">
+      <Filter>Blasphemous\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="BossWarden.cpp">
+      <Filter>Blasphemous\Characters\Boss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API FrameWork">
@@ -169,6 +181,9 @@
     </Filter>
     <Filter Include="API FrameWork\Time">
       <UniqueIdentifier>{3a08c0eb-042c-4a52-ac8c-0849106b96df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\Characters\Boss">
+      <UniqueIdentifier>{eeb1971e-8587-4af1-94b6-36465ff4aee7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

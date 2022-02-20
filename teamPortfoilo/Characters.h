@@ -12,7 +12,7 @@ class BaseData
 			// 유닛의 이미지
 			map<char*,Image*> _image;
 			// hp 정보 
-			map<BaseEnum, int> _hp = { {BaseEnum::STATE, 0},{BaseEnum::MAX, 0} };
+			map<BaseEnum, int> _hp = { {BaseEnum::STATE, 0}, {BaseEnum::MAX, 0} };
 			// mp 정보
 			map<BaseEnum, int> _mp = { {BaseEnum::STATE, 0}, {BaseEnum::MAX, 0} };
 
@@ -22,6 +22,10 @@ class BaseData
 
 			// 충돌체 정보 
 			map<BaseEnum, RECT> _Collider = { {BaseEnum::IMAGE,{0,0,0,0} }, {BaseEnum::UNIT,{0,0,0,0}} };
+
+			// 지형
+			vector<RECT*> floor;
+			
 			// 현재 밟고 있는 위치
 			RECT stateFloor;
 
@@ -39,6 +43,9 @@ class BaseData
 		#pragma endregion
 
 	public:
+
+		function<void()> ObjectUpdate;
+		function<void()> ObjectRender;
 
 		#pragma region 정보
 		
