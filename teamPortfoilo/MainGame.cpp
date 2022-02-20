@@ -52,6 +52,10 @@ void MainGame::render(void) // 그려줘
 	{
 		Rectangle(getMemDC(), _floor[i]->left, _floor[i]->top, _floor[i]->right, _floor[i]->bottom);
 	}
+	
+	char str[254];
+	sprintf_s(str, "%d", GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE));
+	TextOut(getMemDC(), 1000, 10, str, strlen(str));
 
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
 }
