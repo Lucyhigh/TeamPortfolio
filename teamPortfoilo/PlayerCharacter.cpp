@@ -148,27 +148,10 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 
 void PlayerCharacter::_inputUpdate()
 {
-	RECT tamp[2] = { 0,0,0,0 };
-	tamp[1] = { _Collider[BaseEnum::UNIT].left + 10, _Collider[BaseEnum::UNIT].bottom - 10,
-				_Collider[BaseEnum::UNIT].right - 10, _Collider[BaseEnum::UNIT].bottom };
-
-	for (int i = 0; i < floor.size(); i++)
-	{
-		if (IntersectRect(&tamp[0], &tamp[1], floor[i]))
-		{
-			smash.clear();
-			_Collider[BaseEnum::UNIT].top -= _Collider[BaseEnum::UNIT].bottom - tamp[0].top;
-			_Collider[BaseEnum::UNIT].bottom -= _Collider[BaseEnum::UNIT].bottom - tamp[0].top;
-			stateFloor = *floor[i];
-			break;
-		}
-	}
-
 	if (_state == UnitState::JUMP || _state == UnitState::JUMPATTACK || _state == UnitState::JUMPATTACK_DOUBLE)
 	{ _updataJump(); }
 	if ( _state >= UnitState::JUMPATTACK)
 	{ _updateAttack(); }
-
 	else 
 	{
 		switch (_state)

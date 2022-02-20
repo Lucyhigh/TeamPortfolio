@@ -14,7 +14,7 @@ HRESULT MainGame::init(void) //초기화
 	_player = player;
 	mon = new BossWarden();
 	mon->init({ 0,0 }, _floor);
-	mon->setCollider(RECT{ 800,350,900,450 });
+	//mon->setCollider(RECT{ 800,350,900,450 });
 	_monster.push_back(mon);
 
 	GAMEMANAGER->setPlayer(_player);
@@ -43,6 +43,7 @@ void MainGame::render(void) // 그려줘
 	//검은색 빈 비트맵
 	//PatBlt() : 사각형 영역을 브러쉬로 채우는 함수
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
+	TIMEMANAGER->render(getMemDC());
 
 	for (int i = 0; i < _monster.size(); i++) { _monster[i]->ObjectRender(); }
 	_player->ObjectRender();
