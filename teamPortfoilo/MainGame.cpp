@@ -1,41 +1,46 @@
 #include "stdafx.h"
 #include "MainGame.h"
 
+//	신매니저 
+// 텍스트데이터 매니져
+// 타임 매니저
+// 픽셀 콜리전
+// 프로그래스바
+
 HRESULT MainGame::init(void) //초기화
 {
 	GameNode::init(TRUE);
-	TIMEMANAGER->init();
+
 	// 테스트 렉트값 
-	_floor.push_back(&reference[0]);
+	floor.push_back(&reference[0]);
+	floor.push_back(&reference[1]);
 
 	//플레이어값
 	player = new PlayerCharacter();
-	player->init({ 0,600 }, _floor);
-	_player = player;
-	mon = new BossWarden();
-	mon->init({ 0,0 }, _floor);
-	mon->setCollider(RECT{ 800,350,900,450 });
-	_monster.push_back(mon);
+	player->init({ 0,0 }, floor);
 
-	GAMEMANAGER->setPlayer(_player);
-	GAMEMANAGER->setMonster(_monster);
-	_collider = new ColliderManager();
+	mon = new BaseData();
+	mon->setCollider(RECT{ 800,350,900,450 });
+	monster.push_back(mon);
+
+	collider = new ColliderManager();
+	collider->init(player, monster);
+
+	TIMEMANAGER->init();
+
 	return S_OK;
 }
 
 void MainGame::release(void)
 {
-
-	GameNode::release();
+	GameNode::release();	
 }
 
 void MainGame::update(void) // 갱신
 {
-	_player->ObjectUpdate();
-	for (int i = 0; i < _monster.size(); i++) { _monster[i]->ObjectUpdate(); }
-	_collider->update();
-
 	GameNode::update();
+	collider->update();
+	player->update();
 }
 
 void MainGame::render(void) // 그려줘
@@ -43,14 +48,15 @@ void MainGame::render(void) // 그려줘
 	//검은색 빈 비트맵
 	//PatBlt() : 사각형 영역을 브러쉬로 채우는 함수
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
+	TIMEMANAGER->render(getMemDC());
+		
+	for (int i = 0; i < monster.size(); i++)
+	{ Rectangle(getMemDC(), monster[i]->getCollider().left, monster[i]->getCollider().top, monster[i]->getCollider().right, monster[i]->getCollider().bottom); }
+	
+	player->render();
 
-	for (int i = 0; i < _monster.size(); i++) { _monster[i]->ObjectRender(); }
-	_player->ObjectRender();
-
-	for (int i = 0; i < _floor.size(); i++)
-	{
-		Rectangle(getMemDC(), _floor[i]->left, _floor[i]->top, _floor[i]->right, _floor[i]->bottom);
-	}
-
+	for (int i = 0; i < floor.size(); i++)
+	{ Rectangle(getMemDC(), floor[i]->left, floor[i]->top, floor[i]->right, floor[i]->bottom); }
+	
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
 }

@@ -1,3 +1,4 @@
+
 #pragma once
 #include <sdkddkver.h>
 
@@ -114,10 +115,8 @@ using namespace MY_UTIL;
 //=============
 extern HINSTANCE	_hInstance;
 extern HWND			_hWnd;
-extern POINT		_ptMouse;
+extern POINT		_ptMouse; 
 
-#include "GameManger.h"
-#define GAMEMANAGER GameManger::getSingleton()
-
-#define GETERROR -666
 #define GAMESPEED 5
+#define GETERROR -666
+#include <functional>
