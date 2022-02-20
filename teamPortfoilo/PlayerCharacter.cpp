@@ -1,14 +1,17 @@
 #include "Stdafx.h"
 #include "PlayerCharacter.h"
 
-// 슬라이드 할때 벽면에 닿으면 올라가지 않게 하기 
+PlayerCharacter::PlayerCharacter() 
+{ 
+	ObjectUpdate = bind(&PlayerCharacter::update, this);
+	ObjectRender = bind(&PlayerCharacter::render, this);
+} 
 
-PlayerCharacter::PlayerCharacter() { } // ! DO NOTING
 PlayerCharacter::~PlayerCharacter() { } // ! DO NOTING
 
 HRESULT PlayerCharacter::init(POINT point,vector<RECT*>floor)
 {
-	_floor = floor;
+	this->floor = floor;
 	_Collider[BaseEnum::UNIT] = RectMakeCenter(400, 400, 100, 100); 
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
@@ -26,7 +29,11 @@ void PlayerCharacter::release(void)
 
 void PlayerCharacter::update(void)
 {
+	GameNode::update();
 	_updateFloor();
+
+	// 슬라이드 -> if(슬라이드 != ) { 명령어 } else { 다른명령어 }
+	// 슬라이드 펑션 <= 
 	
 	if (_updateHit())
 	{ _updateSide(); _inputUpdate(); return; }
@@ -95,7 +102,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 	{
 		_oldState = _state;
 		_jump["Unit"] = 0;
-		_jump["Weight"] = 11.0f;
+		_jump["Weight"] =11.0f;
 		return UnitState::JUMP;
 	}
 	else if (KEYMANAGER->isOnceKeyDown('A'))
@@ -118,7 +125,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 			{ return UnitState::ATTACK; }
 		}
 	}
-	else if (KEYMANAGER->isOnceKeyDown('S') && _state == UnitState::IDLE && _isLook != -1)
+	else if (KEYMANAGER->isOnceKeyDown('S') && _state == UnitState::IDLE_0 && _state == UnitState::IDLE_1 && _isLook != -1)
 	{
 		_oldState = _state;
 		return UnitState::PARING;
@@ -134,7 +141,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 	if (_state < UnitState::JUMP && _isMove == false)
 	{
 		_oldState = _state; 
-		return UnitState::IDLE;
+		return UnitState::IDLE_0;
 	}
 	else return _state;
 }
@@ -145,14 +152,14 @@ void PlayerCharacter::_inputUpdate()
 	tamp[1] = { _Collider[BaseEnum::UNIT].left + 10, _Collider[BaseEnum::UNIT].bottom - 10,
 				_Collider[BaseEnum::UNIT].right - 10, _Collider[BaseEnum::UNIT].bottom };
 
-	for (int i = 0; i < _floor.size(); i++)
+	for (int i = 0; i < floor.size(); i++)
 	{
-		if (IntersectRect(&tamp[0], &tamp[1], _floor[i]))
+		if (IntersectRect(&tamp[0], &tamp[1], floor[i]))
 		{
 			smash.clear();
 			_Collider[BaseEnum::UNIT].top -= _Collider[BaseEnum::UNIT].bottom - tamp[0].top;
 			_Collider[BaseEnum::UNIT].bottom -= _Collider[BaseEnum::UNIT].bottom - tamp[0].top;
-			stateFloor = *_floor[i];
+			stateFloor = *floor[i];
 			break;
 		}
 	}
@@ -166,7 +173,7 @@ void PlayerCharacter::_inputUpdate()
 	{
 		switch (_state)
 		{
-			case UnitState::IDLE: 
+			case UnitState::IDLE_0: 
 				break;
 			case UnitState::SLIDE:
 				_updateSlide(); break;
@@ -184,14 +191,14 @@ void PlayerCharacter::_updateFloor()
 	tamp[1] = { _Collider[BaseEnum::UNIT].left + 10, _Collider[BaseEnum::UNIT].bottom - 10,
 				_Collider[BaseEnum::UNIT].right - 10, _Collider[BaseEnum::UNIT].bottom };
 
-	for (int i = 0; i < _floor.size(); i++)
+	for (int i = 0; i < floor.size(); i++)
 	{
-		if (IntersectRect(&tamp[0], &tamp[1], _floor[i]))
+		if (IntersectRect(&tamp[0], &tamp[1], floor[i]))
 		{
 			smash.clear();
 			_Collider[BaseEnum::UNIT].top -= _Collider[BaseEnum::UNIT].bottom - tamp[0].top;
 			_Collider[BaseEnum::UNIT].bottom -= _Collider[BaseEnum::UNIT].bottom - tamp[0].top;
-			stateFloor = *_floor[i];
+			stateFloor = *floor[i];
 			break;
 		}
 	}
@@ -207,26 +214,26 @@ void PlayerCharacter::_updateFloor()
 int PlayerCharacter::_updateSide()
 {
 	RECT tamp[2];
-	for (int i = 0; i < _floor.size(); i++)
+	for (int i = 0; i < floor.size(); i++)
 	{
-		if (IntersectRect(&tamp[0], &_Collider[BaseEnum::UNIT], _floor[i]))
+		if (IntersectRect(&tamp[0], &_Collider[BaseEnum::UNIT], floor[i]))
 		{
 			tamp[1] = { _Collider[BaseEnum::UNIT].left - GAMESPEED, _Collider[BaseEnum::UNIT].top - GAMESPEED,
 							_Collider[BaseEnum::UNIT].left, _Collider[BaseEnum::UNIT].bottom - GAMESPEED };
 			
-			if (IntersectRect(&tamp[0], &tamp[1], _floor[i]))
+			if (IntersectRect(&tamp[0], &tamp[1], floor[i]))
 			{
-				_Collider[BaseEnum::UNIT].right += _floor[i]->right - _Collider[BaseEnum::UNIT].left;
-				_Collider[BaseEnum::UNIT].left += _floor[i]->right - _Collider[BaseEnum::UNIT].left;
+				_Collider[BaseEnum::UNIT].right += floor[i]->right - _Collider[BaseEnum::UNIT].left;
+				_Collider[BaseEnum::UNIT].left += floor[i]->right - _Collider[BaseEnum::UNIT].left;
 				return -1;
 			}
 
 			tamp[1] = { _Collider[BaseEnum::UNIT].right, _Collider[BaseEnum::UNIT].top - GAMESPEED,
 							_Collider[BaseEnum::UNIT].right+GAMESPEED, _Collider[BaseEnum::UNIT].bottom - GAMESPEED };
-			if (IntersectRect(&tamp[0], &tamp[1], _floor[i]))
+			if (IntersectRect(&tamp[0], &tamp[1], floor[i]))
 			{
-				_Collider[BaseEnum::UNIT].left -= _Collider[BaseEnum::UNIT].right - _floor[i]->left;
-				_Collider[BaseEnum::UNIT].right -= _Collider[BaseEnum::UNIT].right - _floor[i]->left;
+				_Collider[BaseEnum::UNIT].left -= _Collider[BaseEnum::UNIT].right - floor[i]->left;
+				_Collider[BaseEnum::UNIT].right -= _Collider[BaseEnum::UNIT].right - floor[i]->left;
 				return 1;
 			}
 		}
@@ -261,9 +268,9 @@ void PlayerCharacter::_updataJump()
 	_jump["Unit"] += -1 * _jump["Weight"];
 
 	RECT tamp;
-	for (int i = 0; i < _floor.size(); i++)
+	for (int i = 0; i < floor.size(); i++)
 	{
-		if (IntersectRect(&tamp, &_Collider[BaseEnum::UNIT], _floor[i]))
+		if (IntersectRect(&tamp, &_Collider[BaseEnum::UNIT], floor[i]))
 		{			
 			_oldState = _state;
  	 		_state = UnitState::UNITNULL;

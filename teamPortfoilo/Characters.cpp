@@ -1,6 +1,8 @@
 #include "Stdafx.h"
 #include "Characters.h"
 
+#pragma region  BaseData Class
+
 	#pragma region 정보
 
 		// hp 정보
@@ -10,6 +12,7 @@
 			else if (getData == BaseEnum::STATE) { return _hp[BaseEnum::MAX]; }
 			else return GETERROR;
 		}
+
 		// mp 정보
 		int BaseData::getMp(BaseEnum getData)
 		{
@@ -53,4 +56,5 @@
 
 	#pragma endregion
 
+#pragma endregion
 

@@ -1,15 +1,10 @@
 #include "Stdafx.h"
 #include "ColliderManager.h"
 #include "Characters.h"
+class BaseData;
 
 ColliderManager::ColliderManager() { }
 ColliderManager::~ColliderManager() { }
-
-void ColliderManager::init(BaseData* user, vector<BaseData*> monster)
-{
-	_user = user;
-	_monster = monster;
-}
 
 void ColliderManager::update(void)
 { 
@@ -19,34 +14,34 @@ void ColliderManager::update(void)
 
 void ColliderManager::smashCollider()
 {
-	int smash = _user->getSmash().size();
+	int smash = GAMEMANAGER->getPlayer()->getSmash().size();
 	if ( smash > 0)
 	{ 
 		RECT temp;
 		for (int i = 0; i < smash; i++)
 		{
-			for (int h = 0; h < _monster.size(); h++)
+			for (int h = 0; h < GAMEMANAGER->getMonster().size(); h++)
 			{
-				if (IntersectRect(&temp, &_user->getSmash()[i].first, &_monster[h]->getCollider()))
+				if (IntersectRect(&temp, &GAMEMANAGER->getPlayer()->getSmash()[i].first, &GAMEMANAGER->getMonster()[h]->getCollider()))
 				{ 
-					_monster[h]->setHit(); 
-					_user->clearSmash();
+					GAMEMANAGER->getMonster()[h]->setHit(); 
+					GAMEMANAGER->getPlayer()->clearSmash();
 					return;
 				}
 			}
 		}
 	}
 	
-	for (int i = 0; i < _monster.size(); i++)
+	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
 	{
-		smash = _monster[i]->getSmash().size();
+		smash = GAMEMANAGER->getMonster()[i]->getSmash().size();
 		for (int h = 0; h < smash; h++)
 		{
 			RECT temp;
-			if (IntersectRect(&temp, &_user->getCollider(), &_monster[i]->getSmash()[h].first))
+			if (IntersectRect(&temp, &GAMEMANAGER->getPlayer()->getCollider(), &GAMEMANAGER->getMonster()[i]->getSmash()[h].first))
 			{
-				_user->setHit(); 
-				_monster[i]->clearSmash();
+				GAMEMANAGER->getPlayer()->setHit();
+				GAMEMANAGER->getMonster()[i]->clearSmash();
 				return;
 			}
 		}

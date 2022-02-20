@@ -145,10 +145,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BossWarden.h" />
     <ClInclude Include="Characters.h" />
     <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="CommonMarcroFuntion.h" />
     <ClInclude Include="FontManager.h" />
+    <ClInclude Include="GameManger.h" />
     <ClInclude Include="GameNode.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageManager.h" />
@@ -168,9 +170,11 @@
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BossWarden.cpp" />
     <ClCompile Include="Characters.cpp" />
     <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="GameManger.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageManager.cpp" />
