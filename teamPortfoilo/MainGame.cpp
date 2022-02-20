@@ -4,37 +4,18 @@
 HRESULT MainGame::init(void) //초기화
 {
 	GameNode::init(TRUE);
-	TIMEMANAGER->init();
-	// 테스트 렉트값 
-	_floor.push_back(&reference[0]);
+	IMAGEMANAGER->addImage("슈팅 맵", "Resources/Images/BackGround/ShootingBG.bmp", WINSIZE_X,WINSIZE_Y);
 
-	//플레이어값
-	player = new PlayerCharacter();
-	player->init({ 0,600 }, _floor);
-	_player = player;
-	mon = new BossWarden();
-	mon->init({ 0,0 }, _floor);
-	mon->setCollider(RECT{ 800,350,900,450 });
-	_monster.push_back(mon);
-
-	GAMEMANAGER->setPlayer(_player);
-	GAMEMANAGER->setMonster(_monster);
-	_collider = new ColliderManager();
 	return S_OK;
 }
 
 void MainGame::release(void)
 {
-
-	GameNode::release();
+	GameNode::release();	
 }
 
 void MainGame::update(void) // 갱신
 {
-	_player->ObjectUpdate();
-	for (int i = 0; i < _monster.size(); i++) { _monster[i]->ObjectUpdate(); }
-	_collider->update();
-
 	GameNode::update();
 }
 
@@ -43,14 +24,53 @@ void MainGame::render(void) // 그려줘
 	//검은색 빈 비트맵
 	//PatBlt() : 사각형 영역을 브러쉬로 채우는 함수
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
+	IMAGEMANAGER->findImage("슈팅 맵")->render(getMemDC());
+    char str[128];
+    wsprintf(str, "꼬깔 원정대 영차영차");
+    TextOut(getMemDC(), 100, 100, str, strlen(str));
+	wsprintf(str, "힘내 꼬깔... 넌 할 수 있어 :D ");
+	TextOut(getMemDC(), 140, 150, str, strlen(str));
 
-	for (int i = 0; i < _monster.size(); i++) { _monster[i]->ObjectRender(); }
-	_player->ObjectRender();
+	wsprintf(str, "난 깃허브 토큰이 싫다...");
+	TextOut(getMemDC(), 230, 200, str, strlen(str));
 
-	for (int i = 0; i < _floor.size(); i++)
-	{
-		Rectangle(getMemDC(), _floor[i]->left, _floor[i]->top, _floor[i]->right, _floor[i]->bottom);
-	}
+	wsprintf(str, "이제 됨");
+	TextOut(getMemDC(), 320, 250, str, strlen(str));
 
+    wsprintf(str, "컴파일러가 나를 비웃는 느낌이다");
+    TextOut(getMemDC(), 350, 300, str, strlen(str));
+
+	wsprintf(str, "디버그 파일 같이 올려서 오류 터짐 ㅠㅠ ");
+	TextOut(getMemDC(), 400, 350, str, strlen(str));
+
+	wsprintf(str, "초대만 빨리 확인했어도...");
+	TextOut(getMemDC(), 450, 400, str, strlen(str));
+
+	wsprintf(str, "이 쉬운걸 너무 어렵게햇다...");
+	TextOut(getMemDC(), 550, 450, str, strlen(str));
+
+    wsprintf(str, "그래도 이제는 된당");
+    TextOut(getMemDC(), 700, 100, str, strlen(str));
+
+	wsprintf(str, "여기 분위기 조아 다행!");
+	TextOut(getMemDC(), 650, 150, str, strlen(str));
+
+	wsprintf(str, "생각보다는 좀 조용한 분위기인가 보네요");
+	TextOut(getMemDC(), 620, 200, str, strlen(str));
+
+	wsprintf(str, "난 일단 오피스 신청햇어");
+	TextOut(getMemDC(), 550, 250, str, strlen(str));
+
+    wsprintf(str, "의석이 언제 출발하닝");
+    TextOut(getMemDC(), 450, 280, str, strlen(str));
+
+	wsprintf(str, "치킨먹고싶당....");
+	TextOut(getMemDC(), 350, 380, str, strlen(str));
+
+	wsprintf(str, "오늘만 집에서 휴식을...");
+	TextOut(getMemDC(), 250, 450, str, strlen(str));
+
+    wsprintf(str, "??? : 응 안대");
+    TextOut(getMemDC(), 170, 470, str, strlen(str));
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
 }

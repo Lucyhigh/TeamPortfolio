@@ -6,7 +6,7 @@ class PlayerCharacter : public BaseData, GameNode
 {
 	enum class UnitState
 	{	
-		HIT, UNITNULL, IDLE_0, IDLE_1, JUMP,
+		UNITNULL, IDLE, JUMP,
 		SLIDE, PARING,
 		JUMPATTACK, JUMPATTACK_DOUBLE,
 		ATTACK, ATTACK_DOUBLE,
@@ -38,6 +38,8 @@ class PlayerCharacter : public BaseData, GameNode
 		map<string, float> _slide = { { "State",0 }, { "Max",100 } };
 		void _updataJump();
 
+		// ¹Ù´Ú
+		vector<RECT*> _floor;
 public:
 		//±âº» 
 		PlayerCharacter();
@@ -45,5 +47,5 @@ public:
 		HRESULT init(POINT,vector<RECT*>);
 		void release(void);
 		void update(void);
-		void render(void);
+		virtual void render(void);
 };
