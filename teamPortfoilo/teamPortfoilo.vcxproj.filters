@@ -49,10 +49,21 @@
     <ClInclude Include="Timer.h">
       <Filter>API FrameWork\Time</Filter>
     </ClInclude>
-    <ClInclude Include="TempSoundManager.h" />
-    <ClInclude Include="TempSoundTest.h" />
-    <ClInclude Include="TextDataManager.h" />
-    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SceneManager.h">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TempSoundManager.h">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TextDataManager.h">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TempSoundTest.h">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressBar.h">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameNode.cpp">
@@ -97,10 +108,21 @@
     <ClCompile Include="Timer.cpp">
       <Filter>API FrameWork\Time</Filter>
     </ClCompile>
-    <ClCompile Include="TempSoundManager.cpp" />
-    <ClCompile Include="TempSoundTest.cpp" />
-    <ClCompile Include="TextDataManager.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="TempSoundManager.cpp">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="TextDataManager.cpp">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="TempSoundTest.cpp">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressBar.cpp">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API FrameWork">
