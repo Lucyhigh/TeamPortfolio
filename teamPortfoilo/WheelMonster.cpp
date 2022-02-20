@@ -19,10 +19,8 @@ HRESULT WheelMonster::init(POINT point, vector<RECT*> floor)
 	function<void()> _update;
 	_update = std::bind(&WheelMonster::_updateIdle, this);
 	_pattenFunc.push_back(_update);
-	_update = std::bind(&WheelMonster::_updateJump, this);
-	_pattenFunc.push_back(_update);
-	_update = std::bind(&WheelMonster::_updateDownAttack, this);
-	_pattenFunc.push_back(_update);
+	_update = std::bind(&WheelMonster::_updateAttack, this);
+	_pattenFunc.push_back(_update);	
 
 	return S_OK;
 }
@@ -98,12 +96,45 @@ int WheelMonster::_updateSide()
 
 void WheelMonster::_inputPatten()
 {
-	_state = (UnitState)RND->getInt(3);
-	if (_state == UnitState::IDLE) { _pattenDely = RND->getFromInTo(1000, 3000); }
+	if (abs(MONSTER_CENTER - PLAYER_CENTER) < 150)
+	{
+		_state = UnitState::ATTACK;
+		//오른쪽으로 공격
+		if (MONSTER_CENTER - PLAYER_CENTER < 0)
+		{
+			
+		}
+		//왼쪽으로 공격
+		else if (MONSTER_CENTER - PLAYER_CENTER > 0)
+		{
+
+		}
+	}
+	else if (abs(MONSTER_CENTER - PLAYER_CENTER) < 500)
+	{
+		_state = UnitState::MOVE;
+		//오른쪽으로 이동 
+		if (MONSTER_CENTER - PLAYER_CENTER < 0)
+		{
+			_Collider[BaseEnum::UNIT].left += 10;
+			_Collider[BaseEnum::UNIT].right += 10;
+		}
+		//왼쪽으로 이동
+		else if (MONSTER_CENTER - PLAYER_CENTER > 0)
+		{
+			_Collider[BaseEnum::UNIT].left -= 10;
+			_Collider[BaseEnum::UNIT].right -= 10;
+		}
+	}
+	else
+	{
+		_state = UnitState::IDLE;
+	}
 }
 
 void WheelMonster::_inputAnimation()
 {
+
 }
 
 
@@ -113,12 +144,7 @@ void WheelMonster::_updateIdle()
 	int a = 0;
 }
 
-void WheelMonster::_updateJump()
-{
-
-}
-
-void WheelMonster::_updateDownAttack()
+void WheelMonster::_updateAttack()
 {
 
 }
