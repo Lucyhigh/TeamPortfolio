@@ -16,12 +16,6 @@
     <ClInclude Include="FontManager.h">
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="SecondScene.h">
-      <Filter>API FrameWork\Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="StartScene.h">
-      <Filter>API FrameWork\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="MainGame.h">
       <Filter>Blasphemous\GameScene\MainGame</Filter>
     </ClInclude>
@@ -49,6 +43,16 @@
     <ClInclude Include="ColliderManager.h">
       <Filter>Blasphemous\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>API FrameWork\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>API FrameWork\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="TempSoundManager.h" />
+    <ClInclude Include="TempSoundTest.h" />
+    <ClInclude Include="TextDataManager.h" />
+    <ClInclude Include="SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameNode.cpp">
@@ -62,12 +66,6 @@
     </ClCompile>
     <ClCompile Include="FontManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="SecondScene.cpp">
-      <Filter>API FrameWork\Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="StartScene.cpp">
-      <Filter>API FrameWork\Classes</Filter>
     </ClCompile>
     <ClCompile Include="MainGame.cpp">
       <Filter>Blasphemous\GameScene\MainGame</Filter>
@@ -93,6 +91,16 @@
     <ClCompile Include="ColliderManager.cpp">
       <Filter>Blasphemous\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>API FrameWork\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>API FrameWork\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="TempSoundManager.cpp" />
+    <ClCompile Include="TempSoundTest.cpp" />
+    <ClCompile Include="TextDataManager.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API FrameWork">
@@ -109,9 +117,6 @@
     </Filter>
     <Filter Include="API FrameWork\Manager">
       <UniqueIdentifier>{b352531a-849e-412f-950e-9cc6f09d366c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\Classes">
-      <UniqueIdentifier>{2a551cf1-678b-48c1-ab51-779939a6e1e8}</UniqueIdentifier>
     </Filter>
     <Filter Include="API FrameWork\Utility">
       <UniqueIdentifier>{d8eac73c-786f-43fa-9898-8689f2d0b18a}</UniqueIdentifier>
@@ -139,6 +144,9 @@
     </Filter>
     <Filter Include="Blasphemous\Characters\Player">
       <UniqueIdentifier>{fe40dbc9-9b9e-44df-8e44-f05f00ea3471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Time">
+      <UniqueIdentifier>{3a08c0eb-042c-4a52-ac8c-0849106b96df}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

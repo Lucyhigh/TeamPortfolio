@@ -156,10 +156,14 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="RandomFunction.h" />
-    <ClInclude Include="SecondScene.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SingletonBase.h" />
-    <ClInclude Include="StartScene.h" />
     <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="TempSoundManager.h" />
+    <ClInclude Include="TempSoundTest.h" />
+    <ClInclude Include="TextDataManager.h" />
+    <ClInclude Include="TimeManager.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
@@ -172,11 +176,15 @@
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
-    <ClCompile Include="SecondScene.cpp" />
-    <ClCompile Include="StartScene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TempSoundManager.cpp" />
+    <ClCompile Include="TempSoundTest.cpp" />
+    <ClCompile Include="TextDataManager.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="WinAPI.cpp" />
   </ItemGroup>

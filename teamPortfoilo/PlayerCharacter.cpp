@@ -95,7 +95,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 	{
 		_oldState = _state;
 		_jump["Unit"] = 0;
-		_jump["Weight"] =14;
+		_jump["Weight"] = 11.0f;
 		return UnitState::JUMP;
 	}
 	else if (KEYMANAGER->isOnceKeyDown('A'))
@@ -255,7 +255,7 @@ void PlayerCharacter::_updateMove()
 
 void PlayerCharacter::_updataJump()
 { 
-	_jump["Weight"] += -1 * 0.5f;
+	_jump["Weight"] += -1 * 0.3f;
 	_Collider[BaseEnum::UNIT].top += -1 * _jump["Weight"];
 	_Collider[BaseEnum::UNIT].bottom += -1 * _jump["Weight"];
 	_jump["Unit"] += -1 * _jump["Weight"];

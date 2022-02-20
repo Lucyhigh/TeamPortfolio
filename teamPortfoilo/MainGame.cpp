@@ -1,6 +1,12 @@
 #include "stdafx.h"
 #include "MainGame.h"
 
+//	신매니저 
+// 텍스트데이터 매니져
+// 타임 매니저
+// 픽셀 콜리전
+// 프로그래스바
+
 HRESULT MainGame::init(void) //초기화
 {
 	GameNode::init(TRUE);
@@ -19,6 +25,8 @@ HRESULT MainGame::init(void) //초기화
 
 	collider = new ColliderManager();
 	collider->init(player, monster);
+
+	TIMEMANAGER->init();
 
 	return S_OK;
 }
@@ -40,7 +48,7 @@ void MainGame::render(void) // 그려줘
 	//검은색 빈 비트맵
 	//PatBlt() : 사각형 영역을 브러쉬로 채우는 함수
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
-
+	TIMEMANAGER->render(getMemDC());
 		
 	for (int i = 0; i < monster.size(); i++)
 	{ Rectangle(getMemDC(), monster[i]->getCollider().left, monster[i]->getCollider().top, monster[i]->getCollider().right, monster[i]->getCollider().bottom); }
