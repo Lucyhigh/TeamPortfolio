@@ -145,10 +145,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BossScene1.h" />
+    <ClInclude Include="BossScene2.h" />
     <ClInclude Include="BossWarden.h" />
     <ClInclude Include="Characters.h" />
     <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="CommonMarcroFuntion.h" />
+    <ClInclude Include="FieldScene1.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="GameManger.h" />
     <ClInclude Include="GameNode.h" />
@@ -161,7 +164,9 @@
     <ClInclude Include="RandomFunction.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SingletonBase.h" />
+    <ClInclude Include="StartScene.h" />
     <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="EndingScene.h" />
     <ClInclude Include="TempSoundManager.h" />
     <ClInclude Include="TempSoundTest.h" />
     <ClInclude Include="TextDataManager.h" />
@@ -170,9 +175,12 @@
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BossScene1.cpp" />
+    <ClCompile Include="BossScene2.cpp" />
     <ClCompile Include="BossWarden.cpp" />
     <ClCompile Include="Characters.cpp" />
     <ClCompile Include="ColliderManager.cpp" />
+    <ClCompile Include="FieldScene1.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameManger.cpp" />
     <ClCompile Include="GameNode.cpp" />
@@ -183,9 +191,11 @@
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="StartSecen.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="TempSoundManager.cpp" />
     <ClCompile Include="TempSoundTest.cpp" />
     <ClCompile Include="TextDataManager.cpp" />
