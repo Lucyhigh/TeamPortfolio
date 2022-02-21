@@ -70,6 +70,10 @@
     <ClInclude Include="BossWarden.h">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="Camera.h">
+      <Filter>Blasphemous\Camera</Filter>
+=======
     <ClInclude Include="StartScene.h">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClInclude>
@@ -84,6 +88,10 @@
     </ClInclude>
     <ClInclude Include="EndingScene.h">
       <Filter>Blasphemous\GameScene\Stage2</Filter>
+>>>>>>> 9292a602717e5dfd7bb1eb52e8cca2cd15679989
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Blasphemous\Object</Filter>
     </ClInclude>
     <ClInclude Include="ImageClass.h">
       <Filter>Blasphemous\GameScene\UI</Filter>
@@ -166,6 +174,10 @@
     <ClCompile Include="BossWarden.cpp">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="Camera.cpp">
+      <Filter>Blasphemous\Camera</Filter>
+=======
     <ClCompile Include="StartSecen.cpp">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClCompile>
@@ -180,6 +192,10 @@
     </ClCompile>
     <ClCompile Include="EndingScene.cpp">
       <Filter>Blasphemous\GameScene\Stage2</Filter>
+>>>>>>> 9292a602717e5dfd7bb1eb52e8cca2cd15679989
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Blasphemous\Object</Filter>
     </ClCompile>
     <ClCompile Include="ImageClass.cpp">
       <Filter>Blasphemous\GameScene\UI</Filter>
@@ -247,11 +263,19 @@
     <Filter Include="Blasphemous\Characters\Boss">
       <UniqueIdentifier>{eeb1971e-8587-4af1-94b6-36465ff4aee7}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
+    <Filter Include="Blasphemous\Camera">
+      <UniqueIdentifier>{2c2a0a77-9d2f-439e-a588-5c1609f9d3d9}</UniqueIdentifier>
+=======
     <Filter Include="Blasphemous\GameScene\Stage1">
       <UniqueIdentifier>{eeb7ae2f-8eb8-466a-8edd-691465780a21}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blasphemous\GameScene\Stage2">
       <UniqueIdentifier>{17dfbb8c-21e4-43ab-8111-3cb3db55e8ca}</UniqueIdentifier>
+>>>>>>> 9292a602717e5dfd7bb1eb52e8cca2cd15679989
+    </Filter>
+    <Filter Include="Blasphemous\Object">
+      <UniqueIdentifier>{f46bdc2b-05a3-4754-a286-919f9e08e90e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blasphemous\GameScene\UI">
       <UniqueIdentifier>{8c47b6af-f91e-48fa-bc6a-477d2395f054}</UniqueIdentifier>
