@@ -2,9 +2,7 @@
 
 class Image
 {
-
 public:
-
 	// 자주 사용하는 API 자료형
 	// DWORD : Unsigened long
 	// WORD : Unsigened short

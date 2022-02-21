@@ -73,6 +73,9 @@
     <ClInclude Include="Camera.h">
       <Filter>Blasphemous\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Blasphemous\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameNode.cpp">
@@ -141,6 +144,9 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Blasphemous\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Blasphemous\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API FrameWork">
@@ -193,6 +199,9 @@
     </Filter>
     <Filter Include="Blasphemous\Camera">
       <UniqueIdentifier>{2c2a0a77-9d2f-439e-a588-5c1609f9d3d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\Object">
+      <UniqueIdentifier>{f46bdc2b-05a3-4754-a286-919f9e08e90e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
