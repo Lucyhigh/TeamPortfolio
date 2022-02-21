@@ -16,6 +16,7 @@ c:\users\bosch\documents\teamportfolio\teamportfoilo\image.cpp(693): warning C45
   ImageManager.cpp
   KeyManager.cpp
   MainGame.cpp
+c:\users\bosch\documents\teamportfolio\teamportfoilo\maingame.cpp(58): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   PlayerCharacter.cpp
   ProgressBar.cpp
   SceneManager.cpp
@@ -33,8 +34,8 @@ c:\users\bosch\documents\teamportfolio\teamportfoilo\timemanager.cpp(56): warnin
   Utils.cpp
   코드를 생성하고 있습니다...
 c:\users\bosch\documents\teamportfolio\teamportfoilo\textdatamanager.cpp(76): warning C4172: 지역 변수 또는 임시: str의 주소를 반환하고 있습니다.
+c:\users\bosch\documents\teamportfolio\teamportfoilo\playercharacter.cpp(325): warning C4715: 'PlayerCharacter::_updateHit': 모든 제어 경로에서 값을 반환하지는 않습니다.
   컴파일하고 있습니다...
   WinAPI.cpp
   코드를 생성하고 있습니다...
-  LINK : C:\Users\bosch\Documents\TeamPortfolio\x64\Debug\teamPortfoilo.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
   teamPortfoilo.vcxproj -> C:\Users\bosch\Documents\TeamPortfolio\x64\Debug\teamPortfoilo.exe

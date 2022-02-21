@@ -57,6 +57,7 @@ using namespace std;
 #include "TimeManager.h"
 #include "TextDataManager.h"
 #include "SceneManager.h"
+#include "Camera.h"
 using namespace MY_UTIL;
 
 //========================
@@ -70,6 +71,7 @@ using namespace MY_UTIL;
 #define TIMEMANAGER TimeManager::getSingleton()
 #define TEXTDATAMANAGER TextDataManager::getSingleton()
 #define SCENEMANAGER SceneManager::getSingleton()
+#define CAMERA Camera::getSingleton()
 //============================
 // # 매크로 # (윈도우창 초기화)
 //============================
@@ -86,7 +88,7 @@ using namespace MY_UTIL;
 #define WINSIZE_Y	 GetSystemMetrics(SM_CYSCREEN)
 #define WINSTYLE	 WS_POPUPWINDOW | WS_MAXWIZE
 
-#else
+#else //1200*675 기준으로 제작중 바닥은 WINSIZE_Y-35
 #define WINSTART_X	 200
 #define WINSTART_Y	 0
 #define WINSIZE_X	 1200
