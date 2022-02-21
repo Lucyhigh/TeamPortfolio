@@ -20,6 +20,10 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	GAMEMANAGER->setPlayer(_player);
 	GAMEMANAGER->setMonster(_monster);
 	_collider = new ColliderManager();
+
+	
+
+
 	return S_OK;
 }
 
