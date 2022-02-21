@@ -70,6 +70,9 @@
     <ClInclude Include="BossWarden.h">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Blasphemous\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameNode.cpp">
@@ -135,6 +138,9 @@
     <ClCompile Include="BossWarden.cpp">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Blasphemous\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API FrameWork">
@@ -184,6 +190,9 @@
     </Filter>
     <Filter Include="Blasphemous\Characters\Boss">
       <UniqueIdentifier>{eeb1971e-8587-4af1-94b6-36465ff4aee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\Camera">
+      <UniqueIdentifier>{2c2a0a77-9d2f-439e-a588-5c1609f9d3d9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

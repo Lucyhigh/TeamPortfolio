@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BossWarden.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Characters.h" />
     <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="CommonMarcroFuntion.h" />
@@ -171,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BossWarden.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Characters.cpp" />
     <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="FontManager.cpp" />
