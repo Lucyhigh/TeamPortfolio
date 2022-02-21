@@ -1,5 +1,18 @@
 #include "stdafx.h"
 #include "MainGame.h"
+#pragma region include Scene
+//UI
+#include "ImageClass.h"
+#include "TitleScene.h"
+#include "OptionScene.h"
+//Stage
+#include "StartScene.h"
+#include "BossScene1.h"
+#include "BossScene2.h"
+#include "FieldScene1.h"
+#include "EndingScene.h"
+#pragma endregion 
+
 
 HRESULT MainGame::init(void) //초기화
 {
@@ -21,8 +34,26 @@ HRESULT MainGame::init(void) //초기화
 	GAMEMANAGER->setMonster(_monster);
 	_collider = new ColliderManager();
 
-	
+#pragma region SceneManager
 
+	// UI : title, system(), inventory(skill, item, equip ...) 
+	SCENEMANAGER->addScene("Title", new TitleScene);
+	SCENEMANAGER->addScene("Option", new OptionScene);
+
+
+	// Stage1
+	SCENEMANAGER->addScene("Start", new StartScene);
+	SCENEMANAGER->addScene("Boss1", new BossScene1);
+	
+	// Stage2
+	SCENEMANAGER->addScene("Boss2", new BossScene2);
+	SCENEMANAGER->addScene("Field1", new FieldScene1);
+	SCENEMANAGER->addScene("Ending", new EndingScene);
+
+	
+#pragma endregion 
+	// 테스트용 씬체인저
+	//SCENEMANAGER->changeScene("Start");
 
 	return S_OK;
 }
@@ -31,6 +62,8 @@ void MainGame::release(void)
 {
 
 	GameNode::release();
+	// 이미지클래스 릴리즈 필요한가?
+	SCENEMANAGER->update();
 }
 
 void MainGame::update(void) // 갱신
@@ -60,6 +93,10 @@ void MainGame::render(void) // 그려줘
 	char str[254];
 	sprintf_s(str, "%d", GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE));
 	TextOut(getMemDC(), 1000, 10, str, strlen(str));
+
+
+	// SCENEMANAGER->render();
+
 
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
 }
