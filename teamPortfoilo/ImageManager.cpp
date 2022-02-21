@@ -31,6 +31,7 @@ Image* ImageManager::addImage(string strKey, int width, int height)
 	return img;
 }
 
+
 Image* ImageManager::addImage(string strKey, const char * fileName, int width, int height, BOOL isTrans, COLORREF transColor)
 {
 	Image* img = findImage(strKey);
@@ -43,7 +44,6 @@ Image* ImageManager::addImage(string strKey, const char * fileName, int width, i
 		return NULL;
 	}
 
-	//_mImagelist.insert(pair<string, Image*>(strKey, img));
 	_mImagelist.insert(make_pair(strKey, img));
 
 	return img;
@@ -61,7 +61,6 @@ Image* ImageManager::addImage(string strKey, const char * fileName, float x, flo
 		return NULL;
 	}
 
-	//_mImagelist.insert(pair<string, Image*>(strKey, img));
 	_mImagelist.insert(make_pair(strKey, img));
 
 	return img;
@@ -79,7 +78,6 @@ Image* ImageManager::addFrameImage(string strKey, const char * fileName, int wid
 		return NULL;
 	}
 
-	//_mImagelist.insert(pair<string, Image*>(strKey, img));
 	_mImagelist.insert(make_pair(strKey, img));
 
 	return img;
@@ -97,7 +95,6 @@ Image* ImageManager::addFrameImage(string strKey, const char * fileName, float x
 		return NULL;
 	}
 
-	//_mImagelist.insert(pair<string, Image*>(strKey, img));
 	_mImagelist.insert(make_pair(strKey, img));
 
 	return img;
