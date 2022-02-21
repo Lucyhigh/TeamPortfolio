@@ -1,9 +1,16 @@
 #pragma once
 #include "GameNode.h"
 
+enum titleName
+{
+	ANYBUTTON,TITLE
+};
+
 class TitleScene :public GameNode
 {
 private :
+	titleName _onTitle;
+
 public:
 	TitleScene() {}
 	~TitleScene() {}

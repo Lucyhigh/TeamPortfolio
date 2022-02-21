@@ -40,6 +40,7 @@ public:
 	void release(void);
 
 	Image*  addImage(string strKey, int width, int height);
+
 	Image*  addImage(string strKey, const char* fileName, int width, int height, BOOL isTrans = FALSE,
 		COLORREF transColor = RGB(0, 0, 0));
 	Image*  addImage(string strKey, const char* fileName, float x, float y, int width, int height, BOOL isTrans = FALSE,

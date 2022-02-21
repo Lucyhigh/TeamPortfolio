@@ -20,4 +20,5 @@ void BossScene2::update(void)
 
 void BossScene2::render(void)
 {
+	IMAGEMANAGER->findImage("BossStage2_Bg")->render(getMemDC(),0,0);
 }

@@ -1,5 +1,6 @@
 #include "Stdafx.h"
-#include "Image.h" // 그려주기 위한 셋팅, 추상화만 진행하고 상속을 해줄 예정. 
+#include "Image.h" 
+#include "Animation.h"
 
 // 알파 블렌드를 사용하기 위한 라이브러리 추가 
 #pragma comment (lib,"msimg32.lib")
@@ -11,7 +12,6 @@ Image::Image() : _imageInfo(NULL)
 , _isTrans(FALSE)
 , _transColor(RGB(0, 0, 0))
 , _blendImage(NULL)
-
 {
 }
 
@@ -704,5 +704,11 @@ void Image::loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY)
 
 void Image::loopAlphaRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY, BYTE alpha)
 {
+}
+
+void Image::aniRender(HDC hdc, int destX, int destY, Animation * ani)
+{
+	render(hdc, destX, destY, ani->getFramePos().x, ani->getFramePos().y,
+		ani->getFrameWidth(), ani->getFrameHeight());
 }
 

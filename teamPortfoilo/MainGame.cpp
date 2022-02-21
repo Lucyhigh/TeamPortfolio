@@ -53,7 +53,7 @@ HRESULT MainGame::init(void) //초기화
 	
 #pragma endregion 
 	// 테스트용 씬체인저
-	//SCENEMANAGER->changeScene("Start");
+	SCENEMANAGER->changeScene("Boss2");
 
 	return S_OK;
 }
@@ -81,6 +81,9 @@ void MainGame::render(void) // 그려줘
 	//PatBlt() : 사각형 영역을 브러쉬로 채우는 함수
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 	TIMEMANAGER->render(getMemDC());
+	
+	// ※ 씬 이미지 출력 ※
+	SCENEMANAGER->render();
 
 	for (int i = 0; i < _monster.size(); i++) { _monster[i]->ObjectRender(); }
 	_player->ObjectRender();
@@ -95,7 +98,6 @@ void MainGame::render(void) // 그려줘
 	TextOut(getMemDC(), 1000, 10, str, strlen(str));
 
 
-	// SCENEMANAGER->render();
 
 
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
