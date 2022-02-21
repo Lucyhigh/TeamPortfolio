@@ -85,6 +85,22 @@
     <ClInclude Include="EndingScene.h">
       <Filter>Blasphemous\GameScene\Stage2</Filter>
     </ClInclude>
+    <ClInclude Include="ImageClass.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionScene.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>API FrameWork\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="AniScene.h" />
+    <ClInclude Include="TextClass.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameNode.cpp">
@@ -165,6 +181,22 @@
     <ClCompile Include="EndingScene.cpp">
       <Filter>Blasphemous\GameScene\Stage2</Filter>
     </ClCompile>
+    <ClCompile Include="ImageClass.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionScene.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>API FrameWork\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="AniScene.cpp" />
+    <ClCompile Include="TextClass.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API FrameWork">
@@ -220,6 +252,9 @@
     </Filter>
     <Filter Include="Blasphemous\GameScene\Stage2">
       <UniqueIdentifier>{17dfbb8c-21e4-43ab-8111-3cb3db55e8ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\UI">
+      <UniqueIdentifier>{8c47b6af-f91e-48fa-bc6a-477d2395f054}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

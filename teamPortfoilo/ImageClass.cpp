@@ -24,7 +24,12 @@ HRESULT ImageClass::init(void)
 
 
 #pragma region UI Scene 
+	// 타이틀 이미지 
 	IMAGEMANAGER->addImage("AnyButton", "Resources/Images/BackGround/UI/anyButtonBg.bmp", 1200, 675);
+	// 타이틀 애니메이션 이미지 640*360
+	IMAGEMANAGER->addImage("titleBg", "Resources/Images/Object/titleBg.bmp", 9600,360,15,1, MGT);
+	IMAGEMANAGER->addImage("titleMain", "Resources/Images/Object/titleMain.bmp", 8960, 360, 14, 1, MGT);
+	IMAGEMANAGER->addImage("titleEffect", "Resources/Images/Object/titleEffect.bmp", 28160, 360, 44, 1, MGT);
 
 	IMAGEMANAGER->addFrameImage("메뉴", "Resources/Images/cornObject/menu.bmp", 272, 360, 2, 1, MGT);
 	IMAGEMANAGER->addFrameImage("메뉴창", "Resources/Images/cornObject/menuDisplay.bmp", 3600, 675, 3, 1, MGT);
@@ -37,8 +42,6 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("인벤 기도문", "Resources/Images/BackGround/InventoryBibleTap.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("인벤 묵주", "Resources/Images/BackGround/InventoryRosaryTap.bmp", 1200, 675);
 
-	// 애니메이션 이미지 
-	IMAGEMANAGER->addImage("꼬끼리", "Resources/Images/Object/Elephant.bmp", 660, 268, true, RGB(255, 0, 255));
 
 #pragma endregion
 
