@@ -1,6 +1,6 @@
 #pragma once
 #include "SingletonBase.h"
-class Camera
+class Camera : publuc SingletonBase<Camera>
 {
 private:
 public:
