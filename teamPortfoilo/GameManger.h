@@ -11,12 +11,14 @@ class GameManger : public SingletonBase<GameManger>
 	public:
 		GameManger();
 		~GameManger();
+		void init();
 
-		static void setPlayer(BaseData* User) { player = User; }
 		static BaseData* getPlayer() { return player; }
+		static void setPlayer(BaseData* User) { player = User; }
 		static void clearPlayer() { player = nullptr; }
 		
-		static void setMonster(vector<BaseData*> Monster) { monster = Monster; }
 		static vector<BaseData*> getMonster() { return monster; }
+		static void setMonster(vector<BaseData*> Monster) { monster = Monster; }
 		static void clearMonster() { monster.clear(); }
+		static void clearMonster(int num) { monster.erase(monster.begin()+num); }
 };

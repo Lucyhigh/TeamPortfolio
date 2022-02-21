@@ -3,6 +3,8 @@
 
 PlayerCharacter::PlayerCharacter() 
 { 
+	ObjectInit = bind(&PlayerCharacter::init, this, std::placeholders::_1, std::placeholders::_2);
+	ObjectrRelease = bind(&PlayerCharacter::release, this);
 	ObjectUpdate = bind(&PlayerCharacter::update, this);
 	ObjectRender = bind(&PlayerCharacter::render, this);
 } 
@@ -12,7 +14,7 @@ PlayerCharacter::~PlayerCharacter() { } // ! DO NOTING
 HRESULT PlayerCharacter::init(POINT point,vector<RECT*>floor)
 {
 	this->floor = floor;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(400, 400, 100, 100); 
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(400, 400, 50, 60); 
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
 	_oldState = UnitState::UNITNULL;
@@ -32,11 +34,8 @@ void PlayerCharacter::update(void)
 	GameNode::update();
 	_updateFloor();
 
-	// 슬라이드 -> if(슬라이드 != ) { 명령어 } else { 다른명령어 }
-	// 슬라이드 펑션 <= 
-	
 	if (_updateHit())
-	{ _updateSide(); _inputUpdate(); return; }
+	{ _updateSide();  _inputUpdate(); return; }
 
 	_updateMove();
 	_state = _inputKey(_updateSide());
@@ -46,10 +45,20 @@ void PlayerCharacter::update(void)
 
 void PlayerCharacter::render(void)
 {
+	HPEN hpen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+	HPEN hpenOld = (HPEN)::SelectObject(getMemDC(), (HGDIOBJ)hpen);
+	HBRUSH myBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
+	HBRUSH oldBrush = (HBRUSH)SelectObject(getMemDC(), myBrush);
 	Rectangle(getMemDC(), _Collider[BaseEnum::UNIT].left, _Collider[BaseEnum::UNIT].top, _Collider[BaseEnum::UNIT].right, _Collider[BaseEnum::UNIT].bottom);
+	SelectObject(getMemDC(), oldBrush);
+	DeleteObject(myBrush);
+	hpen = (HPEN)::SelectObject(getMemDC(), hpenOld);
 
 	for (int i = 0; i < smash.size(); i++)
 	{ Rectangle(getMemDC(), smash[i].first.left, smash[i].first.top, smash[i].first.right, smash[i].first.bottom); }
+
+	if (_image != nullptr)
+	{ _image->frameRender(getMemDC(),_image->getX(),_image->getY(), _image->getFrameX(), _image->getFrameY()); }
 }
 // ! 키보드 입력
 PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
@@ -133,7 +142,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 	{
 		_oldState = _state;
 		smash.clear();
-		_slide["Max"] = 200 + GetTickCount();
+		_slide["Max"] = 0.2f + TIMEMANAGER->getWorldTime();
 		return UnitState::SLIDE;
 	}
 
@@ -161,10 +170,6 @@ void PlayerCharacter::_inputUpdate()
 				_updateSlide(); break;
 		}
 	}
-}
-
-void PlayerCharacter::_inputAnimation()
-{
 }
 
 void PlayerCharacter::_updateFloor()
@@ -225,11 +230,11 @@ int PlayerCharacter::_updateSide()
 
 void PlayerCharacter::_updateSlide()
 {
-	_Collider[BaseEnum::UNIT].left += _isLeft * (GAMESPEED*3);
-	_Collider[BaseEnum::UNIT].right += _isLeft *( GAMESPEED*3);
+	_Collider[BaseEnum::UNIT].left += _isLeft * (GAMESPEED * 3);
+	_Collider[BaseEnum::UNIT].right += _isLeft * (GAMESPEED * 3);
 
-	_slide["State"] = GetTickCount();
-	if (_slide["State"] >= _slide["Max"])
+	_slide["State"] = TIMEMANAGER->getWorldTime();
+	if (_slide["State"] >= _slide["Max"] || _updateSide() != 0)
 	{
 		_oldState = _state;
 		_state = UnitState::UNITNULL;
@@ -324,6 +329,76 @@ bool PlayerCharacter::_updateHit()
 	a ++;
 }
 
+
+void PlayerCharacter::_inputAnimation()
+{
+
+	if (_state == UnitState::JUMP)
+	{
+		_image = IMAGEMANAGER->findImage("꼬깔점프");
+	
+		if (_isLeft != -1)
+		{
+			_image->setFrameY(0);
+			_image->setX(_Collider[BaseEnum::UNIT].left - 35);
+		}
+		else
+		{
+			_image->setFrameY(1);
+			_image->setX(_Collider[BaseEnum::UNIT].left);
+		}
+		_image->setY(_Collider[BaseEnum::UNIT].top - 14);
+
+		return;
+	}
+	else if (_isMove != 0)
+	{
+		_image = IMAGEMANAGER->findImage("꼬깔이동");
+		if (_isLeft != -1)
+		{
+			_image->setX(_Collider[BaseEnum::UNIT].left - 35);
+		}
+		else
+		{
+			_image->setX(_Collider[BaseEnum::UNIT].left);
+		}
+		_image->setY(_Collider[BaseEnum::UNIT].top - 14);
+	}
+	else if (_state == UnitState::IDLE_0)
+	{
+		_image = IMAGEMANAGER->findImage("꼬깔대기");
+		_image->setX(_Collider[BaseEnum::UNIT].left - 35);
+		_image->setY(_Collider[BaseEnum::UNIT].top - 14);
+	}
+
+	if (_image != nullptr)
+	{
+		if (_isLeft != -1)
+		{
+			_image->setFrameY(0);
+			if (_image->getFrameX() >= _image->getMaxFrameX())
+			{
+				_image->setFrameX(0);
+			}
+			else
+			{
+				_image->setFrameX(_image->getFrameX() + 1);
+			}
+		}
+		else
+		{
+			_image->setFrameY(1);
+			if (_image->getFrameX() <= 0)
+			{
+				_image->setFrameX(_image->getMaxFrameX());
+			}
+			else
+			{
+				_image->setFrameX(_image->getFrameX() - 1);
+			}
+		}
+	}
+}
 
 
 

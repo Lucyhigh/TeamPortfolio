@@ -1,8 +1,11 @@
 #include "Stdafx.h"
 #include "GameManger.h"
 
+BaseData* GameManger::player;
+vector<BaseData*> GameManger::monster;
+
 GameManger::GameManger() { }
 GameManger::~GameManger() { }
 
-BaseData* GameManger::player;
-vector<BaseData*> GameManger::monster;
+void GameManger::init()
+{ player = new PlayerCharacter(); }

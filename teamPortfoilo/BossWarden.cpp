@@ -3,6 +3,8 @@
 
 BossWarden::BossWarden() 
 { 
+	ObjectInit = bind(&BossWarden::init, this, std::placeholders::_1, std::placeholders::_2);
+	ObjectrRelease = bind(&BossWarden::release, this);
 	ObjectUpdate = bind(&BossWarden::update, this);
 	ObjectRender = bind(&BossWarden::render, this);
 }

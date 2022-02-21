@@ -70,6 +70,27 @@
     <ClInclude Include="BossWarden.h">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="StartScene.h">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="BossScene2.h">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="BossScene1.h">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldScene1.h">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingScene.h">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageClass.h">
+      <Filter>API FrameWork\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Blasphemous\Characters\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameNode.cpp">
@@ -135,6 +156,27 @@
     <ClCompile Include="BossWarden.cpp">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClCompile>
+    <ClCompile Include="StartSecen.cpp">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="BossScene2.cpp">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="BossScene1.cpp">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldScene1.cpp">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingScene.cpp">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageClass.cpp">
+      <Filter>API FrameWork\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Blasphemous\Characters\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API FrameWork">
@@ -184,6 +226,15 @@
     </Filter>
     <Filter Include="Blasphemous\Characters\Boss">
       <UniqueIdentifier>{eeb1971e-8587-4af1-94b6-36465ff4aee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\Stage1">
+      <UniqueIdentifier>{eeb7ae2f-8eb8-466a-8edd-691465780a21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\Stage2">
+      <UniqueIdentifier>{17dfbb8c-21e4-43ab-8111-3cb3db55e8ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\UI">
+      <UniqueIdentifier>{8c47b6af-f91e-48fa-bc6a-477d2395f054}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
