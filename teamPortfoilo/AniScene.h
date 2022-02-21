@@ -5,8 +5,16 @@
 class AniScene : public GameNode
 {
 private:
-	Image* _aniImg;
-	Animation* _animationA;
+
+	// aI : Animation Image
+	Image* _aITitleBg;
+	Image* _aITitleMain;
+	Image* _aITitleEff;
+
+	// aM : Animation
+	Animation* _aMTitleBg;
+	Animation* _aMTitleMain;
+	Animation* _aMTitleEff;
 
 public:
 	AniScene() {}
@@ -18,4 +26,6 @@ public:
 	void render(void);
 
 };
+
+
 

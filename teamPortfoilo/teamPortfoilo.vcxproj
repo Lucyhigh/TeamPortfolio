@@ -145,6 +145,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AniScene.h" />
+    <ClInclude Include="AniTextScene.h" />
     <ClInclude Include="BossScene1.h" />
     <ClInclude Include="BossScene2.h" />
     <ClInclude Include="BossWarden.h" />
@@ -157,10 +160,12 @@
     <ClInclude Include="GameManger.h" />
     <ClInclude Include="GameNode.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="ImageClass.h" />
     <ClInclude Include="ImageManager.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="OptionScene.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="RandomFunction.h" />
@@ -171,12 +176,17 @@
     <ClInclude Include="EndingScene.h" />
     <ClInclude Include="TempSoundManager.h" />
     <ClInclude Include="TempSoundTest.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="TextDataManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AniScene.cpp" />
+    <ClCompile Include="AniTextScene.cpp" />
     <ClCompile Include="BossScene1.cpp" />
     <ClCompile Include="BossScene2.cpp" />
     <ClCompile Include="BossWarden.cpp" />
@@ -188,10 +198,12 @@
     <ClCompile Include="GameManger.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="ImageClass.cpp" />
     <ClCompile Include="ImageManager.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="OptionScene.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -202,9 +214,11 @@
     <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="TempSoundManager.cpp" />
     <ClCompile Include="TempSoundTest.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="TextDataManager.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="WinAPI.cpp" />
   </ItemGroup>

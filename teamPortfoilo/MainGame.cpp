@@ -2,6 +2,7 @@
 #include "MainGame.h"
 #pragma region include Scene
 //UI
+#include "Text.h"
 #include "ImageClass.h"
 #include "TitleScene.h"
 #include "OptionScene.h"
@@ -34,6 +35,8 @@ HRESULT MainGame::init(void) //초기화
 	GAMEMANAGER->setMonster(_monster);
 	_collider = new ColliderManager();
 
+	
+
 #pragma region SceneManager
 
 	// UI : title, system(), inventory(skill, item, equip ...) 
@@ -53,7 +56,7 @@ HRESULT MainGame::init(void) //초기화
 	
 #pragma endregion 
 	// 테스트용 씬체인저
-	SCENEMANAGER->changeScene("Boss2");
+	SCENEMANAGER->changeScene("Title");
 
 	return S_OK;
 }
@@ -73,6 +76,8 @@ void MainGame::update(void) // 갱신
 	_collider->update();
 
 	GameNode::update();
+
+	SCENEMANAGER->update();
 }
 
 void MainGame::render(void) // 그려줘

@@ -1,5 +1,7 @@
 #pragma once
 #include "GameNode.h"
+#include "ImageClass.h"
+#include "AniScene.h"
 
 enum titleName
 {
@@ -9,7 +11,18 @@ enum titleName
 class TitleScene :public GameNode
 {
 private :
+
+	ImageClass* _img;
+	LPCWSTR script;
+
 	titleName _onTitle;
+
+	RECT _logoRc;
+
+	bool _pushButton;
+	int _alpha;
+	
+	AniScene* _ani;
 
 public:
 	TitleScene() {}
