@@ -90,6 +90,9 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 			{ _isMove = -1; }
 			else
 			{ _isMove = 0; }
+
+			if(_state != UnitState::JUMP && _state != UnitState::JUMPATTACK && _state != UnitState::JUMPATTACK_DOUBLE)
+			{ _state = UnitState::RUN; }
 		}
 		else if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
 		{ 
@@ -100,6 +103,9 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 			{ _isMove = 1; }
 			else
 			{ _isMove = 0; }
+
+			if(_state != UnitState::JUMP && _state != UnitState::JUMPATTACK && _state != UnitState::JUMPATTACK_DOUBLE)
+			{ _state = UnitState::RUN; }
 		}
 		else
 		{ _isMove = 0; }
@@ -107,7 +113,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 	else
 	{ _isMove = 0; }
 
-	if (KEYMANAGER->isOnceKeyDown(VK_SPACE) && _state != UnitState::JUMP&& _state < UnitState::ATTACK && _isLook != -1)
+	if (KEYMANAGER->isOnceKeyDown(VK_SPACE) && _state != UnitState::JUMP && _state < UnitState::ATTACK && _isLook != -1)
 	{
 		_oldState = _state;
 		_jump["Weight"] =11.0f;
@@ -145,8 +151,12 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 		_slide["Max"] = 0.2f + TIMEMANAGER->getWorldTime();
 		return UnitState::SLIDE;
 	}
-
-	if (_state < UnitState::JUMP && _isMove == false)
+	
+	if (_state == UnitState::RUN && _isMove == 0 && updateSide != 0)
+	{
+		return UnitState::RUN;
+	}
+	else if (_state < UnitState::JUMP && _isMove == 0)
 	{
 		_oldState = _state; 
 		return UnitState::IDLE_0;
@@ -349,22 +359,23 @@ void PlayerCharacter::_inputAnimation()
 		}
 		_image->setY(_Collider[BaseEnum::UNIT].top - 14);
 
+		if (_image->getFrameX() <= _image->getMaxFrameX())
+		{
+			_image->setFrameX(_image->getFrameX() + 1);
+		}
+		
 		return;
 	}
-	else if (_isMove != 0)
-	{
+	else if (_state == UnitState::RUN)
+	{ 
 		_image = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
 		if (_isLeft != -1)
-		{
-			_image->setX(_Collider[BaseEnum::UNIT].left - 35);
-		}
+		{ _image->setX(_Collider[BaseEnum::UNIT].left - 35); }
 		else
-		{
-			_image->setX(_Collider[BaseEnum::UNIT].left);
-		}
+		{ _image->setX(_Collider[BaseEnum::UNIT].left); }
 		_image->setY(_Collider[BaseEnum::UNIT].top - 14);
 	}
-	else if (_state == UnitState::IDLE_0)
+	else if (_state <= UnitState::IDLE_1)
 	{
 		_image = IMAGEMANAGER->findImage("²¿±ò´ë±â");
 		_image->setX(_Collider[BaseEnum::UNIT].left - 35);
@@ -373,30 +384,15 @@ void PlayerCharacter::_inputAnimation()
 
 	if (_image != nullptr)
 	{
-		if (_isLeft != -1)
-		{
-			_image->setFrameY(0);
-			if (_image->getFrameX() >= _image->getMaxFrameX())
-			{
-				_image->setFrameX(0);
-			}
-			else
-			{
-				_image->setFrameX(_image->getFrameX() + 1);
-			}
-		}
+		if (_image->getFrameX() >= _image->getMaxFrameX())
+		{ _image->setFrameX(0); }
 		else
-		{
-			_image->setFrameY(1);
-			if (_image->getFrameX() <= 0)
-			{
-				_image->setFrameX(_image->getMaxFrameX());
-			}
-			else
-			{
-				_image->setFrameX(_image->getFrameX() - 1);
-			}
-		}
+		{ _image->setFrameX(_image->getFrameX() + 1); }
+
+		if (_isLeft != -1)
+		{ _image->setFrameY(0); }
+		else
+		{ _image->setFrameY(1); }
 	}
 }
 

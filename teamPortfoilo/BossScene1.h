@@ -11,6 +11,7 @@ private:
 	BossWarden* boss;
 	RECT* floor0;
 	RECT* floor1;
+	RECT* floor2;
 public:
 	BossScene1();
 	~BossScene1();

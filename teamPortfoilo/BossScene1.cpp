@@ -7,9 +7,11 @@ BossScene1::~BossScene1() { }
 HRESULT BossScene1::init(void)
 {
 	floor0 = new RECT { 0, 600, 1200, 1000 };
-	floor1 = new RECT{ 1000, 0, 1200, 1000 };
+	floor1 = new RECT{ 1200, 0, 1300, 1000 };
+	floor2 = new RECT{ -100, 0, 0, 1000 };
 	_floor.push_back(floor0);
 	_floor.push_back(floor1);
+	_floor.push_back(floor2);
 	GAMEMANAGER->getPlayer()->ObjectInit({ 0,0 }, _floor);
 	
 	boss = new BossWarden();

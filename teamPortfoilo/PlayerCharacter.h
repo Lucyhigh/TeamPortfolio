@@ -6,7 +6,7 @@ class PlayerCharacter : public BaseData, GameNode
 {
 	enum class UnitState
 	{	
-		HIT, UNITNULL, IDLE_0, IDLE_1, JUMP,
+		RUN,UNITNULL, IDLE_0, IDLE_1, JUMP,
 		SLIDE, PARING,
 		JUMPATTACK, JUMPATTACK_DOUBLE,
 		ATTACK, ATTACK_DOUBLE,
