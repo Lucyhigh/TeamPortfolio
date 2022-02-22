@@ -37,4 +37,3 @@ public:
 	KnifeMonster();
 	~KnifeMonster();
 };
-

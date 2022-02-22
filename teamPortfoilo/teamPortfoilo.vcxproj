@@ -155,10 +155,12 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageManager.h" />
     <ClInclude Include="KeyManager.h" />
+    <ClInclude Include="KnifeMonster.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="RandomFunction.h" />
+    <ClInclude Include="RockThrowMonster.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SingletonBase.h" />
     <ClInclude Include="Stdafx.h" />
@@ -168,6 +170,7 @@
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="WheelMonster.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BossWarden.cpp" />
@@ -179,9 +182,11 @@
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageManager.cpp" />
     <ClCompile Include="KeyManager.cpp" />
+    <ClCompile Include="KnifeMonster.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
+    <ClCompile Include="RockThrowMonster.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -192,6 +197,7 @@
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="WheelMonster.cpp" />
     <ClCompile Include="WinAPI.cpp" />
   </ItemGroup>
   <ItemGroup>

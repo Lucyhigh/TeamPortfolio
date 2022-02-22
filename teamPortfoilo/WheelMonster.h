@@ -38,6 +38,3 @@ public:
 	WheelMonster();
 	~WheelMonster();
 };
-
-
-

@@ -70,6 +70,15 @@
     <ClInclude Include="BossWarden.h">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="KnifeMonster.h">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="WheelMonster.h">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="RockThrowMonster.h">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameNode.cpp">
@@ -135,6 +144,15 @@
     <ClCompile Include="BossWarden.cpp">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClCompile>
+    <ClCompile Include="KnifeMonster.cpp">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="WheelMonster.cpp">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="RockThrowMonster.cpp">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="API FrameWork">
@@ -184,6 +202,9 @@
     </Filter>
     <Filter Include="Blasphemous\Characters\Boss">
       <UniqueIdentifier>{eeb1971e-8587-4af1-94b6-36465ff4aee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\Characters\FieldMonster">
+      <UniqueIdentifier>{801de3ae-d894-4e85-a16f-47d1185d71f5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
