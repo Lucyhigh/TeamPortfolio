@@ -2,7 +2,8 @@
 #include "GameNode.h"
 #include "Animation.h"
 
-class AniScene : public GameNode
+#pragma region TitleScene Animation
+class AniSceneTitle : public GameNode
 {
 private:
 
@@ -16,6 +17,33 @@ private:
 	Animation* _aMTitleMain;
 	Animation* _aMTitleEff;
 
+	bool _isAniStart;
+
+public:
+	AniSceneTitle() {}
+	~AniSceneTitle() {}
+
+	HRESULT init(void);
+	void release(void);
+	void update(void);
+	void render(void);
+
+
+};
+#pragma endregion
+
+
+class AniScene : public GameNode
+{
+private:
+
+	// aI : Animation Image
+	Image* _aITitleBg;
+
+	// aM : Animation
+	Animation* _aMTitleBg;
+
+
 public:
 	AniScene() {}
 	~AniScene() {}
@@ -26,6 +54,5 @@ public:
 	void render(void);
 
 };
-
 
 

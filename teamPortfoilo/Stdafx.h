@@ -104,6 +104,7 @@ using namespace MY_UTIL;
 #define CENTER_X WINSIZE_X/2
 #define CENTER_Y WINSIZE_Y/2
 #define MGT true,RGB(255,0,255)
+//#define MGT RGB(255,0,255)
 
 
 //===============================================

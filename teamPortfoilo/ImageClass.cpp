@@ -26,24 +26,19 @@ HRESULT ImageClass::init(void)
 #pragma region UI Scene 
 	// 타이틀 이미지 
 	IMAGEMANAGER->addImage("AnyButtonBg", "Resources/Images/BackGround/UI/anyButtonBg.bmp", 1200, 675, MGT);
-	IMAGEMANAGER->addImage("AnyButtonLogo", "Resources/Images/BackGround/UI/anyButtonLogo.bmp", 720,240, MGT);
-	// 타이틀 애니메이션 이미지 640*360
-	IMAGEMANAGER->addImage("titleBg", "Resources/Images/Object/titleBg.bmp", 9600,360,15,1, MGT);
-	IMAGEMANAGER->addImage("titleMain", "Resources/Images/Object/titleMain.bmp", 8960, 360, 14, 1, MGT);
-	IMAGEMANAGER->addImage("titleEffect", "Resources/Images/Object/titleEffect.bmp", 28160, 360, 44, 1, MGT);
+	IMAGEMANAGER->addImage("AnyButtonLogo", "Resources/Images/BackGround/UI/anyButtonLogo2.bmp", 720,308, MGT);
+	// 타이틀 애니메이션 이미지 640*360 (*1.875)-> 1200 * 640
+	IMAGEMANAGER->addFrameImage("titleBg", "Resources/Images/BackGround/UI/titleBg.bmp", 18000,675,15,1, MGT);
+	IMAGEMANAGER->addFrameImage("titleMain", "Resources/Images/BackGround/UI/titleMain.bmp", 16800, 675, 14, 1, MGT);
+	IMAGEMANAGER->addFrameImage("titleEffect", "Resources/Images/BackGround/UI/titleEffect.bmp", 52800, 675, 44, 1, MGT);
 
 
 	// UI Image
-	IMAGEMANAGER->addFrameImage("메뉴", "Resources/Images/cornObject/menu.bmp", 272, 360, 2, 1, MGT);
-	IMAGEMANAGER->addFrameImage("메뉴창", "Resources/Images/cornObject/menuDisplay.bmp", 3600, 675, 3, 1, MGT);
+	IMAGEMANAGER->addFrameImage("메뉴창", "Resources/Images/BackGround/UI/menuDisplay.bmp", 3600, 675, 3, 1, MGT);
 
-	IMAGEMANAGER->addImage("상점 메아쿨파", "Resources/Images/BackGround/StoreWeaponTap.bmp", 1200, 675, MGT);
-	IMAGEMANAGER->addImage("상점 기도문", "Resources/Images/BackGround/StoreBibleTap.bmp", 1200, 675, MGT);
-	IMAGEMANAGER->addImage("상점 묵주", "Resources/Images/BackGround/StoreRosaryTap.bmp", 1200, 675, MGT);
-
-	IMAGEMANAGER->addImage("인벤 메아쿨파", "Resources/Images/BackGround/InventoryWeaponTap.bmp", 1200, 675, MGT);
-	IMAGEMANAGER->addImage("인벤 기도문", "Resources/Images/BackGround/InventoryBibleTap.bmp", 1200, 675, MGT);
-	IMAGEMANAGER->addImage("인벤 묵주", "Resources/Images/BackGround/InventoryRosaryTap.bmp", 1200, 675, MGT);
+	IMAGEMANAGER->addImage("인벤 메아쿨파", "Resources/Images/BackGround/UI/InventoryWeaponTap.bmp", 1200, 675, MGT);
+	IMAGEMANAGER->addImage("인벤 기도문", "Resources/Images/BackGround/UI/InventoryBibleTap.bmp", 1200, 675, MGT);
+	IMAGEMANAGER->addImage("인벤 묵주", "Resources/Images/BackGround/UI/InventoryRosaryTap.bmp", 1200, 675, MGT);
 
 	// AniScene Text BG
 	IMAGEMANAGER->addImage("GreenCorn", "Resources/Images/BackGround/Animation/shot1_0.bmp", 553,675, MGT); //640*781
@@ -58,7 +53,7 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("씬3배경", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 
 	// 수정 및 자리 잡은 이미지 
-	IMAGEMANAGER->addImage("BossStage2_Bg", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
+	//IMAGEMANAGER->addImage("BossStage2_Bg", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 
 	
 

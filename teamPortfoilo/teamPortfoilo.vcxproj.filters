@@ -47,9 +47,6 @@
     <ClCompile Include="Animation.cpp">
       <Filter>API FrameWork\Image</Filter>
     </ClCompile>
-    <ClCompile Include="AniScene.cpp">
-      <Filter>Blasphemous\GameScene\UI</Filter>
-    </ClCompile>
     <ClCompile Include="FontManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
@@ -92,16 +89,19 @@
     <ClCompile Include="TempSoundTest.cpp">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClCompile>
-    <ClCompile Include="AniTextScene.cpp">
-      <Filter>Blasphemous\GameScene\UI</Filter>
-    </ClCompile>
     <ClCompile Include="OptionScene.cpp">
       <Filter>Blasphemous\GameScene\UI</Filter>
     </ClCompile>
-    <ClCompile Include="ImageClass.cpp">
-      <Filter>API FrameWork\Image</Filter>
-    </ClCompile>
     <ClCompile Include="Text.cpp">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageClass.cpp">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="AniScene.cpp">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="AniTextScene.cpp">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClCompile>
   </ItemGroup>
@@ -155,9 +155,6 @@
     <ClInclude Include="Animation.h">
       <Filter>API FrameWork\Image</Filter>
     </ClInclude>
-    <ClInclude Include="AniScene.h">
-      <Filter>Blasphemous\GameScene\UI</Filter>
-    </ClInclude>
     <ClInclude Include="FontManager.h">
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
@@ -203,16 +200,19 @@
     <ClInclude Include="TempSoundTest.h">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClInclude>
-    <ClInclude Include="AniTextScene.h">
-      <Filter>Blasphemous\GameScene\UI</Filter>
-    </ClInclude>
     <ClInclude Include="OptionScene.h">
       <Filter>Blasphemous\GameScene\UI</Filter>
     </ClInclude>
-    <ClInclude Include="ImageClass.h">
-      <Filter>API FrameWork\Image</Filter>
-    </ClInclude>
     <ClInclude Include="Text.h">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageClass.h">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="AniScene.h">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="AniTextScene.h">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClInclude>
   </ItemGroup>

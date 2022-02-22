@@ -3,27 +3,25 @@
 #include "ImageClass.h"
 #include "AniScene.h"
 
-enum titleName
+enum sceneName
 {
 	ANYBUTTON,TITLE
 };
 
-class TitleScene :public GameNode
+class TitleScene : public GameNode
 {
 private :
-
 	ImageClass* _img;
+	AniSceneTitle* _ani;
 	LPCWSTR script;
 
-	titleName _onTitle;
+	sceneName _titleName;
 
 	RECT _logoRc;
 
 	bool _pushButton;
 	int _alpha;
 	
-	AniScene* _ani;
-
 public:
 	TitleScene() {}
 	~TitleScene() {}

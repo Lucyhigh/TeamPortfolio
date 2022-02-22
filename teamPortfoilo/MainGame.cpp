@@ -2,8 +2,6 @@
 #include "MainGame.h"
 #pragma region include Scene
 //UI
-#include "Text.h"
-#include "ImageClass.h"
 #include "TitleScene.h"
 #include "OptionScene.h"
 //Stage
@@ -66,7 +64,7 @@ void MainGame::release(void)
 
 	GameNode::release();
 	// 이미지클래스 릴리즈 필요한가?
-	SCENEMANAGER->update();
+	SCENEMANAGER->release();
 }
 
 void MainGame::update(void) // 갱신
@@ -78,6 +76,7 @@ void MainGame::update(void) // 갱신
 	GameNode::update();
 
 	SCENEMANAGER->update();
+
 }
 
 void MainGame::render(void) // 그려줘
