@@ -31,8 +31,8 @@ HRESULT ImageClass::init(void)
 
 #pragma endregion
 
-#pragma region Stage Object 
-	IMAGEMANAGER->addImage("AnyButtonBg", "Resources/Images/BackGround/UI/anyButtonBg.bmp", 1200, 675, MGT);
+#pragma region Stage Object NPC
+	IMAGEMANAGER->addFrameImage("alter", "Resources/Images/Object/UI/menuNoButton.bmp", 272,304, MGT);
 
 #pragma endregion
 
@@ -40,16 +40,16 @@ HRESULT ImageClass::init(void)
 	// BG : Resources/Images/BackGround/UI
 	// BG : 640*360 (*1.875)-> 1200 * 640
 
-	// Title AnyButton
+	// Title ANYBUTTON
 	IMAGEMANAGER->addImage("AnyButtonBg", "Resources/Images/BackGround/UI/anyButtonBg.bmp", 1200, 675, MGT);
 	IMAGEMANAGER->addImage("AnyButtonLogo", "Resources/Images/BackGround/UI/anyButtonLogo2.bmp", 720,308, MGT);
 	
-	// Title AnyButton
+	// Title TITLE
 	IMAGEMANAGER->addFrameImage("titleBg", "Resources/Images/BackGround/UI/titleBg.bmp", 18000,675,15,1, MGT);
 	IMAGEMANAGER->addFrameImage("titleMain", "Resources/Images/BackGround/UI/titleMain.bmp", 16800, 675, 14, 1, MGT);
 	IMAGEMANAGER->addFrameImage("titleEffect", "Resources/Images/BackGround/UI/titleEffect.bmp", 52800, 675, 44, 1, MGT);
+	IMAGEMANAGER->addFrameImage("titleMenu", "Resources/Images/UI/titleMenu.bmp", 273, 117, 3, 1, MGT);
 
-	
 	// UI BackGround
 	IMAGEMANAGER->addFrameImage("메뉴창", "Resources/Images/BackGround/UI/menuDisplay.bmp", 3600, 675, 3, 1, MGT);
 	IMAGEMANAGER->addImage("인벤 메아쿨파", "Resources/Images/BackGround/UI/InventoryWeaponTap.bmp", 1200, 675, MGT);
@@ -60,7 +60,7 @@ HRESULT ImageClass::init(void)
 
 #pragma region UI Object
 	// etc : Resources/Images/UI/폴더명 또는 이미지
-
+	IMAGEMANAGER->addFrameImage("titleSelecte", "Resources/Images/UI/alliedCherub.bmp", 280, 210,4,3, MGT);
 
 
 #pragma endregion

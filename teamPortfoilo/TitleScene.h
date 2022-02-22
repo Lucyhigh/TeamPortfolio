@@ -21,6 +21,8 @@ private :
 
 	bool _pushButton;
 	int _alpha;
+	int _menuIndex;
+
 	
 public:
 	TitleScene() {}

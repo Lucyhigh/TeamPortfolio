@@ -11,11 +11,12 @@ private:
 	Image* _aITitleBg;
 	Image* _aITitleMain;
 	Image* _aITitleEff;
-
+	Image* _aITitleSelecte;
 	// aM : Animation
 	Animation* _aMTitleBg;
 	Animation* _aMTitleMain;
 	Animation* _aMTitleEff;
+	Animation* _aMTitleSelecte;
 
 	bool _isAniStart;
 
@@ -27,6 +28,7 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+	void render(int x, int y);
 
 
 };

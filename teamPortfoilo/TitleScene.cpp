@@ -5,6 +5,8 @@
 
 HRESULT TitleScene::init(void)
 {
+
+
 	_img = new ImageClass;
 	_img->init();
 
@@ -19,6 +21,7 @@ HRESULT TitleScene::init(void)
 	_logoRc = RectMakeCenter(CENTER_X,WINSIZE_Y*0.4,w,h);
 
 	_alpha = 0;
+	_menuIndex = 0;
 
 	// Text
 	//script = L"아무 버튼이나 누르세요";
@@ -47,9 +50,28 @@ void TitleScene::update(void)
 		}
 	}
 
+	IMAGEMANAGER->findImage("titleMenu")->setFrameY(0);
+	IMAGEMANAGER->findImage("titleMenu")->setFrameX(0);
 	if (_titleName == TITLE)
 	{
 		_ani->update();
+
+	
+		if (KEYMANAGER->isOnceKeyDown(VK_UP))
+		{
+			_menuIndex--;
+			if (_menuIndex < 0) _menuIndex = 2;
+			IMAGEMANAGER->findImage("titleMenu")->setFrameX(_menuIndex);
+
+		}
+		if (KEYMANAGER->isOnceKeyDown(VK_DOWN))
+		{
+			_menuIndex++;
+			if (_menuIndex > 2) _menuIndex = 0;
+			IMAGEMANAGER->findImage("titleMenu")->setFrameX(_menuIndex);
+		}
+
+
 	}
 }
 
@@ -65,6 +87,9 @@ void TitleScene::render(void)
 	}
 	if (_titleName == TITLE)
 	{
+		
+		_ani->render();
+		IMAGEMANAGER->findImage("titleMenu")->frameRender(getMemDC(),WINSIZE_X - 150, CENTER_Y+50 );
 		_ani->render();
 
 	}
