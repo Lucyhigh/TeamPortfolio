@@ -89,7 +89,7 @@ using namespace MY_UTIL;
 #define WINSTYLE	 WS_POPUPWINDOW | WS_MAXWIZE
 
 #else //1200*675 기준으로 제작중 바닥은 WINSIZE_Y-35
-#define WINSTART_X	 200
+#define WINSTART_X	 300
 #define WINSTART_Y	 0
 #define WINSIZE_X	 1200
 #define WINSIZE_Y	 800

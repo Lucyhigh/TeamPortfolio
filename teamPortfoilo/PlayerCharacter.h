@@ -2,6 +2,7 @@
 #include "GameNode.h"
 #include "Characters.h"
 #include "Animation.h"
+#include "Camera.h"
 
 
 class PlayerCharacter : public BaseData, GameNode
@@ -42,10 +43,19 @@ class PlayerCharacter : public BaseData, GameNode
 		map<string, float> _slide = { { "State",0 }, { "Max",100 } };
 		void _updataJump();
 
+        //카메라
+        Image* _image;
+        RECT _rcPlayer;
+        POINT _playerPos;
+        Camera* _camera;
+        RECT _cameraRect;
+
+
 public:
 		//기본 
 		PlayerCharacter();
 		~PlayerCharacter();
+
 		HRESULT init(POINT,vector<RECT*>);
 		void release(void);
 		void update(void);
