@@ -11,6 +11,7 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("≤ø±Ú¥Î±‚", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
 	IMAGEMANAGER->addFrameImage("≤ø±Ú¿Ãµø", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
 	IMAGEMANAGER->addFrameImage("≤ø±Ú¡°«¡", "Resources/Images/Player/p_jump.bmp", 1120, 158, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("≤ø±ÚΩΩ∂Û¿ÃµÂ", "Resources/Images/Player/p_slide.bmp", 1455, 144, 15, 2, MGT);
 #pragma endregion
 
 

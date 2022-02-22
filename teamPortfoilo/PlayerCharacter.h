@@ -1,6 +1,8 @@
 #pragma once
 #include "GameNode.h"
 #include "Characters.h"
+#include "Animation.h"
+
 
 class PlayerCharacter : public BaseData, GameNode
 {
@@ -18,6 +20,8 @@ class PlayerCharacter : public BaseData, GameNode
 		int _isLeft, _isMove, _isLook;
 		UnitState _oldState;
 		UnitState _state;
+		float _Fram;
+		pair<bool,Animation*> _imageAni;
 
 		// ¿Œ«≤
 		UnitState _inputKey(int);

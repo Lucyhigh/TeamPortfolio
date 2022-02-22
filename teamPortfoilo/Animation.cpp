@@ -111,22 +111,25 @@ void Animation::setDefPlayFrame(bool reverse, bool loop)
 void Animation::setPlayFrame(int* playArr, int arrLen, bool loop)
 {
 	_loop = loop;
+
 	_playList.clear();
+	//리버스 /루프 할거니?
 
 	if (_loop)
 	{
 		for (int i = 0; i < arrLen; i++)
 		{
-			_playList.push_back(*playArr);
+			_playList.push_back(playArr[i]);
 		}
 	}
 	else
 	{
 		for (int i = 0; i < arrLen; i++)
 		{
-			_playList.push_back(*playArr);
+			_playList.push_back(playArr[i]);
 		}
 	}
+
 }
 
 
@@ -134,7 +137,9 @@ void Animation::setPlayFrame(int* playArr, int arrLen, bool loop)
 void Animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 {
 	_loop = loop;
+
 	_playList.clear();
+	//리버스 /루프 할거니?
 
 	if (_loop)
 	{
@@ -154,6 +159,7 @@ void Animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 // 초당 프레임 갱신 횟수
 void Animation::setFPS(int framePerSec)
 {
+	_frameUpdateSec = 1.0f / static_cast<float>(framePerSec);
 }
 
 // 프레임 업데이트
@@ -190,7 +196,6 @@ void Animation::AniStart(void)
 {
 	_isPlay = true;
 	_nowPlayIdx = 0;
-
 }
 
 void Animation::AniStop(void)
