@@ -41,7 +41,6 @@ HRESULT MainGame::init(void) //초기화
 	SCENEMANAGER->addScene("Title", new TitleScene);
 	SCENEMANAGER->addScene("Option", new OptionScene);
 
-
 	// Stage1
 	SCENEMANAGER->addScene("Start", new StartScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
@@ -54,7 +53,7 @@ HRESULT MainGame::init(void) //초기화
 	
 #pragma endregion 
 	// 테스트용 씬체인저
-	SCENEMANAGER->changeScene("Title");
+	SCENEMANAGER->changeScene("Start");
 
 	return S_OK;
 }
