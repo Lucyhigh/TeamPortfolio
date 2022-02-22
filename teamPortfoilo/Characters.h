@@ -12,9 +12,9 @@ class BaseData
 			// 유닛의 이미지
 			map<char*,Image*> _image;
 			// hp 정보 
-			map<BaseEnum, int> _hp = { {BaseEnum::STATE, 0}, {BaseEnum::MAX, 0} };
+			map<BaseEnum, int> _hp = { {BaseEnum::STATE, 136}, {BaseEnum::MAX, 136} };
 			// mp 정보
-			map<BaseEnum, int> _mp = { {BaseEnum::STATE, 0}, {BaseEnum::MAX, 0} };
+			map<BaseEnum, int> _mp = { {BaseEnum::STATE, 116}, {BaseEnum::MAX, 116} };
 
 		#pragma endregion
 

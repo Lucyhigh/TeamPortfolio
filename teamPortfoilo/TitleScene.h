@@ -5,7 +5,7 @@
 
 enum sceneName
 {
-	ANYBUTTON,TITLE
+	ANYBUTTON,TITLE, SAVE, OPTION
 };
 
 class TitleScene : public GameNode
@@ -22,6 +22,8 @@ private :
 	bool _pushButton;
 	int _alpha;
 	int _menuIndex;
+
+	// SAVE ------------
 
 	
 public:

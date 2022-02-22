@@ -85,8 +85,7 @@ void MainGame::render(void) // 그려줘
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 	TIMEMANAGER->render(getMemDC());
 	
-	// ※ 씬 이미지 출력 ※
-	SCENEMANAGER->render();
+	
 
 	for (int i = 0; i < _monster.size(); i++) { _monster[i]->ObjectRender(); }
 	_player->ObjectRender();
@@ -100,7 +99,8 @@ void MainGame::render(void) // 그려줘
 	sprintf_s(str, "%d", GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE));
 	TextOut(getMemDC(), 1000, 10, str, strlen(str));
 
-
+	// ※ 씬 이미지 출력 ※
+	SCENEMANAGER->render();
 
 
 	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.

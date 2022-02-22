@@ -104,6 +104,9 @@
     <ClCompile Include="AniTextScene.cpp">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClCompile>
+    <ClCompile Include="UIScene.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -214,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="AniTextScene.h">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="UIScene.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
