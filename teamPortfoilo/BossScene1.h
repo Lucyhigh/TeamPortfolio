@@ -1,13 +1,15 @@
 #pragma once
 #include "GameNode.h"
 #include "BossWarden.h"
+#include "Camera.h"
 
 class BossScene1 : public GameNode
 {
 private:
 	vector<BaseData*> _monster;
 	vector<RECT*> _floor;
-
+    Camera* _camera;
+    Image* _image;
 	BossWarden* boss;
 	RECT* floor0;
 	RECT* floor1;

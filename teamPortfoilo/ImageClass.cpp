@@ -50,7 +50,7 @@ HRESULT ImageClass::init(void)
 
 
 #pragma region Stage Scene
-	IMAGEMANAGER->addImage("¾À1¹è°æ", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("º¸½º1¹è°æ", "Resources/Images/BackGround/boss1floor.bmp", 2460, 800);//
 	IMAGEMANAGER->addImage("¾À2¹è°æ", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("¾À3¹è°æ", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 

@@ -46,9 +46,24 @@ class PlayerCharacter : public BaseData, GameNode
         //카메라
         Image* _image;
         RECT _rcPlayer;
-        POINT _playerPos;
+        //POINT _playerPos;
+
         Camera* _camera;
         RECT _cameraRect;
+
+        //캐릭터 위치 겟셋
+
+        void setPlayerPosX(float x);
+        void setPlayerPosY(float y);
+
+        RECT getPlayerRect();
+        void setCameraRect(RECT rect);
+
+        POINT getPoint()
+        {
+            return POINT{ _Collider[BaseEnum::UNIT].left + ((_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2),
+                         (_Collider[BaseEnum::UNIT].bottom - _Collider[BaseEnum::UNIT].top) / 2 };
+        }
 
 
 public:

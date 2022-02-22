@@ -13,8 +13,11 @@ PlayerCharacter::~PlayerCharacter() { } // ! DO NOTING
 
 HRESULT PlayerCharacter::init(POINT point,vector<RECT*>floor)
 {
+    
 	this->floor = floor;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(400, 400, 50, 60); 
+    point.x = 400;
+    point.y = CENTER_Y;
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(point.x, point.y,50,60);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
 	_oldState = UnitState::UNITNULL;
@@ -64,6 +67,8 @@ void PlayerCharacter::render(void)
 
 	if (_image != nullptr)
 	{ _image->frameRender(getMemDC(),_image->getX(),_image->getY(), _image->getFrameX(), _image->getFrameY()); }
+
+
 }
 // ! Å°º¸µå ÀÔ·Â
 PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
@@ -291,6 +296,25 @@ void PlayerCharacter::_updataJump()
 	}
 }
 
+void PlayerCharacter::setPlayerPosX(float x)
+{
+   // point.x = x;
+}
+void PlayerCharacter::setPlayerPosY(float y)
+{
+   // point.y = y;
+}
+
+RECT PlayerCharacter::getPlayerRect()
+{
+    return _rcPlayer;
+}
+
+void PlayerCharacter::setCameraRect(RECT rect)
+{
+    _cameraRect = rect;
+}
+
 void PlayerCharacter::_updateAttack()
 {
 	POINT mid;
@@ -356,7 +380,10 @@ bool PlayerCharacter::_updateHit()
 
 void PlayerCharacter::_inputAnimation()
 {
-	
+    float cameraLeft = _Collider[BaseEnum::UNIT].left - _cameraRect.left;
+    float cameraTop =  _Collider[BaseEnum::UNIT].top - _cameraRect.top;
+
+
 	if (_state == UnitState::SLIDE)
 	{
 		_image = IMAGEMANAGER->findImage("²¿±ò½½¶óÀÌµå");
@@ -411,14 +438,14 @@ void PlayerCharacter::_inputAnimation()
 	{ 
 		_image = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
 		if (_isLeft != -1)
-		{ _image->setX(_Collider[BaseEnum::UNIT].left - 10); }
+		{ _image->setX(cameraLeft - 10); }
 		else
-		{ _image->setX(_Collider[BaseEnum::UNIT].left+5); }
-		_image->setY(_Collider[BaseEnum::UNIT].top - 14);
+		{ _image->setX(cameraLeft +5); }
+		_image->setY(cameraTop - 14);
 
 		if (0.09f + _Fram >= TIMEMANAGER->getWorldTime()) { return; }
 		_Fram = TIMEMANAGER->getWorldTime();
-
+        
 	}
 	else if (_state == UnitState::IDLE_0)
 	{
