@@ -70,13 +70,13 @@ void TitleScene::update(void)
 		}
 		IMAGEMANAGER->findImage("titleMenu")->setFrameX(_menuIndex);
 		cout << _menuIndex << endl;
-	}
-	// Title-Menu  
-	if (KEYMANAGER->isOnceKeyDown('Q') )//&& _titleName == TITLE && _menuIndex == 0)
+	if (KEYMANAGER->isOnceKeyDown(VK_RETURN) )//&& _titleName == TITLE && _menuIndex == 0)
 	{
 		SCENEMANAGER->changeScene("Start");
 		//_titleName = SAVE;
 	}
+	}
+	// Title-Menu  
 //	if (KEYMANAGER->isOnceKeyDown(VK_RETURN) && _titleName == TITLE && _menuIndex == 1)
 	{
 	//	_titleName = OPTION;

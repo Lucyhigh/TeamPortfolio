@@ -63,7 +63,7 @@ void UIScene::update(void)
 
 void UIScene::render(void)
 {
-	IMAGEMANAGER->findImage("Point")->render(getMemDC(), IMAGEMANAGER->findImage("Point")->getX(), IMAGEMANAGER->findImage("Point")->getY());
+	IMAGEMANAGER->findImage("point")->render(getMemDC(), IMAGEMANAGER->findImage("point")->getX(), IMAGEMANAGER->findImage("point")->getY());
 
 	//for (int i = 0; i < potionIdx; i++)
 	{
