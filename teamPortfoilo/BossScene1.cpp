@@ -12,12 +12,13 @@ HRESULT BossScene1::init(void)
 	floor1 = new RECT{ 1100, 0, 1300, 1000 };
 	floor2 = new RECT{ 0, 0, 100, 1000 };
 	_floor.push_back(floor0);
-	_floor.push_back(floor1);
-	_floor.push_back(floor2);
+	//_floor.push_back(floor1);
+	//_floor.push_back(floor2);
+
 	GAMEMANAGER->getPlayer()->ObjectInit({ 0,0 }, _floor);
 	boss = new BossWarden();
 	boss->init({ 0,0 }, _floor);
-	_monster.push_back(boss);
+	//_monster.push_back(boss);
 	GAMEMANAGER->setMonster(_monster);
 
     _camera = new Camera;
@@ -30,7 +31,10 @@ HRESULT BossScene1::init(void)
 void BossScene1::release(void)
 {
 	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
-	{ GAMEMANAGER->getMonster()[i]->ObjectrRelease(); }
+	{ 
+		GAMEMANAGER->getMonster()[i]->ObjectrRelease();
+	}
+
 	GAMEMANAGER->getPlayer()->ObjectrRelease();
 
     _camera->release();
@@ -41,14 +45,17 @@ void BossScene1::update(void)
 {
 	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
 	{ GAMEMANAGER->getMonster()[i]->ObjectUpdate(); }
-	GAMEMANAGER->getPlayer()->ObjectUpdate();
 
     POINT cameraPos;
 	cameraPos.x = GAMEMANAGER->getPlayer()->getPoint().x;
     cameraPos.y = _camera->getCameraPos().y;
+
     _camera->setCameraPos(cameraPos);
     _camera->update();
 	GAMEMANAGER->getPlayer()->setCameraRect(_camera->getScreenRect());
+	GAMEMANAGER->getPlayer()->ObjectUpdate();
+	cout<< GAMEMANAGER->getPlayer()->getPoint().x <<", Y : "<< GAMEMANAGER->getPlayer()->getPoint().y<<endl;
+
 }
 
 void BossScene1::render(void)
@@ -56,10 +63,12 @@ void BossScene1::render(void)
     IMAGEMANAGER->render("보스1배경", getMemDC(), 0, 0,
                          _camera->getScreenRect().left, _camera->getScreenRect().top,
                          _camera->getScreenRect().right, _camera->getScreenRect().bottom);
-    //_camera->render();
+   
 
 	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
-	{ GAMEMANAGER->getMonster()[i]->ObjectRender(); }
+	{ 
+		GAMEMANAGER->getMonster()[i]->ObjectRender(); 
+	}
 
 	for (int i = 0; i < _floor.size(); i++)
 	{

@@ -16,7 +16,7 @@ HRESULT PlayerCharacter::init(POINT point,vector<RECT*>floor)
 	this->floor = floor;
     point.x = 400;
     point.y = CENTER_Y;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(point.x, point.y,50,60);
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(point.x, point.y, 50, 60);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
 	_oldState = UnitState::UNITNULL;
@@ -46,6 +46,7 @@ void PlayerCharacter::update(void)
 	_state = _inputKey(_updateSide());
 	_inputUpdate();
 	_inputAnimation();
+
 }
 
 void PlayerCharacter::render(void)
@@ -54,16 +55,26 @@ void PlayerCharacter::render(void)
 	HPEN hpenOld = (HPEN)::SelectObject(getMemDC(), (HGDIOBJ)hpen);
 	HBRUSH myBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 	HBRUSH oldBrush = (HBRUSH)SelectObject(getMemDC(), myBrush);
-	Rectangle(getMemDC(), _Collider[BaseEnum::UNIT].left, _Collider[BaseEnum::UNIT].top, _Collider[BaseEnum::UNIT].right, _Collider[BaseEnum::UNIT].bottom);
+
+	float left = _Collider[BaseEnum::UNIT].left - _cameraRect.left;
+	float top = _Collider[BaseEnum::UNIT].top - _cameraRect.top;
+	float right = _Collider[BaseEnum::UNIT].right - _cameraRect.left;
+	float bottom = _Collider[BaseEnum::UNIT].bottom - _cameraRect.top;
+	Rectangle(getMemDC(), left, top, right, bottom);
+
 	SelectObject(getMemDC(), oldBrush);
 	DeleteObject(myBrush);
 	hpen = (HPEN)::SelectObject(getMemDC(), hpenOld);
 
 	for (int i = 0; i < smash.size(); i++)
-	{ Rectangle(getMemDC(), smash[i].first.left, smash[i].first.top, smash[i].first.right, smash[i].first.bottom); }
+	{
+		Rectangle(getMemDC(), smash[i].first.left, smash[i].first.top, smash[i].first.right, smash[i].first.bottom); 
+	}
 
 	if (_image != nullptr)
-	{ _image->frameRender(getMemDC(),_image->getX(),_image->getY(), _image->getFrameX(), _image->getFrameY()); }
+	{
+		_image->frameRender(getMemDC(), left, top, _image->getFrameX(), _image->getFrameY());
+	}
 
 
 }
@@ -107,7 +118,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 		else if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
 		{ 
 			if (_state < UnitState::ATTACK)
-			{ _isLeft = 1; }
+			{ _isLeft  = 1; }
 
 			if (updateSide != 1)
 			{ _isMove = 1; }
@@ -268,8 +279,9 @@ void PlayerCharacter::_updateSlide()
 
 void PlayerCharacter::_updateMove()
 {
-	_Collider[BaseEnum::UNIT].left += (_isMove * GAMESPEED)- _cameraRect.left;
-	_Collider[BaseEnum::UNIT].right += (_isMove * GAMESPEED)- _cameraRect.left;
+
+	_Collider[BaseEnum::UNIT].left += (_isMove * GAMESPEED);
+	_Collider[BaseEnum::UNIT].right += (_isMove * GAMESPEED);
 }
 
 void PlayerCharacter::_updataJump()
@@ -433,9 +445,13 @@ void PlayerCharacter::_inputAnimation()
 	{ 
 		_image = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
 		if (_isLeft != -1)
-		{ _image->setX(_Collider[BaseEnum::UNIT].left - 10); }
+		{
+			_image->setX(_Collider[BaseEnum::UNIT].left - 10);
+		}
 		else
-		{ _image->setX(_Collider[BaseEnum::UNIT].left +5); }
+		{
+			_image->setX(_Collider[BaseEnum::UNIT].left +5);
+		}
 		_image->setY(_Collider[BaseEnum::UNIT].top - 14);
 
 		if (0.09f + _Fram >= TIMEMANAGER->getWorldTime()) { return; }

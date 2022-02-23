@@ -69,7 +69,6 @@ void BossWarden::_updateFloor()
 		}
 	}
 
-
 	tamp[1].bottom += GAMESPEED;
 	if (!(IntersectRect(&tamp[0], &tamp[1], &stateFloor)))
 	{

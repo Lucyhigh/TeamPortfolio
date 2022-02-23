@@ -3,11 +3,11 @@
 
 Camera::Camera()
 {
-    _trace.x = 100;
-    _trace.y = 400;
+    _trace.x = CENTER_X;
+    _trace.y = CENTER_Y;
     _count = 0;
 
-    _screen = RectMake(_trace.x, _trace.y, WINSIZE_X, WINSIZE_Y);
+    _screen = RectMakeCenter(_trace.x, _trace.y, WINSIZE_X, WINSIZE_Y);
     _leftLimit = CENTER_X;
 }
 
@@ -21,13 +21,13 @@ void Camera::release(void) {
 
 void Camera::update(void)
 {
-    _screen = RectMakeCenter(_trace.x, _trace.y, WINSIZE_X, WINSIZE_Y);
+	_screen = RectMakeCenter(_trace.x, _trace.y, WINSIZE_X, WINSIZE_Y);
 }
 
 void Camera::render(void)
 {
-    //카메라 크기 및 이동 확인용 렉트
-    //Rectangle(getMemDC(),_screen.left,_screen.top,_screen.right,_screen.bottom);
+   //카메라 크기 및 이동 확인용 렉트
+   //Rectangle(getMemDC(),_screen.left,_screen.top,_screen.right,_screen.bottom);
 }
 
 RECT Camera::getScreenRect()
@@ -54,6 +54,7 @@ POINT Camera::getCameraPos()
 void Camera::setCameraPos(POINT cameraPos)
 {
     _trace = cameraPos;
+	cout << _screen.left << ", t: " << _screen.top << ", r: " << _screen.right << ", b: " << _screen.bottom << endl;
     _trace.x = _trace.x < _leftLimit ? _leftLimit : _trace.x;
     _trace.x = _trace.x > _rightLimit ? _rightLimit : _trace.x;
 }

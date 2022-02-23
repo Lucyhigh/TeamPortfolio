@@ -49,7 +49,6 @@ class BaseData
 		function<void()> ObjectUpdate;
 		function<void()> ObjectRender;
 		
-
 		#pragma region 정보
 		
 			// hp 정보
@@ -86,7 +85,5 @@ class BaseData
 		#pragma endregion
 
 			// 추가 본 
-			POINT getPoint()
-			{ return POINT{ _Collider[BaseEnum::UNIT].left + ((_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2), (_Collider[BaseEnum::UNIT].bottom - _Collider[BaseEnum::UNIT].top) / 2 }; }
-
+			POINT getPoint();
 };

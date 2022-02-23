@@ -2,10 +2,8 @@
 #include "GameNode.h"
 #include "Characters.h"
 #include "Animation.h"
-#include "Camera.h"
 
-
-class PlayerCharacter : public BaseData, GameNode
+class PlayerCharacter : public BaseData, public GameNode
 {
 	enum class UnitState
 	{	
@@ -43,11 +41,10 @@ class PlayerCharacter : public BaseData, GameNode
 		map<string, float> _slide = { { "State",0 }, { "Max",100 } };
 		void _updataJump();
 
-        //카메라
+        //카메라 
         //Image* _image;
         //RECT _rcPlayer;
 
-       //Camera* _camera;
         RECT _cameraRect;
 
         //캐릭터 위치 겟셋
@@ -64,6 +61,7 @@ public:
 
 		PlayerCharacter();
 		~PlayerCharacter();
+
 		HRESULT init(POINT,vector<RECT*>);
 		void release(void);
 		void update(void);
