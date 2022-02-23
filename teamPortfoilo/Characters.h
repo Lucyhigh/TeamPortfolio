@@ -85,4 +85,8 @@ class BaseData
 
 		#pragma endregion
 
+			// Ãß°¡ º» 
+			POINT getPoint()
+			{ return POINT{ _Collider[BaseEnum::UNIT].left + ((_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2), (_Collider[BaseEnum::UNIT].bottom - _Collider[BaseEnum::UNIT].top) / 2 }; }
+
 };

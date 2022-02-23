@@ -1,7 +1,7 @@
 #include "Stdafx.h"
 #include "GameManger.h"
 
-BaseData* GameManger::player;
+PlayerCharacter* GameManger::player;
 vector<BaseData*> GameManger::monster;
 
 GameManger::GameManger() { }

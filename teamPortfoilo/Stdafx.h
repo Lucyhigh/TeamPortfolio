@@ -123,4 +123,4 @@ extern POINT		_ptMouse;
 #define GAMEMANAGER GameManger::getSingleton()
 
 #define GETERROR -666
-#define GAMESPEED 3
+#define GAMESPEED 2

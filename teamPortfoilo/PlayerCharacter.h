@@ -44,33 +44,26 @@ class PlayerCharacter : public BaseData, GameNode
 		void _updataJump();
 
         //카메라
-        Image* _image;
-        RECT _rcPlayer;
-        //POINT _playerPos;
+        //Image* _image;
+        //RECT _rcPlayer;
 
-        Camera* _camera;
+       //Camera* _camera;
         RECT _cameraRect;
 
         //캐릭터 위치 겟셋
 
-        void setPlayerPosX(float x);
-        void setPlayerPosY(float y);
+        //void setPlayerPosX(float x);
+        //void setPlayerPosY(float y);
 
-        RECT getPlayerRect();
-        void setCameraRect(RECT rect);
-
-        POINT getPoint()
-        {
-            return POINT{ _Collider[BaseEnum::UNIT].left + ((_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2),
-                         (_Collider[BaseEnum::UNIT].bottom - _Collider[BaseEnum::UNIT].top) / 2 };
-        }
-
+       //RECT getPlayerRect();
+        //void setCameraRect(RECT rect);
 
 public:
 		//기본 
+		void setCameraRect(RECT rect);
+
 		PlayerCharacter();
 		~PlayerCharacter();
-
 		HRESULT init(POINT,vector<RECT*>);
 		void release(void);
 		void update(void);

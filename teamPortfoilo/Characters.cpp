@@ -43,6 +43,7 @@
 		// 공격 범위
 		vector<pair<RECT, Image*>> BaseData::getSmash()
 		{ return smash; }
+
 		// 공격 범위 초기화
 		void BaseData::clearSmash(int size) { smash.clear(); }
 

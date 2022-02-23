@@ -5,7 +5,7 @@
 class MainGame : public GameNode
 {
 private:
-	BaseData* _player;
+	PlayerCharacter* _player;
 	ColliderManager* _collider;
 public:
 	HRESULT init(void);

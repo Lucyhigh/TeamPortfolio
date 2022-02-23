@@ -51,7 +51,7 @@ void PlayerCharacter::update(void)
 
 void PlayerCharacter::render(void)
 {
-	HPEN hpen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+	HPEN hpen = CreatePen(PS_SOLID, 3, RGB(255, 0, 0));
 	HPEN hpenOld = (HPEN)::SelectObject(getMemDC(), (HGDIOBJ)hpen);
 	HBRUSH myBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 	HBRUSH oldBrush = (HBRUSH)SelectObject(getMemDC(), myBrush);
@@ -60,8 +60,6 @@ void PlayerCharacter::render(void)
 	DeleteObject(myBrush);
 	hpen = (HPEN)::SelectObject(getMemDC(), hpenOld);
 
-	//if (_imageAni.first) { _image->aniRender(getMemDC(), _image->getX(), _image->getY(), _imageAni.second); }
-	
 	for (int i = 0; i < smash.size(); i++)
 	{ Rectangle(getMemDC(), smash[i].first.left, smash[i].first.top, smash[i].first.right, smash[i].first.bottom); }
 
@@ -296,6 +294,7 @@ void PlayerCharacter::_updataJump()
 	}
 }
 
+/*
 void PlayerCharacter::setPlayerPosX(float x)
 {
    // point.x = x;
@@ -309,6 +308,7 @@ RECT PlayerCharacter::getPlayerRect()
 {
     return _rcPlayer;
 }
+*/
 
 void PlayerCharacter::setCameraRect(RECT rect)
 {
@@ -382,7 +382,6 @@ void PlayerCharacter::_inputAnimation()
 {
     float cameraLeft = _Collider[BaseEnum::UNIT].left - _cameraRect.left;
     float cameraTop =  _Collider[BaseEnum::UNIT].top - _cameraRect.top;
-
 
 	if (_state == UnitState::SLIDE)
 	{
