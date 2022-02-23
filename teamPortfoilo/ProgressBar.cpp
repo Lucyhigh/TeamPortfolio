@@ -23,35 +23,30 @@ HRESULT ProgressBar::init(int x, int y, int width, int height)
 
 HRESULT ProgressBar::init(float hp, float mp)
 {
-	// UI변동 크기 사용시 조정 필요 
-	_hpPos.x = 108;
-	_hpPos.y = 47;
-
-	_mpPos.x = 128;
-	_mpPos.y = 66;
-
-	// 플레이어와 연동 필요 
+	
+	// 플레이어와 연동 필요 + 능력치도~~ 
 	_hpWidth = hp;
 	_mpWidth = mp;
 
+	_hpMaxWidth = hp;
+	_mpMaxWidth = mp;
 
-	// 이미지클래스에서 관리
-	IMAGEMANAGER->addImage("pHpBarEmpty", "Resources/Images/UI/UI_emptyHpBar.bmp", 143, 58, MGT);
-	IMAGEMANAGER->addImage("pHpBarCover", "Resources/Images/UI/UI_upperHpBar.bmp", 143, 58, MGT);
-	IMAGEMANAGER->addImage("pHp", "Resources/Images/UI/UI_Hp_gauge.bmp", 4, 4);
-	IMAGEMANAGER->addImage("pMp", "Resources/Images/UI/UI_Mp_gauge.bmp", 4, 4);
-	IMAGEMANAGER->addImage("pMpFull", "Resources/Images/UI/UI_fullMp_gauge.bmp", 4, 4);
-	IMAGEMANAGER->addImage("pMpFullEffect", "Resources/Images/UI/UI_fullMp_gauge_effect.bmp", 8, 4);
-	IMAGEMANAGER->addFrameImage("hpPotionOff", "Resources/Images/UI/hpPotionOff.bmp", 45, 21, 3, 1, MGT);
-	IMAGEMANAGER->addFrameImage("hpPotionOn", "Resources/Images/UI/hpPotionOn.bmp", 45, 21, 3, 1, MGT);
-	IMAGEMANAGER->addImage("point", "Resources/Images/UI/point.bmp", 84, 42, MGT); //84,42
-
+	// 여기서 이미지 관리
+	IMAGEMANAGER->addImage("pHp", "Resources/Images/UI/UI_Hp_gauge.bmp", _hpWidth, 6);
+	IMAGEMANAGER->addImage("pMp", "Resources/Images/UI/UI_Mp_gauge.bmp", _mpWidth, 6);
+	IMAGEMANAGER->addImage("pMpFull", "Resources/Images/UI/UI_fullMp_gauge.bmp", _mpWidth, 6);
+	//IMAGEMANAGER->addImage("pMpFullEffect", "Resources/Images/UI/UI_fullMp_gauge_effect.bmp", 12, 6);
 	_hpBarBg = IMAGEMANAGER->findImage("pHpBarEmpty");
 	_hpBarCover = IMAGEMANAGER->findImage("pHpBarCover");
 	_hpBar = IMAGEMANAGER->findImage("pHp");
 	_mpBar = IMAGEMANAGER->findImage("pMp");
 
-	_hpMaxWidth = hp;
+	// UI변동 크기 사용시 조정 필요 
+	_hpPos.x = _hpBarBg->getX()+78;
+	_hpPos.y = _hpBarBg->getY()+17;
+
+	_mpPos.x = _hpPos.x + 45;
+	_mpPos.y = _hpPos.y + 19;
 
 	return S_OK;
 }
@@ -65,6 +60,8 @@ void ProgressBar::update(void)
 {
 	//_rc = RectMakeCenter(_x, _y, _progressBarDown->getWidth(), _progressBarDown->getHeight());
 	if (_hpWidth >= _hpMaxWidth)  _hpWidth = _hpMaxWidth;
+	if (_mpWidth >= _mpMaxWidth)  _mpWidth = _mpMaxWidth;
+
 }
 
 void ProgressBar::render(void)
@@ -105,5 +102,14 @@ void ProgressBar::setPlayerMpGauge(float mpScore)
 {
 	_mpWidth = mpScore;
 
+}
+
+POINT ProgressBar::getHpMpBar()
+{
+	POINT pos;
+	pos.x = IMAGEMANAGER->findImage("pHpBarEmpty")->getX();
+	pos.y = IMAGEMANAGER->findImage("pHpBarEmpty")->getY();
+
+	return pos;
 }
 

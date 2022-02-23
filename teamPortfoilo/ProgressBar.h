@@ -16,6 +16,7 @@ private:
 	POINT _hpPos;
 	POINT _mpPos;
 	float _hpMaxWidth;
+	float _mpMaxWidth;
 	float _hpWidth;
 	float _mpWidth;
 
@@ -36,6 +37,7 @@ public:
 	void setGauge(float currentScore, float maxScore);
 	void setPlayerHpGauge(float hpScore);
 	void setPlayerMpGauge(float mpScore);
+	POINT getHpMpBar();
 
 	void setX(int x) { _x = x; }
 	void setY(int y) { _y = y; }

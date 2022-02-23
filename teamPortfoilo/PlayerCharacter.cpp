@@ -19,6 +19,12 @@ HRESULT PlayerCharacter::init(POINT point,vector<RECT*>floor)
 	_state = UnitState::JUMP;
 	_isMove = 0;
 	_isLeft = 1;
+
+	_hp = { {BaseEnum::STATE, 136}, {BaseEnum::MAX, 136} };
+	_mp = { {BaseEnum::STATE, 96}, {BaseEnum::MAX, 96} };
+
+
+
 	return S_OK;
 }
 

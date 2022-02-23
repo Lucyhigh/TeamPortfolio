@@ -92,7 +92,9 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("titleMenu", "Resources/Images/UI/titleMenu.bmp", 273, 117, 3, 1, MGT);
 
 	// UI BackGround
-	IMAGEMANAGER->addImage("menuSave", "Resources/Images/BackGround/UI/menuSave.bmp", 120, 675);
+	IMAGEMANAGER->addImage("menuSaveBg", "Resources/Images/BackGround/UI/menuSaveBg.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("menuOptionBg", "Resources/Images/BackGround/UI/menuOptionBg.bmp", 1200, 675);
+	
 	IMAGEMANAGER->addFrameImage("메뉴창", "Resources/Images/BackGround/UI/menuDisplay.bmp", 3600, 675, 3, 1, MGT);
 	IMAGEMANAGER->addImage("인벤 메아쿨파", "Resources/Images/BackGround/UI/InventoryWeaponTap.bmp", 1200, 675, MGT);
 	IMAGEMANAGER->addImage("인벤 기도문", "Resources/Images/BackGround/UI/InventoryBibleTap.bmp", 1200, 675, MGT);
@@ -114,15 +116,12 @@ HRESULT ImageClass::init(void)
 
 	
 	// player
-	IMAGEMANAGER->addImage("pHpBarEmpty", "Resources/Images/UI/UI_emptyHpBar.bmp", 143, 58, MGT);
-	IMAGEMANAGER->addImage("pHpBarCover", "Resources/Images/UI/UI_upperHpBar.bmp", 143, 58, MGT);
-	IMAGEMANAGER->addImage("pHp", "Resources/Images/UI/UI_Hp_gauge.bmp", 4,4 );
-	IMAGEMANAGER->addImage("pMp", "Resources/Images/UI/UI_Mp_gauge.bmp", 4, 4);
-	IMAGEMANAGER->addImage("pMpFull", "Resources/Images/UI/UI_fullMp_gauge.bmp", 4, 4);
-	IMAGEMANAGER->addImage("pMpFullEffect", "Resources/Images/UI/UI_fullMp_gauge_effect.bmp", 8,4);
+	IMAGEMANAGER->addImage("pHpBarEmpty", "Resources/Images/UI/UI_emptyHpBar.bmp", 40, 40, 222, 90, MGT);
+	IMAGEMANAGER->addImage("pHpBarCover", "Resources/Images/UI/UI_upperHpBar.bmp", 40, 40, 222, 90, MGT);
 	IMAGEMANAGER->addFrameImage("hpPotionOff", "Resources/Images/UI/hpPotionOff.bmp", 45,21, 3,1, MGT);
 	IMAGEMANAGER->addFrameImage("hpPotionOn", "Resources/Images/UI/hpPotionOn.bmp", 45, 21, 3, 1, MGT);
-	IMAGEMANAGER->addImage("point", "Resources/Images/UI/point.bmp", 84, 42, MGT); //84,42
+	IMAGEMANAGER->addImage("point", "Resources/Images/UI/point.bmp", 0,25, 160,80, MGT); //84,42
+
 
 	// button
 	IMAGEMANAGER->addImage("e", "Resources/Images/UI/Button/E.bmp", 35,38, MGT); //35,38

@@ -1,29 +1,33 @@
 #pragma once
 #include "GameNode.h"
-#include "Characters.h"// 플레이어 클래스 
 #include "ProgressBar.h"
-#include "ImageClass.h"
 
-
+// 포션위치 수정여부 확인
 struct tagPotion
 {
-	int PotionIndex; // 이미지 position x
-	int healing; // 회복수치
+	POINT pos;
+	Image* on;
+	Image* off;
+//	int Idx; // 포션레벨 frameX Index
 	bool use; // 사용여부 
 };
+
 class UIScene : public GameNode
 {
 private:
-	ImageClass* _img; 
 
-	BaseData* _pData; // 플레이어 클래스 데이터
+	// HpMp 관련 좌상단 UI 
 	ProgressBar* _hpBar;
 	float _hp;
 	float _mp;
 
-	int potionLv;
-	int potionIdx;
-	tagPotion potion;
+	int _potionLv;
+	int _potionMax;
+	vector<tagPotion> _vPotion;
+	vector<tagPotion>::reverse_iterator _rviPotion;
+
+	// 소지포인트 관련 우상단 UI
+	int _point;
 
 public:
 	UIScene() {}
@@ -33,5 +37,14 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+
+	void usePotion();
+	void showPotion(void);
+	// 포션병 회복 또는 업그레이드
+	void setPotion(int Lv, int Max, tagPotion potion);
+
+	
+	void showPoint(void);
+	
 };
 

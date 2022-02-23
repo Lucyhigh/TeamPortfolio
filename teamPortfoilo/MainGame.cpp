@@ -2,6 +2,7 @@
 #include "MainGame.h"
 #pragma region include Scene
 //UI
+#include "ImageClass.h"
 #include "TitleScene.h"
 #include "OptionScene.h"
 //Stage
@@ -33,7 +34,9 @@ HRESULT MainGame::init(void) //초기화
 	GAMEMANAGER->setMonster(_monster);
 	_collider = new ColliderManager();
 
-	
+	// 사용하는 이미지 전체 
+	ImageClass imageClass = ImageClass();
+	imageClass.init();
 
 #pragma region SceneManager
 
@@ -53,7 +56,7 @@ HRESULT MainGame::init(void) //초기화
 	
 #pragma endregion 
 	// 테스트용 씬체인저
-	SCENEMANAGER->changeScene("Title");
+	SCENEMANAGER->changeScene("Start");
 
 	return S_OK;
 }
