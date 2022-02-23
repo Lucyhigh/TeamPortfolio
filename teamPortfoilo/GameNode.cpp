@@ -102,8 +102,15 @@ LRESULT GameNode::MainProc(HWND hWnd, UINT imessage, WPARAM wParam, LPARAM lPara
 			break;
 
 		case VK_ESCAPE:
-			PostMessage(hWnd, WM_DESTROY, 0, 0); //esc누르면 소멸자 부르기
+			//esc누르면 소멸자 부르기
+			//0224 게임테스트를 위해 F11로 변경 
+			//PostMessage(hWnd, WM_DESTROY, 0, 0); 
 			break;
+
+		case VK_F11:
+			PostMessage(hWnd, WM_DESTROY, 0, 0);
+			break;
+
 		}
 		InvalidateRect(hWnd, NULL, false);  // 화면이 계속 반짝거린다면 false 로 수정해야함 (지금 고쳐진상태임)
 		break;

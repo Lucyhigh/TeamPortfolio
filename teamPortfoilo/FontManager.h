@@ -12,7 +12,9 @@ public:
 
 	void drawText(HDC hdc, int destX, int destY, char* fontName, int fontSize, int fontWidth, LPCWSTR* printString, int Iength, COLORREF color);
 
-	void drawTextInt(HDC hdc, int Value, int destX, int destY, char* fontName, int fontSize, int fontWidth, COLORREF color);
+	void drawTextValue(HDC hdc, int Value, int destX, int destY, char* fontName, int fontSize, int fontWidth, COLORREF color);
+	void drawTextValue(HDC hdc, float Value, int destX, int destY, char* fontName, int fontSize, int fontWidth, COLORREF color);
+
 
 	FontManager() { }
 	~FontManager() { }

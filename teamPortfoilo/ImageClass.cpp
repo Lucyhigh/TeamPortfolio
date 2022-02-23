@@ -1,6 +1,8 @@
 #include "Stdafx.h"
 #include "ImageClass.h"
 
+#define WINSIZE 1200,675
+
 HRESULT ImageClass::init(void)
 {
 	// 이미지를 전부 여기에 저장 
@@ -64,11 +66,11 @@ HRESULT ImageClass::init(void)
 
 #pragma region Stage Scene
 	// Stage 1
-	IMAGEMANAGER->addImage("StartBG", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("StartBG", "Resources/Images/BackGround/bg1.bmp", WINSIZE);
 
 	// Stage 2
-	IMAGEMANAGER->addImage("Field1BG", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("Boss2BG", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("Field1BG", "Resources/Images/BackGround/bg2.bmp", WINSIZE);
+	IMAGEMANAGER->addImage("Boss2BG", "Resources/Images/BackGround/bg3.bmp", WINSIZE);
 
 #pragma endregion
 
@@ -82,7 +84,7 @@ HRESULT ImageClass::init(void)
 	// BG : 640*360 (*1.875)-> 1200 * 640
 
 	// Title ANYBUTTON
-	IMAGEMANAGER->addImage("AnyButtonBg", "Resources/Images/BackGround/UI/anyButtonBg.bmp", 1200, 675, MGT);
+	IMAGEMANAGER->addImage("AnyButtonBg", "Resources/Images/BackGround/UI/anyButtonBg.bmp", WINSIZE, MGT);
 	IMAGEMANAGER->addImage("AnyButtonLogo", "Resources/Images/BackGround/UI/anyButtonLogo2.bmp", 720,308, MGT);
 	
 	// Title TITLE
@@ -92,13 +94,13 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("titleMenu", "Resources/Images/UI/titleMenu.bmp", 273, 117, 3, 1, MGT);
 
 	// UI BackGround
-	IMAGEMANAGER->addImage("menuSaveBg", "Resources/Images/BackGround/UI/menuSaveBg.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("menuOptionBg", "Resources/Images/BackGround/UI/menuOptionBg.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("menuSaveBg", "Resources/Images/BackGround/UI/menuSaveBg.bmp", WINSIZE);
+	IMAGEMANAGER->addImage("menuOptionBg", "Resources/Images/BackGround/UI/menuOptionBg.bmp", WINSIZE);
 	
 	IMAGEMANAGER->addFrameImage("메뉴창", "Resources/Images/BackGround/UI/menuDisplay.bmp", 3600, 675, 3, 1, MGT);
-	IMAGEMANAGER->addImage("인벤 메아쿨파", "Resources/Images/BackGround/UI/InventoryWeaponTap.bmp", 1200, 675, MGT);
-	IMAGEMANAGER->addImage("인벤 기도문", "Resources/Images/BackGround/UI/InventoryBibleTap.bmp", 1200, 675, MGT);
-	IMAGEMANAGER->addImage("인벤 묵주", "Resources/Images/BackGround/UI/InventoryRosaryTap.bmp", 1200, 675, MGT);
+	IMAGEMANAGER->addImage("인벤 메아쿨파", "Resources/Images/BackGround/UI/InventoryWeaponTap.bmp", WINSIZE);
+	IMAGEMANAGER->addImage("인벤 기도문", "Resources/Images/BackGround/UI/InventoryBibleTap.bmp", WINSIZE);
+	IMAGEMANAGER->addImage("인벤 묵주", "Resources/Images/BackGround/UI/InventoryRosaryTap.bmp", WINSIZE);
 
 #pragma endregion
 
@@ -107,8 +109,8 @@ HRESULT ImageClass::init(void)
 	// system
 	IMAGEMANAGER->addFrameImage("titleSelecte", "Resources/Images/UI/alliedCherub.bmp", 560, 420,4,3, MGT); // 280,210
 	IMAGEMANAGER->addImage("saveOn", "Resources/Images/UI/saveOn.bmp", 848 , 112, MGT); // 385,51
-	IMAGEMANAGER->addImage("saveOff", "Resources/Images/UI/saveOn.bmp", 848, 112, MGT); // 385,51
-	IMAGEMANAGER->addImage("saveNoData", "Resources/Images/UI/saveOn.bmp", 848, 112, MGT); // 385,51
+	IMAGEMANAGER->addImage("saveOff", "Resources/Images/UI/saveOff.bmp", 848, 112, MGT); // 385,51
+	IMAGEMANAGER->addImage("saveNoData", "Resources/Images/UI/saveNoData.bmp", 848, 112, MGT); // 385,51
 	IMAGEMANAGER->addImage("AreaBg", "Resources/Images/UI/message_area.bmp", 1200,131, MGT); // 지역변경시 상단알파렌더
 
 	// Animation 
@@ -120,11 +122,16 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("pHpBarCover", "Resources/Images/UI/UI_upperHpBar.bmp", 40, 40, 222, 90, MGT);
 	IMAGEMANAGER->addFrameImage("hpPotionOff", "Resources/Images/UI/hpPotionOff.bmp", 45,21, 3,1, MGT);
 	IMAGEMANAGER->addFrameImage("hpPotionOn", "Resources/Images/UI/hpPotionOn.bmp", 45, 21, 3, 1, MGT);
-	IMAGEMANAGER->addImage("point", "Resources/Images/UI/point.bmp", 0,25, 160,80, MGT); //84,42
+	IMAGEMANAGER->addImage("point", "Resources/Images/UI/point.bmp", 0,45, 160,80, MGT); //84,42
 
 
 	// button
 	IMAGEMANAGER->addImage("e", "Resources/Images/UI/Button/E.bmp", 35,38, MGT); //35,38
+	IMAGEMANAGER->addImage("k", "Resources/Images/UI/Button/K.bmp", 35, 38, MGT); //35,38
+	IMAGEMANAGER->addImage("esc", "Resources/Images/UI/Button/ESC.bmp", 20,18, MGT); //20,18
+	IMAGEMANAGER->addImage("enter", "Resources/Images/UI/Button/ENTER.bmp", 29,18, MGT); //29,18
+	IMAGEMANAGER->addImage("space", "Resources/Images/UI/Button/SPACE.bmp", 29,18, MGT); //29,18
+
 
 	
 #pragma endregion

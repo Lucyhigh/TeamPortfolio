@@ -55,6 +55,7 @@ void TextDataManager::save(const char * fileName, vector<string> vStr)
     //핸들은 항상 열면 닫아야한다...!
     CloseHandle(file);
 }
+
 //현재 사용할 데이터
 //한줄짜리 데이터를 쉼표단위로 띄어서 저장하는 것이 가능하고 그것이 입출력을 할때 편하다.
 char * TextDataManager::vectorArrayCombine(vector<string> vArray)

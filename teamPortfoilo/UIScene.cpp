@@ -102,7 +102,6 @@ void UIScene::showPotion(void)
 	{
 		if(_rviPotion->use)
 		{
-			cout << "adslkjglkjds;lkgjlkdjglkj" << endl;
 			_rviPotion->off->frameRender(getMemDC(), _rviPotion->pos.x, _rviPotion->pos.y, _potionLv,0);
 		}
 		if (!_rviPotion->use)
@@ -121,7 +120,7 @@ void UIScene::showPoint(void)
 	// 소지금 오른쪽 정렬
 	SetTextAlign(getMemDC(), TA_RIGHT);
 
-	FONTMANAGER->drawTextInt(getMemDC(), _point,					 // 변수
+	FONTMANAGER->drawTextValue(getMemDC(), _point,					 // 변수
 		1100, IMAGEMANAGER->findImage("point")->getY() + 27,		 // 위치
 		"둥근모꼴", 25, 100, RGB(171, 154, 63));						 // 폰트
 }
