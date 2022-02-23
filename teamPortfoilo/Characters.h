@@ -10,7 +10,7 @@ class BaseData
 		#pragma region  정보
 		
 			// 유닛의 이미지
-			map<char*,Image*> _image;
+			Image* _image;
 			// hp 정보 
 			map<BaseEnum, int> _hp = { {BaseEnum::STATE, 136}, {BaseEnum::MAX, 136} };
 			// mp 정보
@@ -44,8 +44,11 @@ class BaseData
 
 	public:
 
+		function<void(POINT, vector<RECT*>)> ObjectInit;
+		function<void()> ObjectrRelease;
 		function<void()> ObjectUpdate;
 		function<void()> ObjectRender;
+		
 
 		#pragma region 정보
 		
@@ -81,5 +84,9 @@ class BaseData
 			void setHit(int damage);
 
 		#pragma endregion
+
+			// 추가 본 
+			POINT getPoint()
+			{ return POINT{ _Collider[BaseEnum::UNIT].left + ((_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2), (_Collider[BaseEnum::UNIT].bottom - _Collider[BaseEnum::UNIT].top) / 2 }; }
 
 };

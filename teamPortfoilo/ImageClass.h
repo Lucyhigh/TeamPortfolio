@@ -1,5 +1,9 @@
 #pragma once
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/SongYeeun-camera
 class ImageClass
 {
 public:

@@ -1,6 +1,7 @@
 #include "Stdafx.h"
 #include "TitleScene.h"
 
+<<<<<<< HEAD
 
 
 HRESULT TitleScene::init(void)
@@ -26,6 +27,11 @@ HRESULT TitleScene::init(void)
 
 	// SAVE ------------
 
+=======
+HRESULT TitleScene::init(void)
+{
+	_onTitle = ANYBUTTON;
+>>>>>>> origin/SongYeeun-camera
 
 
 	return S_OK;
@@ -33,12 +39,16 @@ HRESULT TitleScene::init(void)
 
 void TitleScene::release(void)
 {
+<<<<<<< HEAD
 	SAFE_DELETE(_img);
 	SAFE_DELETE(_ani);
+=======
+>>>>>>> origin/SongYeeun-camera
 }
 
 void TitleScene::update(void)
 {
+<<<<<<< HEAD
 	if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) _pushButton = true;
 
 	if (_pushButton)
@@ -102,10 +112,13 @@ void TitleScene::update(void)
 		
 	}
 
+=======
+>>>>>>> origin/SongYeeun-camera
 }
 
 void TitleScene::render(void)
 {
+<<<<<<< HEAD
 	if (_titleName == ANYBUTTON)
 	{
 		IMAGEMANAGER->findImage("AnyButtonBg")->render(getMemDC());
@@ -134,5 +147,15 @@ void TitleScene::render(void)
 		IMAGEMANAGER->findImage("메뉴")->render(getMemDC());
 
 	}
+=======
+	if (_onTitle == ANYBUTTON)
+	{
+		IMAGEMANAGER->findImage("AnyButton")->render(getMemDC());
+		RGB(171, 124, 117);
+			//아무 버튼이나 누르세요
+
+	}
+
+>>>>>>> origin/SongYeeun-camera
 	
 }

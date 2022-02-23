@@ -146,8 +146,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+<<<<<<< HEAD
     <ClInclude Include="AniScene.h" />
     <ClInclude Include="AniTextScene.h" />
+=======
+>>>>>>> origin/SongYeeun-camera
     <ClInclude Include="BossScene1.h" />
     <ClInclude Include="BossScene2.h" />
     <ClInclude Include="BossWarden.h" />
@@ -186,8 +189,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="AniScene.cpp" />
     <ClCompile Include="AniTextScene.cpp" />
+=======
+>>>>>>> origin/SongYeeun-camera
     <ClCompile Include="BossScene1.cpp" />
     <ClCompile Include="BossScene2.cpp" />
     <ClCompile Include="BossWarden.cpp" />

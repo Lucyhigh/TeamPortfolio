@@ -2,6 +2,7 @@
 #include "GameNode.h"
 #include "Animation.h"
 
+<<<<<<< HEAD
 #pragma region TitleScene Animation
 class AniSceneTitle : public GameNode
 {
@@ -45,6 +46,13 @@ private:
 	// aM : Animation
 	Animation* _aMTitleBg;
 
+=======
+class AniScene : public GameNode
+{
+private:
+	Image* _aniImg;
+	Animation* _animationA;
+>>>>>>> origin/SongYeeun-camera
 
 public:
 	AniScene() {}
@@ -57,4 +65,7 @@ public:
 
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/SongYeeun-camera

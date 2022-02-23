@@ -1,6 +1,7 @@
 #include "Stdafx.h"
 #include "AniScene.h"
 
+<<<<<<< HEAD
 #pragma region TitleScene Animation
 HRESULT AniSceneTitle::init(void)
 {
@@ -83,29 +84,59 @@ HRESULT AniScene::init(void)
 
 	_aMTitleBg->setDefPlayFrame(false, true);
 	_aMTitleBg->setFPS(12);
+=======
+
+HRESULT AniScene::init(void)
+{
+	_aniImg = IMAGEMANAGER->findImage("");
+
+	_animationA = new Animation;
+//	_animationA->init(_image->getWidth(), _image->getHeight(), 110, 67);
+
+	_animationA->setDefPlayFrame(false, true);
+	_animationA->setFPS(12);
+>>>>>>> origin/SongYeeun-camera
 
 	return S_OK;
 }
 
 void AniScene::release(void)
 {
+<<<<<<< HEAD
 	_aMTitleBg->release();
 	SAFE_DELETE(_aMTitleBg);
+=======
+	_animationA->release();
+	SAFE_DELETE(_animationA);
+>>>>>>> origin/SongYeeun-camera
 }
 
 void AniScene::update(void)
 {
+<<<<<<< HEAD
 
 
 	_aMTitleBg->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 
+=======
+	
+	_animationA->AniStart();
+	
+	_animationA->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
+>>>>>>> origin/SongYeeun-camera
 }
 
 void AniScene::render(void)
 {
+<<<<<<< HEAD
 	_aITitleBg->aniRender(getMemDC(), 0, 0, _aMTitleBg);
 
 
 }
 
 #pragma endregion
+=======
+	//_image->aniRender(getMemDC(), CENTER_X - 50, CENTER_Y, _animationA);
+}
+
+>>>>>>> origin/SongYeeun-camera

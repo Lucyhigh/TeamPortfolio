@@ -16,8 +16,13 @@ private:
 	int _frameNum;			// 프레임 번호
 	int _frameWidth;		// 프레임 가로
 	int _frameHeight;		// 프레임 세로 
+<<<<<<< HEAD
 	int _frameNumWidth;		// 프레임 가로번호
 	int _frameNumHeight;	// 프레임 세로번호
+=======
+	int _frameNumWidth;		// 프레임 가로숫자
+	int _frameNumHeight;	// 프레임 세로숫자
+>>>>>>> origin/SongYeeun-camera
 
 	float _frameUpdateSec;	// 초당 프레임 업데이트 수 
 	float _elapsedSec;		// 프레임과 프레임 사이의 시간

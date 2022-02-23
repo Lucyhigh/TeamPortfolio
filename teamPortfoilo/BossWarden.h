@@ -26,7 +26,6 @@ class BossWarden : public BaseData, GameNode
 		void _updateDie() {};
 		void _updateIdle();
 		void _updateJump(); 
-		void _updateJumpAttack();
 		void _updateAttack();
 
 	public:

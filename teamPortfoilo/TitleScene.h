@@ -1,5 +1,6 @@
 #pragma once
 #include "GameNode.h"
+<<<<<<< HEAD
 #include "ImageClass.h"
 #include "AniScene.h"
 
@@ -26,6 +27,19 @@ private :
 	// SAVE ------------
 
 	
+=======
+
+enum titleName
+{
+	ANYBUTTON,TITLE
+};
+
+class TitleScene :public GameNode
+{
+private :
+	titleName _onTitle;
+
+>>>>>>> origin/SongYeeun-camera
 public:
 	TitleScene() {}
 	~TitleScene() {}
