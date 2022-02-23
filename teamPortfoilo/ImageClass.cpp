@@ -12,6 +12,11 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ", "Resources/Images/Player/p_jump.bmp", 1120, 158, 14, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò½½¶óÀÌµå", "Resources/Images/Player/p_slide.bmp", 1455, 144, 15, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/p_attack.bmp", 1260, 144, 9, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/p_attack0.bmp", 1260, 144, 9, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ1", "Resources/Images/Player/p_attack1.bmp", 725, 144, 5, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ2", "Resources/Images/Player/p_attack2.bmp", 2600, 170, 14, 2, MGT);
+
 #pragma endregion
 
 
