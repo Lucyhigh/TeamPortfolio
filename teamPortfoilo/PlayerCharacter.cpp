@@ -13,7 +13,6 @@ PlayerCharacter::~PlayerCharacter() { } // ! DO NOTING
 
 HRESULT PlayerCharacter::init(POINT point,vector<RECT*>floor)
 {
-    
 	this->floor = floor;
     point.x = 400;
     point.y = CENTER_Y;
@@ -269,8 +268,8 @@ void PlayerCharacter::_updateSlide()
 
 void PlayerCharacter::_updateMove()
 {
-	_Collider[BaseEnum::UNIT].left += _isMove * GAMESPEED;
-	_Collider[BaseEnum::UNIT].right += _isMove * GAMESPEED;
+	_Collider[BaseEnum::UNIT].left += (_isMove * GAMESPEED)- _cameraRect.left;
+	_Collider[BaseEnum::UNIT].right += (_isMove * GAMESPEED)- _cameraRect.left;
 }
 
 void PlayerCharacter::_updataJump()
@@ -380,9 +379,6 @@ bool PlayerCharacter::_updateHit()
 
 void PlayerCharacter::_inputAnimation()
 {
-    float cameraLeft = _Collider[BaseEnum::UNIT].left - _cameraRect.left;
-    float cameraTop =  _Collider[BaseEnum::UNIT].top - _cameraRect.top;
-
 	if (_state == UnitState::SLIDE)
 	{
 		_image = IMAGEMANAGER->findImage("²¿±ò½½¶óÀÌµå");
@@ -437,10 +433,10 @@ void PlayerCharacter::_inputAnimation()
 	{ 
 		_image = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
 		if (_isLeft != -1)
-		{ _image->setX(cameraLeft - 10); }
+		{ _image->setX(_Collider[BaseEnum::UNIT].left - 10); }
 		else
-		{ _image->setX(cameraLeft +5); }
-		_image->setY(cameraTop - 14);
+		{ _image->setX(_Collider[BaseEnum::UNIT].left +5); }
+		_image->setY(_Collider[BaseEnum::UNIT].top - 14);
 
 		if (0.09f + _Fram >= TIMEMANAGER->getWorldTime()) { return; }
 		_Fram = TIMEMANAGER->getWorldTime();
@@ -470,6 +466,3 @@ void PlayerCharacter::_inputAnimation()
 		{ _image->setFrameY(1); }
 	}
 }
-
-
-
