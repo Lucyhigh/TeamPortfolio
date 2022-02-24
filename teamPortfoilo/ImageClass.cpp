@@ -8,10 +8,10 @@ HRESULT ImageClass::init(void)
 	// Å°°ªÀº ¿µ¹®À¸·Î! (¼öÁ¤¿¹Á¤)
 
 #pragma region PlayerImage
-	IMAGEMANAGER->addFrameImage("²¿±ò´ë±â", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ", "Resources/Images/Player/p_jump.bmp", 1120, 158, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò½½¶óÀÌµå", "Resources/Images/Player/p_slide.bmp", 1455, 144, 15, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò´ë±â", "Resources/Images/Player/p_idle.bmp", 1664*1.9, 146*1.9, 13, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106*1.9, 140*1.9, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ", "Resources/Images/Player/p_jump.bmp", 1120*1.9, 158*1.9, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò½½¶óÀÌµå", "Resources/Images/Player/p_slide.bmp", 1455 * 1.9, 144 * 1.9, 15, 2, MGT);
 #pragma endregion
 
 
@@ -91,9 +91,9 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("03 ¹¬ÁÖ Off", "Resources/Images/item/rosaryOff_04.bmp", 60, 60, MGT);
 
 #pragma region Object
-    IMAGEMANAGER->addImage("±âµµ", "Resources/Images/Object/object.bmp", 272, 304, 2, 1, true, RGB(255, 0, 255));
-    IMAGEMANAGER->addImage("¹öÆ°", "Resources/Images/Object/buttomE.bmp", 35, 38, true, RGB(255, 0, 255));
-
+    IMAGEMANAGER->addImage("¹öÆ°", "Resources/Images/Object/buttomE.bmp", 35 * 1.9, 38 * 1.9, true, RGB(255, 0, 255));
+    IMAGEMANAGER->addFrameImage("stand", "Resources/Images/Object/priedieuStand.bmp", 924, 310, 7, 1, MGT); // 462, 155
+    IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/Object/itemObject.bmp", 260, 91, 10, 1, MGT); // 260,91
 
 
 #pragma endregion

@@ -43,6 +43,12 @@ void BossScene1::update(void)
 	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
 	{ GAMEMANAGER->getMonster()[i]->ObjectUpdate(); }
 
+    if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON) || GAMEMANAGER->getPlayer()->getPoint().x <= 0)
+    {
+        SCENEMANAGER->changeScene("BeforeBoss1");
+    }
+
+
     POINT cameraPos;
 	cameraPos.x = GAMEMANAGER->getPlayer()->getPoint().x;
     cameraPos.y = _camera->getCameraPos().y;

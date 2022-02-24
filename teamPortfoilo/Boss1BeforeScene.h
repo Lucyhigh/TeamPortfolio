@@ -12,7 +12,11 @@ private:
     RECT* floor0;
     RECT* floor1;
     RECT* floor2;
+    RECT _ObjectRc;
 
+    float _x, _y;
+    int _count;
+    int _indexA;
 
 public:
     Boss1BeforeScene() {}
