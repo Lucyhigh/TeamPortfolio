@@ -16,12 +16,19 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/p_attack0.bmp", 1260, 144, 9, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ1", "Resources/Images/Player/p_attack1.bmp", 725, 144, 5, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ2", "Resources/Images/Player/p_attack2.bmp", 2600, 170, 14, 2, MGT);
-
+	IMAGEMANAGER->addFrameImage("²¿±ò»ó´Ü¾îÅÃ", "Resources/Images/Player/p_upattack.bmp", 972, 148, 12, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ¾îÅÃ", "Resources/Images/Player/p_jumpattack.bmp", 1510, 200, 10, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ¾îÅÃÀÌÆåÆ®", "Resources/Images/Player/p_jumpattack_ef.bmp", 604, 200, 4, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò»ó´Ü¾îÅÃÀÌÆåÆ®", "Resources/Images/Player/p_upattack_ef.bmp", 320, 300, 4, 2, MGT);
+	IMAGEMANAGER->addFrameImage("°ø°İÀÌÆåÆ®", "Resources/Images/Player/effectTwo.bmp", 792, 164, 6, 2, MGT);
 #pragma endregion
 
 
 #pragma region BossImage
-
+	IMAGEMANAGER->addFrameImage("¼öÈ£ÀÚ´ë±â", "Resources/Images/Boss/BossWardenIdle.bmp", 1650*2, 334*2, 10, 2, MGT);
+	IMAGEMANAGER->addFrameImage("¼öÈ£ÀÚÁ¡ÇÁ", "Resources/Images/Boss/BassWardenJump.bmp", 5425*2, 414*2, 25, 2, MGT);
+	IMAGEMANAGER->addFrameImage("¼öÈ£ÀÚ°ø°İ", "Resources/Images/Boss/tutoBossAttack.bmp", 8280 * 2, 430 * 2, 24, 2, MGT);
+	IMAGEMANAGER->addFrameImage("¼öÈ£ÀÚÁ×À½", "Resources/Images/Boss/tutoBossDead.bmp", 20384 * 2, 494 * 2, 49, 2, MGT);
 #pragma endregion
 
 

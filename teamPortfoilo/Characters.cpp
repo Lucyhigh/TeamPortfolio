@@ -36,25 +36,31 @@
 		RECT BaseData::getStateFloor()
 		{ return stateFloor; }
 
+		void BaseData::setAttack(bool attack)
+		{
+			_isAttack = attack;
+		}
+
 	#pragma endregion
 
 	#pragma region 공격
 
 		// 공격 범위
-		vector<pair<RECT, Image*>> BaseData::getSmash()
-		{ return smash; }
-		// 공격 범위 초기화
-		void BaseData::clearSmash(int size) { smash.clear(); }
-
-		// 공격 입력 ( 데미지 1 ) 
-		void BaseData::setHit()
+		vector<pair<RECT, Image>> BaseData::getSmash()
 		{
-			if (_isHit == 0) { _isHit = 1; }
+			return smash; 
 		}
+
+		// 공격 범위 초기화
+		void BaseData::clearSmash(int size = 0) 
+		{ 
+			smash.clear();
+		}
+
 		// 공격 입력 ( 데미지 ++ ) 
 		void BaseData::setHit(int damage)
 		{ 
-			if(_isHit == 0) { _isHit = damage; }
+			if (_isHit == 0) { _isHit = 1; }
 		}
 
 	#pragma endregion

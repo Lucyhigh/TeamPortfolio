@@ -6,6 +6,7 @@ BossScene1::~BossScene1() { }
 
 HRESULT BossScene1::init(void)
 {
+	_collider = new ColliderManager();
 	floor0 = new RECT { 0, 600, 1200, 1000 };
 	floor1 = new RECT{ 1200, 0, 1300, 1000 };
 	floor2 = new RECT{ -100, 0, 0, 1000 };
@@ -31,8 +32,9 @@ void BossScene1::release(void)
 
 void BossScene1::update(void)
 {
-	//for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
-	//{ GAMEMANAGER->getMonster()[i]->ObjectUpdate(); }
+	_collider->update();
+	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
+	{ GAMEMANAGER->getMonster()[i]->ObjectUpdate(); }
 	GAMEMANAGER->getPlayer()->ObjectUpdate();
 }
 
@@ -47,4 +49,5 @@ void BossScene1::render(void)
 	{ GAMEMANAGER->getMonster()[i]->ObjectRender(); }
 	
 	GAMEMANAGER->getPlayer()->ObjectRender();
+	_collider->render();
 }

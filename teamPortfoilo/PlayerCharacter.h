@@ -6,14 +6,15 @@
 
 class PlayerCharacter : public BaseData, GameNode
 {
-	enum class UnitState
-	{	
-		RUN,UNITNULL, IDLE_0, IDLE_1, JUMP,
-		SLIDE, PARING,
-		JUMPATTACK, JUMPATTACK_DOUBLE,
-		ATTACK, ATTACK_DOUBLE, ATTACK_TRIPLE,
-		DOWNATTACK, UPATTACK,
-	};
+	public:
+		enum class UnitState
+		{	
+			RUN,UNITNULL, IDLE_0, IDLE_1, JUMP,
+			SLIDE, PARING,
+			JUMPATTACK, JUMPATTACK_DOUBLE,
+			ATTACK, ATTACK_DOUBLE, ATTACK_TRIPLE,
+			DOWNATTACK, UPATTACK,
+		};
 
 	private:
 		// 입력 
@@ -41,9 +42,13 @@ class PlayerCharacter : public BaseData, GameNode
 		map<string, float> _jump = { { "Unit",0 }, { "Weight",0 } };
 		map<string, float> _slide = { { "State",0 }, { "Max",100 } };
 		void _updataJump();
+	
+		Image* _effect;
+		void _smashRender();
 
 public:
 		//기본 
+		UnitState getState();
 		PlayerCharacter();
 		~PlayerCharacter();
 		HRESULT init(POINT,vector<RECT*>);

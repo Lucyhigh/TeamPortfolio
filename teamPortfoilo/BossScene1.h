@@ -1,10 +1,12 @@
 #pragma once
 #include "GameNode.h"
 #include "BossWarden.h"
+#include "ColliderManager.h"
 
 class BossScene1 : public GameNode
 {
 private:
+	ColliderManager* _collider;
 	vector<BaseData*> _monster;
 	vector<RECT*> _floor;
 

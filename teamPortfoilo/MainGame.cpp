@@ -18,7 +18,6 @@ HRESULT MainGame::init(void) //초기화
 {
 	GameNode::init(TRUE);
 	TIMEMANAGER->init();
-	_collider = new ColliderManager();
 
 	//플레이어값
 	_player = new PlayerCharacter();
@@ -59,7 +58,6 @@ void MainGame::release(void)
 
 void MainGame::update(void) // 갱신
 {
-	_collider->update();
 	SCENEMANAGER->update();
 	GameNode::update();
 }

@@ -5,7 +5,7 @@
 class BossWarden : public BaseData, GameNode
 {
 	enum class UnitState
-	{ IDLE, JUMPATTACK, ATTACK, JUMP,  START, DIE, END };
+	{ IDLE, JUMPATTACK, ATTACK, JUMPIDLE, JUMP, START, DIE, END };
 
 	private:
 
@@ -15,6 +15,7 @@ class BossWarden : public BaseData, GameNode
 
 		void _inputPatten();
 		void _inputAnimation();
+		void _inputEffect();
 
 		int _updateSide();
 		void _updateFloor();
@@ -25,9 +26,14 @@ class BossWarden : public BaseData, GameNode
 		void _updateStart() {};
 		void _updateDie() {};
 		void _updateIdle();
-		void _updateJump(); 
+		void _updateJump();
+		void _updateJumpIdle();
 		void _updateAttack();
 
+		float _fram;
+		vector<pair<float,Image*>> effect;
+
+		void clearSmash(int) override;
 	public:
 		BossWarden();
 		~BossWarden();

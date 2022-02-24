@@ -36,9 +36,11 @@ class BaseData
 			// 데미지 정보 
 			map<BaseEnum, int> _damage = { {BaseEnum::STATE, 0}, {BaseEnum::MAX, 0} };
 			// 공격 충돌체 
-			vector<pair<RECT, Image*>> smash;
+			vector<pair<RECT, Image>> smash;
 			// 공격을 맞았는 지 
 			int _isHit;
+
+			bool _isAttack;
 
 		#pragma endregion
 
@@ -69,19 +71,19 @@ class BaseData
 			// 현재 밟고 있는 발판
 			RECT getStateFloor();
 
+			void setAttack(bool attack);
+
 		#pragma endregion
 
 		#pragma region 공격
 	
 			// 공격 범위
-			vector<pair<RECT, Image*>> getSmash();
+			vector<pair<RECT, Image>> getSmash();
 			// 공격 범위 초기화
 			virtual void clearSmash(int);
-	
+
 			// 공격 입력 ( 데미지 1 ) 
-			void setHit();
-			// 공격 입력 ( 데미지 ++ ) 
-			void setHit(int damage);
+			virtual void setHit(int damage);
 
 		#pragma endregion
 

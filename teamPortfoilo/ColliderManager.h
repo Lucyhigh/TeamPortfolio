@@ -1,15 +1,19 @@
 #pragma once
-class ColliderManager
+#include "GameNode.h"
+
+class ColliderManager  : public GameNode
 {
 	private:
-		void smashCollider();
+		vector<pair<float,Image*>> _effect;
+		inline void smashCollider();
 		void bodyCollider();
+		void addEffect(RECT);
+		void updateEffect();
 
 	public:
 		ColliderManager();
 		~ColliderManager();
-		void init() { }
 		void update(void);
-		void render(void) { };
+		void render(void);
 };
 

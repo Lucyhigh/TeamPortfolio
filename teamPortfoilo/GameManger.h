@@ -5,7 +5,7 @@
 class GameManger : public SingletonBase<GameManger>
 {
 	private:
-		static BaseData* player;
+		static PlayerCharacter* player;
 		static vector<BaseData*> monster;
 
 	public:
@@ -13,8 +13,8 @@ class GameManger : public SingletonBase<GameManger>
 		~GameManger();
 		void init();
 
-		static BaseData* getPlayer() { return player; }
-		static void setPlayer(BaseData* User) { player = User; }
+		static PlayerCharacter* getPlayer() { return player; }
+		static void setPlayer(PlayerCharacter* User) { player = User; }
 		static void clearPlayer() { player = nullptr; }
 		
 		static vector<BaseData*> getMonster() { return monster; }
