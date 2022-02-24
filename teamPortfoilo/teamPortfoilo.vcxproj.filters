@@ -70,6 +70,7 @@
     <ClInclude Include="BossWarden.h">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="KnifeMonster.h">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
     </ClInclude>
@@ -78,6 +79,27 @@
     </ClInclude>
     <ClInclude Include="RockThrowMonster.h">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
+=======
+<<<<<<< HEAD
+    <ClInclude Include="Camera.h">
+      <Filter>Blasphemous\Camera</Filter>
+=======
+    <ClInclude Include="StartScene.h">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="BossScene2.h">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="BossScene1.h">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldScene1.h">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingScene.h">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+>>>>>>> 9292a602717e5dfd7bb1eb52e8cca2cd15679989
+>>>>>>> 46613167143d2aa47431f218f41d0a782a2a920a
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +166,7 @@
     <ClCompile Include="BossWarden.cpp">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="KnifeMonster.cpp">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
     </ClCompile>
@@ -152,6 +175,27 @@
     </ClCompile>
     <ClCompile Include="RockThrowMonster.cpp">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
+=======
+<<<<<<< HEAD
+    <ClCompile Include="Camera.cpp">
+      <Filter>Blasphemous\Camera</Filter>
+=======
+    <ClCompile Include="StartSecen.cpp">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="BossScene2.cpp">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="BossScene1.cpp">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldScene1.cpp">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingScene.cpp">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+>>>>>>> 9292a602717e5dfd7bb1eb52e8cca2cd15679989
+>>>>>>> 46613167143d2aa47431f218f41d0a782a2a920a
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -203,8 +247,21 @@
     <Filter Include="Blasphemous\Characters\Boss">
       <UniqueIdentifier>{eeb1971e-8587-4af1-94b6-36465ff4aee7}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="Blasphemous\Characters\FieldMonster">
       <UniqueIdentifier>{801de3ae-d894-4e85-a16f-47d1185d71f5}</UniqueIdentifier>
+=======
+<<<<<<< HEAD
+    <Filter Include="Blasphemous\Camera">
+      <UniqueIdentifier>{2c2a0a77-9d2f-439e-a588-5c1609f9d3d9}</UniqueIdentifier>
+=======
+    <Filter Include="Blasphemous\GameScene\Stage1">
+      <UniqueIdentifier>{eeb7ae2f-8eb8-466a-8edd-691465780a21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\Stage2">
+      <UniqueIdentifier>{17dfbb8c-21e4-43ab-8111-3cb3db55e8ca}</UniqueIdentifier>
+>>>>>>> 9292a602717e5dfd7bb1eb52e8cca2cd15679989
+>>>>>>> 46613167143d2aa47431f218f41d0a782a2a920a
     </Filter>
   </ItemGroup>
   <ItemGroup>

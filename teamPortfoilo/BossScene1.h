@@ -1,5 +1,5 @@
 #pragma once
-class StartSecen
+class BossScene1
 {
 };
 

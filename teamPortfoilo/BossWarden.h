@@ -5,7 +5,7 @@
 class BossWarden : public BaseData, GameNode
 {
 	enum class UnitState
-	{ IDLE, JUMP, DIE, END };
+	{ IDLE, JUMPATTACK, ATTACK, JUMP,  START, DIE, END };
 
 	private:
 
@@ -22,9 +22,12 @@ class BossWarden : public BaseData, GameNode
 
 		vector<function<void()>> _pattenFunc;
 		float _pattenDely;
+		void _updateStart() {};
+		void _updateDie() {};
 		void _updateIdle();
 		void _updateJump(); 
-		void _updateDownAttack();
+		void _updateJumpAttack();
+		void _updateAttack();
 
 	public:
 		BossWarden();

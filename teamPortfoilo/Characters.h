@@ -73,7 +73,7 @@ class BaseData
 			// 공격 범위
 			vector<pair<RECT, Image*>> getSmash();
 			// 공격 범위 초기화
-			void clearSmash();
+			virtual void clearSmash(int);
 	
 			// 공격 입력 ( 데미지 1 ) 
 			void setHit();
