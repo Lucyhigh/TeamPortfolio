@@ -1,11 +1,7 @@
 #pragma once
 #include "GameNode.h"
 #include "AniScene.h"
-
-// O , X , Button TEXT COLOR
-#define OTEXT RGB(254, 211, 17)
-#define XTEXT RGB(134, 118, 53)
-#define BTEXT RGB(136,127,77)
+#include "Text.h"
 
 enum sceneName
 {
@@ -46,6 +42,8 @@ private :
 	int _alpha;
 	int _menuIndex;
 
+
+
 	// SAVE ------------
 	// 저장데이터 : 지역명, 소지포인트, 플레이시간, 게임 진행도 ? 
 	vector<tagSaveSlot> _vSave;
@@ -53,10 +51,15 @@ private :
 	vector<tagSaveSlot>::iterator _viSave;
 	int _saveIndex;
 	int _tempPoint = 1060; // 테스트용 임시 포인트
-
+	tagOnlyText _saveMenuText[3];
 	
 public:
-	TitleScene() {}
+	TitleScene() : _saveMenuText
+	{
+		L"새 게임",
+		L"계속",
+		L"뒤로"
+	} {}
 	~TitleScene() {}
 
 	HRESULT init(void);

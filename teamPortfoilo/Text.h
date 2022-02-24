@@ -1,5 +1,10 @@
 #pragma once
 
+// O , X , Button TEXT COLOR
+#define OTEXT RGB(254, 211, 17)
+#define XTEXT RGB(134, 118, 53)
+#define BTEXT RGB(136,127,77)
+
 struct tagText
 {
 	LPCWSTR name;
@@ -16,8 +21,7 @@ struct tagImageWithText
 };
 
 
-struct Text
+struct tagOnlyText
 {
-
-	LPCWSTR script;
+	LPCWSTR text;
 };

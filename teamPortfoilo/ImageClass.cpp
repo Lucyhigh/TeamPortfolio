@@ -128,9 +128,9 @@ HRESULT ImageClass::init(void)
 	// button
 	IMAGEMANAGER->addImage("e", "Resources/Images/UI/Button/E.bmp", 35,38, MGT); //35,38
 	IMAGEMANAGER->addImage("k", "Resources/Images/UI/Button/K.bmp", 35, 38, MGT); //35,38
-	IMAGEMANAGER->addImage("esc", "Resources/Images/UI/Button/ESC.bmp", 20,18, MGT); //20,18
-	IMAGEMANAGER->addImage("enter", "Resources/Images/UI/Button/ENTER.bmp", 29,18, MGT); //29,18
-	IMAGEMANAGER->addImage("space", "Resources/Images/UI/Button/SPACE.bmp", 29,18, MGT); //29,18
+	IMAGEMANAGER->addImage("esc", "Resources/Images/UI/Button/ESC.bmp", 39,35, MGT); //20,18
+	IMAGEMANAGER->addImage("enter", "Resources/Images/UI/Button/ENTER.bmp", 56,35,  MGT); //29,18
+	IMAGEMANAGER->addImage("space", "Resources/Images/UI/Button/SPACE.bmp", 56, 35, MGT); //29,18
 
 
 	

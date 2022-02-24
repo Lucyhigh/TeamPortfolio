@@ -22,8 +22,6 @@ HRESULT TitleScene::init(void)
 	// 세이브 파일이 있는지 체크하고, 토대로 세팅할 것. 
 	for (int i = 1; i < 4; i++)
 	{
-
-			// 이미지 좌표 이상함.... 왜그럴까 수정 필요 
 		tagSaveSlot slotInfo;
 		slotInfo.x = 140; 
 		slotInfo.y = 60 + ( 1 * 115 ) ; 
@@ -133,6 +131,14 @@ void TitleScene::update(void)
 		
 		selectSaveData(_saveIndex);
 
+		// Scene Change -> GameScene
+		if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
+		{
+			// 임시 씬 저장. 세이브 데이터에서 씬 정보 저장 필요?
+			if (_saveIndex == 1) SCENEMANAGER->changeScene("Start");
+			if (_saveIndex == 2) SCENEMANAGER->changeScene("Boss1");
+			if (_saveIndex == 3) SCENEMANAGER->changeScene("Boss2");
+		}
 	}
 
 	if (_titleName == OPTION)
@@ -188,9 +194,13 @@ void TitleScene::selectSaveData(int saveIndex)
 
 void TitleScene::showSaveData(void)
 {
+	IMAGEMANAGER->findImage("enter")->render(getMemDC(), CENTER_X + 20, WINSIZE_Y - 100);
+	IMAGEMANAGER->findImage("esc")->render(getMemDC(), CENTER_X + 255, WINSIZE_Y - 100);
+
 	_viSave = _vSave.begin();
 	for (; _viSave != _vSave.end(); _viSave++)
 	{
+		/*
 		if (_saveIndex < 100)
 		{
 			// 임시 - 저장된 파일이 없다면 
@@ -198,11 +208,20 @@ void TitleScene::showSaveData(void)
 
 			// slotNum
 			FONTMANAGER->drawTextValue(getMemDC(), _viSave->num,						 // 변수
-				_viSave->x - 20, (_viSave->y + _viSave->noneImg->getHeight()*0.5) - 5,	 // 위치
-				"둥근모꼴", 25, 100, OTEXT);												 // 폰트
+				_viSave->x - 20, (_viSave->y + _viSave->noneImg->getHeight()*0.5) - 7,	 // 위치
+				"둥근모꼴", 30, 100, OTEXT);	
+
+			// 저장 데이터 x , 새 게임
+			FONTMANAGER->drawText(getMemDC(), (CENTER_X + 20) + IMAGEMANAGER->findImage("enter")->getWidth() + 10, WINSIZE_Y - 98,
+				"둥근모꼴", 25, 100, _saveMenuText[0].text, wcslen(_saveMenuText[0].text), BTEXT);// 폰트
+
+			// 뒤로가기
+			FONTMANAGER->drawText(getMemDC(), (CENTER_X + 255) + IMAGEMANAGER->findImage("esc")->getWidth() +15, WINSIZE_Y - 98,
+			"둥근모꼴", 25, 100, _saveMenuText[2].text, wcslen(_saveMenuText[2].text), BTEXT);
 
 		}
-		else
+		
+		else*/
 		{
 			// 저장된 파일이 있다면
 			if (_viSave->select)
@@ -213,8 +232,8 @@ void TitleScene::showSaveData(void)
 				_viSave->onImg->render(getMemDC(), _viSave->x, _viSave->y);
 				// slotNum
 				FONTMANAGER->drawTextValue(getMemDC(), _viSave->num,						 // 변수
-					_viSave->x - 20, (_viSave->y + _viSave->noneImg->getHeight()*0.5) - 5,	 // 위치
-					"둥근모꼴", 25, 100, OTEXT);												 // 폰트
+					_viSave->x - 20, (_viSave->y + _viSave->noneImg->getHeight()*0.5) - 7,	 // 위치
+					"둥근모꼴", 30, 100, OTEXT);												 // 폰트
 
 				// 플레이어 세이브  정보 
 				SetTextAlign(getMemDC(), TA_LEFT);
@@ -231,6 +250,11 @@ void TitleScene::showSaveData(void)
 				LPCWSTR tempTime = L"플레이 시간 : 2h 4m ~ 16.7% 완료"; // 임시 누적시간, 진행율
 				FONTMANAGER->drawText(getMemDC(), _viSave->posEndX - 50, _viSave->y + 76,
 					"둥근모꼴", 25, 100, tempTime, wcslen(tempTime), OTEXT);
+
+				// 저장 데이터 o, 저장데이터로 계속
+				FONTMANAGER->drawText(getMemDC(), (CENTER_X + 20) + IMAGEMANAGER->findImage("enter")->getWidth() + 65, WINSIZE_Y - 98,
+					"둥근모꼴", 25, 100, _saveMenuText[1].text, wcslen(_saveMenuText[1].text), BTEXT);// 폰트
+
 			}
 			if (!_viSave->select)
 			{
@@ -240,8 +264,8 @@ void TitleScene::showSaveData(void)
 
 				// slotNum
 				FONTMANAGER->drawTextValue(getMemDC(), _viSave->num,
-					_viSave->x - 20, (_viSave->y + _viSave->noneImg->getHeight()*0.5) - 5,
-					"둥근모꼴", 25, 100, XTEXT);
+					_viSave->x - 20, (_viSave->y + _viSave->noneImg->getHeight()*0.5) - 7,
+					"둥근모꼴", 30, 100, XTEXT);
 
 				// 플레이어 세이브  정보 
 				SetTextAlign(getMemDC(), TA_LEFT);
@@ -260,19 +284,13 @@ void TitleScene::showSaveData(void)
 					"둥근모꼴", 25, 100, tempTime, wcslen(tempTime), XTEXT);
 
 			}
+
+			// 뒤로가기
+			FONTMANAGER->drawText(getMemDC(), (CENTER_X + 255) + IMAGEMANAGER->findImage("esc")->getWidth() + 65, WINSIZE_Y - 98,
+			"둥근모꼴", 25, 100, _saveMenuText[2].text, wcslen(_saveMenuText[2].text), BTEXT);
 		}
 	}
 
-	IMAGEMANAGER->findImage("enter")->render(getMemDC(), CENTER_X + 20, WINSIZE_Y - 150);
-	LPCWSTR textBack[2] = L"계속 ",
-					   L"새 게임 "; // 임시 누적시간, 진행율
-	FONTMANAGER->drawText(getMemDC(), CENTER_X + 385 + IMAGEMANAGER->findImage("esc")->getWidth() + 10, _viSave->y + 76,
-		"둥근모꼴", 25, 100, textBack, wcslen(textBack), BTEXT);
-	
-	IMAGEMANAGER->findImage("esc")->render(getMemDC(), CENTER_X + 385, WINSIZE_Y - 150);
-	LPCWSTR textBack = L"뒤로"; // 임시 누적시간, 진행율
-	FONTMANAGER->drawText(getMemDC(), CENTER_X + 385 + IMAGEMANAGER->findImage("esc")->getWidth() + 10 , _viSave->y + 76,
-		"둥근모꼴", 25, 100, textBack, wcslen(textBack), BTEXT);
 
 }
 
