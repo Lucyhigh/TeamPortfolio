@@ -12,18 +12,15 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	player = new PlayerCharacter();
 	player->init({ 0,600 }, _floor);
 	_player = player;
-<<<<<<< HEAD
 	
 
 	knifeMon = new KnifeMonster;
 	knifeMon->init({ 0,0 }, _floor);
 	_monster.push_back(knifeMon);
-=======
 	mon = new BossWarden();
 	mon->init({ 0,0 }, _floor);
 	//mon->setCollider(RECT{ 800,350,900,450 });
 	_monster.push_back(mon);
->>>>>>> c010a8114cfd8906480dc235d59f8e28997c49ae
 
 	GAMEMANAGER->setPlayer(_player);
 	GAMEMANAGER->setMonster(_monster);
