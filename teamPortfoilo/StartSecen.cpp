@@ -33,5 +33,10 @@ void StartScene::render(void)
 
 
 	IMAGEMANAGER->findImage("StartBgTop")->render(getMemDC(),0,0);
+
+
+
 	_ui->render();
+	// 인벤토리 이미지 테스트 
+	IMAGEMANAGER->findImage("inven7")->render(getMemDC(), 0, 0);
 }
