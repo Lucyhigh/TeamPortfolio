@@ -3,10 +3,9 @@
 
 HRESULT TitleScene::init(void)
 {
-	_ani = new AniSceneTitle;
-	_ani->init();
+	_titleName = OPTION;
 
-	_titleName = SAVE;
+	// ANYBUTTON ------------
 	_pushButton = false;
 
 	int w = IMAGEMANAGER->findImage("AnyButtonLogo")->getWidth();
@@ -14,9 +13,11 @@ HRESULT TitleScene::init(void)
 	_logoRc = RectMakeCenter(CENTER_X,CENTER_Y,w,h);
 
 	_alpha = 0;
-	_menuIndex = 0;
 
-	// Text
+	// TITLE ------------
+	_ani = new AniSceneTitle;
+	_ani->init();
+	_menuIndex = 0;
 
 	// SAVE ------------
 	// 세이브 파일이 있는지 체크하고, 토대로 세팅할 것. 
@@ -37,9 +38,21 @@ HRESULT TitleScene::init(void)
 		slotInfo.select = false;
 		_vSave.push_back(slotInfo);
 	}
-
 	_saveIndex = 1;
 
+	// OPTION ------------
+	for (int i = 0; i < OPTIONMENU; i++)
+	{
+		tagOptionSlot optionInfo;
+		optionInfo.num = i;
+		optionInfo.x = 340;
+		optionInfo.y = 140 + ( i* 57 );
+		optionInfo.onImg = new Image;
+		optionInfo.onImg->init("Resources/Images/UI/optionSelect.bmp", optionInfo.x, optionInfo.y, 16, 31, MGT);
+		optionInfo.select = false;
+		_vOption.push_back(optionInfo);
+	}
+	_optinIndex = 1; 
 
 	return S_OK;
 }
@@ -56,10 +69,19 @@ void TitleScene::release(void)
 		SAFE_DELETE(_viSave->offImg);
 	}
 	_vSave.clear();
+
+
+	_viOption = _vOption.begin();
+	for (; _viOption != _vOption.end(); _viOption++)
+	{
+		SAFE_DELETE(_viOption->onImg);
+	}
+	_vOption.clear();
 }
 
 void TitleScene::update(void)
 {
+	/*
 	if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) _pushButton = true;
 
 	if (_pushButton)
@@ -116,7 +138,6 @@ void TitleScene::update(void)
 
 	if (_titleName == SAVE)
 	{
-		//SCENEMANAGER->changeScene("Start");
 
 		if (KEYMANAGER->isOnceKeyDown(VK_UP))
 		{
@@ -140,10 +161,28 @@ void TitleScene::update(void)
 			if (_saveIndex == 3) SCENEMANAGER->changeScene("Boss2");
 		}
 	}
+	*/
 
 	if (_titleName == OPTION)
 	{
-		
+		if (KEYMANAGER->isOnceKeyDown(VK_UP))
+		{
+			_optinIndex--;
+			if (_optinIndex < 1) _optinIndex = OPTIONMENU - 3;
+		}
+		if (KEYMANAGER->isOnceKeyDown(VK_DOWN))
+		{
+			_optinIndex++;
+			if (_optinIndex > OPTIONMENU - 3 ) _optinIndex = 1;
+		}
+		if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE))
+		{
+			_titleName == TITLE;
+		}
+
+		selectOption(_optinIndex);
+
+
 	}
 
 }
@@ -176,12 +215,12 @@ void TitleScene::render(void)
 	if (_titleName == OPTION)
 	{
 		IMAGEMANAGER->findImage("menuOptionBg")->render(getMemDC());
-
+		showOption();
 	}
 	
 }
 
-
+// SAVE ------------------------------------------------------------------------------------
 void TitleScene::selectSaveData(int saveIndex)
 {
 	_viSave = _vSave.begin();
@@ -294,7 +333,6 @@ void TitleScene::showSaveData(void)
 
 }
 
-
 void TitleScene::addSaveData(int num)
 {
 	char temp[32];
@@ -333,5 +371,57 @@ void TitleScene::loadSaveData(int num)
 	// _currentHp = atoi(vData[2].c_str());
 	// _maxHp = atoi(vData[3].c_str());
 
+}
+
+// OPTION ------------------------------------------------------------------------------------
+void TitleScene::selectOption(int optionIndex)
+{
+	_viOption = _vOption.begin();
+	for (; _viOption != _vOption.end(); _viOption++)
+	{
+		if (_viOption->num == optionIndex) _viOption->select = true;
+		else _viOption->select = false;
+	}
+}
+
+void TitleScene::showOption(void)
+{
+	IMAGEMANAGER->findImage("enter")->render(getMemDC(), CENTER_X + 120, WINSIZE_Y - 100);
+	IMAGEMANAGER->findImage("esc")->render(getMemDC(), CENTER_X + 355, WINSIZE_Y - 100);
+
+	// Menu title 
+	_viOption = _vOption.begin();
+	FONTMANAGER->drawText(getMemDC(), _viOption->x -10 , _viOption->y-5,
+		"둥근모꼴", 27, 100, _optionText[_viOption->num].text, wcslen(_optionText[_viOption->num].text), TTEXT);
+
+
+	_viOption = _vOption.begin()+1; // 0은 타이틀 명 
+	for (; _viOption != _vOption.end()-2; _viOption++) // 2는 수락, 뒤로 
+	{
+		SetTextAlign(getMemDC(), TA_LEFT);
+		if (_viOption->select) // 선택한 옵션은 노란색 + 마크
+		{
+			_viOption->onImg->render(getMemDC(), _viOption->x-25, _viOption->y-2);
+
+			FONTMANAGER->drawText(getMemDC(), _viOption->x , _viOption->y ,
+				"둥근모꼴", 25, 100, _optionText[_viOption->num].text, wcslen(_optionText[_viOption->num].text), OTEXT);
+		}
+		if (!_viOption->select)
+		{
+			FONTMANAGER->drawText(getMemDC(), _viOption->x, _viOption->y,
+				"둥근모꼴", 25, 100, _optionText[_viOption->num].text, wcslen(_optionText[_viOption->num].text), MTEXT);
+		}
+	}
+
+		// 수락, 뒤로 
+		_viOption = _vOption.end() -2;
+		FONTMANAGER->drawText(getMemDC(), (CENTER_X + 120) + IMAGEMANAGER->findImage("enter")->getWidth() + 25, WINSIZE_Y - 98,
+			"둥근모꼴", 25, 100, _optionText[_viOption->num].text, wcslen(_optionText[_viOption->num].text), BTEXT);
+
+		_viOption = _vOption.end() - 1;
+		FONTMANAGER->drawText(getMemDC(), (CENTER_X + 355) + IMAGEMANAGER->findImage("esc")->getWidth() + 25, WINSIZE_Y - 98,
+			"둥근모꼴", 25, 100, _optionText[_viOption->num].text, wcslen(_optionText[_viOption->num].text), BTEXT);
+
+	
 }
 
