@@ -15,8 +15,8 @@ private:
 	RECT* floor1;
 	RECT* floor2;
 public:
-	BossScene1();
-	~BossScene1();
+    BossScene1() {}
+    ~BossScene1() {}
 
 	HRESULT init(void);
 	void release(void);

@@ -92,7 +92,7 @@ using namespace MY_UTIL;
 #define WINSTART_X	 300
 #define WINSTART_Y	 0
 #define WINSIZE_X	 1200
-#define WINSIZE_Y	 800
+#define WINSIZE_Y	 675
 #define WINSTYLE	 WS_CAPTION | WS_SYSMENU
 #endif 
 
@@ -123,4 +123,4 @@ extern POINT		_ptMouse;
 #define GAMEMANAGER GameManger::getSingleton()
 
 #define GETERROR -666
-#define GAMESPEED 5
+#define GAMESPEED 10

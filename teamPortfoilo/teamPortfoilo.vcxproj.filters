@@ -94,6 +94,9 @@
     <ClInclude Include="Animation.h">
       <Filter>API FrameWork\Image</Filter>
     </ClInclude>
+    <ClInclude Include="Boss1BeforeScene.h">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameNode.cpp">
@@ -182,6 +185,9 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>API FrameWork\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1BeforeScene.cpp">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

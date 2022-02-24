@@ -54,7 +54,6 @@ POINT Camera::getCameraPos()
 void Camera::setCameraPos(POINT cameraPos)
 {
     _trace = cameraPos;
-	cout << _screen.left << ", t: " << _screen.top << ", r: " << _screen.right << ", b: " << _screen.bottom << endl;
     _trace.x = _trace.x < _leftLimit ? _leftLimit : _trace.x;
     _trace.x = _trace.x > _rightLimit ? _rightLimit : _trace.x;
 }

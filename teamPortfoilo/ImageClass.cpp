@@ -50,7 +50,9 @@ HRESULT ImageClass::init(void)
 
 
 #pragma region Stage Scene
-	IMAGEMANAGER->addImage("보스1배경", "Resources/Images/BackGround/boss1floor.bmp", 2460, 800);//
+	IMAGEMANAGER->addImage("보스1전배경", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);//
+	IMAGEMANAGER->addImage("보스1전FrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);//
+	IMAGEMANAGER->addImage("보스1배경", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675);//
 	IMAGEMANAGER->addImage("씬2배경", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("씬3배경", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 
@@ -88,6 +90,9 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("03 묵주 On", "Resources/Images/item/rosaryOn_03.bmp", 60, 60, MGT);
 	IMAGEMANAGER->addImage("03 묵주 Off", "Resources/Images/item/rosaryOff_04.bmp", 60, 60, MGT);
 
+#pragma region Object
+    IMAGEMANAGER->addImage("기도", "Resources/Images/Object/object.bmp", 272, 304, 2, 1, true, RGB(255, 0, 255));
+    IMAGEMANAGER->addImage("버튼", "Resources/Images/Object/buttomE.bmp", 35, 38, true, RGB(255, 0, 255));
 
 
 
