@@ -23,12 +23,12 @@ HRESULT UIScene::init(void)
 		tagPotion potion;
 		ZeroMemory(&potion, sizeof(tagPotion));
 
-		potion.pos.x = _hpBar->getHpMpBar().x + 100 + ( 20 * i ) ;
+		potion.pos.x = _hpBar->getHpMpBar().x + 100 + ( 25 * i ) ;
 		potion.pos.y = _hpBar->getHpMpBar().y + 55 ;
 		potion.on = new Image;
-		potion.on->init("Resources/Images/UI/hpPotionOn.bmp", potion.pos.x, potion.pos.y,45,21,3,1,MGT);
+		potion.on->init("Resources/Images/UI/hpPotionOn.bmp", potion.pos.x, potion.pos.y, 57, 27,3,1,MGT);
 		potion.off = new Image;
-		potion.off->init("Resources/Images/UI/hpPotionOff.bmp", potion.pos.x, potion.pos.y, 45, 21, 3, 1, MGT);
+		potion.off->init("Resources/Images/UI/hpPotionOff.bmp", potion.pos.x, potion.pos.y, 57, 27, 3, 1, MGT);
 		potion.use = false;
 		_vPotion.push_back(potion);
 	}

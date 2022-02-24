@@ -7,9 +7,6 @@ StartScene::StartScene(){
 
 HRESULT StartScene::init(void)
 {
-	// 이미지클래스 연결하면 삭제예정
-	IMAGEMANAGER->addImage("StartBG", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
-
 	_ui = new UIScene;
 	_ui->init();
 
@@ -29,8 +26,12 @@ void StartScene::update(void)
 
 void StartScene::render(void)
 {
-	IMAGEMANAGER->findImage("StartBG")->render(getMemDC());
+	IMAGEMANAGER->findImage("StartBg")->render(getMemDC(),0,0);
+
+	// 플레이어 몬스터 오브젝트 여기 그리기 
 
 
+
+	IMAGEMANAGER->findImage("StartBgTop")->render(getMemDC(),0,0);
 	_ui->render();
 }
