@@ -23,7 +23,8 @@ struct tagSaveSlot
 {
 	int num; // 슬롯이미지 순번
 	saveSlotState state;
-	POINT pos; // 슬롯이미지 좌표 
+	float x; // 슬롯이미지 좌표 
+	float y;
 	Image* noneImg;
 	Image* onImg;
 	Image* offImg;

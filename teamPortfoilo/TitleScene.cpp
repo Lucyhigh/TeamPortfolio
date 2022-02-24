@@ -20,22 +20,22 @@ HRESULT TitleScene::init(void)
 
 	// SAVE ------------
 	// 세이브 파일이 있는지 체크하고, 토대로 세팅할 것. 
-	//for (int i = 1; i < 4; i++)
+	for (int i = 1; i < 4; i++)
 	{
 
 			// 이미지 좌표 이상함.... 왜그럴까 수정 필요 
 		tagSaveSlot slotInfo;
-		slotInfo.pos.x = 140; 
-		slotInfo.pos.y = 60 + ( 1 * 115 ) ; 
+		slotInfo.x = 140; 
+		slotInfo.y = 60 + ( 1 * 115 ) ; 
 		slotInfo.state = NONE; // 세이브 파일유무에 따라 상태 변경
 		slotInfo.noneImg = new Image;
-		slotInfo.noneImg->init("Resources/Images/UI/saveNoData.bmp", slotInfo.pos.x, slotInfo.pos.y, 848, 112, MGT);
+		slotInfo.noneImg->init("Resources/Images/UI/saveNoData.bmp", slotInfo.x, slotInfo.y, 848, 112, MGT);
 		slotInfo.onImg = new Image;
-		slotInfo.onImg->init("Resources/Images/UI/saveOn.bmp", slotInfo.pos.x, slotInfo.pos.y, 848, 112, MGT);
+		slotInfo.onImg->init("Resources/Images/UI/saveOn.bmp", slotInfo.x, slotInfo.y, 848, 112, MGT);
 		slotInfo.offImg = new Image;
-		slotInfo.offImg->init("Resources/Images/UI/saveOff.bmp", slotInfo.pos.x, slotInfo.pos.y, 848, 112, MGT);
+		slotInfo.offImg->init("Resources/Images/UI/saveOff.bmp", slotInfo.x, slotInfo.y, 848, 112, MGT);
 		slotInfo.num = 1;
-		slotInfo.posEndX = slotInfo.pos.x + IMAGEMANAGER->findImage("saveNoData")->getWidth();
+		slotInfo.posEndX = slotInfo.x + IMAGEMANAGER->findImage("saveNoData")->getWidth();
 		slotInfo.select = false;
 		_vSave.push_back(slotInfo);
 	}
@@ -122,16 +122,16 @@ void TitleScene::update(void)
 
 		if (KEYMANAGER->isOnceKeyDown(VK_UP))
 		{
-			_menuIndex--;
-			if (_menuIndex < 1) _menuIndex = 3;
+			_saveIndex--;
+			if (_saveIndex < 1) _saveIndex = 3;
 		}
 		if (KEYMANAGER->isOnceKeyDown(VK_DOWN))
 		{
-			_menuIndex++;
-			if (_menuIndex > 3) _menuIndex = 1;
+			_saveIndex++;
+			if (_saveIndex > 3) _saveIndex = 1;
 		}
 		
-		selectSaveData(_menuIndex);
+		selectSaveData(_saveIndex);
 
 	}
 
@@ -191,61 +191,89 @@ void TitleScene::showSaveData(void)
 	_viSave = _vSave.begin();
 	for (; _viSave != _vSave.end(); _viSave++)
 	{
-			_viSave->noneImg->render(getMemDC() ,_viSave->pos.x, _viSave->pos.y); // 임시 - 저장된 파일이 없다면 
-		if (_saveIndex > 100)
+		if (_saveIndex < 100)
 		{
-		} 
-		else {
+			// 임시 - 저장된 파일이 없다면 
+			_viSave->offImg->render(getMemDC(), _viSave->x, _viSave->y);
+
+			// slotNum
+			FONTMANAGER->drawTextValue(getMemDC(), _viSave->num,						 // 변수
+				_viSave->x - 20, (_viSave->y + _viSave->noneImg->getHeight()*0.5) - 5,	 // 위치
+				"둥근모꼴", 25, 100, OTEXT);												 // 폰트
+
+		}
+		else
+		{
 			// 저장된 파일이 있다면
 			if (_viSave->select)
 			{
-				_viSave->onImg->render(getMemDC(), _viSave->pos.x, _viSave->pos.y);
+				_tempPoint = 1300; // 임시데이터 
+
+
+				_viSave->onImg->render(getMemDC(), _viSave->x, _viSave->y);
 				// slotNum
-				FONTMANAGER->drawTextValue(getMemDC(), _viSave->num,								 // 변수
-					_viSave->pos.x - 20, _viSave->pos.y + _viSave->noneImg->getHeight()*0.5,		 // 위치
-					"둥근모꼴", 25, 100, OTEXT);											 // 폰트
+				FONTMANAGER->drawTextValue(getMemDC(), _viSave->num,						 // 변수
+					_viSave->x - 20, (_viSave->y + _viSave->noneImg->getHeight()*0.5) - 5,	 // 위치
+					"둥근모꼴", 25, 100, OTEXT);												 // 폰트
 
 				// 플레이어 세이브  정보 
+				SetTextAlign(getMemDC(), TA_LEFT);
 				LPCWSTR tempArea = L"침묵의 비탄 수도원"; // 임시 지역 텍스트 
-				FONTMANAGER->drawText(getMemDC(), _viSave->pos.x + 80, _viSave->pos.y + 20,
+				FONTMANAGER->drawText(getMemDC(), _viSave->x + 90, _viSave->y + 25,
 					"둥근모꼴", 25, 100, tempArea, wcslen(tempArea), OTEXT);
 
 				SetTextAlign(getMemDC(), TA_RIGHT);
 				FONTMANAGER->drawTextValue(getMemDC(), _tempPoint, // 임시 포인트 
-					_viSave->posEndX - 60, _viSave->pos.y + 20,
+					_viSave->posEndX - 70, _viSave->y + 25,
 					"둥근모꼴", 25, 100, OTEXT);
 
+				SetTextAlign(getMemDC(), TA_RIGHT);
 				LPCWSTR tempTime = L"플레이 시간 : 2h 4m ~ 16.7% 완료"; // 임시 누적시간, 진행율
-				FONTMANAGER->drawText(getMemDC(), _viSave->pos.x - 50, _viSave->pos.y + 66,
+				FONTMANAGER->drawText(getMemDC(), _viSave->posEndX - 50, _viSave->y + 76,
 					"둥근모꼴", 25, 100, tempTime, wcslen(tempTime), OTEXT);
 			}
-			else
+			if (!_viSave->select)
 			{
-				_viSave->offImg->render(getMemDC(), _viSave->pos.x, _viSave->pos.y);
+				// 저장파일은 있지만 선택하지 않으면
+				_viSave->offImg->render(getMemDC(), _viSave->x, _viSave->y);
 				_tempPoint = 470; // 임시데이터 
 
 				// slotNum
 				FONTMANAGER->drawTextValue(getMemDC(), _viSave->num,
-					_viSave->pos.x - 20, _viSave->pos.y + _viSave->noneImg->getHeight()*0.5,
+					_viSave->x - 20, (_viSave->y + _viSave->noneImg->getHeight()*0.5) - 5,
 					"둥근모꼴", 25, 100, XTEXT);
 
 				// 플레이어 세이브  정보 
+				SetTextAlign(getMemDC(), TA_LEFT);
 				LPCWSTR tempArea = L"갈보리의 다리"; // 임시 지역 텍스트 
-				FONTMANAGER->drawText(getMemDC(), _viSave->pos.x + 80, _viSave->pos.y + 20,
+				FONTMANAGER->drawText(getMemDC(), _viSave->x + 90, _viSave->y + 25,
 					"둥근모꼴", 25, 100, tempArea, wcslen(tempArea), XTEXT);
 
 				SetTextAlign(getMemDC(), TA_RIGHT);
 				FONTMANAGER->drawTextValue(getMemDC(), _tempPoint, // 임시 포인트 
-					_viSave->posEndX - 60, _viSave->pos.y + 20,
+					_viSave->posEndX - 70, _viSave->y + 25,
 					"둥근모꼴", 25, 100, XTEXT);
 
+				SetTextAlign(getMemDC(), TA_RIGHT);
 				LPCWSTR tempTime = L"플레이 시간 : 1h 14m ~ 38.1% 완료"; // 임시 누적시간, 진행율
-				FONTMANAGER->drawText(getMemDC(), _viSave->pos.x - 50, _viSave->pos.y + 66,
+				FONTMANAGER->drawText(getMemDC(), _viSave->posEndX - 50, _viSave->y + 76,
 					"둥근모꼴", 25, 100, tempTime, wcslen(tempTime), XTEXT);
 
 			}
 		}
 	}
+
+	IMAGEMANAGER->findImage("enter")->render(getMemDC(), CENTER_X + 20, WINSIZE_Y - 150);
+	LPCWSTR textBack[2] = L"계속 ",
+					   L"새 게임 "; // 임시 누적시간, 진행율
+	FONTMANAGER->drawText(getMemDC(), CENTER_X + 385 + IMAGEMANAGER->findImage("esc")->getWidth() + 10, _viSave->y + 76,
+		"둥근모꼴", 25, 100, textBack, wcslen(textBack), BTEXT);
+	
+	IMAGEMANAGER->findImage("esc")->render(getMemDC(), CENTER_X + 385, WINSIZE_Y - 150);
+	LPCWSTR textBack = L"뒤로"; // 임시 누적시간, 진행율
+	FONTMANAGER->drawText(getMemDC(), CENTER_X + 385 + IMAGEMANAGER->findImage("esc")->getWidth() + 10 , _viSave->y + 76,
+		"둥근모꼴", 25, 100, textBack, wcslen(textBack), BTEXT);
+
 }
 
 
