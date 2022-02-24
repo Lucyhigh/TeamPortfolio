@@ -44,15 +44,18 @@
 		vector<pair<RECT, Image*>> BaseData::getSmash()
 		{ return smash; }
 		// 공격 범위 초기화
-		void BaseData::clearSmash()
-		{ smash.clear(); }
+		void BaseData::clearSmash(int size) { smash.clear(); }
 
 		// 공격 입력 ( 데미지 1 ) 
 		void BaseData::setHit()
-		{ _isHit = 1; }
+		{
+			if (_isHit == 0) { _isHit = 1; }
+		}
 		// 공격 입력 ( 데미지 ++ ) 
 		void BaseData::setHit(int damage)
-		{ _isHit = damage; }
+		{ 
+			if(_isHit == 0) { _isHit = damage; }
+		}
 
 	#pragma endregion
 
