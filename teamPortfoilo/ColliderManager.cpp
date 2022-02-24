@@ -25,7 +25,7 @@ void ColliderManager::smashCollider()
 				if (IntersectRect(&temp, &GAMEMANAGER->getPlayer()->getSmash()[i].first, &GAMEMANAGER->getMonster()[h]->getCollider()))
 				{ 
 					GAMEMANAGER->getMonster()[h]->setHit(); 
-					GAMEMANAGER->getPlayer()->clearSmash();
+					GAMEMANAGER->getPlayer()->clearSmash(i);
 					return;
 				}
 			}
@@ -41,7 +41,7 @@ void ColliderManager::smashCollider()
 			if (IntersectRect(&temp, &GAMEMANAGER->getPlayer()->getCollider(), &GAMEMANAGER->getMonster()[i]->getSmash()[h].first))
 			{
 				GAMEMANAGER->getPlayer()->setHit();
-				GAMEMANAGER->getMonster()[i]->clearSmash();
+				GAMEMANAGER->getMonster()[i]->clearSmash(i);
 				return;
 			}
 		}

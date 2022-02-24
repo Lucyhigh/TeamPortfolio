@@ -101,7 +101,6 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 	if (KEYMANAGER->isOnceKeyDown(VK_SPACE) && _state != UnitState::JUMP&& _state < UnitState::ATTACK && _isLook != -1)
 	{
 		_oldState = _state;
-		_jump["Unit"] = 0;
 		_jump["Weight"] =11.0f;
 		return UnitState::JUMP;
 	}
@@ -148,27 +147,10 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 
 void PlayerCharacter::_inputUpdate()
 {
-	RECT tamp[2] = { 0,0,0,0 };
-	tamp[1] = { _Collider[BaseEnum::UNIT].left + 10, _Collider[BaseEnum::UNIT].bottom - 10,
-				_Collider[BaseEnum::UNIT].right - 10, _Collider[BaseEnum::UNIT].bottom };
-
-	for (int i = 0; i < floor.size(); i++)
-	{
-		if (IntersectRect(&tamp[0], &tamp[1], floor[i]))
-		{
-			smash.clear();
-			_Collider[BaseEnum::UNIT].top -= _Collider[BaseEnum::UNIT].bottom - tamp[0].top;
-			_Collider[BaseEnum::UNIT].bottom -= _Collider[BaseEnum::UNIT].bottom - tamp[0].top;
-			stateFloor = *floor[i];
-			break;
-		}
-	}
-
 	if (_state == UnitState::JUMP || _state == UnitState::JUMPATTACK || _state == UnitState::JUMPATTACK_DOUBLE)
 	{ _updataJump(); }
 	if ( _state >= UnitState::JUMPATTACK)
 	{ _updateAttack(); }
-
 	else 
 	{
 		switch (_state)
@@ -318,18 +300,28 @@ void PlayerCharacter::_updateAttack()
 
 bool PlayerCharacter::_updateHit()
 {
+	static int a = 0;
 	// 안맞앗다!
 	if (_isHit == 0 || _state == UnitState::SLIDE ) { return false; }
 
-	// 스테이트 바꿔주기 
-	// 무적 판정...? 
-	// 자신의 반대방향 
-	// 애니메이션 끝나는거에  _ishit 0으로 바꿔주기 
-
+	if (a == 0)
+	{
+		smash.clear();
+		_jump["Weight"] = 2;
+		_state = UnitState::JUMP;
+	}
 	
-	int a = 0;
-	// 맞았다!
-	return true;
+	_Collider[BaseEnum::UNIT].left -= _isLeft * GAMESPEED/2;
+	_Collider[BaseEnum::UNIT].right -= _isLeft * GAMESPEED/2;
+
+	if (a >= 30)
+	{
+		_hp[BaseEnum::STATE] -= _isHit;
+		_isHit = 0;
+		a = 0;
+		return true;
+	}
+	a ++;
 }
 
 
