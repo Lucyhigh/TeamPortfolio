@@ -3,7 +3,7 @@
 
 HRESULT TitleScene::init(void)
 {
-	_titleName = OPTION;
+	_titleName = TITLE;
 
 	// ANYBUTTON ------------
 	_pushButton = false;
@@ -81,7 +81,7 @@ void TitleScene::release(void)
 
 void TitleScene::update(void)
 {
-	/*
+	
 	if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) _pushButton = true;
 
 	if (_pushButton)
@@ -114,27 +114,30 @@ void TitleScene::update(void)
 		IMAGEMANAGER->findImage("titleMenu")->setFrameX(_menuIndex);
 	}
 
-
+	
 	// Title-Menu select
-	if (KEYMANAGER->isOnceKeyDown(VK_RETURN)  && _titleName == TITLE && _menuIndex == 0)
+	if (_menuIndex == 0)
 	{
-		_titleName = SAVE;
+		if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) _titleName = SAVE;
 	}
 	
-	if (KEYMANAGER->isOnceKeyUp(VK_RETURN) && _titleName == TITLE && _menuIndex == 1)
+	if (_menuIndex == 1)
 	{
-		_titleName = OPTION;
-	}
-	if (KEYMANAGER->isOnceKeyUp(VK_RETURN) && _titleName == TITLE && _menuIndex == 2)
-	{
-		 PostQuitMessage(0);
+
+		if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) _titleName = OPTION;
 	}
 
-	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE) && _titleName == SAVE || _titleName == OPTION)
+	if (_menuIndex == 2)
 	{
-		_titleName = TITLE;
+		if (KEYMANAGER->isOnceKeyUp(VK_RETURN)) PostQuitMessage(0);
 	}
-	
+
+	if ( _titleName == SAVE || _titleName == OPTION)
+	{
+		if(KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _titleName = TITLE;
+	}
+
+
 
 	if (_titleName == SAVE)
 	{
@@ -161,7 +164,7 @@ void TitleScene::update(void)
 			if (_saveIndex == 3) SCENEMANAGER->changeScene("Boss2");
 		}
 	}
-	*/
+	
 
 	if (_titleName == OPTION)
 	{
@@ -243,7 +246,7 @@ void TitleScene::showSaveData(void)
 		if (_saveIndex < 100)
 		{
 			// 임시 - 저장된 파일이 없다면 
-			_viSave->offImg->render(getMemDC(), _viSave->x, _viSave->y);
+			_viSave->noneImage->render(getMemDC(), _viSave->x, _viSave->y);
 
 			// slotNum
 			FONTMANAGER->drawTextValue(getMemDC(), _viSave->num,						 // 변수
