@@ -97,19 +97,8 @@ void RockThrowMonster::_inputPatten()
 {
 	if (abs(MONSTER_CENTER - PLAYER_CENTER) < 500)
 	{
-		_state = UnitState::MOVE;
-		//오른쪽으로 이동 
-		if (MONSTER_CENTER - PLAYER_CENTER < 0)
-		{
-			_Collider[BaseEnum::UNIT].left += 10;
-			_Collider[BaseEnum::UNIT].right += 10;
-		}
-		//왼쪽으로 이동
-		else if (MONSTER_CENTER - PLAYER_CENTER > 0)
-		{
-			_Collider[BaseEnum::UNIT].left -= 10;
-			_Collider[BaseEnum::UNIT].right -= 10;
-		}
+		_state = UnitState::THROW;
+		
 	}
 	else
 	{
