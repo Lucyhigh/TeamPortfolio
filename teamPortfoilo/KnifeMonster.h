@@ -5,7 +5,7 @@
 #define PLAYER_CENTER	(GAMEMANAGER->getPlayer()->getCollider().right - GAMEMANAGER->getPlayer()->getCollider().left) / 2 + GAMEMANAGER->getPlayer()->getCollider().left
 #define MONSTER_CENTER	(_Collider[BaseEnum::UNIT].right - _Collider[BaseEnum::UNIT].left) / 2 + _Collider[BaseEnum::UNIT].left
 
-class KnifeMonster : BaseData, GameNode
+class KnifeMonster : public BaseData, GameNode
 {
 	enum class UnitState
 	{

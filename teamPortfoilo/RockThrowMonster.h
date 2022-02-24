@@ -11,10 +11,12 @@ class RockThrowMonster : BaseData, GameNode
 	{
 		IDLE, THROW, HURT, DIE, END
 	};
-
+	
 private:
+	POINT pointMake{ (GAMEMANAGER->getPlayer()->getCollider().right - GAMEMANAGER->getPlayer()->getCollider().left) / 2 + GAMEMANAGER->getPlayer()->getCollider().left,  };
 
 	int _isLeft, _isLook;
+	bool _throw;
 	UnitState _state;
 
 	void _inputPatten();
@@ -27,6 +29,7 @@ private:
 	vector<function<void()>> _pattenFunc;
 	float _pattenDely;
 	void _updateIdle();
+	void _updateThrow();
 
 public:
 	HRESULT init(POINT, vector<RECT*>);

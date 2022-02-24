@@ -12,10 +12,11 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	player = new PlayerCharacter();
 	player->init({ 0,600 }, _floor);
 	_player = player;
-	mon = new BossWarden();
-	mon->init({ 0,0 }, _floor);
-	mon->setCollider(RECT{ 800,350,900,450 });
-	_monster.push_back(mon);
+	
+
+	knifeMon = new KnifeMonster;
+	knifeMon->init({ 0,0 }, _floor);
+	_monster.push_back(knifeMon);
 
 	GAMEMANAGER->setPlayer(_player);
 	GAMEMANAGER->setMonster(_monster);

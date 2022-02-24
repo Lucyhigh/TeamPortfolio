@@ -3,6 +3,7 @@
 #include "PlayerCharacter.h"
 #include "BossWarden.h"
 #include "ColliderManager.h"
+#include "KnifeMonster.h"
 
 class MainGame : public GameNode
 {
@@ -16,6 +17,7 @@ private:
 	vector<RECT> reference = { { 0,600,1200,1000 } };
 	BossWarden* mon;
 	PlayerCharacter* player;
+	KnifeMonster* knifeMon;
 public:
 	HRESULT init(void);
 	void release(void);

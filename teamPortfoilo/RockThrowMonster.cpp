@@ -116,3 +116,12 @@ void RockThrowMonster::_updateIdle()
 	_isHit = 100;
 	int a = 0;
 }
+
+void RockThrowMonster::_updateThrow()
+{
+	if (_state == UnitState::THROW && !_throw)
+	{
+		_throw = true;
+
+	}
+}
