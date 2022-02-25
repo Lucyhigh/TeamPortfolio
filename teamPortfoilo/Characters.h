@@ -51,7 +51,6 @@ class BaseData
 		function<void()> ObjectUpdate;
 		function<void()> ObjectRender;
 		
-
 		#pragma region 정보
 		
 			// hp 정보
@@ -87,4 +86,6 @@ class BaseData
 
 		#pragma endregion
 
+			// 추가 본 
+			POINT getPoint();
 };

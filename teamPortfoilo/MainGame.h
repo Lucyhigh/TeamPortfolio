@@ -5,7 +5,6 @@ class MainGame : public GameNode
 {
 private:
 	PlayerCharacter* _player;
-
 public:
 	HRESULT init(void);
 	void release(void);

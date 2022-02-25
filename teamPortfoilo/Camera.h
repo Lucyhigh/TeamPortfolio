@@ -1,15 +1,28 @@
 #pragma once
-#include "SingletonBase.h"
-class Camera : public SingletonBase<Camera>
+#include "GameNode.h"
+
+class Camera : public GameNode
 {
 private:
-   // POINT 
+    POINT _trace;
+    RECT _screen;
+    int _count;
+    float _leftLimit;
+    float _rightLimit;
+
 public:
-    HRESULT init(void);
+	Camera();
+	~Camera() {}
+	HRESULT init(void);
     void release(void);
     void update(void);
     void render(void);
-public:
-    Camera() {}
-    ~Camera() {}
+
+    POINT getCameraPos();
+    void setCameraPos(POINT cameraPos);
+
+    RECT getScreenRect();
+    void setScreenRect(RECT screenRect);
+
+    void setLimits(float leftLimit, float rightLimit);
 };

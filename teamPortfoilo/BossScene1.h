@@ -3,6 +3,7 @@
 #include "BossWarden.h"
 #include "KnifeMonster.h"
 #include "ColliderManager.h"
+#include "Camera.h"
 
 class BossScene1 : public GameNode
 {
@@ -11,14 +12,16 @@ private:
 	vector<BaseData*> _monster;
 	vector<RECT*> _floor;
 
+    Camera* _camera;
+    Image* _image;
 	KnifeMonster* boss;
 	RECT* floor0;
 	RECT* floor1;
 	RECT* floor2;
 
 public:
-	BossScene1();
-	~BossScene1();
+    BossScene1() {}
+    ~BossScene1() {}
 
 	HRESULT init(void);
 	void release(void);

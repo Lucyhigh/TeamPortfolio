@@ -63,6 +63,12 @@
 			if (_isHit == 0) { _isHit = 1; }
 		}
 
+		POINT BaseData::getPoint()
+		{
+			return POINT{ (_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2,
+						(_Collider[BaseEnum::UNIT].bottom + _Collider[BaseEnum::UNIT].top) / 2 };
+		}
+
 	#pragma endregion
 
 #pragma endregion

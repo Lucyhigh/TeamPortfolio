@@ -164,6 +164,9 @@ HRESULT ImageClass::init(void)
 #pragma region Stage Scene
 
 	IMAGEMANAGER->addImage("씬1배경", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("보스1전배경", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);//
+	IMAGEMANAGER->addImage("보스1전FrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);//
+	IMAGEMANAGER->addImage("보스1배경", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675);//
 	IMAGEMANAGER->addImage("씬2배경", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("씬3배경", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 
@@ -199,7 +202,6 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("03 묵주 On", "Resources/Images/item/rosaryOn_03.bmp", 60, 60, MGT);
 	IMAGEMANAGER->addImage("03 묵주 Off", "Resources/Images/item/rosaryOff_04.bmp", 60, 60, MGT);
 
-
 #pragma region UI Object
 	// etc : Resources/Images/UI/폴더명 또는 이미지
 	// system
@@ -232,6 +234,12 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("esc", "Resources/Images/UI/Button/ESC.bmp", 39,35, MGT); //20,18
 	IMAGEMANAGER->addImage("enter", "Resources/Images/UI/Button/ENTER.bmp", 56,35,  MGT); //29,18
 	IMAGEMANAGER->addImage("space", "Resources/Images/UI/Button/SPACE.bmp", 56, 35, MGT); //29,18
+
+#pragma region Object
+
+    IMAGEMANAGER->addImage("버튼", "Resources/Images/Object/buttomE.bmp", 35 * 1.9, 38 * 1.9, true, RGB(255, 0, 255));
+    IMAGEMANAGER->addFrameImage("stand", "Resources/Images/Object/priedieuStand.bmp", 924, 310, 7, 1, MGT); // 462, 155
+    IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/Object/itemObject.bmp", 260, 91, 10, 1, MGT); // 260,91
 
 #pragma endregion
 

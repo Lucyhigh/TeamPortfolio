@@ -19,7 +19,9 @@ PlayerCharacter::~PlayerCharacter() { } // ! DO NOTING
 HRESULT PlayerCharacter::init(POINT point, vector<RECT*>floor)
 {
 	this->floor = floor;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(400, 400, 50, 60);
+    point.x = 400;
+    point.y = CENTER_Y;
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(point.x, point.y, 50, 60);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
 	_oldState = UnitState::UNITNULL;
@@ -52,21 +54,26 @@ void PlayerCharacter::update(void)
 	_state = _inputKey(_updateSide());
 	_inputUpdate();
 	_inputAnimation();
-	_smashRender();
+	//_smashRender();
 }
 
 void PlayerCharacter::render(void)
 {
-	HPEN hpen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+	HPEN hpen = CreatePen(PS_SOLID, 3, RGB(255, 0, 0));
 	HPEN hpenOld = (HPEN)::SelectObject(getMemDC(), (HGDIOBJ)hpen);
 	HBRUSH myBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 	HBRUSH oldBrush = (HBRUSH)SelectObject(getMemDC(), myBrush);
-	Rectangle(getMemDC(), _Collider[BaseEnum::UNIT].left, _Collider[BaseEnum::UNIT].top, _Collider[BaseEnum::UNIT].right, _Collider[BaseEnum::UNIT].bottom);
+
+	float left = _Collider[BaseEnum::UNIT].left - _cameraRect.left;
+	float top = _Collider[BaseEnum::UNIT].top - _cameraRect.top;
+	float right = _Collider[BaseEnum::UNIT].right - _cameraRect.left;
+	float bottom = _Collider[BaseEnum::UNIT].bottom - _cameraRect.top;
+
+	Rectangle(getMemDC(), left, top, right, bottom);
+
 	SelectObject(getMemDC(), oldBrush);
 	DeleteObject(myBrush);
 	hpen = (HPEN)::SelectObject(getMemDC(), hpenOld);
-
-	//if (_imageAni.first) { _image->aniRender(getMemDC(), _image->getX(), _image->getY(), _imageAni.second); }
 
 	for (int i = 0; i < smash.size(); i++)
 	{
@@ -75,14 +82,18 @@ void PlayerCharacter::render(void)
 
 	if (_image != nullptr)
 	{
-		_image->frameRender(getMemDC(), _image->getX(), _image->getY(), _image->getFrameX(), _image->getFrameY());
+		float imageX = _image->getX() - _cameraRect.left;
+		float imageY = _image->getY() - _cameraRect.top;
+		_image->frameRender(getMemDC(), imageX, imageY, _image->getFrameX(), _image->getFrameY());
 	}
 	if (_effect != nullptr)
 	{
+		float effectX = _effect->getX() - _cameraRect.left;
+		float effectY = _effect->getY() - _cameraRect.top;
 		_effect->frameRender(getMemDC(), _effect->getX(), _effect->getY(), _effect->getFrameX(), _effect->getFrameY());
 	}
-
 }
+
 // ! 키보드 입력
 PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 {
@@ -138,7 +149,6 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 			{
 				_isLeft = 1;
 			}
-
 			if (updateSide != 1)
 			{
 				_isMove = 1;
@@ -377,8 +387,9 @@ void PlayerCharacter::_updateSlide()
 
 void PlayerCharacter::_updateMove()
 {
-	_Collider[BaseEnum::UNIT].left += _isMove * GAMESPEED;
-	_Collider[BaseEnum::UNIT].right += _isMove * GAMESPEED;
+
+	_Collider[BaseEnum::UNIT].left += (_isMove * GAMESPEED);
+	_Collider[BaseEnum::UNIT].right += (_isMove * GAMESPEED);
 }
 
 void PlayerCharacter::_updataJump()
@@ -410,14 +421,9 @@ void PlayerCharacter::_updataJump()
 	}
 }
 
-void PlayerCharacter::_smashRender()
+void PlayerCharacter::setCameraRect(RECT rect)
 {
-	for (int i = 0; i < smash.size(); i++)
-	{
-
-
-
-	}
+    _cameraRect = rect;
 }
 
 void PlayerCharacter::_updateAttack()
@@ -871,7 +877,7 @@ void PlayerCharacter::_inputAnimation()
 
 		if (0.09f + _Fram >= TIMEMANAGER->getWorldTime()) { return; }
 		_Fram = TIMEMANAGER->getWorldTime();
-
+        
 	}
 	else if (_state == UnitState::IDLE_0)
 	{
@@ -905,7 +911,3 @@ void PlayerCharacter::_inputAnimation()
 		}
 	}
 }
-
-
-
-

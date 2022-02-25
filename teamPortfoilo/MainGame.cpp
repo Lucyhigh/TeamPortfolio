@@ -7,6 +7,7 @@
 #include "OptionScene.h"
 //Stage
 #include "StartScene.h"
+#include "Boss1BeforeScene.h"
 #include "BossScene1.h"
 #include "BossScene2.h"
 #include "FieldScene1.h"
@@ -34,6 +35,7 @@ HRESULT MainGame::init(void) //초기화
 
 	// Stage1
 	SCENEMANAGER->addScene("Start", new StartScene);
+	SCENEMANAGER->addScene("BeforeBoss1", new Boss1BeforeScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
 	
 	// Stage2
@@ -43,8 +45,7 @@ HRESULT MainGame::init(void) //초기화
 
 	
 #pragma endregion 
-	// 테스트용 씬체인저
-	SCENEMANAGER->changeScene("Boss1");
+	SCENEMANAGER->changeScene("BeforeBoss1");
 	return S_OK;
 }
 

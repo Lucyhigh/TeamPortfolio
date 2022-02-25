@@ -119,6 +119,9 @@
     <ClCompile Include="WheelMonster.cpp">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
     </ClCompile>
+    <ClCompile Include="Boss1BeforeScene.cpp">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -244,6 +247,9 @@
     </ClInclude>
     <ClInclude Include="WheelMonster.h">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1BeforeScene.h">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
