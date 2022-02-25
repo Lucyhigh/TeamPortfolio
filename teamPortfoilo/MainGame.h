@@ -5,7 +5,7 @@ class MainGame : public GameNode
 {
 private:
 	PlayerCharacter* _player;
-	//ColliderManager* _collider;
+
 public:
 	HRESULT init(void);
 	void release(void);

@@ -15,7 +15,7 @@ HRESULT BossScene1::init(void)
 	_floor.push_back(floor2);
 	GAMEMANAGER->getPlayer()->ObjectInit({ 0,0 }, _floor);
 
-	boss = new BossWarden();
+	boss = new KnifeMonster();
 	boss->init({ 0,0 }, _floor);
 	_monster.push_back(boss);
 	GAMEMANAGER->setMonster(_monster);

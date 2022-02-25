@@ -146,6 +146,29 @@ void WheelMonster::_updateIdle()
 
 void WheelMonster::_updateAttack()
 {
+	POINT mid;
 
+	smash.clear();
+	mid = { 0, _Collider[BaseEnum::UNIT].top + ((_Collider[BaseEnum::UNIT].bottom - _Collider[BaseEnum::UNIT].top) / 2) };
+	if (_isLeft != 1)
+	{
+		mid.x = _Collider[BaseEnum::UNIT].left;
+	}
+	else
+	{
+		mid.x = _Collider[BaseEnum::UNIT].right;
+	}
+
+	if (_isLook != -1)
+	{
+		smash.push_back
+		(pair<RECT, Image>{ RectMakeCenter(mid.x, _Collider[BaseEnum::UNIT].top - 20, 10, 10), Image() });
+		smash.push_back
+		(pair<RECT, Image>{  RectMakeCenter(mid.x + (_isLeft * 50), _Collider[BaseEnum::UNIT].top, 10, 10), Image() });
+	}
+	smash.push_back
+	(pair<RECT, Image>{ RectMakeCenter(mid.x + (_isLeft * 75), mid.y, 10, 10), Image() });
+	smash.push_back
+	(pair<RECT, Image>{ RectMakeCenter(mid.x + (_isLeft * 50), _Collider[BaseEnum::UNIT].bottom, 10, 10), Image() });
 }
 

@@ -110,6 +110,15 @@
     <ClCompile Include="Item.cpp">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClCompile>
+    <ClCompile Include="KnifeMonster.cpp">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="RockThrowMonster.cpp">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="WheelMonster.cpp">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -227,6 +236,15 @@
     <ClInclude Include="Item.h">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClInclude>
+    <ClInclude Include="KnifeMonster.h">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="RockThrowMonster.h">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="WheelMonster.h">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Blasphemous">
@@ -285,6 +303,9 @@
     </Filter>
     <Filter Include="Blasphemous\GameScene\UI\Base">
       <UniqueIdentifier>{c44ef8f1-7005-4328-b332-80f0c2d12082}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\Characters\FieldMonster">
+      <UniqueIdentifier>{aa6744a2-4d1f-4709-bfd0-e784795f8bc7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

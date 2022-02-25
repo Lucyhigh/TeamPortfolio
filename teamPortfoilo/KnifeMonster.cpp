@@ -3,6 +3,8 @@
 
 KnifeMonster::KnifeMonster()
 {
+	ObjectInit = bind(&KnifeMonster::init,this,std::placeholders::_1,std::placeholders::_2);
+	ObjectrRelease = bind(&KnifeMonster::release, this);
 	ObjectUpdate = bind(&KnifeMonster::update, this);
 	ObjectRender = bind(&KnifeMonster::render, this);
 }
@@ -13,7 +15,7 @@ HRESULT KnifeMonster::init(POINT point, vector<RECT*> floor)
 {
 	this->floor = floor;
 	_state = UnitState::END;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(600, 400, 100, 100);
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(1000, 550, 100, 100);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
 	function<void()> _update;
