@@ -37,7 +37,7 @@ HRESULT PlayerCharacter::init(POINT point, vector<RECT*>floor)
 
 void PlayerCharacter::release(void)
 {
-	// 애니메이션 굴리기 
+	
 }
 
 void PlayerCharacter::update(void)
