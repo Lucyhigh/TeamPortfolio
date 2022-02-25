@@ -90,7 +90,7 @@ void PlayerCharacter::render(void)
 	{
 		float effectX = _effect->getX() - _cameraRect.left;
 		float effectY = _effect->getY() - _cameraRect.top;
-		_effect->frameRender(getMemDC(), _effect->getX(), _effect->getY(), _effect->getFrameX(), _effect->getFrameY());
+		_effect->frameRender(getMemDC(), effectX, effectY, _effect->getFrameX(), _effect->getFrameY());
 	}
 }
 
@@ -177,7 +177,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 	if (KEYMANAGER->isOnceKeyDown(VK_SPACE) && _state != UnitState::JUMP && _state < UnitState::JUMPATTACK && _isLook != -1)
 	{
 		_oldState = _state;
-		_jump["Weight"] = 11.0f;
+		_jump["Weight"] = 4.0f;
 		return UnitState::JUMP;
 	}
 	else if (KEYMANAGER->isOnceKeyDown('A'))
@@ -387,14 +387,13 @@ void PlayerCharacter::_updateSlide()
 
 void PlayerCharacter::_updateMove()
 {
-
 	_Collider[BaseEnum::UNIT].left += (_isMove * GAMESPEED);
 	_Collider[BaseEnum::UNIT].right += (_isMove * GAMESPEED);
 }
 
 void PlayerCharacter::_updataJump()
 {
-	_jump["Weight"] += -1 * 0.3f;
+	_jump["Weight"] += -1 * 0.05f;
 	_Collider[BaseEnum::UNIT].top += -1 * _jump["Weight"];
 	_Collider[BaseEnum::UNIT].bottom += -1 * _jump["Weight"];
 	_jump["Unit"] += -1 * _jump["Weight"];
@@ -435,34 +434,39 @@ void PlayerCharacter::_updateAttack()
 		return;
 	}
 
+	long left = _Collider[BaseEnum::UNIT].left - _cameraRect.left;
+	long top = _Collider[BaseEnum::UNIT].top - _cameraRect.top;
+	long right = _Collider[BaseEnum::UNIT].right - _cameraRect.left;
+	long bottom = _Collider[BaseEnum::UNIT].bottom - _cameraRect.top;
+
 	if (_isLook != 1)
 	{
 		smash.clear();
-		mid = { 0, _Collider[BaseEnum::UNIT].top + ((_Collider[BaseEnum::UNIT].bottom - _Collider[BaseEnum::UNIT].top) / 2) };
+		mid = { 0, top + ((bottom - top) / 2) };
 		if (_isLeft != 1)
 		{
-			mid.x = _Collider[BaseEnum::UNIT].left;
+			mid.x = left;
 		}
 		else
 		{
-			mid.x = _Collider[BaseEnum::UNIT].right;
+			mid.x = right;
 		}
 
 		if (_isLook != -1)
 		{
 			smash.push_back
-			(pair<RECT, Image>{ RectMakeCenter(mid.x, _Collider[BaseEnum::UNIT].top - 20, 10, 10), Image() });
+			(pair<RECT, Image>{ RectMakeCenter(mid.x, top - 20, 10, 10), Image() });
 			smash.push_back
-			(pair<RECT, Image>{  RectMakeCenter(mid.x + (_isLeft * 50), _Collider[BaseEnum::UNIT].top, 10, 10), Image() });
+			(pair<RECT, Image>{  RectMakeCenter(mid.x + (_isLeft * 50), top, 10, 10), Image() });
 		}
 		smash.push_back
 		(pair<RECT, Image>{ RectMakeCenter(mid.x + (_isLeft * 75), mid.y, 10, 10), Image() });
 		smash.push_back
-		(pair<RECT, Image>{ RectMakeCenter(mid.x + (_isLeft * 50), _Collider[BaseEnum::UNIT].bottom, 10, 10), Image() });
+		(pair<RECT, Image>{ RectMakeCenter(mid.x + (_isLeft * 50), bottom, 10, 10), Image() });
 	}
 	else
 	{
-		mid = { _Collider[BaseEnum::UNIT].left + ((_Collider[BaseEnum::UNIT].right - _Collider[BaseEnum::UNIT].left) / 2)  , _Collider[BaseEnum::UNIT].top };
+		mid = { left + (( right - left) / 2) , top };
 		smash.push_back // ÁÂ  
 		(pair<RECT, Image>{ RectMakeCenter(mid.x - 40, mid.y - 50, 10, 10), Image() });
 		smash.push_back // Áß¾Ó 
