@@ -3,8 +3,6 @@
 
 KnifeMonster::KnifeMonster()
 {
-	ObjectInit = bind(&KnifeMonster::init,this,std::placeholders::_1,std::placeholders::_2);
-	ObjectrRelease = bind(&KnifeMonster::release, this);
 	ObjectUpdate = bind(&KnifeMonster::update, this);
 	ObjectRender = bind(&KnifeMonster::render, this);
 }
@@ -14,8 +12,8 @@ KnifeMonster::~KnifeMonster() { }
 HRESULT KnifeMonster::init(POINT point, vector<RECT*> floor)
 {
 	this->floor = floor;
-	_state = UnitState::END;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(1000, 550, 100, 100);
+	_state = UnitState::IDLE;
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(750, 550, 100, 100);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
 	function<void()> _update;
@@ -32,8 +30,28 @@ void KnifeMonster::update(void)
 {
 	_updateSide();
 	_updateFloor();
-	if (_state == UnitState::END) { _inputPatten(); }
-	_pattenFunc[(int)_state]();
+	if (abs(MONSTER_CENTER - PLAYER_CENTER) < 300)
+	{
+		_state = UnitState::MOVE;
+		//오른쪽으로 이동 
+		if ((MONSTER_CENTER - PLAYER_CENTER) < 0)
+		{
+			_isLeft = 0;
+			_Collider[BaseEnum::UNIT].left += 1;
+			_Collider[BaseEnum::UNIT].right += 1;
+		}
+		//왼쪽으로 이동
+		else if ((MONSTER_CENTER - PLAYER_CENTER) > 0)
+		{
+			_isLeft = 1;
+			_Collider[BaseEnum::UNIT].left -= 1;
+			_Collider[BaseEnum::UNIT].right -= 1;
+		}
+	}
+	else
+	{
+		_state = UnitState::IDLE;
+	}
 }
 
 void KnifeMonster::render(void)
@@ -96,26 +114,7 @@ int KnifeMonster::_updateSide()
 
 void KnifeMonster::_inputPatten()
 {
-	if (abs(MONSTER_CENTER - PLAYER_CENTER) < 500)
-	{
-		_state = UnitState::MOVE;
-		//오른쪽으로 이동 
-		if (MONSTER_CENTER - PLAYER_CENTER < 0)
-		{
-			_Collider[BaseEnum::UNIT].left += 10;
-			_Collider[BaseEnum::UNIT].right += 10;
-		}
-		//왼쪽으로 이동
-		else if (MONSTER_CENTER - PLAYER_CENTER > 0)
-		{
-			_Collider[BaseEnum::UNIT].left -= 10;
-			_Collider[BaseEnum::UNIT].right -= 10;
-		}
-	}
-	else
-	{
-		_state = UnitState::IDLE;
-	}
+
 }
 
 void KnifeMonster::_inputAnimation()
@@ -125,6 +124,5 @@ void KnifeMonster::_inputAnimation()
 
 void KnifeMonster::_updateIdle()
 {
-	_isHit = 100;
-	int a = 0;
+
 }

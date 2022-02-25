@@ -12,9 +12,12 @@ RockThrowMonster::~RockThrowMonster() { }
 
 HRESULT RockThrowMonster::init(POINT point, vector<RECT*> floor)
 {
+	speed = 2;
+	angle = 0;
+	_throw = false;
 	this->floor = floor;
 	_state = UnitState::END;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(600, 400, 100, 100);
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(750, 550, 100, 100);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
 	function<void()> _update;
@@ -25,19 +28,39 @@ HRESULT RockThrowMonster::init(POINT point, vector<RECT*> floor)
 }
 
 void RockThrowMonster::release(void)
-{ }
+{
+
+}
 
 void RockThrowMonster::update(void)
 {
 	_updateSide();
 	_updateFloor();
-	if (_state == UnitState::END) { _inputPatten(); }
-	_pattenFunc[(int)_state]();
+
+	if (abs(MONSTER_CENTER - PLAYER_CENTER) < 200 && !_throw)
+	{
+		_state = UnitState::THROW;
+		_rock();
+		_throw = true;
+	}
+	else
+	{
+		_state = UnitState::IDLE;
+	}
+
+
+	_updateThrow();
+	_delectRock();
 }
 
 void RockThrowMonster::render(void)
 {
 	Rectangle(getMemDC(), _Collider[BaseEnum::UNIT].left, _Collider[BaseEnum::UNIT].top, _Collider[BaseEnum::UNIT].right, _Collider[BaseEnum::UNIT].bottom);
+	if (_throw)
+	{
+		Rectangle(getMemDC(), _rcRock.left, _rcRock.top, _rcRock.right, _rcRock.bottom);
+	}
+	cout << angle << endl;
 }
 
 void RockThrowMonster::_updateFloor()
@@ -95,15 +118,7 @@ int RockThrowMonster::_updateSide()
 
 void RockThrowMonster::_inputPatten()
 {
-	if (abs(MONSTER_CENTER - PLAYER_CENTER) < 500)
-	{
-		_state = UnitState::THROW;
-		
-	}
-	else
-	{
-		_state = UnitState::IDLE;
-	}
+
 }
 
 void RockThrowMonster::_inputAnimation()
@@ -113,15 +128,27 @@ void RockThrowMonster::_inputAnimation()
 
 void RockThrowMonster::_updateIdle()
 {
-	_isHit = 100;
-	int a = 0;
 }
 
 void RockThrowMonster::_updateThrow()
 {
-	if (_state == UnitState::THROW && !_throw)
-	{
-		_throw = true;
+	_rcRock.left += cosl(angle) * speed;
+	_rcRock.right += cosl(angle) * speed;
+	_rcRock.top -= sinl(angle) * speed;
+	_rcRock.bottom -= sinl(angle) * speed;
+}
 
+void RockThrowMonster::_rock()
+{
+	_rcRock = RectMakeCenter((_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2, _Collider[BaseEnum::UNIT].top, 20, 20);
+	angle = getAngle((_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2, _Collider[BaseEnum::UNIT].top,
+		(GAMEMANAGER->getPlayer()->getCollider().right + GAMEMANAGER->getPlayer()->getCollider().left) / 2, (GAMEMANAGER->getPlayer()->getCollider().top + GAMEMANAGER->getPlayer()->getCollider().bottom) / 2);
+}
+
+void RockThrowMonster::_delectRock()
+{
+	if (IntersectRect(&_rcTemp, &GAMEMANAGER->getPlayer()->getCollider(), &_rcRock))
+	{
+		_throw = false;
 	}
 }

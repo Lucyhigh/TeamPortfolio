@@ -2,22 +2,24 @@
 #include "GameNode.h"
 #include "Characters.h"
 
-#define PLAYER_CENTER	(GAMEMANAGER->getPlayer()->getCollider().right - GAMEMANAGER->getPlayer()->getCollider().left) / 2 + GAMEMANAGER->getPlayer()->getCollider().left
-#define MONSTER_CENTER	(_Collider[BaseEnum::UNIT].right - _Collider[BaseEnum::UNIT].left) / 2 + _Collider[BaseEnum::UNIT].left
+#define PLAYER_CENTER	(GAMEMANAGER->getPlayer()->getCollider().right + GAMEMANAGER->getPlayer()->getCollider().left) / 2
+#define MONSTER_CENTER	(_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2
 
-class RockThrowMonster : BaseData, GameNode
+class RockThrowMonster : public BaseData, GameNode
 {
 	enum class UnitState
 	{
-		IDLE, THROW, HURT, DIE, END
+		IDLE, THROW, DIE, END
 	};
-	
-private:
-	POINT pointMake{ (GAMEMANAGER->getPlayer()->getCollider().right - GAMEMANAGER->getPlayer()->getCollider().left) / 2 + GAMEMANAGER->getPlayer()->getCollider().left,  };
 
-	int _isLeft, _isLook;
+private:
+	int _isLeft;
+	float x, y, angle, speed;
 	bool _throw;
+	RECT _rcRock, _rcTemp;
+
 	UnitState _state;
+
 
 	void _inputPatten();
 	void _inputAnimation();
@@ -30,6 +32,8 @@ private:
 	float _pattenDely;
 	void _updateIdle();
 	void _updateThrow();
+	void _rock();
+	void _delectRock();
 
 public:
 	HRESULT init(POINT, vector<RECT*>);

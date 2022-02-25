@@ -13,14 +13,14 @@ HRESULT WheelMonster::init(POINT point, vector<RECT*> floor)
 {
 	this->floor = floor;
 	_state = UnitState::END;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(600, 400, 100, 100);
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(750, 550, 100, 100);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
 	function<void()> _update;
 	_update = std::bind(&WheelMonster::_updateIdle, this);
 	_pattenFunc.push_back(_update);
 	_update = std::bind(&WheelMonster::_updateAttack, this);
-	_pattenFunc.push_back(_update);	
+	_pattenFunc.push_back(_update);
 
 	return S_OK;
 }
@@ -32,8 +32,42 @@ void WheelMonster::update(void)
 {
 	_updateSide();
 	_updateFloor();
-	if (_state == UnitState::END) { _inputPatten(); }
-	_pattenFunc[(int)_state]();
+	if (abs(MONSTER_CENTER - PLAYER_CENTER) < 150)
+	{
+		_state = UnitState::ATTACK;
+		//오른쪽으로 공격
+		if (MONSTER_CENTER - PLAYER_CENTER < 0)
+		{
+			_isLeft = 0;
+		}
+		//왼쪽으로 공격
+		else if (MONSTER_CENTER - PLAYER_CENTER > 0)
+		{
+			_isLeft = 1;
+		}
+	}
+	else if (abs(MONSTER_CENTER - PLAYER_CENTER) < 400)
+	{
+		_state = UnitState::MOVE;
+		//오른쪽으로 이동 
+		if (MONSTER_CENTER - PLAYER_CENTER < 0)
+		{
+			_isLeft = 0;
+			_Collider[BaseEnum::UNIT].left += 10;
+			_Collider[BaseEnum::UNIT].right += 10;
+		}
+		//왼쪽으로 이동
+		else if (MONSTER_CENTER - PLAYER_CENTER > 0)
+		{
+			_isLeft = 1;
+			_Collider[BaseEnum::UNIT].left -= 10;
+			_Collider[BaseEnum::UNIT].right -= 10;
+		}
+	}
+	else
+	{
+		_state = UnitState::IDLE;
+	}
 }
 
 void WheelMonster::render(void)
@@ -96,40 +130,7 @@ int WheelMonster::_updateSide()
 
 void WheelMonster::_inputPatten()
 {
-	if (abs(MONSTER_CENTER - PLAYER_CENTER) < 150)
-	{
-		_state = UnitState::ATTACK;
-		//오른쪽으로 공격
-		if (MONSTER_CENTER - PLAYER_CENTER < 0)
-		{
-			
-		}
-		//왼쪽으로 공격
-		else if (MONSTER_CENTER - PLAYER_CENTER > 0)
-		{
 
-		}
-	}
-	else if (abs(MONSTER_CENTER - PLAYER_CENTER) < 500)
-	{
-		_state = UnitState::MOVE;
-		//오른쪽으로 이동 
-		if (MONSTER_CENTER - PLAYER_CENTER < 0)
-		{
-			_Collider[BaseEnum::UNIT].left += 10;
-			_Collider[BaseEnum::UNIT].right += 10;
-		}
-		//왼쪽으로 이동
-		else if (MONSTER_CENTER - PLAYER_CENTER > 0)
-		{
-			_Collider[BaseEnum::UNIT].left -= 10;
-			_Collider[BaseEnum::UNIT].right -= 10;
-		}
-	}
-	else
-	{
-		_state = UnitState::IDLE;
-	}
 }
 
 void WheelMonster::_inputAnimation()
@@ -140,35 +141,10 @@ void WheelMonster::_inputAnimation()
 
 void WheelMonster::_updateIdle()
 {
-	_isHit = 100;
-	int a = 0;
+
 }
 
 void WheelMonster::_updateAttack()
 {
-	POINT mid;
 
-	smash.clear();
-	mid = { 0, _Collider[BaseEnum::UNIT].top + ((_Collider[BaseEnum::UNIT].bottom - _Collider[BaseEnum::UNIT].top) / 2) };
-	if (_isLeft != 1)
-	{
-		mid.x = _Collider[BaseEnum::UNIT].left;
-	}
-	else
-	{
-		mid.x = _Collider[BaseEnum::UNIT].right;
-	}
-
-	if (_isLook != -1)
-	{
-		smash.push_back
-		(pair<RECT, Image>{ RectMakeCenter(mid.x, _Collider[BaseEnum::UNIT].top - 20, 10, 10), Image() });
-		smash.push_back
-		(pair<RECT, Image>{  RectMakeCenter(mid.x + (_isLeft * 50), _Collider[BaseEnum::UNIT].top, 10, 10), Image() });
-	}
-	smash.push_back
-	(pair<RECT, Image>{ RectMakeCenter(mid.x + (_isLeft * 75), mid.y, 10, 10), Image() });
-	smash.push_back
-	(pair<RECT, Image>{ RectMakeCenter(mid.x + (_isLeft * 50), _Collider[BaseEnum::UNIT].bottom, 10, 10), Image() });
 }
-

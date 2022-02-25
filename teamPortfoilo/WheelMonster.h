@@ -2,19 +2,19 @@
 #include "GameNode.h"
 #include "Characters.h"
 
-#define PLAYER_CENTER	(GAMEMANAGER->getPlayer()->getCollider().right - GAMEMANAGER->getPlayer()->getCollider().left) / 2 + GAMEMANAGER->getPlayer()->getCollider().left
-#define MONSTER_CENTER	(_Collider[BaseEnum::UNIT].right - _Collider[BaseEnum::UNIT].left) / 2 + _Collider[BaseEnum::UNIT].left
+#define PLAYER_CENTER	(GAMEMANAGER->getPlayer()->getCollider().right + GAMEMANAGER->getPlayer()->getCollider().left) / 2
+#define MONSTER_CENTER	(_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2
 
 class WheelMonster : BaseData, GameNode
 {
 	enum class UnitState
 	{
-		IDLE, MOVE, ATTACK, HURT, DIE, END
+		IDLE, MOVE, ATTACK, DIE, END
 	};
 
 private:
 
-	int _isLeft, _isLook;
+	int _isLeft;
 	UnitState _state;
 
 	void _inputPatten();
@@ -38,3 +38,4 @@ public:
 	WheelMonster();
 	~WheelMonster();
 };
+
