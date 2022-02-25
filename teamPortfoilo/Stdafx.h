@@ -60,6 +60,7 @@ using namespace std;
 #include "Camera.h"
 using namespace MY_UTIL;
 
+
 //========================
 // # 싱글톤을 이곳에 추가 #
 //========================
@@ -92,7 +93,7 @@ using namespace MY_UTIL;
 #define WINSTART_X	 200
 #define WINSTART_Y	 0
 #define WINSIZE_X	 1200
-#define WINSIZE_Y	 800
+#define WINSIZE_Y	 675
 #define WINSTYLE	 WS_CAPTION | WS_SYSMENU
 #endif 
 
@@ -103,7 +104,6 @@ using namespace MY_UTIL;
 #define CENTER_X WINSIZE_X/2
 #define CENTER_Y WINSIZE_Y/2
 #define MGT true,RGB(255,0,255)
-
 
 //===============================================
 // # 매크로 함수 # (클래스에서 동적할당된 부분 해제)

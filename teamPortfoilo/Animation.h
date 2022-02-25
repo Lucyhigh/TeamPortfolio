@@ -16,8 +16,8 @@ private:
 	int _frameNum;			// 프레임 번호
 	int _frameWidth;		// 프레임 가로
 	int _frameHeight;		// 프레임 세로 
-	int _frameNumWidth;		// 프레임 가로숫자
-	int _frameNumHeight;	// 프레임 세로숫자
+	int _frameNumWidth;		// 프레임 가로번호
+	int _frameNumHeight;	// 프레임 세로번호
 
 	float _frameUpdateSec;	// 초당 프레임 업데이트 수 
 	float _elapsedSec;		// 프레임과 프레임 사이의 시간
@@ -25,7 +25,6 @@ private:
 	bool _isPlay;
 	bool _loop;
 	DWORD _nowPlayIdx;
-
 
 public:
 
@@ -68,9 +67,6 @@ public:
 	inline int getFrameWidth(void) { return _frameWidth; }
 	inline int getFrameHeight(void) { return _frameHeight; }
 	inline DWORD getNowPlayIdx(void) { return _nowPlayIdx; }
-
-
-
 
 	Animation();
 	~Animation() {};

@@ -42,9 +42,10 @@ class PlayerCharacter : public BaseData, GameNode
 		map<string, float> _jump = { { "Unit",0 }, { "Weight",0 } };
 		map<string, float> _slide = { { "State",0 }, { "Max",100 } };
 		void _updataJump();
-	
 		Image* _effect;
 		void _smashRender();
+		// 기타 
+		// int _point; // 소지 포인트 여기? 임시로 UI에서 사용.
 
 public:
 		//기본 
@@ -55,4 +56,5 @@ public:
 		void release(void);
 		void update(void);
 		void render(void);
+		
 };

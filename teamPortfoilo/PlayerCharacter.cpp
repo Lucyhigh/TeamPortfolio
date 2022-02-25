@@ -7,19 +7,19 @@ PlayerCharacter::UnitState PlayerCharacter::getState()
 }
 
 PlayerCharacter::PlayerCharacter()
-{ 
+{
 	ObjectInit = bind(&PlayerCharacter::init, this, std::placeholders::_1, std::placeholders::_2);
 	ObjectrRelease = bind(&PlayerCharacter::release, this);
 	ObjectUpdate = bind(&PlayerCharacter::update, this);
 	ObjectRender = bind(&PlayerCharacter::render, this);
-} 
+}
 
 PlayerCharacter::~PlayerCharacter() { } // ! DO NOTING
 
-HRESULT PlayerCharacter::init(POINT point,vector<RECT*>floor)
+HRESULT PlayerCharacter::init(POINT point, vector<RECT*>floor)
 {
 	this->floor = floor;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(400, 400, 50, 60); 
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(400, 400, 50, 60);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
 	_oldState = UnitState::UNITNULL;
@@ -44,7 +44,9 @@ void PlayerCharacter::update(void)
 	_updateFloor();
 
 	if (_updateHit())
-	{ _updateSide();  _inputUpdate(); return; }
+	{
+		_updateSide();  _inputUpdate(); return;
+	}
 
 	_updateMove();
 	_state = _inputKey(_updateSide());
@@ -65,12 +67,16 @@ void PlayerCharacter::render(void)
 	hpen = (HPEN)::SelectObject(getMemDC(), hpenOld);
 
 	//if (_imageAni.first) { _image->aniRender(getMemDC(), _image->getX(), _image->getY(), _imageAni.second); }
-	
+
 	for (int i = 0; i < smash.size(); i++)
-	{ Rectangle(getMemDC(), smash[i].first.left, smash[i].first.top, smash[i].first.right, smash[i].first.bottom); }
+	{
+		Rectangle(getMemDC(), smash[i].first.left, smash[i].first.top, smash[i].first.right, smash[i].first.bottom);
+	}
 
 	if (_image != nullptr)
-	{ _image->frameRender(getMemDC(),_image->getX(),_image->getY(), _image->getFrameX(), _image->getFrameY()); }
+	{
+		_image->frameRender(getMemDC(), _image->getX(), _image->getY(), _image->getFrameX(), _image->getFrameY());
+	}
 	if (_effect != nullptr)
 	{
 		_effect->frameRender(getMemDC(), _effect->getX(), _effect->getY(), _effect->getFrameX(), _effect->getFrameY());
@@ -86,14 +92,20 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 		return _state;
 	}
 
-	if(_state < UnitState::ATTACK )
-	{ 
+	if (_state < UnitState::ATTACK)
+	{
 		if (KEYMANAGER->isStayKeyDown(VK_UP))
-		{ _isLook = 1; }
+		{
+			_isLook = 1;
+		}
 		else if (KEYMANAGER->isStayKeyDown(VK_DOWN))
-		{ _isLook = -1; }
+		{
+			_isLook = -1;
+		}
 		else
-		{ _isLook = 0; }
+		{
+			_isLook = 0;
+		}
 	}
 
 	if (UnitState::SLIDE != _state && _state < UnitState::ATTACK && _state != UnitState::DOWNATTACK && _isLook != -1)
@@ -101,45 +113,61 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 		if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 		{
 			if (_state < UnitState::ATTACK)
-			{ _isLeft = -1; }
+			{
+				_isLeft = -1;
+			}
 
-			if (updateSide != -1 )
-			{ _isMove = -1; }
+			if (updateSide != -1)
+			{
+				_isMove = -1;
+			}
 			else
-			{ _isMove = 0; }
+			{
+				_isMove = 0;
+			}
 
-			if(_state != UnitState::JUMP && _state != UnitState::JUMPATTACK && _state != UnitState::JUMPATTACK_DOUBLE)
-			{ 
+			if (_state != UnitState::JUMP && _state != UnitState::JUMPATTACK && _state != UnitState::JUMPATTACK_DOUBLE)
+			{
 				_oldState = _state;
-				_state = UnitState::RUN; 
+				_state = UnitState::RUN;
 			}
 		}
 		else if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
-		{ 
+		{
 			if (_state < UnitState::ATTACK)
-			{ _isLeft = 1; }
+			{
+				_isLeft = 1;
+			}
 
 			if (updateSide != 1)
-			{ _isMove = 1; }
+			{
+				_isMove = 1;
+			}
 			else
-			{ _isMove = 0; }
+			{
+				_isMove = 0;
+			}
 
-			if(_state != UnitState::JUMP && _state != UnitState::JUMPATTACK && _state != UnitState::JUMPATTACK_DOUBLE)
-			{ 
+			if (_state != UnitState::JUMP && _state != UnitState::JUMPATTACK && _state != UnitState::JUMPATTACK_DOUBLE)
+			{
 				_oldState = _state;
-				_state = UnitState::RUN; 
+				_state = UnitState::RUN;
 			}
 		}
 		else
-		{ _isMove = 0; }
+		{
+			_isMove = 0;
+		}
 	}
 	else
-	{ _isMove = 0; }
+	{
+		_isMove = 0;
+	}
 
 	if (KEYMANAGER->isOnceKeyDown(VK_SPACE) && _state != UnitState::JUMP && _state < UnitState::JUMPATTACK && _isLook != -1)
 	{
 		_oldState = _state;
-		_jump["Weight"] =11.0f;
+		_jump["Weight"] = 11.0f;
 		return UnitState::JUMP;
 	}
 	else if (KEYMANAGER->isOnceKeyDown('A'))
@@ -155,7 +183,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 			{
 				IMAGEMANAGER->findImage("²¿±ò¾îÅÃ1")->setFrameX(IMAGEMANAGER->findImage("²¿±ò¾îÅÃ1")->getMaxFrameX());
 			}
-			return UnitState::ATTACK_DOUBLE; 
+			return UnitState::ATTACK_DOUBLE;
 		}
 		else if (_state == UnitState::ATTACK_DOUBLE)
 		{
@@ -183,7 +211,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 			_oldState = _state;
 			_isAttack = false;
 			if (_state == UnitState::JUMP)
-			{ 
+			{
 				IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃÀÌÆåÆ®")->setFrameX(0);
 				if (_isLeft != -1)
 				{
@@ -193,7 +221,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 				{
 					IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃ")->setFrameX(IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃ")->getMaxFrameX());
 				}
-				return UnitState::JUMPATTACK; 
+				return UnitState::JUMPATTACK;
 			}
 			else if (_isLook == 1)
 			{
@@ -208,9 +236,11 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 				return UnitState::UPATTACK;
 			}
 			else if (_isLook == -1)
-			{ return UnitState::DOWNATTACK; }
+			{
+				return UnitState::DOWNATTACK;
+			}
 			else
-			{ 
+			{
 				_isAttack = false;
 				if (_isLeft != -1)
 				{
@@ -237,14 +267,14 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 		IMAGEMANAGER->findImage("²¿±ò½½¶óÀÌµå")->setFrameX(0);
 		return UnitState::SLIDE;
 	}
-	
+
 	if (_state == UnitState::RUN && _isMove == 0 && updateSide != 0)
 	{
 		return UnitState::RUN;
 	}
 	else if (_state < UnitState::JUMP && _isMove == 0)
 	{
-		_oldState = _state; 
+		_oldState = _state;
 		smash.clear();
 		return UnitState::IDLE_0;
 	}
@@ -254,17 +284,21 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 void PlayerCharacter::_inputUpdate()
 {
 	if (_state == UnitState::JUMP || _state == UnitState::JUMPATTACK || _state == UnitState::JUMPATTACK_DOUBLE)
-	{ _updataJump(); }
-	if ( _state >= UnitState::JUMPATTACK)
-	{ _updateAttack(); }
-	else 
+	{
+		_updataJump();
+	}
+	if (_state >= UnitState::JUMPATTACK)
+	{
+		_updateAttack();
+	}
+	else
 	{
 		switch (_state)
 		{
-			case UnitState::IDLE_0: 
-				break;
-			case UnitState::SLIDE:
-				_updateSlide(); break;
+		case UnitState::IDLE_0:
+			break;
+		case UnitState::SLIDE:
+			_updateSlide(); break;
 		}
 	}
 }
@@ -292,7 +326,9 @@ void PlayerCharacter::_updateFloor()
 	if (!(IntersectRect(&tamp[0], &tamp[1], &stateFloor)))
 	{
 		if (_state < UnitState::JUMPATTACK)
-		{ _state = UnitState::JUMP; }
+		{
+			_state = UnitState::JUMP;
+		}
 	}
 }
 
@@ -305,7 +341,7 @@ int PlayerCharacter::_updateSide()
 		{
 			tamp[1] = { _Collider[BaseEnum::UNIT].left - GAMESPEED, _Collider[BaseEnum::UNIT].top - GAMESPEED,
 							_Collider[BaseEnum::UNIT].left, _Collider[BaseEnum::UNIT].bottom - GAMESPEED };
-			
+
 			if (IntersectRect(&tamp[0], &tamp[1], floor[i]))
 			{
 				_Collider[BaseEnum::UNIT].right += floor[i]->right - _Collider[BaseEnum::UNIT].left;
@@ -314,7 +350,7 @@ int PlayerCharacter::_updateSide()
 			}
 
 			tamp[1] = { _Collider[BaseEnum::UNIT].right, _Collider[BaseEnum::UNIT].top - GAMESPEED,
-							_Collider[BaseEnum::UNIT].right+GAMESPEED, _Collider[BaseEnum::UNIT].bottom - GAMESPEED };
+							_Collider[BaseEnum::UNIT].right + GAMESPEED, _Collider[BaseEnum::UNIT].bottom - GAMESPEED };
 			if (IntersectRect(&tamp[0], &tamp[1], floor[i]))
 			{
 				_Collider[BaseEnum::UNIT].left -= _Collider[BaseEnum::UNIT].right - floor[i]->left;
@@ -336,7 +372,7 @@ void PlayerCharacter::_updateSlide()
 	{
 		_oldState = _state;
 		_state = UnitState::UNITNULL;
-	} 
+	}
 }
 
 void PlayerCharacter::_updateMove()
@@ -346,7 +382,7 @@ void PlayerCharacter::_updateMove()
 }
 
 void PlayerCharacter::_updataJump()
-{ 
+{
 	_jump["Weight"] += -1 * 0.3f;
 	_Collider[BaseEnum::UNIT].top += -1 * _jump["Weight"];
 	_Collider[BaseEnum::UNIT].bottom += -1 * _jump["Weight"];
@@ -356,7 +392,7 @@ void PlayerCharacter::_updataJump()
 	for (int i = 0; i < floor.size(); i++)
 	{
 		if (IntersectRect(&tamp, &_Collider[BaseEnum::UNIT], floor[i]))
-		{			
+		{
 			if (_state == UnitState::JUMPATTACK || _state == UnitState::JUMPATTACK_DOUBLE)
 			{
 				_effect = nullptr;
@@ -368,7 +404,7 @@ void PlayerCharacter::_updataJump()
 
 			for (auto iter = _jump.begin(); iter != _jump.end(); ++iter)
 			{
-				iter->second = 0; 
+				iter->second = 0;
 			}
 		}
 	}
@@ -376,11 +412,11 @@ void PlayerCharacter::_updataJump()
 
 void PlayerCharacter::_smashRender()
 {
-	for(int i =0; i < smash.size(); i++)
-	{ 
-		
-	
-	
+	for (int i = 0; i < smash.size(); i++)
+	{
+
+
+
 	}
 }
 
@@ -388,24 +424,28 @@ void PlayerCharacter::_updateAttack()
 {
 	POINT mid;
 
-	if (_isAttack == true) 
-	{ 
-		return; 
+	if (_isAttack == true)
+	{
+		return;
 	}
 
-	if(_isLook != 1)
-	{ 
+	if (_isLook != 1)
+	{
 		smash.clear();
-		mid = {0, _Collider[BaseEnum::UNIT].top + ((_Collider[BaseEnum::UNIT].bottom - _Collider[BaseEnum::UNIT].top) / 2) };
+		mid = { 0, _Collider[BaseEnum::UNIT].top + ((_Collider[BaseEnum::UNIT].bottom - _Collider[BaseEnum::UNIT].top) / 2) };
 		if (_isLeft != 1)
-		{ mid.x = _Collider[BaseEnum::UNIT].left; }
+		{
+			mid.x = _Collider[BaseEnum::UNIT].left;
+		}
 		else
-		{ mid.x = _Collider[BaseEnum::UNIT].right; }
+		{
+			mid.x = _Collider[BaseEnum::UNIT].right;
+		}
 
 		if (_isLook != -1)
 		{
 			smash.push_back
-			(pair<RECT, Image>{ RectMakeCenter(mid.x, _Collider[BaseEnum::UNIT].top - 20, 10, 10) , Image() });
+			(pair<RECT, Image>{ RectMakeCenter(mid.x, _Collider[BaseEnum::UNIT].top - 20, 10, 10), Image() });
 			smash.push_back
 			(pair<RECT, Image>{  RectMakeCenter(mid.x + (_isLeft * 50), _Collider[BaseEnum::UNIT].top, 10, 10), Image() });
 		}
@@ -416,13 +456,13 @@ void PlayerCharacter::_updateAttack()
 	}
 	else
 	{
-		mid = { _Collider[BaseEnum::UNIT].left+ ((_Collider[BaseEnum::UNIT].right - _Collider[BaseEnum::UNIT].left) / 2)  , _Collider[BaseEnum::UNIT].top  };
+		mid = { _Collider[BaseEnum::UNIT].left + ((_Collider[BaseEnum::UNIT].right - _Collider[BaseEnum::UNIT].left) / 2)  , _Collider[BaseEnum::UNIT].top };
 		smash.push_back // ÁÂ  
 		(pair<RECT, Image>{ RectMakeCenter(mid.x - 40, mid.y - 50, 10, 10), Image() });
 		smash.push_back // Áß¾Ó 
-		(pair<RECT, Image>{ RectMakeCenter(mid.x, mid.y -75, 10, 10), Image() });
+		(pair<RECT, Image>{ RectMakeCenter(mid.x, mid.y - 75, 10, 10), Image() });
 		smash.push_back // ¿ì
-		(pair<RECT, Image>{ RectMakeCenter(mid.x +40, mid.y -50, 10, 10), Image() });
+		(pair<RECT, Image>{ RectMakeCenter(mid.x + 40, mid.y - 50, 10, 10), Image() });
 	}
 }
 
@@ -437,9 +477,9 @@ bool PlayerCharacter::_updateHit()
 		_jump["Weight"] = 2;
 		_state = UnitState::JUMP;
 	}
-	
-	_Collider[BaseEnum::UNIT].left -= _isLeft * GAMESPEED/2;
-	_Collider[BaseEnum::UNIT].right -= _isLeft * GAMESPEED/2;
+
+	_Collider[BaseEnum::UNIT].left -= _isLeft * GAMESPEED / 2;
+	_Collider[BaseEnum::UNIT].right -= _isLeft * GAMESPEED / 2;
 
 	if (a >= 30)
 	{
@@ -448,7 +488,7 @@ bool PlayerCharacter::_updateHit()
 		a = 0;
 		return true;
 	}
-	a ++;
+	a++;
 }
 
 void PlayerCharacter::_inputAnimation()
@@ -456,7 +496,7 @@ void PlayerCharacter::_inputAnimation()
 	if (_state == UnitState::SLIDE)
 	{
 		_image = IMAGEMANAGER->findImage("²¿±ò½½¶óÀÌµå");
-		_image->setY(_Collider[BaseEnum::UNIT].top-9);
+		_image->setY(_Collider[BaseEnum::UNIT].top - 9);
 
 		if (_isLeft != -1)
 		{
@@ -488,12 +528,12 @@ void PlayerCharacter::_inputAnimation()
 		if (_isLeft != -1)
 		{
 			_image->setFrameY(0);
-			_image->setX(_Collider[BaseEnum::UNIT].left-15);
+			_image->setX(_Collider[BaseEnum::UNIT].left - 15);
 		}
 		else
 		{
 			_image->setFrameY(1);
-			_image->setX(_Collider[BaseEnum::UNIT].left-75);
+			_image->setX(_Collider[BaseEnum::UNIT].left - 75);
 		}
 
 		if (0.02f + _Fram >= TIMEMANAGER->getWorldTime()) { return; }
@@ -502,7 +542,7 @@ void PlayerCharacter::_inputAnimation()
 		if (_isLeft != -1)
 		{
 			if (_image->getFrameX() < _image->getMaxFrameX())
-			{ 
+			{
 				_image->setFrameX(_image->getFrameX() + 1);
 			}
 			else
@@ -694,7 +734,7 @@ void PlayerCharacter::_inputAnimation()
 			if (_image->getFrameX() < 4)
 			{
 				_image->setFrameX(_image->getFrameX() + 1);
-				
+
 				if (_image->getFrameX() == 0 || _image->getFrameX() == 2)
 				{
 					_effect->setFrameX(_effect->getFrameX() + 1);
@@ -807,20 +847,26 @@ void PlayerCharacter::_inputAnimation()
 		_image->setY(_Collider[BaseEnum::UNIT].top - 14);
 
 		if (0.1f + _Fram >= TIMEMANAGER->getWorldTime()) { return; }
-		_Fram = TIMEMANAGER->getWorldTime();		
+		_Fram = TIMEMANAGER->getWorldTime();
 
 		if (_image->getFrameX() <= _image->getMaxFrameX())
-		{ _image->setFrameX(_image->getFrameX() + 1); }
+		{
+			_image->setFrameX(_image->getFrameX() + 1);
+		}
 
 		return;
 	}
 	else if (_state == UnitState::RUN)
-	{ 
+	{
 		_image = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
 		if (_isLeft != -1)
-		{ _image->setX(_Collider[BaseEnum::UNIT].left - 10); }
+		{
+			_image->setX(_Collider[BaseEnum::UNIT].left - 10);
+		}
 		else
-		{ _image->setX(_Collider[BaseEnum::UNIT].left+5); }
+		{
+			_image->setX(_Collider[BaseEnum::UNIT].left + 5);
+		}
 		_image->setY(_Collider[BaseEnum::UNIT].top - 14);
 
 		if (0.09f + _Fram >= TIMEMANAGER->getWorldTime()) { return; }
@@ -841,16 +887,25 @@ void PlayerCharacter::_inputAnimation()
 	if (_image != nullptr)
 	{
 		if (_image->getFrameX() >= _image->getMaxFrameX())
-		{ _image->setFrameX(0); }
+		{
+			_image->setFrameX(0);
+		}
 		else
-		{ _image->setFrameX(_image->getFrameX() + 1); }
+		{
+			_image->setFrameX(_image->getFrameX() + 1);
+		}
 
 		if (_isLeft != -1)
-		{ _image->setFrameY(0); }
+		{
+			_image->setFrameY(0);
+		}
 		else
-		{ _image->setFrameY(1); }
+		{
+			_image->setFrameY(1);
+		}
 	}
 }
+
 
 
 

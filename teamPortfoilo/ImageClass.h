@@ -1,6 +1,5 @@
 #pragma once
 
-
 class ImageClass
 {
 public:
@@ -9,6 +8,4 @@ public:
 
 	ImageClass();
 	virtual ~ImageClass();
-
-
 };

@@ -68,6 +68,7 @@ void BossWarden::update(void)
 	_inputAnimation();
 	_pattenFunc[(int)_state]();
 	_inputEffect();
+
 }
 
 void BossWarden::render(void)
@@ -108,7 +109,6 @@ void BossWarden::_updateFloor()
 			break;
 		}
 	}
-
 
 	tamp[1].bottom += GAMESPEED;
 	if (!(IntersectRect(&tamp[0], &tamp[1], &stateFloor)))
@@ -356,7 +356,6 @@ void BossWarden::_updateJump()
 		return; 
 	}
 
-	cout << _Collider[BaseEnum::UNIT].left << endl;
 	if (_isLeft == -1 && _Collider[BaseEnum::UNIT].left >= GAMESPEED)
 	{
 		_Collider[BaseEnum::UNIT].left += _isLeft * GAMESPEED;
