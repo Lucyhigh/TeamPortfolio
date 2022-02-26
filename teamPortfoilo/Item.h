@@ -1,6 +1,6 @@
 #pragma once
 
-enum Category
+enum class Category
 {
 	// 인벤토리 순서
 	NONE, ROSARY, RELIC, QUEST, MEACULPA, BIBLE, SKILL, COLLECTION
@@ -17,6 +17,7 @@ public:
 	string name;
 	string script;
 	int imageNum;
+
 
 	void setItemData();
 

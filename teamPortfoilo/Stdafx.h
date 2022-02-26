@@ -60,6 +60,8 @@ using namespace std;
 #include "Camera.h"
 using namespace MY_UTIL;
 
+#include "Text.h"
+
 
 //========================
 // # 싱글톤을 이곳에 추가 #

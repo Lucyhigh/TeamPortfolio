@@ -4,6 +4,7 @@
 //UI
 #include "ImageClass.h"
 #include "TitleScene.h"
+#include "SaveScene.h"
 #include "OptionScene.h"
 //Stage
 #include "StartScene.h"
@@ -42,6 +43,7 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 
 	// UI : title, system(), inventory(skill, item, equip ...) 
 	SCENEMANAGER->addScene("Title", new TitleScene);
+	SCENEMANAGER->addScene("Save", new SaveScene);
 	SCENEMANAGER->addScene("Option", new OptionScene);
 
 	// Stage1
