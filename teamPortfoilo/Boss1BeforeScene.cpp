@@ -113,7 +113,7 @@ void Boss1BeforeScene::render(void)
     IMAGEMANAGER->frameRender("stand", getMemDC(), objectPosX, objectPosY);
     if (getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
     {
-        IMAGEMANAGER->render("버튼", getMemDC(), objectPosCenterX, objectPosY - 30);
+        IMAGEMANAGER->render("버튼", getMemDC(), objectPosCenterX-40, objectPosY - 30);
         if (KEYMANAGER->isToggleKey('E'))
         {
             if (_ptMouse.x > CENTER_X - 300 && _ptMouse.y > CENTER_Y)
@@ -129,6 +129,6 @@ void Boss1BeforeScene::render(void)
         {
         }
     }
-    IMAGEMANAGER->render("보스1전FrontDoor", getMemDC());
+    IMAGEMANAGER->render("보스1전FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
     _camera->render();
 }
