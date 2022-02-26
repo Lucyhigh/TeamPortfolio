@@ -66,8 +66,11 @@ class BaseData
 			RECT getCollider();
 			// 충돌체(위치) 정보 변경
 			void setCollider(RECT rect);
-	
-			// 현재 밟고 있는 발판
+	        // 충돌체 넓이
+            int getWidth();
+	        // 충돌체 높이
+            int getHeight();
+            // 현재 밟고 있는 발판
 			RECT getStateFloor();
 
 			void setAttack(bool attack);

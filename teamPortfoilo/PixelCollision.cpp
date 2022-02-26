@@ -3,7 +3,7 @@
 
 HRESULT PixelCollision::init(void)
 {
-    _bgImage = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ");
+
     _image = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ");
 
     floor0 = new RECT{ 0, 600, _bgImage->getWidth(),670 };
@@ -12,8 +12,8 @@ HRESULT PixelCollision::init(void)
     _x = CENTER_X + 250;
     _y = CENTER_Y + 100;
     GAMEMANAGER->getPlayer()->ObjectInit({ _x, _y}, _floor);
-    _rc = RectMakeCenter(_x, _y, GAMEMANAGER->getPlayer()->getWidth(), GAMEMANAGER->getPlayer()->getHeight());
-    _probeY = _y + _image->getHeight() / 2;
+    _rc = RectMakeCenter(_x, _y, GAMEMANAGER->getPlayer()->getWidth(), GAMEMANAGER->getPlayer()->getHeight());//
+    _probeY = _y + GAMEMANAGER->getPlayer()->getHeight() / 2;
 
     return S_OK;
 }
@@ -45,7 +45,8 @@ void PixelCollision::update(void)
             break;
         }
     }
-    _rc = RectMakeCenter(_x, _y, _image->getWidth(), _image->getHeight());
+   // GAMEMANAGER->getPlayer()->setCameraRect(_camera->getScreenRect());
+    _rc = RectMakeCenter(_x, _y, GAMEMANAGER->getPlayer()->getWidth(), GAMEMANAGER->getPlayer()->getHeight());//
 }
 
 void PixelCollision::render(void)

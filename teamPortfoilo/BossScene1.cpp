@@ -4,7 +4,7 @@
 HRESULT BossScene1::init(void)
 {
 	_collider = new ColliderManager();
-    _image = IMAGEMANAGER->findImage("보스1배경");
+    _image = IMAGEMANAGER->findImage("보스1 바닥");
 
 	floor0 = new RECT { 0, 600, _image->getWidth(),670};
 	floor1 = new RECT{ _image->getWidth(), 0, _image->getWidth()+100, 1000 };
@@ -66,7 +66,7 @@ void BossScene1::update(void)
 
 void BossScene1::render(void)
 {
-    IMAGEMANAGER->render("보스1배경", getMemDC(), 0, 0,
+    IMAGEMANAGER->render("보스1 바닥", getMemDC(), 0, 0,
                          _camera->getScreenRect().left, _camera->getScreenRect().top,
                          _camera->getScreenRect().right, _camera->getScreenRect().bottom);
    
@@ -77,8 +77,10 @@ void BossScene1::render(void)
 
 	for (int i = 0; i < _floor.size(); i++)
 	{
-		Rectangle(getMemDC(),_floor[i]->left -_camera->getScreenRect().left, _floor[i]->top -_camera->getScreenRect().top,
-            _floor[i]->right-_camera->getScreenRect().left, _floor[i]->bottom - _camera->getScreenRect().top);
+		Rectangle(getMemDC(),_floor[i]->left -_camera->getScreenRect().left, 
+                             _floor[i]->top -_camera->getScreenRect().top,
+                             _floor[i]->right-_camera->getScreenRect().left,
+                             _floor[i]->bottom - _camera->getScreenRect().top);
 	}
 
 	GAMEMANAGER->getPlayer()->ObjectRender();

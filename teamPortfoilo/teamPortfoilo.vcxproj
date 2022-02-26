@@ -169,6 +169,8 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="OptionScene.h" />
+    <ClInclude Include="PixelCollision.h" />
+    <ClInclude Include="PixelScene.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="RandomFunction.h" />
@@ -213,6 +215,8 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="OptionScene.cpp" />
+    <ClCompile Include="PixelCollision.cpp" />
+    <ClCompile Include="PixelScene.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="RockThrowMonster.cpp" />
