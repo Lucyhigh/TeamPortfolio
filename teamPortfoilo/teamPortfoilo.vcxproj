@@ -104,6 +104,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -149,6 +151,10 @@
     <ClInclude Include="AniScene.h" />
     <ClInclude Include="AniTextScene.h" />
     <ClInclude Include="Boss1BeforeScene.h" />
+    <ClInclude Include="Boss3Bullet.h" />
+    <ClInclude Include="Boss3Pattern.h" />
+    <ClInclude Include="Boss3Scene.h" />
+    <ClInclude Include="BossLady.h" />
     <ClInclude Include="BossScene1.h" />
     <ClInclude Include="BossScene2.h" />
     <ClInclude Include="BossWarden.h" />
@@ -196,6 +202,10 @@
     <ClCompile Include="AniScene.cpp" />
     <ClCompile Include="AniTextScene.cpp" />
     <ClCompile Include="Boss1BeforeScene.cpp" />
+    <ClCompile Include="Boss3Bullet.cpp" />
+    <ClCompile Include="Boss3Pattern.cpp" />
+    <ClCompile Include="Boss3Scene.cpp" />
+    <ClCompile Include="BossLady.cpp" />
     <ClCompile Include="BossScene1.cpp" />
     <ClCompile Include="BossScene2.cpp" />
     <ClCompile Include="BossWarden.cpp" />
@@ -224,6 +234,7 @@
     <ClCompile Include="StartSecen.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="TempSoundManager.cpp" />

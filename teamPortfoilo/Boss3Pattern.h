@@ -3,4 +3,3 @@ class Boss3Pattern
 {
 	
 };
-
