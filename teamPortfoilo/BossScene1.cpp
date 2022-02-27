@@ -68,7 +68,7 @@ void BossScene1::render(void)
 {
     IMAGEMANAGER->render("º¸½º1 ¹Ù´Ú", getMemDC(), 0, 0,
                          _camera->getScreenRect().left, _camera->getScreenRect().top,
-                         _camera->getScreenRect().right, _camera->getScreenRect().bottom);
+						 WINSIZE_X, WINSIZE_Y);
    
 	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
 	{ 

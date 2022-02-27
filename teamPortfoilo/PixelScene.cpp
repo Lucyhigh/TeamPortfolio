@@ -3,8 +3,8 @@
 
 HRESULT PixelScene::init(void)
 {
-    _image = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ");
-    IMAGEMANAGER->findImage("¿ïÅüºÒÅü")->render(getMemDC());
+    //_image = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ");
+	IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ÇÈ¼¿");
     _pixel = new PixelCollision;
     _pixel->init();
     return S_OK;
@@ -22,7 +22,7 @@ void PixelScene::update(void)
 
 void PixelScene::render(void)
 {
-    IMAGEMANAGER->findImage("¿ïÅüºÒÅü")->render(getMemDC());
-    IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ")->render(getMemDC());
+    IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ÇÈ¼¿")->render(getMemDC());
+   // IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ")->render(getMemDC());
     _pixel->render();
 }

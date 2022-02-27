@@ -95,7 +95,7 @@ void Boss1BeforeScene::render(void)
 {
     IMAGEMANAGER->render("보스1전배경", getMemDC(), 0, 0,
                                        _camera->getScreenRect().left, _camera->getScreenRect().top,
-                                       _camera->getScreenRect().right, _camera->getScreenRect().bottom);
+									   WINSIZE_X, WINSIZE_Y);
 
     for (int i = 0; i < _floor.size(); i++)
     {
