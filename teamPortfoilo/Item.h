@@ -6,22 +6,53 @@ enum class Category
 	NONE, ROSARY, RELIC, QUEST, MEACULPA, BIBLE, SKILL, COLLECTION
 };
 
+enum class ItemState
+{
+	NONE, HAVE, SELECT, MEACULPANONE
+};
+
+/*
+struct tagItemInfo
+{
+	int index; // 아이템 순번. 나중에 조건문에 넣을 대상
+	int imageNum; // Y 프레임
+	Category type;
+	ItemState state; // 기본 NONE
+	float posX; // 슬롯 위치 - 반복문으로 인벤토리에 자리잡기 -> 스위치문으로 카테고리에 따라 자리 바꾸기
+	float posY;
+	string name;	// 파일입출력
+	string script;  // 파일입출력
+	bool equip; // true면 각 카테고리의 장비 위치에도 이미지 노출 , 스킬이면 해금
+};
+*/
+
 class Item
 {
+private: 
+	int _index; // 아이템 순번. 나중에 조건문에 넣을 대상 
+	Category _category; // Y 프레임 
+	ItemState _state; // 기본 NONE
+	float _posX; // 슬롯 위치 - 반복문으로 인벤토리에 자리잡기 -> 스위치문으로 카테고리에 따라 자리 바꾸기 
+	float _posY;
+	//	int _frameXNum; // 이미지 시트에서 이미지 위치 
+	//	int _frameYNum;
+	string _name;	// 파일입출력 
+	string _script;  // 파일입출력 
+	bool _equip; // true면 각 카테고리의 장비 위치에도 이미지 노출 , 스킬이면 해금 
+	int _hp; // 장착여부에 따라 스탯 조정
+	int _mp;
+	int _att;
+	int _dff;
+
 public:
 	Item() {}
 	~Item() {}
 
-	int index;
-	Category type;
-	string name;
-	string script;
-	int imageNum;
-
-
-	void setItemData();
+	void setItemData(int index,	Category category, ItemState state,	float posX, float posY,
+	string name,string script,bool equip,int hp, int mp, int att, int dff );
 
 };
+
 /*
 X 최대 17
 --아이템 슬롯 Y1 

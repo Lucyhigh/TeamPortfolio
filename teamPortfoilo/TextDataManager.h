@@ -23,6 +23,9 @@ public:
     char* vectorArrayCombine(vector<string> vArray);
     vector<string> load(const char* fileName);
     vector<string> charArraySeparation(char charArray[]);
+	// csv ÆÄÀÏ¿ë
+	vector<string> loadFstream(const char* fileName);
+
 public:
     TextDataManager() {}
     ~TextDataManager() {}
