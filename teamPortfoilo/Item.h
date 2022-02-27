@@ -4,7 +4,14 @@
 enum class Category
 {
 	// 인벤토리 순서
-	NONE, ROSARY, RELIC, QUEST, MEACULPA, BIBLE, SKILL, COLLECTION
+	NONE, 
+	ROSARY, 
+	RELIC, 
+	QUEST, 
+	MEACULPA, 
+	BIBLE, 
+	
+	SKILL, COLLECTION
 };
 
 enum class ItemState
@@ -31,6 +38,8 @@ struct tagItemInfo
 class Item : public GameNode
 {
 public:
+	Image* _img; // 이미지 파일에서 클리핑 할 것. 
+
 	int _index; // 아이템 순번. 나중에 조건문에 넣을 대상 
 	Category _category; // Y 프레임 
 	ItemState _state; // 기본 NONE
@@ -55,6 +64,9 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+
+	void draw(void);
+	void animation(void);
 
 	void setItemData(int index,	Category category, ItemState state,	float posX, float posY,
 	string name,string script,bool equip,int hp, int mp, int att, int dff );

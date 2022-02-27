@@ -20,13 +20,15 @@ void Inventory::release(void)
 
 void Inventory::update(void)
 {
-	if (KEYMANAGER->isOnceKeyDown('Q') && _categoryIndex >= 2)
+	if (KEYMANAGER->isOnceKeyDown('Q'))
 	{
-		_categoryIndex--;
+		_categoryIndex--; 
+		if (_categoryIndex <= 1) _categoryIndex = 1;
 	}
-	if (KEYMANAGER->isOnceKeyDown('E') && _categoryIndex <= 7)
+	if (KEYMANAGER->isOnceKeyDown('E'))
 	{
 		_categoryIndex++;
+		if (_categoryIndex >= 7) _categoryIndex = 7;
 	}
 
 

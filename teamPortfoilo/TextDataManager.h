@@ -11,8 +11,8 @@ FILE* file;
 
 시간없어서 텍스트만 할거임
 */
-#define SAVE_BUFFER 128
-#define LOAD_BUFFER 128
+#define SAVE_BUFFER 1280
+#define LOAD_BUFFER 1280
 class TextDataManager : public SingletonBase<TextDataManager>
 {
 public:

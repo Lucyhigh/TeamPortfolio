@@ -4,15 +4,15 @@
 HRESULT ItemManager::init(void)
 {
 
-	/*	*/
+
 	vector<string> vData = TEXTDATAMANAGER->load("Resources/Item.txt");
 
-	for (int i = 0; i < vData.size(); i++)
+	for (int i = 0; i < vData.size(); i += 10)
 	{
 		Item* ItemData = new Item;
 		ItemData->_index = atoi(vData[i].c_str());
 		ItemData->_category = static_cast<Category>(atoi(vData[i + 1].c_str()));
-		ItemData->_state = ItemState::NONE;
+		ItemData->_state = static_cast<ItemState>(atoi(vData[i + 2].c_str()));
 		ItemData->_posX = 0;
 		ItemData->_posY = 0;
 		//	ItemData->_frameXNum; // 이미지 시트에서 이미지 위치 
