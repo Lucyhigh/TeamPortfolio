@@ -10,6 +10,8 @@ HRESULT StartScene::init(void)
 	_ui = new UIScene;
 	_ui->init();
 
+
+
 	return S_OK;
 }
 

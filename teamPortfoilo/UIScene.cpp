@@ -34,6 +34,12 @@ HRESULT UIScene::init(void)
 	}
 #pragma endregion 
 
+
+	//--------------------인벤토리 테스트
+
+	_inven = new Inventory();
+	_inven->init();
+
 	return S_OK;
 }
 
@@ -49,6 +55,9 @@ void UIScene::release(void)
 		SAFE_DELETE(_rviPotion->off);
 	}
 	_vPotion.clear();
+
+	_inven->release();
+	SAFE_DELETE(_inven);
 }
 
 void UIScene::update(void)
@@ -69,6 +78,11 @@ void UIScene::update(void)
 	}
 
 	_hpBar->update();
+
+	_inven->update();
+	if (KEYMANAGER->isOnceKeyDown('I')) _openInventory = true;
+	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _openInventory = false;
+
 }
 
 void UIScene::render(void)
@@ -79,6 +93,11 @@ void UIScene::render(void)
 
 	// 추후 인벤토리등에서 정렬이 이상할때 확인
 	//SetTextAlign(getMemDC(), TA_LEFT);
+
+	if (_openInventory)
+	{
+		_inven->render();
+	}
 
 }
 

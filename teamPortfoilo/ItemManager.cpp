@@ -4,7 +4,8 @@
 HRESULT ItemManager::init(void)
 {
 
-	vector<string> vData = TEXTDATAMANAGER->loadFstream("Resources/Item.csv");
+	/*	*/
+	vector<string> vData = TEXTDATAMANAGER->load("Resources/Item.txt");
 
 	for (int i = 0; i < vData.size(); i++)
 	{

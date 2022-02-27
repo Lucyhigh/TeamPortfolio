@@ -110,6 +110,15 @@
     <ClCompile Include="Item.cpp">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClCompile>
+    <ClCompile Include="ItemManager.cpp">
+      <Filter>Blasphemous\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveScene.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -226,6 +235,15 @@
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemManager.h">
+      <Filter>Blasphemous\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveScene.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

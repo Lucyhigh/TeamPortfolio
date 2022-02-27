@@ -1,4 +1,5 @@
 #pragma once
+#include "GameNode.h"
 
 enum class Category
 {
@@ -8,6 +9,7 @@ enum class Category
 
 enum class ItemState
 {
+	// 미습득, 습득, 선택, 메아쿨파 미선택
 	NONE, HAVE, SELECT, MEACULPANONE
 };
 
@@ -26,9 +28,9 @@ struct tagItemInfo
 };
 */
 
-class Item
+class Item : public GameNode
 {
-private: 
+public:
 	int _index; // 아이템 순번. 나중에 조건문에 넣을 대상 
 	Category _category; // Y 프레임 
 	ItemState _state; // 기본 NONE
@@ -44,12 +46,25 @@ private:
 	int _att;
 	int _dff;
 
+	
 public:
 	Item() {}
 	~Item() {}
 
+	HRESULT init(void);
+	void release(void);
+	void update(void);
+	void render(void);
+
 	void setItemData(int index,	Category category, ItemState state,	float posX, float posY,
 	string name,string script,bool equip,int hp, int mp, int att, int dff );
+
+	// 아이템 습득상태 변경
+
+	// 아이템 선택여부 변경
+
+	// 
+
 
 };
 

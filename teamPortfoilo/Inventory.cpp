@@ -24,7 +24,7 @@ void Inventory::update(void)
 	{
 		_categoryIndex--;
 	}
-	if (KEYMANAGER->isOnceKeyDown('Q') && _categoryIndex <= 7)
+	if (KEYMANAGER->isOnceKeyDown('E') && _categoryIndex <= 7)
 	{
 		_categoryIndex++;
 	}
