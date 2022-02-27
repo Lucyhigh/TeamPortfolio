@@ -70,9 +70,9 @@ void Boss1BeforeScene::update(void)
         }
     }
 
-    cout << GAMEMANAGER->getPlayer()->getPoint().x <<" 거리 :"<<
+   /* cout << GAMEMANAGER->getPlayer()->getPoint().x <<" 거리 :"<<
         getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y)
-        <<" indexA: "<< _indexA << endl;
+        <<" indexA: "<< _indexA << endl;*/
 
     if (_indexA >= 1)
     {

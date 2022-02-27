@@ -175,7 +175,7 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("보스1전배경", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);//
 	IMAGEMANAGER->addImage("보스1전FrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);//
 
-	IMAGEMANAGER->addImage("보스1 바닥", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675, MGT);//
+	IMAGEMANAGER->addImage("보스1 바닥", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675, MGT);// TODO
 	IMAGEMANAGER->addImage("보스1 뒷배경", "Resources/Images/BackGround/boss1LastBG.bmp", 2460, 675);//
 	IMAGEMANAGER->addImage("보스1 뒷시체", "Resources/Images/BackGround/boss1bodysBG.bmp", 2460, 675,MGT);//
 	IMAGEMANAGER->addImage("보스1 앞시체", "Resources/Images/BackGround/boss1FrontBody.bmp", 2460, 675,MGT);//

@@ -41,7 +41,7 @@
             return  _Collider[BaseEnum::UNIT].right - _Collider[BaseEnum::UNIT].left;
         }
         //충돌체 높이
-        int BaseData::getWidth()
+        int BaseData::getHeight()
         {
             return  _Collider[BaseEnum::UNIT].top - _Collider[BaseEnum::UNIT].bottom;
         }

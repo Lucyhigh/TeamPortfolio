@@ -7,6 +7,7 @@
 #include "OptionScene.h"
 //Stage
 #include "StartScene.h"
+#include "PixelScene.h"//
 #include "Boss1BeforeScene.h"
 #include "BossScene1.h"
 #include "BossScene2.h"
@@ -35,6 +36,7 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 
 	// Stage1
 	SCENEMANAGER->addScene("Start", new StartScene);
+	SCENEMANAGER->addScene("Pixel", new PixelScene);
 	SCENEMANAGER->addScene("BeforeBoss1", new Boss1BeforeScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
 	
