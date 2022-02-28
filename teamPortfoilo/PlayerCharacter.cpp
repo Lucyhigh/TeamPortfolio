@@ -1,6 +1,5 @@
 #include "Stdafx.h"
 #include "Animation.h"
-
 PlayerCharacter::UnitState PlayerCharacter::getState()
 {
 	return _state;

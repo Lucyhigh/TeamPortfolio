@@ -98,7 +98,6 @@ void RockThrowMonster::_inputPatten()
 	if (abs(MONSTER_CENTER - PLAYER_CENTER) < 500)
 	{
 		_state = UnitState::THROW;
-		
 	}
 	else
 	{
@@ -122,6 +121,5 @@ void RockThrowMonster::_updateThrow()
 	if (_state == UnitState::THROW && !_throw)
 	{
 		_throw = true;
-
 	}
 }

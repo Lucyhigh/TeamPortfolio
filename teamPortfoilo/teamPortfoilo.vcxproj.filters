@@ -130,18 +130,6 @@
     <ClCompile Include="PixelScene.cpp">
       <Filter>Blasphemous\GameScene\Pixel</Filter>
     </ClCompile>
-    <ClCompile Include="Boss3Pattern.cpp">
-      <Filter>Blasphemous\GameScene\Stage3</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss3Bullet.cpp">
-      <Filter>Blasphemous\GameScene\Stage3</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss3Scene.cpp">
-      <Filter>Blasphemous\GameScene\Stage3</Filter>
-    </ClCompile>
-    <ClCompile Include="BossLady.cpp">
-      <Filter>Blasphemous\Characters\Boss</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BossScene1.h">
@@ -279,18 +267,6 @@
     <ClInclude Include="PixelScene.h">
       <Filter>Blasphemous\GameScene\Pixel</Filter>
     </ClInclude>
-    <ClInclude Include="Boss3Pattern.h">
-      <Filter>Blasphemous\GameScene\Stage3</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss3Bullet.h">
-      <Filter>Blasphemous\GameScene\Stage3</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss3Scene.h">
-      <Filter>Blasphemous\GameScene\Stage3</Filter>
-    </ClInclude>
-    <ClInclude Include="BossLady.h">
-      <Filter>Blasphemous\Characters\Boss</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Blasphemous">
@@ -358,9 +334,6 @@
     </Filter>
     <Filter Include="Blasphemous\GameScene\Pixel">
       <UniqueIdentifier>{f07753e1-d4ea-43cc-8ca5-86b0c1a2a59d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blasphemous\GameScene\Stage3">
-      <UniqueIdentifier>{0f68901d-7141-4df8-874e-f3657e0057a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

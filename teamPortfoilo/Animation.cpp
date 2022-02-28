@@ -106,7 +106,6 @@ void Animation::setDefPlayFrame(bool reverse, bool loop)
 
 }
 
-
 //원하는 프레임만 재생
 void Animation::setPlayFrame(int* playArr, int arrLen, bool loop)
 {
@@ -132,7 +131,6 @@ void Animation::setPlayFrame(int* playArr, int arrLen, bool loop)
 
 }
 
-
 //구간을 잘라서 재생
 void Animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 {
@@ -156,6 +154,7 @@ void Animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 		}
 	}
 }
+
 // 초당 프레임 갱신 횟수
 void Animation::setFPS(int framePerSec)
 {

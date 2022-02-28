@@ -70,10 +70,6 @@ void Boss1BeforeScene::update(void)
         }
     }
 
-   /* cout << GAMEMANAGER->getPlayer()->getPoint().x <<" °Å¸® :"<<
-        getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y)
-        <<" indexA: "<< _indexA << endl;*/
-
     if (_indexA >= 1)
     {
         _indexA++;
