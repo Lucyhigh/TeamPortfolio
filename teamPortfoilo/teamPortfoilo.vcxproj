@@ -151,10 +151,6 @@
     <ClInclude Include="AniScene.h" />
     <ClInclude Include="AniTextScene.h" />
     <ClInclude Include="Boss1BeforeScene.h" />
-    <ClInclude Include="Boss3Bullet.h" />
-    <ClInclude Include="Boss3Pattern.h" />
-    <ClInclude Include="Boss3Scene.h" />
-    <ClInclude Include="BossLady.h" />
     <ClInclude Include="BossScene1.h" />
     <ClInclude Include="BossScene2.h" />
     <ClInclude Include="BossWarden.h" />
@@ -169,7 +165,9 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageClass.h" />
     <ClInclude Include="ImageManager.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemManager.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="KnifeMonster.h" />
     <ClInclude Include="MainGame.h" />
@@ -181,6 +179,7 @@
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="RandomFunction.h" />
     <ClInclude Include="RockThrowMonster.h" />
+    <ClInclude Include="SaveScene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SingletonBase.h" />
     <ClInclude Include="StartScene.h" />
@@ -202,10 +201,6 @@
     <ClCompile Include="AniScene.cpp" />
     <ClCompile Include="AniTextScene.cpp" />
     <ClCompile Include="Boss1BeforeScene.cpp" />
-    <ClCompile Include="Boss3Bullet.cpp" />
-    <ClCompile Include="Boss3Pattern.cpp" />
-    <ClCompile Include="Boss3Scene.cpp" />
-    <ClCompile Include="BossLady.cpp" />
     <ClCompile Include="BossScene1.cpp" />
     <ClCompile Include="BossScene2.cpp" />
     <ClCompile Include="BossWarden.cpp" />
@@ -219,7 +214,9 @@
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageClass.cpp" />
     <ClCompile Include="ImageManager.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemManager.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="KnifeMonster.cpp" />
     <ClCompile Include="MainGame.cpp" />
@@ -230,6 +227,7 @@
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="RockThrowMonster.cpp" />
+    <ClCompile Include="SaveScene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="StartSecen.cpp" />
     <ClCompile Include="Stdafx.cpp">
