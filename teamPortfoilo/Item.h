@@ -38,7 +38,8 @@ struct tagItemInfo
 class Item : public GameNode
 {
 public:
-	Image* _img; // 이미지 파일에서 클리핑 할 것. 
+	Image* _slotImg; // 이미지 파일에서 클리핑 할 것. 
+	Image* _iconImg;
 
 	int _index; // 아이템 순번. 나중에 조건문에 넣을 대상 
 	Category _category; // Y 프레임 
@@ -52,8 +53,8 @@ public:
 	int _mp;
 	int _att;
 	int _dff;
-	float _slotX; // 슬롯 위치 - 반복문으로 인벤토리에 자리잡기 -> 스위치문으로 카테고리에 따라 자리 바꾸기 
-	float _slotY;
+	int _slotX; // 슬롯 위치 - 반복문으로 인벤토리에 자리잡기 -> 스위치문으로 카테고리에 따라 자리 바꾸기 
+	int _slotY;
 
 public:
 	Item() {}

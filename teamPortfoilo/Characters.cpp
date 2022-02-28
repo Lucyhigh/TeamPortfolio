@@ -1,4 +1,4 @@
-#include "Stdafx.h"
+ #include "Stdafx.h"
 #include "Characters.h"
 
 #pragma region  BaseData Class

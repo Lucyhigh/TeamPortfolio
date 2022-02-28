@@ -3,13 +3,7 @@
 
 HRESULT Item::init(void)
 {
-	IMAGEMANAGER->addFrameImage("items", "Resources/Images/item/items.bmp", 510 * 1.9, 510 * 1.9, 17, 17, MGT); // 510,510->969,969
-	IMAGEMANAGER->addImage("item", "Resources/Images/item/items.bmp", 510 * 1.9, 510 * 1.9, MGT); // 510,510->969,969
 
-
-
-	//_img = IMAGEMANAGER->findImage("items");
-	//_test = IMAGEMANAGER->findImage("item");
 	return S_OK;
 }
 
@@ -36,14 +30,46 @@ void Item::draw(void)
 		// 테스트 용 그리기 
 
 		cout << "-----------" << endl;
-		_img->frameRender(getMemDC(),_slotX,_slotY);
-	//	_test->render(getMemDC());
+		// 슬롯 Y 프레임 0 고정 
+		switch (_state)
+		{
+		case ItemState::NONE:
+			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 2, 0);
+
+			break;
+		case ItemState::HAVE:
+			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 1, 0);
+
+			break;
+		case ItemState::SELECT:
+			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 6, 0);
+
+			break;
+		case ItemState::MEACULPANONE:
+			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 6, 0);
+
+			break;
+		}
 	}
 	else 
 	{
-		// 있다면 그리기 
-		_img->render(getMemDC(),CENTER_X,CENTER_Y ,_slotX*40, _slotY*40,40,40);
+		switch (_state)
+		{
+			// 있다면 그리기 
+		case ItemState::HAVE:
+			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 1, 0);
 
+			break;
+		case ItemState::SELECT:
+			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 6, 0);
+
+			break;
+		case ItemState::MEACULPANONE:
+			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 6, 0);
+
+			break;
+		}
+		_iconImg->render(getMemDC(),CENTER_X,CENTER_Y ,_slotX*57, _slotY*57,57,57);
 	}
 }
 

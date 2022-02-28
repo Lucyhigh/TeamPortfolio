@@ -13,7 +13,7 @@ HRESULT TitleScene::init(void)
 	int h = IMAGEMANAGER->findImage("AnyButtonLogo")->getHeight();
 	_logoRc = RectMakeCenter(CENTER_X,CENTER_Y,w,h);
 
-	_alpha = 0;
+	_alpha = 255;
 
 	// TITLE ------------
 	_ani = new AniSceneTitle;
@@ -40,10 +40,10 @@ void TitleScene::update(void)
 	}
 	else
 	{
-		_alpha++;
-		if (_alpha >= 255)
+		_alpha--;
+		if (_alpha <= 0)
 		{
-			_alpha = 255;
+			_alpha = 0;
 			_title = true;
 		}
 	}
@@ -70,19 +70,16 @@ void TitleScene::update(void)
 	}
 
 	// Title-Menu select
-	if (_menuIndex == 0 || _menuIndex == 1)
+	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
 	{
+		if (_menuIndex == 0)SCENEMANAGER->changeScene("Save");
+		if (_menuIndex == 1)SCENEMANAGER->changeScene("Option");
 
-		if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
+	}
+		if (_menuIndex == 2)
 		{
-			SCENEMANAGER->changeScene("Save");
+			if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) PostQuitMessage(0);
 		}
-	}
-
-	if (_menuIndex == 2)
-	{
-		if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) PostQuitMessage(0);
-	}
 
 }
 

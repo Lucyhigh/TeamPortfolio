@@ -4,7 +4,6 @@
 HRESULT ItemManager::init(void)
 {
 
-
 	vector<string> vData = TEXTDATAMANAGER->load("Resources/Item.txt");
 
 	for (int i = 0; i < vData.size(); i += 12)
@@ -26,9 +25,12 @@ HRESULT ItemManager::init(void)
 		ItemData->_dff = atoi(vData[i + 9].c_str());
 		ItemData->_slotX = atoi(vData[i + 10].c_str());
 		ItemData->_slotY = atoi(vData[i + 11].c_str());
-		ItemData->_img = IMAGEMANAGER->findImage("items");
-		ItemData->_img->setFrameX(ItemData->_slotX);
-		ItemData->_img->setFrameY(ItemData->_slotY);
+		ItemData->_iconImg = IMAGEMANAGER->findImage("items");
+		ItemData->_iconImg->setFrameX(ItemData->_slotX);
+		ItemData->_iconImg->setFrameY(ItemData->_slotY);
+		ItemData->_slotImg = IMAGEMANAGER->findImage("items");
+		ItemData->_slotImg->setFrameX(atoi(vData[i + 2].c_str()));
+		ItemData->_slotImg->setFrameY(0);
 		_vItem.push_back(ItemData);
 	}
 

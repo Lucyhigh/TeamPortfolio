@@ -100,9 +100,6 @@ void UIScene::render(void)
 	_hpBar->render();
 	showPotion();
 
-	// 추후 인벤토리등에서 정렬이 이상할때 확인
-	//SetTextAlign(getMemDC(), TA_LEFT);
-
 	if (_openInventory)
 	{
 		_inven->render();

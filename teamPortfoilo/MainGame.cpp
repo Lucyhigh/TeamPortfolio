@@ -54,7 +54,7 @@ HRESULT MainGame::init(void) //초기화
 	
 #pragma endregion 
 	// 테스트용 씬체인저
-	SCENEMANAGER->changeScene("Start");
+	SCENEMANAGER->changeScene("Title");
 
 	return S_OK;
 }

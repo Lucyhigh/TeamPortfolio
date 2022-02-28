@@ -10,7 +10,7 @@ HRESULT SaveScene::init(void)
 	{
 		tagSaveSlot slotInfo;
 		slotInfo.x = 140;
-		slotInfo.y = 60 + (1 * 115);
+		slotInfo.y = 60 + (i * 115);
 		slotInfo.state = NONE; // 세이브 파일유무에 따라 상태 변경
 		slotInfo.noneImg = new Image;
 		slotInfo.noneImg->init("Resources/Images/UI/saveNoData.bmp", slotInfo.x, slotInfo.y, 848, 112, MGT);
@@ -18,7 +18,7 @@ HRESULT SaveScene::init(void)
 		slotInfo.onImg->init("Resources/Images/UI/saveOn.bmp", slotInfo.x, slotInfo.y, 848, 112, MGT);
 		slotInfo.offImg = new Image;
 		slotInfo.offImg->init("Resources/Images/UI/saveOff.bmp", slotInfo.x, slotInfo.y, 848, 112, MGT);
-		slotInfo.num = 1;
+		slotInfo.num = i;
 		slotInfo.posEndX = slotInfo.x + IMAGEMANAGER->findImage("saveNoData")->getWidth();
 		slotInfo.select = false;
 		_vSave.push_back(slotInfo);

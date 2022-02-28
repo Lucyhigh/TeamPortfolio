@@ -21,11 +21,11 @@ HRESULT AniSceneTitle::init(void)
 	_aMTitleBg->setDefPlayFrame(false, true);
 	_aMTitleBg->setFPS(5);
 	_aMTitleMain->setDefPlayFrame(false, true);
-	_aMTitleMain->setFPS(2);
+	_aMTitleMain->setFPS(1);
 	_aMTitleEff->setDefPlayFrame(false, true);
-	_aMTitleEff->setFPS(4);
+	_aMTitleEff->setFPS(2);
 	_aMTitleSelecte->setDefPlayFrame(true, true);
-	_aMTitleSelecte->setFPS(5);
+	_aMTitleSelecte->setFPS(2);
 
 
 	_aMTitleBg->AniStart();
