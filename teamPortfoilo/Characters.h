@@ -93,4 +93,16 @@ public:
 
 	// Ãß°¡ º» 
 	POINT getPoint();
+
+	void setHp(bool UpAndDown, int num)
+	{
+		if (UpAndDown == true)
+		{
+			_hp[BaseEnum::STATE] += num;
+		}
+		else
+		{
+			_hp[BaseEnum::STATE] -= num;
+		}
+	}
 };

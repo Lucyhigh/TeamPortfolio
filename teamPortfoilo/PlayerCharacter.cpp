@@ -13,6 +13,11 @@ PlayerCharacter::PlayerCharacter()
 	ObjectrRelease = bind(&PlayerCharacter::release, this);
 	ObjectUpdate = bind(&PlayerCharacter::update, this);
 	ObjectRender = bind(&PlayerCharacter::render, this);
+
+	_hp[BaseEnum::STATE] = 1;
+	_hp[BaseEnum::MAX] = 136;
+	_mp[BaseEnum::STATE] = 96;
+	_mp[BaseEnum::MAX] = 96;
 }
 
 PlayerCharacter::~PlayerCharacter() { } // ! DO NOTING
@@ -22,6 +27,7 @@ HRESULT PlayerCharacter::init(POINT point, vector<RECT*>floor)
 	this->floor = floor;
 	point.x = 400;
 	point.y = CENTER_Y;
+
 	_Collider[BaseEnum::UNIT] = RectMakeCenter(point.x, point.y, 50, 60);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
@@ -32,6 +38,8 @@ HRESULT PlayerCharacter::init(POINT point, vector<RECT*>floor)
 	_imageAni.second = new Animation;
 	_imageAni.first = false;
 	_effect = nullptr;
+
+
 
 	return S_OK;
 }

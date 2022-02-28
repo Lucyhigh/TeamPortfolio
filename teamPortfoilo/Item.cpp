@@ -42,6 +42,8 @@ void Item::draw(void)
 	else 
 	{
 		// 있다면 그리기 
+		_img->render(getMemDC(),CENTER_X,CENTER_Y ,_slotX*40, _slotY*40,40,40);
+
 	}
 }
 

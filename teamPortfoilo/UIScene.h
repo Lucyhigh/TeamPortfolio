@@ -49,7 +49,7 @@ public:
 	void setPotion(int Lv, int Max, tagPotion potion);
 
 	
-	void showPoint(void);
+	void showPoint(bool openInventory);
 	
 };
 

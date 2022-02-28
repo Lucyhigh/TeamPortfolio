@@ -140,6 +140,7 @@ void Animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 
 	_playList.clear();
 	//리버스 /루프 할거니?
+	/*
 
 	if (_loop)
 	{
@@ -153,6 +154,108 @@ void Animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 		for (int i = start; i <= end; i++)
 		{
 			_playList.push_back(i);
+		}
+	}
+	*/
+	if (start == end)
+	{
+		_playList.clear();
+		AniStop();
+		return;
+	}
+
+	if (start > end)
+	{
+		if (reverse)
+		{
+			if (_loop)
+			{
+				for (int i = start; i >= end; --i)
+				{
+					_playList.push_back(i);
+				}
+
+				for (int i = end + 1; i < start; ++i)
+				{
+					_playList.push_back(i);
+				}
+			}
+			else
+			{
+				for (int i = start; i >= end; --i)
+				{
+					_playList.push_back(i);
+				}
+
+				for (int i = end + 1; i < start; ++i)
+				{
+					_playList.push_back(i);
+				}
+			}
+		}
+		else
+		{
+			if (_loop)
+			{
+				for (int i = start; i >= end; --i)
+				{
+					_playList.push_back(i);
+				}
+			}
+			else
+			{
+				for (int i = start; i >= end; --i)
+				{
+					_playList.push_back(i);
+				}
+			}
+		}
+	}
+	else
+	{
+		if (reverse)
+		{
+			if (_loop)
+			{
+				for (int i = start; i < end; ++i)
+				{
+					_playList.push_back(i);
+				}
+
+				for (int i = end - 1; i > start; --i)
+				{
+					_playList.push_back(i);
+				}
+			}
+			else
+			{
+				for (int i = start; i < end; ++i)
+				{
+					_playList.push_back(i);
+				}
+
+				for (int i = end - 1; i > start; --i)
+				{
+					_playList.push_back(i);
+				}
+			}
+		}
+		else
+		{
+			if (_loop)
+			{
+				for (int i = start; i < end; ++i)
+				{
+					_playList.push_back(i);
+				}
+			}
+			else
+			{
+				for (int i = start; i < end; ++i)
+				{
+					_playList.push_back(i);
+				}
+			}
 		}
 	}
 }

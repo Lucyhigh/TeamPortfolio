@@ -9,8 +9,9 @@ HRESULT ItemManager::init(void)
 
 	for (int i = 0; i < vData.size(); i += 12)
 	{
+		cout << vData.size() << endl;
+		cout << i << endl;
 		Item* ItemData = new Item;
-		ItemData->_img = IMAGEMANAGER->findImage("items");
 		ItemData->_index = atoi(vData[i].c_str());
 		ItemData->_category = static_cast<Category>(atoi(vData[i + 1].c_str()));
 		ItemData->_state = static_cast<ItemState>(atoi(vData[i + 2].c_str()));
@@ -25,6 +26,9 @@ HRESULT ItemManager::init(void)
 		ItemData->_dff = atoi(vData[i + 9].c_str());
 		ItemData->_slotX = atoi(vData[i + 10].c_str());
 		ItemData->_slotY = atoi(vData[i + 11].c_str());
+		ItemData->_img = IMAGEMANAGER->findImage("items");
+		ItemData->_img->setFrameX(ItemData->_slotX);
+		ItemData->_img->setFrameY(ItemData->_slotY);
 		_vItem.push_back(ItemData);
 	}
 

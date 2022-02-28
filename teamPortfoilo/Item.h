@@ -55,8 +55,6 @@ public:
 	float _slotX; // 슬롯 위치 - 반복문으로 인벤토리에 자리잡기 -> 스위치문으로 카테고리에 따라 자리 바꾸기 
 	float _slotY;
 
-	Image* _test;
-	
 public:
 	Item() {}
 	~Item() {}

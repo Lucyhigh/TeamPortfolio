@@ -23,6 +23,6 @@ public:
 	void setItem(void);
 	void removeItem(int arrNum);
 
-	vector<Item*> getMinions(void) { return _vItem; }
+	vector<Item*> getItem(void) { return _vItem; }
 };
 
