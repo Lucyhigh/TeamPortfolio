@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="BossScene1.cpp">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClCompile>
@@ -118,10 +117,41 @@
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
       <Filter>Blasphemous\GameScene\UI</Filter>
+    <ClCompile Include="KnifeMonster.cpp">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="RockThrowMonster.cpp">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="WheelMonster.cpp">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1BeforeScene.cpp">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Blasphemous\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelCollision.cpp">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelScene.cpp">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss3Pattern.cpp">
+      <Filter>Blasphemous\GameScene\Stage3</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss3Bullet.cpp">
+      <Filter>Blasphemous\GameScene\Stage3</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss3Scene.cpp">
+      <Filter>Blasphemous\GameScene\Stage3</Filter>
+    </ClCompile>
+    <ClCompile Include="BossLady.cpp">
+      <Filter>Blasphemous\Characters\Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
     <ClInclude Include="BossScene1.h">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClInclude>
@@ -236,6 +266,38 @@
     <ClInclude Include="Item.h">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClInclude>
+    <ClInclude Include="KnifeMonster.h">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="RockThrowMonster.h">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="WheelMonster.h">
+      <Filter>Blasphemous\Characters\FieldMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1BeforeScene.h">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Blasphemous\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelCollision.h">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelScene.h">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss3Pattern.h">
+      <Filter>Blasphemous\GameScene\Stage3</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss3Bullet.h">
+      <Filter>Blasphemous\GameScene\Stage3</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss3Scene.h">
+      <Filter>Blasphemous\GameScene\Stage3</Filter>
+    </ClInclude>
+    <ClInclude Include="BossLady.h">
+      <Filter>Blasphemous\Characters\Boss</Filter>
     <ClInclude Include="ItemManager.h">
       <Filter>Blasphemous\Manager</Filter>
     </ClInclude>
@@ -303,6 +365,18 @@
     </Filter>
     <Filter Include="Blasphemous\GameScene\UI\Base">
       <UniqueIdentifier>{c44ef8f1-7005-4328-b332-80f0c2d12082}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\Characters\FieldMonster">
+      <UniqueIdentifier>{aa6744a2-4d1f-4709-bfd0-e784795f8bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\Camera">
+      <UniqueIdentifier>{72819e9b-512a-4a77-a450-28d4b09675f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\Pixel">
+      <UniqueIdentifier>{f07753e1-d4ea-43cc-8ca5-86b0c1a2a59d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\Stage3">
+      <UniqueIdentifier>{0f68901d-7141-4df8-874e-f3657e0057a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
