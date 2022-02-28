@@ -8,6 +8,7 @@ private:
   
     Image* _playerIdleImage;
     Image* _playerMoveImage;
+	Image* _bgImage;
 	Animation* _ani;
 	Animation* _ani2;
     //vector<RECT*> _floor;

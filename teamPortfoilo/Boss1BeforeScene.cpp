@@ -125,6 +125,9 @@ void Boss1BeforeScene::render(void)
         {
         }
     }
+    //IMAGEMANAGER->loopRender("보스1 뒷배경", getMemDC(), , 0);
+	//IMAGEMANAGER->loopRender("보스1 뒷시체", getMemDC(), , 0);
+	IMAGEMANAGER->render("보스1 앞시체", getMemDC(), -_camera->getScreenRect().left,0);
     IMAGEMANAGER->render("보스1전FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
     _camera->render();
 }

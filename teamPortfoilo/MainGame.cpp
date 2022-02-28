@@ -47,7 +47,7 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 
 	
 #pragma endregion 
-	SCENEMANAGER->changeScene("Pixel");
+	SCENEMANAGER->changeScene("Title");
 	return S_OK;
 }
 

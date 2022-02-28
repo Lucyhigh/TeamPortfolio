@@ -5,6 +5,7 @@ HRESULT PixelCollision::init(void)
 {
 	_playerIdleImage = IMAGEMANAGER->findImage("²¿±ò´ë±â");// 1664, 146, 13, 2
 	_playerMoveImage = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");// 1106, 140, 14, 2
+	_bgImage = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ÇÈ¼¿");
 
 	_ani = new Animation;
 	_ani2 = new Animation;
@@ -13,21 +14,21 @@ HRESULT PixelCollision::init(void)
 	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), 79, 70);//ÀÌµ¿
 
 	//È®Àå¼ºÀ» À§ÇØ »ó¼öº¸´Ù º¯¼ö¸¦ ¾²¶óÇÞÁö¸¸ ¸®¼Ò½º¿£ ¿¹¿ÜÀÓ Æ¯È÷ ³ª´©±â °³¾ÈÁ¶À½
-	_ani->setPlayFrame(0,12,false, true);
-	_ani->setFPS(12);
+	_ani->setDefPlayFrame(false,true);
+	_ani->setFPS(6);
 
-	_ani2->setPlayFrame(0,13,false, true);
-	_ani2->setFPS(12);
-
+	//_ani2->setPlayFrame(0,13,false, true);
+	_ani2->setDefPlayFrame(false,true);
+	_ani2->setFPS(6);
+	_ani->AniStart();
+	_ani2->AniStart();
 	_isWalk = false;
 	_isLeft = false;
 	_speed = 3.0f;
-    _x = CENTER_X;//ÁÂÇ¥ÀÌ»ó
-    _y = CENTER_Y;
+    _x = 1680;//ÁÂÇ¥ÀÌ»ó
+    _y = 944;
 	_rc = RectMakeCenter(_x, _y, _playerIdleImage->getWidth(), _playerIdleImage->getHeight());
 
-	_ani->AniStart();
-	_ani2->AniStart();
     return S_OK;
 }
 
@@ -41,11 +42,7 @@ void PixelCollision::release(void)
 
 void PixelCollision::update(void)
 {
-	if (KEYMANAGER->isOnceKeyDown('B'))
-	{
-		
-	}
-	cout << _ani->isPlay() << endl;
+	//cout << TIMEMANAGER->getElapsedTime() * 1 << endl;
 	_ani->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 	_ani2->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 
@@ -53,22 +50,27 @@ void PixelCollision::update(void)
 	{
 		_isLeft = false;
 		_isWalk = true;
+		_ani->setPlayFrame(0, 12, false, true);
+		_ani2->setPlayFrame(0, 13, false, true);
 		_x += _speed;
 	}
 	else if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 	{
 		_isLeft = true;
 		_isWalk = true;
+		_ani->setPlayFrame(13, 25, false, true);
+		_ani2->setPlayFrame(14, 25, false, true);
 		_x -= _speed;
 	}
 	else
 	{
 		_isWalk = false;
 	}
+
 	if (_isLeft)
 	{
 		_ani->setPlayFrame(13, 25, false, true);
-		_ani2->setPlayFrame(13, 25, false, true);
+		_ani2->setPlayFrame(14, 25, false, true);
 	}
 	else if(!_isLeft)
 	{
@@ -76,25 +78,21 @@ void PixelCollision::update(void)
 		_ani2->setPlayFrame(0, 13, false, true);
 	}
 
+	int bgHeight = _bgImage->getHeight() / 2 + _y;
+	_probeY = _y + _playerIdleImage->getFrameHeight() / 2;
 
-	Image* bgImage = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ÇÈ¼¿");
-	float bgHeight = bgImage->getHeight();
-    for (int i = 0; i < bgHeight; i++)
-    {
-        COLORREF color = GetPixel(bgImage->getMemDC(), _x, i);
-
-        int r = GetRValue(color);
-        int g = GetGValue(color);
-        int b = GetBValue(color);
-
-        if (!(r == 255 && g == 0 && b == 255)
-			|| i >= bgHeight - 1)
-        {
-			_y = i;// -_playerIdleImage->getHeight() / 2;
-            break;
-        }
-    }
-   // GAMEMANAGER->getPlayer()->setCameraRect(_camera->getScreenRect());
+	for (int i = _probeY - 30; i < _probeY + 30; i++)
+	{
+		COLORREF color = GetPixel(IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ÇÈ¼¿")->getMemDC(), _x, i);
+		int r = GetRValue(color);
+		int g = GetGValue(color);
+		int b = GetBValue(color);
+		if (!(r == 255 && g == 0 && b == 255))
+		{
+			_y = i - _playerIdleImage->getFrameHeight() / 2;
+			break;
+		}
+	}
 	if(_isWalk)
 		_rc = RectMakeCenter(_x, _y, _playerMoveImage->getFrameWidth(), _playerMoveImage->getFrameHeight());
 	else
@@ -104,18 +102,16 @@ void PixelCollision::update(void)
 void PixelCollision::render(void)
 {
 	float cameraX = _rc.left - _cameraRect.left;
-	float cameraY = _rc.top - _cameraRect.top;
-	Rectangle(getMemDC(), cameraX, cameraY, cameraX + 100, cameraY + 100);
+	float cameraY = _rc.top+ - _cameraRect.top;
 	//cout << _x << ", " << _y << endl;
+	
 	if (_isWalk)
 	{
 		_playerMoveImage->aniRender(getMemDC(), cameraX, cameraY, _ani2);
-		//IMAGEMANAGER->frameRender("²¿±òÀÌµ¿", getMemDC(), _rc.left, _rc.top);
 	}
 	else
 	{
 		_playerIdleImage->aniRender(getMemDC(), cameraX, cameraY, _ani);
-		//IMAGEMANAGER->frameRender("²¿±ò´ë±â", getMemDC(), _rc.left, _rc.top);
 	}
 }
 
