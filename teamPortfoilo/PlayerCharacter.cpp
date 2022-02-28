@@ -332,4 +332,12 @@ bool PlayerCharacter::_updateHit()
 
 
 
+void PlayerCharacter::setHp(BaseEnum getData, int hp)
+{
+	if (getData == BaseEnum::STATE) { _hp[BaseEnum::STATE]; }
+	else if (getData == BaseEnum::STATE) { return _hp[BaseEnum::MAX]; }
+	else return GETERROR;
+}
+
+
 

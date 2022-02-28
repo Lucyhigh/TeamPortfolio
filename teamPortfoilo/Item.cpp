@@ -3,8 +3,13 @@
 
 HRESULT Item::init(void)
 {
-	_img = IMAGEMANAGER->findImage("items");
+	IMAGEMANAGER->addFrameImage("items", "Resources/Images/item/items.bmp", 510 * 1.9, 510 * 1.9, 17, 17, MGT); // 510,510->969,969
+	IMAGEMANAGER->addImage("item", "Resources/Images/item/items.bmp", 510 * 1.9, 510 * 1.9, MGT); // 510,510->969,969
 
+
+
+	//_img = IMAGEMANAGER->findImage("items");
+	//_test = IMAGEMANAGER->findImage("item");
 	return S_OK;
 }
 
@@ -30,7 +35,9 @@ void Item::draw(void)
 
 		// 테스트 용 그리기 
 
-		_img->render(getMemDC());
+		cout << "-----------" << endl;
+		_img->frameRender(getMemDC(),_slotX,_slotY);
+	//	_test->render(getMemDC());
 	}
 	else 
 	{
@@ -45,8 +52,8 @@ void Item::setItemData(int index, Category category, ItemState state, float posX
 	_index = index;
 	_category = category;
 	_state = state;
-	_posX = posX;
-	_posY = posY;
+	_slotX = posX;
+	_slotY = posY;
 	// _frameXNum; // 이미지 시트에서 이미지 위치 
 	// _frameYNum;
 	_name = name;

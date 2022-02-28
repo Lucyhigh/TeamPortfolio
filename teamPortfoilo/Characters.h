@@ -16,6 +16,7 @@ class BaseData
 			// mp 정보
 			map<BaseEnum, int> _mp = { {BaseEnum::STATE, 0}, {BaseEnum::MAX, 0} };
 
+
 		#pragma endregion
 
 		#pragma region  충돌체 (위치)
@@ -81,5 +82,18 @@ class BaseData
 			void setHit(int damage);
 
 		#pragma endregion
+
+
+			void setHp(bool UpAndDown, int num)
+			{
+				if (UpAndDown == true)
+				{
+					_hp[BaseEnum::STATE] += num;
+				}
+				else
+				{
+					_hp[BaseEnum::STATE] -= num;
+				}
+			}
 
 };
