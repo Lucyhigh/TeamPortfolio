@@ -30,7 +30,6 @@ public:
 	void render(void);
 	void render(int x, int y);
 
-
 };
 #pragma endregion
 
@@ -45,7 +44,6 @@ private:
 	// aM : Animation
 	Animation* _aMTitleBg;
 
-
 public:
 	AniScene() {}
 	~AniScene() {}
@@ -56,5 +54,3 @@ public:
 	void render(void);
 
 };
-
-

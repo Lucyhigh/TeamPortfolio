@@ -51,8 +51,6 @@ void AniSceneTitle::release(void)
 
 void AniSceneTitle::update(void)
 {
-		
-
 	_aMTitleBg->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 	_aMTitleMain->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 	_aMTitleEff->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
@@ -95,17 +93,12 @@ void AniScene::release(void)
 
 void AniScene::update(void)
 {
-
-
 	_aMTitleBg->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
-
 }
 
 void AniScene::render(void)
 {
 	_aITitleBg->aniRender(getMemDC(), 0, 0, _aMTitleBg);
-
-
 }
 
 #pragma endregion

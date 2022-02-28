@@ -8,6 +8,4 @@ public:
 
 	ImageClass();
 	virtual ~ImageClass();
-
-
 };

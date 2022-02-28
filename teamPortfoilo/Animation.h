@@ -26,7 +26,6 @@ private:
 	bool _loop;
 	DWORD _nowPlayIdx;
 
-
 public:
 
 	HRESULT init(int totalW, int totalH, int frameW, int frameH);
@@ -68,9 +67,6 @@ public:
 	inline int getFrameWidth(void) { return _frameWidth; }
 	inline int getFrameHeight(void) { return _frameHeight; }
 	inline DWORD getNowPlayIdx(void) { return _nowPlayIdx; }
-
-
-
 
 	Animation();
 	~Animation() {};

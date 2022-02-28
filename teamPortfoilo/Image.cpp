@@ -516,8 +516,8 @@ void Image::alphaRender(HDC hdc, int destX, int destY, BYTE alpha)
 		// 2 원본 이미지 배경을 없앤 후 블랜드 이미지에 그린다.
 		GdiTransparentBlt
 		(
-			hdc,
-			destX, destY,
+			_blendImage->hMemDC,
+			0,0,
 			_imageInfo->width,
 			_imageInfo->height,
 			//------------------
