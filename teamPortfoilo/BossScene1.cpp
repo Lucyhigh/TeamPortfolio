@@ -22,7 +22,7 @@ HRESULT BossScene1::init(void)
 
     _camera = new Camera;
     _camera->init();
-    _camera->setLimits(CENTER_X, _image->getWidth()); //좌우 카메라 이동 제한
+    _camera->setLimitsX(CENTER_X, _image->getWidth()); //좌우 카메라 이동 제한
 
 	return S_OK;
 }

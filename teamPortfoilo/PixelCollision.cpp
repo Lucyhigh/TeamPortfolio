@@ -22,11 +22,12 @@ HRESULT PixelCollision::init(void)
 	_isWalk = false;
 	_isLeft = false;
 	_speed = 3.0f;
-    _x = 300;//ÁÂÇ¥ÀÌ»ó
+    _x = CENTER_X;//ÁÂÇ¥ÀÌ»ó
     _y = CENTER_Y;
 	_rc = RectMakeCenter(_x, _y, _playerIdleImage->getWidth(), _playerIdleImage->getHeight());
 
-    _probeY = _y + _playerIdleImage->getHeight()/ 2;
+	_ani->AniStart();
+	_ani2->AniStart();
     return S_OK;
 }
 
@@ -42,16 +43,16 @@ void PixelCollision::update(void)
 {
 	if (KEYMANAGER->isOnceKeyDown('B'))
 	{
-		_ani->AniStart();
-		_ani2->AniStart();
+		
 	}
+	cout << _ani->isPlay() << endl;
 	_ani->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 	_ani2->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 
 	if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
 	{
-		_isWalk = true;
 		_isLeft = false;
+		_isWalk = true;
 		_x += _speed;
 	}
 	else if (KEYMANAGER->isStayKeyDown(VK_LEFT))
@@ -64,19 +65,18 @@ void PixelCollision::update(void)
 	{
 		_isWalk = false;
 	}
-	/*if (_isLeft)
+	if (_isLeft)
 	{
 		_ani->setPlayFrame(13, 25, false, true);
 		_ani2->setPlayFrame(13, 25, false, true);
 	}
-	else
+	else if(!_isLeft)
 	{
 		_ani->setPlayFrame(0, 12, false, true);
 		_ani2->setPlayFrame(0, 13, false, true);
-	}*/
+	}
 
-    //YÃà Å½Áö
-    _probeY = _y + _playerIdleImage->getHeight() / 2;
+
 	Image* bgImage = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ÇÈ¼¿");
 	float bgHeight = bgImage->getHeight();
     for (int i = 0; i < bgHeight; i++)
@@ -90,7 +90,7 @@ void PixelCollision::update(void)
         if (!(r == 255 && g == 0 && b == 255)
 			|| i >= bgHeight - 1)
         {
-			_y = _probeY = i;// -_playerIdleImage->getHeight() / 2;
+			_y = i;// -_playerIdleImage->getHeight() / 2;
             break;
         }
     }
@@ -105,22 +105,18 @@ void PixelCollision::render(void)
 {
 	float cameraX = _rc.left - _cameraRect.left;
 	float cameraY = _rc.top - _cameraRect.top;
-	cout << _x << ", " << _y << endl;
+	Rectangle(getMemDC(), cameraX, cameraY, cameraX + 100, cameraY + 100);
+	//cout << _x << ", " << _y << endl;
 	if (_isWalk)
 	{
-		_playerMoveImage->aniRender(getMemDC(), cameraX, cameraY, _ani);
+		_playerMoveImage->aniRender(getMemDC(), cameraX, cameraY, _ani2);
 		//IMAGEMANAGER->frameRender("²¿±òÀÌµ¿", getMemDC(), _rc.left, _rc.top);
 	}
 	else
 	{
-		_playerIdleImage->aniRender(getMemDC(), cameraX, cameraY, _ani2);
+		_playerIdleImage->aniRender(getMemDC(), cameraX, cameraY, _ani);
 		//IMAGEMANAGER->frameRender("²¿±ò´ë±â", getMemDC(), _rc.left, _rc.top);
 	}
-
-    if (KEYMANAGER->isToggleKey(VK_F1))
-    {
-        Rectangle(getMemDC(), _x, _probeY, _x + 10, _probeY + 10);
-    }
 }
 
 int PixelCollision::getX()

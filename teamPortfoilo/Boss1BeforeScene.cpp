@@ -22,7 +22,7 @@ HRESULT Boss1BeforeScene::init(void)
 
     _camera = new Camera;
     _camera->init();
-    _camera->setLimits(CENTER_X, _mapImage->getWidth());
+    _camera->setLimitsX(CENTER_X, _mapImage->getWidth());
 
     _indexA = 0;
     _count = 0;

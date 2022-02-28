@@ -46,8 +46,8 @@ HRESULT ImageClass::init(void)
 #pragma region PlayerImage
 
 	// Å×½ºÆ®¿ë ÀÌ¹ÌÁö 
-	IMAGEMANAGER->addFrameImage("²¿±ò´ë±â", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò´ë±â", "Resources/Images/Player/p_idle.bmp", 1664 * 1.9, 146*1.9, 13, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106 * 1.9, 140*1.9, 14, 2, MGT);
 
 	// Player 
 	IMAGEMANAGER->addFrameImage("pIdle", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);

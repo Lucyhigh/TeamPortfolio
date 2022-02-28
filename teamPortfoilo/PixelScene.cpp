@@ -3,14 +3,16 @@
 
 HRESULT PixelScene::init(void)
 {
-	_image = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ÇÈ¼¿"); //IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ");
-	
+	_image = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ÇÈ¼¿");
+	IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ");
+
 	_pixel = new PixelCollision;
 	_pixel->init();
 
 	_camera = new Camera;
 	_camera->init();
-	_camera->setLimits(CENTER_X, _image->getWidth());
+	_camera->setLimitsX(CENTER_X, _image->getWidth());
+	_camera->setLimitsY(CENTER_Y, _image->getHeight());
 
 	return S_OK;
 }
@@ -30,9 +32,9 @@ void PixelScene::update(void)
 	{
 		SCENEMANAGER->changeScene("BeforeBoss1");
 	}
-	else if (_pixel->getX() <= 300)
+	else if (_pixel->getX() <= 310)
 	{
-		_pixel->setX(300);
+		_pixel->setX(310);
 	}
 
 	POINT cameraPos;
@@ -43,7 +45,7 @@ void PixelScene::update(void)
 	_camera->update();
 
 	_pixel->setCameraRect(_camera->getScreenRect());
-	
+
 }
 
 void PixelScene::render(void)
@@ -56,6 +58,6 @@ void PixelScene::render(void)
 
 	_camera->render();
 	//IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ÇÈ¼¿")->render(getMemDC());
-   // IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ")->render(getMemDC());
+	IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ")->render(getMemDC());
 	_pixel->render();
 }
