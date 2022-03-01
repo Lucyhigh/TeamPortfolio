@@ -51,6 +51,26 @@ HRESULT ProgressBar::init(float hp, float mp)
 	return S_OK;
 }
 
+HRESULT ProgressBar::init(float hp)
+{
+
+	// 보스와 연동
+	_hpWidth = hp;
+	_hpMaxWidth = hp;
+
+	// 여기서 이미지 관리
+	_hpBarBg = IMAGEMANAGER->findImage("bHpBarEmpty");
+	_hpBarCover = IMAGEMANAGER->findImage("bHpBarCover");
+	//_hpBarTop = IMAGEMANAGER->findImage("bHpBarT");
+	//_hpBarbottom = IMAGEMANAGER->findImage("bHpBarB");
+
+	// UI변동 크기 사용시 조정 필요 
+	_hpPos.x = _hpBarBg->getX() + 78;
+	_hpPos.y = _hpBarBg->getY() + 17;
+
+	return S_OK;
+}
+
 
 void ProgressBar::release(void)
 {

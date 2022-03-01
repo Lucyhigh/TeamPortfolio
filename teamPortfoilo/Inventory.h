@@ -12,6 +12,7 @@ private:
 	int _categoryIndex;
 	tagOnlyText _InvenTEXT[INVENTEXT];
 
+	int _selection;
 public:
 	HRESULT init(void);
 	void release(void);

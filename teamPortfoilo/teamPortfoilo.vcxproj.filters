@@ -139,6 +139,9 @@
     <ClCompile Include="ItemManager.cpp">
       <Filter>Blasphemous\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="BossUI.cpp">
+      <Filter>Blasphemous\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -284,6 +287,9 @@
     </ClInclude>
     <ClInclude Include="ItemManager.h">
       <Filter>Blasphemous\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="BossUI.h">
+      <Filter>Blasphemous\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

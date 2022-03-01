@@ -29,7 +29,8 @@ private:
 
 public:
 	//HRESULT init(int x, int y, int width, int height);
-	HRESULT init(float hp, float mp);
+	HRESULT init(float hp, float mp); // player
+	HRESULT init(float hp); // boss
 	void release(void);
 	void update(void);
 	void render(void);
