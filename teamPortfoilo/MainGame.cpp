@@ -47,7 +47,7 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 
 	
 #pragma endregion 
-	SCENEMANAGER->changeScene("Opening");
+	SCENEMANAGER->changeScene("Boss1");
 	return S_OK;
 }
 

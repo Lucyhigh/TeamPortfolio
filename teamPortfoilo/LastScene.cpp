@@ -12,7 +12,14 @@ HRESULT LastScene::init(void)
 	_camera->init();
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
 	_camera->setLimitsY(CENTER_Y, _image->getHeight());
-
+	/*
+	¿£µù¾À ¹Ù´Ú", "R
+	¿£µù¾À Å×½ºÆ®¹è°æ
+	¿£µù¾À µÞ¹è°æ", 
+	¿£µù¾À ¾Õ¹è°æ", 
+	¿£µù¾À ÇÈ¼¿", "R
+	
+	*/
 	return S_OK;
 }
 
