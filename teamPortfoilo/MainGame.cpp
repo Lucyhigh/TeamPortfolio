@@ -4,6 +4,7 @@
 //UI
 #include "ImageClass.h"
 #include "TitleScene.h"
+#include "SaveScene.h"
 #include "OptionScene.h"
 //Stage
 #include "StartScene.h"
@@ -16,7 +17,8 @@
 #pragma endregion 
 
 
-HRESULT MainGame::init(void) //ÃÊ±âÈ­
+
+HRESULT MainGame::init(void) //ï¿½Ê±ï¿½È­
 {
 	GameNode::init(TRUE);
 	TIMEMANAGER->init();
@@ -24,14 +26,16 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	_player = new PlayerCharacter();
 	GAMEMANAGER->setPlayer(_player);
 
-	// »ç¿ëÇÏ´Â ÀÌ¹ÌÁö ÀüÃ¼ 
+	// ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ 
 	ImageClass imageClass = ImageClass();
 	imageClass.init();
+
 
 #pragma region SceneManager
 
 	// UI : title, system(), inventory(skill, item, equip ...) 
 	SCENEMANAGER->addScene("Title", new TitleScene);
+	SCENEMANAGER->addScene("Save", new SaveScene);
 	SCENEMANAGER->addScene("Option", new OptionScene);
 
 	// Stage1
@@ -39,6 +43,8 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	SCENEMANAGER->addScene("Pixel", new PixelScene);
 	SCENEMANAGER->addScene("BeforeBoss1", new Boss1BeforeScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
+
+
 	
 	// Stage2
 	SCENEMANAGER->addScene("Boss2", new BossScene2);
@@ -47,34 +53,39 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 
 	
 #pragma endregion 
+	// ï¿½×½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 	SCENEMANAGER->changeScene("Title");
+
 	return S_OK;
 }
 
 void MainGame::release(void)
 {
+
 	GameNode::release();
 	SCENEMANAGER->release();
 }
 
-void MainGame::update(void) // °»½Å
+void MainGame::update(void) // ï¿½ï¿½ï¿½ï¿½
 {
 	SCENEMANAGER->update();
 	GameNode::update();
 
 	SCENEMANAGER->update();
 
+
 }
 
-void MainGame::render(void) // ±×·ÁÁà
+void MainGame::render(void) // ï¿½×·ï¿½ï¿½ï¿½
 {
-	//°ËÀº»ö ºó ºñÆ®¸Ê
-	//PatBlt() : »ç°¢Çü ¿µ¿ªÀ» ºê·¯½¬·Î Ã¤¿ì´Â ÇÔ¼ö
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½
+	 //PatBlt() : ï¿½ç°¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ê·¯ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 	TIMEMANAGER->render(getMemDC());
 
-	// ¡Ø ¾À ÀÌ¹ÌÁö Ãâ·Â ¡Ø
+	// ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½
 	SCENEMANAGER->render();
 
-	this->getBackBuffer()->render(getHDC()); //¹é¹öÆÛÀÇ ³»¿ëÀ» HDC¿¡ ±×¸°´Ù.
+	this->getBackBuffer()->render(getHDC()); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ HDCï¿½ï¿½ ï¿½×¸ï¿½ï¿½ï¿½.
+
 }

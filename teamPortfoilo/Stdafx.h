@@ -44,6 +44,8 @@
 #include <functional>
 using namespace std;
 
+#include <fstream>
+
 //===================================
 // # 내가 만든 헤더파일을 이곳에 추가 #
 //===================================
@@ -59,6 +61,8 @@ using namespace std;
 #include "SceneManager.h"
 
 using namespace MY_UTIL;
+
+#include "Text.h"
 
 
 //========================

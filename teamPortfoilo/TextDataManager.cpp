@@ -117,3 +117,50 @@ vector<string> TextDataManager::charArraySeparation(char charArray[])
     }
     return vArray;
 }
+
+vector<string> TextDataManager::loadFstream(const char* fileName)
+{
+	std::ifstream in(fileName, ios::in);
+	string str;
+	string token;
+	int size;
+
+	if (in.is_open())
+	{
+		//위치 지정자를 파일 끝으로 옮긴다.
+		in.seekg(0, ios::end);
+		//파일 끝 위치를 읽는다.
+		size = in.tellg();
+		//그 크기의 문자열을 할당한다.
+		str.resize(size);
+		//위치 지정자를 다시 파일 맨 앞으로 옳긴다.
+		in.seekg(0, ios::beg);
+		//파일 전체 내용을 읽어서 문자열에 저장한다.
+		in.read(&str[0], size);
+	}
+	else
+	{
+		cout << "파일 로드 실패" << endl;
+	}
+	//str.erase(remove(str.begin(), str.end(), '\n'), str.end());
+
+	char* cstr = new char[size + 1];
+	copy(str.begin(), str.end(), cstr);
+
+	vector<string> vArray;
+	char* separator = ",";
+	char* tokenA;
+	char* tokenB;
+
+	tokenA = strtok_s(cstr, separator, &tokenB);
+	vArray.push_back(tokenA);
+
+	while (NULL != (tokenA = strtok_s(NULL, separator, &tokenB)))
+	{
+		vArray.push_back(tokenA);
+	}
+
+	delete[] cstr;
+
+	return vArray;
+}

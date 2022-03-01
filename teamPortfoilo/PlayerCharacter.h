@@ -15,19 +15,19 @@ public:
 	};
 
 private:
-	// ÀÔ·Â 
+	// ï¿½Ô·ï¿½ 
 	int _isLeft, _isMove, _isLook;
 	UnitState _oldState;
 	UnitState _state;
 	float _Fram;
 	pair<bool, Animation*> _imageAni;
 
-	// ÀÎÇ²
+	// ï¿½ï¿½Ç²
 	UnitState _inputKey(int);
 	void _inputUpdate();
 	void _inputAnimation();
 
-	//¾÷µ¥ÀÌÆ®
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	void _updateFloor();
 	int _updateSide();
 	void _updateSlide();
@@ -36,22 +36,22 @@ private:
 	bool _updateHit();
 	function<void()> _updateSpace;
 
-	// Á¡ÇÁ 
+	// ï¿½ï¿½ï¿½ï¿½ 
 	map<string, float> _jump = { { "Unit",0 }, { "Weight",0 } };
 	map<string, float> _slide = { { "State",0 }, { "Max",100 } };
 	void _updataJump();
 	Image* _effect;
 
-	// ±âÅ¸ 
-	// int _point; // ¼ÒÁö Æ÷ÀÎÆ® ¿©±â? ÀÓ½Ã·Î UI¿¡¼­ »ç¿ë.
+	// ï¿½ï¿½Å¸ 
+	// int _point; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½? ï¿½Ó½Ã·ï¿½ UIï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½.
 
-	//Ä«¸Þ¶ó 
-	//Image* _image;
-	//RECT _rcPlayer;
+	  //Ä«ï¿½Þ¶ï¿½ 
+	  //Image* _image;
+	  //RECT _rcPlayer;
 
 	RECT _cameraRect;
 
-	//Ä³¸¯ÅÍ À§Ä¡ °Ù¼Â
+	//Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½Ù¼ï¿½
 
 	//void setPlayerPosX(float x);
 	//void setPlayerPosY(float y);
@@ -60,7 +60,7 @@ private:
 	//void setCameraRect(RECT rect);
 
 public:
-	//±âº» 
+	//ï¿½âº» 
 	UnitState getState();
 	void setCameraRect(RECT rect);
 	PlayerCharacter();
@@ -70,4 +70,5 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+
 };

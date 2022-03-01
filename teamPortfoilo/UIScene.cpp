@@ -4,17 +4,28 @@
 HRESULT UIScene::init(void)
 {
 	// 플레이어 정보 
-	_hp = GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE); // 136
-	_mp = GAMEMANAGER->getPlayer()->getMp(BaseEnum::STATE); // 116
+	_hp = (float)GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE); // 136
+	_mp = (float)GAMEMANAGER->getPlayer()->getMp(BaseEnum::STATE); // 96
 	
-	_potionLv =1 ; // _pData->getPotionLevel(); // 프레임 x 
-	_potionMax = 2; // 초기 : 0단계 포션 2개 
+	_potionLv = 0 ; // _pData->getPotionLevel(); // 프레임 x 
+	switch (_potionLv)
+	{
+	case 0:
+		_potionMax = 2; 
+		break;
+	case 1:
+		_potionMax = 3;
+		break;
+	case 2:
+		_potionMax = 4;
+		break;
+	}
 	
 	// ---------------여기까지 연동 필요
 
 #pragma region Hp Mp Potion
 	_hpBar = new ProgressBar;
-	_hpBar->init(136, _mp);
+	_hpBar->init(136, 50);
 	_point = 10000;
 
 	// 포션 
@@ -34,6 +45,12 @@ HRESULT UIScene::init(void)
 	}
 #pragma endregion 
 
+
+	//--------------------인벤토리 테스트
+
+	_inven = new Inventory();
+	_inven->init();
+
 	return S_OK;
 }
 
@@ -49,6 +66,9 @@ void UIScene::release(void)
 		SAFE_DELETE(_rviPotion->off);
 	}
 	_vPotion.clear();
+
+	_inven->release();
+	SAFE_DELETE(_inven);
 }
 
 void UIScene::update(void)
@@ -58,28 +78,34 @@ void UIScene::update(void)
 
 	_hp = GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE); // 136
 	_mp = GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE); // 116
+
 	_hpBar->setPlayerHpGauge(_hp);
 	_hpBar->setPlayerMpGauge(_mp);
 
-	if (KEYMANAGER->isOnceKeyDown(VK_F2))
+	if (KEYMANAGER->isOnceKeyDown('F'))
 	{
 		usePotion();
-		_hp += 50; // setHp를 usePotion함수 안으로 넣을 것 
-		_hpBar->setPlayerHpGauge(_hp);
 	}
 
 	_hpBar->update();
+
+	_inven->update();
+	if (KEYMANAGER->isOnceKeyDown('I')) _openInventory = true;
+	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _openInventory = false;
+
 }
 
 void UIScene::render(void)
 {
 	_hpBar->render();
-	showPoint();
 	showPotion();
 
-	// 추후 인벤토리등에서 정렬이 이상할때 확인
-	//SetTextAlign(getMemDC(), TA_LEFT);
+	if (_openInventory)
+	{
+		_inven->render();
+	}
 
+	showPoint(_openInventory);
 }
 
 void UIScene::usePotion()
@@ -90,7 +116,21 @@ void UIScene::usePotion()
 	{
 		if ( _rviPotion->use) continue;
 		_rviPotion->use = true;
-		// 플레이어 hp회복 함수 추가할 것
+		
+		int hpUp = 0;
+		switch (_potionLv)
+		{
+		case 0 : 
+			hpUp = 30;
+			break;
+		case 1:
+			hpUp = 50;
+			break;
+		case 2:
+			hpUp = 100;
+			break;
+		}
+		GAMEMANAGER->getPlayer()->setHp(_rviPotion->use, hpUp);
 		break;
 	}
 }
@@ -112,16 +152,29 @@ void UIScene::showPotion(void)
 }
 
 
-void UIScene::showPoint(void)
+void UIScene::showPoint(bool openInventory)
 {
-	IMAGEMANAGER->findImage("point")->render(getMemDC(),
-		(WINSIZE_X - 30) - IMAGEMANAGER->findImage("point")->getWidth(), IMAGEMANAGER->findImage("point")->getY());
-
+	if (openInventory == true)
+	{
 	// 소지금 오른쪽 정렬
 	SetTextAlign(getMemDC(), TA_RIGHT);
 
 	FONTMANAGER->drawTextValue(getMemDC(), _point,					 // 변수
-		1100, IMAGEMANAGER->findImage("point")->getY() + 27,		 // 위치
-		"둥근모꼴", 25, 100, RGB(171, 154, 63));						 // 폰트
+		1060, IMAGEMANAGER->findImage("point")->getY() -20,			 // 위치
+		"둥근모꼴", 23, 100, RGB(171, 154, 63));						 // 폰트
+	}
+	else
+	{
+		IMAGEMANAGER->findImage("point")->render(getMemDC(),
+			(WINSIZE_X - 30) - IMAGEMANAGER->findImage("point")->getWidth(), IMAGEMANAGER->findImage("point")->getY());
+
+		// 소지금 오른쪽 정렬
+		SetTextAlign(getMemDC(), TA_RIGHT);
+
+		FONTMANAGER->drawTextValue(getMemDC(), _point,					 // 변수
+			1100, IMAGEMANAGER->findImage("point")->getY() + 27,		 // 위치
+			"둥근모꼴", 25, 100, RGB(171, 154, 63));						 // 폰트
+
+	}
 }
 
