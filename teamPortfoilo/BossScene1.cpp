@@ -66,17 +66,20 @@ void BossScene1::update(void)
 
 void BossScene1::render(void)
 {
-	float bgSpeed = 0.02;
+	float bg1Speed = 0.01;
+	float bg2Speed = 0.02;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
 	IMAGEMANAGER->loopRender("º¸½º1 µÞ¹è°æ", getMemDC(), &rc1, 
-		_camera->getScreenRect().left*bgSpeed, 
-		_camera->getScreenRect().left*bgSpeed);//
+											_camera->getScreenRect().left*bg1Speed, 
+											_camera->getScreenRect().top*bg1Speed);
+
 	IMAGEMANAGER->loopRender("º¸½º1 µÞ½ÃÃ¼", getMemDC(), &rc1, 
-		_camera->getScreenRect().left*bgSpeed,
-		_camera->getScreenRect().left*bgSpeed);//
+											_camera->getScreenRect().left*bg2Speed,
+											_camera->getScreenRect().top*bg1Speed);
 
     IMAGEMANAGER->render("º¸½º1 ¹Ù´Ú", getMemDC(), 0, 0,
-                         _camera->getScreenRect().left, _camera->getScreenRect().top,
+                         _camera->getScreenRect().left, 
+						 _camera->getScreenRect().top,
 						 WINSIZE_X, WINSIZE_Y);
    
 	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)

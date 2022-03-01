@@ -12,7 +12,7 @@
 #include "BossScene1.h"
 #include "BossScene2.h"
 #include "FieldScene1.h"
-#include "EndingScene.h"
+#include "LastScene.h"
 #pragma endregion 
 
 
@@ -43,11 +43,11 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	// Stage2
 	SCENEMANAGER->addScene("Boss2", new BossScene2);
 	SCENEMANAGER->addScene("Field1", new FieldScene1);
-	SCENEMANAGER->addScene("Ending", new EndingScene);
+	SCENEMANAGER->addScene("Last", new LastScene);
 
 	
 #pragma endregion 
-	SCENEMANAGER->changeScene("Boss1");
+	SCENEMANAGER->changeScene("Opening");
 	return S_OK;
 }
 

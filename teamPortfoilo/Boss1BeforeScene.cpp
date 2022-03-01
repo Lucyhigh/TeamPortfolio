@@ -6,13 +6,12 @@ HRESULT Boss1BeforeScene::init(void)
     _mapImage = IMAGEMANAGER->findImage("보스1전배경");
     _objectImage = IMAGEMANAGER->findImage("stand");
    
-
     floor0 = new RECT{ 0, 600, _mapImage->getWidth(), 670 };
     floor1 = new RECT{ 1100, 0, 1300, 1000 };
     floor2 = new RECT{ 0, 0, 100, 1000 };
     _floor.push_back(floor0);
-    //_floor.push_back(floor1);
-    //_floor.push_back(floor2);
+    _floor.push_back(floor1);
+    _floor.push_back(floor2);
 
     GAMEMANAGER->getPlayer()->ObjectInit({ 0,0 }, _floor);
 
@@ -45,7 +44,7 @@ void Boss1BeforeScene::update(void)
     cameraPos.x = GAMEMANAGER->getPlayer()->getPoint().x;
     cameraPos.y = _camera->getCameraPos().y;
 
-    _camera->setCameraPos(cameraPos);
+	_camera->setCameraPos(cameraPos);
     _camera->update();
     GAMEMANAGER->getPlayer()->setCameraRect(_camera->getScreenRect());
     GAMEMANAGER->getPlayer()->ObjectUpdate();
@@ -89,7 +88,6 @@ void Boss1BeforeScene::update(void)
 
 void Boss1BeforeScene::render(void)
 {
-	cout<< GAMEMANAGER->getPlayer()->getPoint().x <<endl;
     int objectPosX = _ObjectRc.left - _camera->getScreenRect().left;
     int objectPosY = _ObjectRc.top - _camera->getScreenRect().top;
     int objectPosCenterX = ((_ObjectRc.left + _ObjectRc.right) * 0.5 ) - _camera->getScreenRect().left;
@@ -99,17 +97,13 @@ void Boss1BeforeScene::render(void)
 
 	float bgSpeed = 0.02;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
-	IMAGEMANAGER->loopRender("보스1 뒷배경", getMemDC(),&rc1 , objectPosX*bgSpeed, objectPosY*bgSpeed+50);//
+	IMAGEMANAGER->loopRender("보스1 뒷배경", getMemDC(),&rc1 , objectPosX*bgSpeed, objectPosY*bgSpeed+50);//놋북으로 픽스켈다녀와서 작업예정
 	IMAGEMANAGER->loopRender("보스1 뒷시체", getMemDC(),&rc1 , objectPosX*bgSpeed, objectPosY*bgSpeed);//
     IMAGEMANAGER->render("보스1전배경", getMemDC(), 0, 0,
                                        _camera->getScreenRect().left,
 									   _camera->getScreenRect().top,
 									   WINSIZE_X, WINSIZE_Y);
 
-    for (int i = 0; i < _floor.size(); i++)
-    {
-       // Rectangle(getMemDC(), _floor[i]->left, _floor[i]->top, _floor[i]->right, _floor[i]->bottom);
-    }
     GAMEMANAGER->getPlayer()->ObjectRender();
 
     IMAGEMANAGER->frameRender("stand", getMemDC(), objectPosX, objectPosY);

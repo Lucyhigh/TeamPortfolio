@@ -163,7 +163,7 @@ HRESULT ImageClass::init(void)
 
 #pragma region Stage Scene
     IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ¹Ù´Ú", "Resources/Images/BackGround/openingScenefloor.bmp", 4150, 1694, MGT);
-    IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ", "Resources/Images/BackGround/openingSceneAll.bmp", 4150, 1694);//
+    IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ", "Resources/Images/BackGround/openingSceneAll.bmp", 4150, 1694);
     IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À µÞ¹è°æ", "Resources/Images/BackGround/openingSceneLastBG.bmp", 4150, 1694);
     IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ¾Õ½ÃÃ¼", "Resources/Images/BackGround/openingSceneFrontBody.bmp", 4150, 1694, MGT);
     IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ¾Õ¹®", "Resources/Images/BackGround/openingSceneFrontDoor.bmp", 4150, 1694, MGT);
@@ -182,11 +182,12 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("¾À2¹è°æ", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("¾À3¹è°æ", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 
-	IMAGEMANAGER->addImage("¿£µù¾À ¹Ù´Ú", "Resources/Images/BackGround/endingfloor.bmp", 4150, 1694, MGT);
-	IMAGEMANAGER->addImage("¿£µù¾À Å×½ºÆ®¹è°æ", "Resources/Images/BackGround/endingAll.bmp", 4150, 1694);//
-	IMAGEMANAGER->addImage("¿£µù¾À µÞ¹è°æ", "Resources/Images/BackGround/endingBG.bmp", 4150, 1694);
-	IMAGEMANAGER->addImage("¿£µù¾À ¾Õ¹è°æ", "Resources/Images/BackGround/endingFG.bmp", 4150, 1694, MGT);
-	IMAGEMANAGER->addImage("¿£µù¾À ÇÈ¼¿", "Resources/Images/BackGround/endingScenePixel.bmp", 4150, 1694, MGT);
+	IMAGEMANAGER->addImage("¿£µù¾À ¹Ù´Ú", "Resources/Images/BackGround/endingfloor.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("¿£µù¾À Å×½ºÆ®¹è°æ", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);//
+	IMAGEMANAGER->addImage("¿£µù¾À µÞ¹è°æ", "Resources/Images/BackGround/endingBG.bmp", 5000, 1862);
+	IMAGEMANAGER->addImage("¿£µù¾À ¾Õ¹è°æ", "Resources/Images/BackGround/endingFG.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("¿£µù¾À ¾Õ¹è°æ2", "Resources/Images/BackGround/endingFG2.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("¿£µù¾À ÇÈ¼¿", "Resources/Images/BackGround/endingScenePixel.bmp", 5000, 1862, MGT);
 
 	// ¼öÁ¤ ¹× ÀÚ¸® ÀâÀº ÀÌ¹ÌÁö 
 	IMAGEMANAGER->addImage("BossStage2_Bg", "Resources/Images/BackGround/bg3.bmp", 1200, 675);

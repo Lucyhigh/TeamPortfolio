@@ -10,11 +10,12 @@ private:
 	PixelCollision* _pixel;
 
 public:
-	LastScene() {}
-	~LastScene() {}
-
 	HRESULT init(void);
 	void release(void);
 	void update(void);
 	void render(void);
+
+public:
+	LastScene() {}
+	~LastScene() {}
 };
