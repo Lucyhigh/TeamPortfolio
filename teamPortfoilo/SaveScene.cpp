@@ -9,8 +9,8 @@ HRESULT SaveScene::init(void)
 	for (int i = 1; i < 4; i++)
 	{
 		tagSaveSlot slotInfo;
-		slotInfo.x = 140;
-		slotInfo.y = 60 + (i * 115);
+		slotInfo.x = 170;
+		slotInfo.y = 40 + (i * 135);
 		slotInfo.state = NONE; // 세이브 파일유무에 따라 상태 변경
 		slotInfo.noneImg = new Image;
 		slotInfo.noneImg->init("Resources/Images/UI/saveNoData.bmp", slotInfo.x, slotInfo.y, 848, 112, MGT);

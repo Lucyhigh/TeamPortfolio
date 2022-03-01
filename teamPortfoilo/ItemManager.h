@@ -19,6 +19,7 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+	void render(int categoryIndex);
 
 	void setItem(void);
 	void removeItem(int arrNum);

@@ -1,19 +1,23 @@
 #include "Stdafx.h"
 #include "Item.h"
+#include "AniScene.h"
 
 HRESULT Item::init(void)
 {
+	_ani = new AniSceneItem;
+	_ani->init();
 
 	return S_OK;
 }
 
 void Item::release(void)
 {
+	_ani->release();
 }
 
 void Item::update(void)
 {
-
+	_ani->update();
 }
 
 void Item::render(void)
@@ -25,31 +29,10 @@ void Item::draw(void)
 {
 	if (_state == ItemState::NONE) 
 	{
-		// 인벤에 없는 상태 
-
-		// 테스트 용 그리기 
-
-		cout << "-----------" << endl;
 		// 슬롯 Y 프레임 0 고정 
-		switch (_state)
-		{
-		case ItemState::NONE:
-			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 2, 0);
 
-			break;
-		case ItemState::HAVE:
-			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 1, 0);
+		_slotImg->frameRender(getMemDC(), _posX, _posY, 2, 0);
 
-			break;
-		case ItemState::SELECT:
-			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 6, 0);
-
-			break;
-		case ItemState::MEACULPANONE:
-			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 6, 0);
-
-			break;
-		}
 	}
 	else 
 	{
@@ -57,38 +40,41 @@ void Item::draw(void)
 		{
 			// 있다면 그리기 
 		case ItemState::HAVE:
-			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 1, 0);
+			_slotImg->frameRender(getMemDC(), _posX, _posY, 1, 0);
 
 			break;
 		case ItemState::SELECT:
-			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 6, 0);
+			_slotImg->frameRender(getMemDC(), _posX, _posY, 6, 0);
+			_ani->render(_posX, _posY);
 
 			break;
 		case ItemState::MEACULPANONE:
-			_slotImg->frameRender(getMemDC(), CENTER_X, CENTER_Y, 6, 0);
+			_slotImg->frameRender(getMemDC(), _posX, _posY, 6, 0);
 
 			break;
 		}
-		_iconImg->render(getMemDC(),CENTER_X,CENTER_Y ,_slotX*57, _slotY*57,57,57);
+		_iconImg->render(getMemDC(), _posX, _posY, _iconX *57, _iconY *57,57,57);
 	}
 }
 
-
-void Item::setItemData(int index, Category category, ItemState state, float posX, float posY, 
-	string name, string script, bool equip, int hp, int mp, int att, int dff)
+void Item::animation(void)
 {
-	_index = index;
-	_category = category;
+
+}
+
+
+void Item::setItem(ItemState state)
+{
 	_state = state;
-	_slotX = posX;
-	_slotY = posY;
-	// _frameXNum; // 이미지 시트에서 이미지 위치 
-	// _frameYNum;
-	_name = name;
-	_script = script;
-	_equip = equip;
-	_hp = hp;
-	_mp = mp;
-	_att = att;
-	_dff = dff;
+}
+
+void Item::setEquip(bool state)
+{
+	_equip = state;
+}
+
+void Item::setItem(float posX, float posY)
+{
+	_posX = posX; // 인벤토리에서 아이템 위치 
+	_posY = posY;
 }
