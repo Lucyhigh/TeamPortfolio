@@ -162,16 +162,12 @@ HRESULT ImageClass::init(void)
 
 
 #pragma region Stage Scene
-    IMAGEMANAGER->addImage("¿ÀÇÁ´× ÇÈ¼¿", "Resources/Images/BackGround/openingScenePixel.bmp", 4150, 1694, MGT);
     IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ¹Ù´Ú", "Resources/Images/BackGround/openingScenefloor.bmp", 4150, 1694, MGT);
     IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ", "Resources/Images/BackGround/openingSceneAll.bmp", 4150, 1694);//
     IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À µÞ¹è°æ", "Resources/Images/BackGround/openingSceneLastBG.bmp", 4150, 1694);
     IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ¾Õ½ÃÃ¼", "Resources/Images/BackGround/openingSceneFrontBody.bmp", 4150, 1694, MGT);
     IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ¾Õ¹®", "Resources/Images/BackGround/openingSceneFrontDoor.bmp", 4150, 1694, MGT);
 	IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ÇÈ¼¿", "Resources/Images/BackGround/openingScenePixel.bmp", 4150, 1694, MGT);
-	//IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ÇÈ¼¿", "Resources/Images/BackGround/openingScenePixel.bmp", WINSIZE_X * 2, WINSIZE_Y);// MGT);
-
-
 
 	IMAGEMANAGER->addImage("¾À1¹è°æ", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("º¸½º1Àü¹è°æ", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);//
@@ -185,6 +181,12 @@ HRESULT ImageClass::init(void)
 
 	IMAGEMANAGER->addImage("¾À2¹è°æ", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("¾À3¹è°æ", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
+
+	IMAGEMANAGER->addImage("¿£µù¾À ¹Ù´Ú", "Resources/Images/BackGround/endingfloor.bmp", 4150, 1694, MGT);
+	IMAGEMANAGER->addImage("¿£µù¾À Å×½ºÆ®¹è°æ", "Resources/Images/BackGround/endingAll.bmp", 4150, 1694);//
+	IMAGEMANAGER->addImage("¿£µù¾À µÞ¹è°æ", "Resources/Images/BackGround/endingBG.bmp", 4150, 1694);
+	IMAGEMANAGER->addImage("¿£µù¾À ¾Õ¹è°æ", "Resources/Images/BackGround/endingFG.bmp", 4150, 1694, MGT);
+	IMAGEMANAGER->addImage("¿£µù¾À ÇÈ¼¿", "Resources/Images/BackGround/endingScenePixel.bmp", 4150, 1694, MGT);
 
 	// ¼öÁ¤ ¹× ÀÚ¸® ÀâÀº ÀÌ¹ÌÁö 
 	IMAGEMANAGER->addImage("BossStage2_Bg", "Resources/Images/BackGround/bg3.bmp", 1200, 675);

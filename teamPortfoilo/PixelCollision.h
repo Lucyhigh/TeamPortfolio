@@ -11,11 +11,9 @@ private:
 	Image* _bgImage;
 	Animation* _ani;
 	Animation* _ani2;
-    //vector<RECT*> _floor;
-   // RECT* floor0;
     RECT _rc;
 	RECT _cameraRect;
-    //ÇÈ¼¿ Ãæµ¹ Å½ÁöÇÒ Y°ª ¼¾¼­
+
     int _probeY;
 	float _speed;
 	int _x;
@@ -23,9 +21,9 @@ private:
 	bool _isWalk;
 	bool _isLeft;
 public:
-    HRESULT init(void);
+	HRESULT init(float x, float y, char* image);
     void release(void);
-    void update(void);
+    void update(char* image);
     void render(void);
 
 	int getX();
@@ -39,7 +37,6 @@ public:
 	RECT getPlayerRect();
 
 	void setCameraRect(RECT rect);
-
 public:
     PixelCollision() {}
     ~PixelCollision() {}

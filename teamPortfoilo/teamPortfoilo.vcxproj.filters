@@ -127,7 +127,10 @@
     <ClCompile Include="PixelCollision.cpp">
       <Filter>Blasphemous\GameScene\Pixel</Filter>
     </ClCompile>
-    <ClCompile Include="PixelScene.cpp">
+    <ClCompile Include="OpeningScene.cpp">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="LastScene.cpp">
       <Filter>Blasphemous\GameScene\Pixel</Filter>
     </ClCompile>
   </ItemGroup>
@@ -264,7 +267,10 @@
     <ClInclude Include="PixelCollision.h">
       <Filter>Blasphemous\GameScene\Pixel</Filter>
     </ClInclude>
-    <ClInclude Include="PixelScene.h">
+    <ClInclude Include="OpeningScene.h">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="LastScene.h">
       <Filter>Blasphemous\GameScene\Pixel</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,11 +1,11 @@
 #include "Stdafx.h"
 #include "PixelCollision.h"
 
-HRESULT PixelCollision::init(void)
+HRESULT PixelCollision::init(float x, float y, char* image)
 {
-	_playerIdleImage = IMAGEMANAGER->findImage("²¿±ò´ë±â");// 1664, 146, 13, 2
-	_playerMoveImage = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");// 1106, 140, 14, 2
-	_bgImage = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ÇÈ¼¿");
+	_playerIdleImage = IMAGEMANAGER->findImage("²¿±ò´ë±â");
+	_playerMoveImage = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
+	_bgImage = IMAGEMANAGER->findImage(image);
 
 	_ani = new Animation;
 	_ani2 = new Animation;
@@ -13,25 +13,21 @@ HRESULT PixelCollision::init(void)
 	_ani->init(_playerIdleImage->getWidth(), _playerIdleImage->getHeight(), 128, 73);//´ë±â
 	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), 79, 70);//ÀÌµ¿
 
-	//È®Àå¼ºÀ» À§ÇØ »ó¼öº¸´Ù º¯¼ö¸¦ ¾²¶óÇÞÁö¸¸ ¸®¼Ò½º¿£ ¿¹¿ÜÀÓ Æ¯È÷ ³ª´©±â °³¾ÈÁ¶À½
-	_ani->setDefPlayFrame(false,true);
 	_ani->setFPS(6);
+	_ani->setPlayFrame(0, 12, false, true);
 
-	//_ani2->setPlayFrame(0,13,false, true);
-	_ani2->setDefPlayFrame(false,true);
 	_ani2->setFPS(6);
-	_ani->AniStart();
-	_ani2->AniStart();
+	_ani2->setPlayFrame(0, 13, false, true);
+
 	_isWalk = false;
 	_isLeft = false;
 	_speed = 3.0f;
-    _x = 1680;//ÁÂÇ¥ÀÌ»ó
-    _y = 944;
+
+	_x = x;
+	_y = y;
 	_rc = RectMakeCenter(_x, _y, _playerIdleImage->getWidth(), _playerIdleImage->getHeight());
-
-    return S_OK;
+	return S_OK;
 }
-
 void PixelCollision::release(void)
 {
 	_ani->release();
@@ -40,9 +36,8 @@ void PixelCollision::release(void)
 	SAFE_DELETE(_ani2);
 }
 
-void PixelCollision::update(void)
+void PixelCollision::update(char* image)
 {
-	//cout << TIMEMANAGER->getElapsedTime() * 1 << endl;
 	_ani->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 	_ani2->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 
@@ -53,6 +48,11 @@ void PixelCollision::update(void)
 		_ani->setPlayFrame(0, 12, false, true);
 		_ani2->setPlayFrame(0, 13, false, true);
 		_x += _speed;
+
+		if (_ani->isPlay() == false)
+			_ani->AniStart();
+		if (_ani2->isPlay() == false)
+			_ani2->AniStart();
 	}
 	else if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 	{
@@ -72,7 +72,7 @@ void PixelCollision::update(void)
 		_ani->setPlayFrame(13, 25, false, true);
 		_ani2->setPlayFrame(14, 25, false, true);
 	}
-	else if(!_isLeft)
+	else if (!_isLeft)
 	{
 		_ani->setPlayFrame(0, 12, false, true);
 		_ani2->setPlayFrame(0, 13, false, true);
@@ -83,7 +83,7 @@ void PixelCollision::update(void)
 
 	for (int i = _probeY - 30; i < _probeY + 30; i++)
 	{
-		COLORREF color = GetPixel(IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ÇÈ¼¿")->getMemDC(), _x, i);
+		COLORREF color = GetPixel(IMAGEMANAGER->findImage(image)->getMemDC(), _x, i);
 		int r = GetRValue(color);
 		int g = GetGValue(color);
 		int b = GetBValue(color);
@@ -93,7 +93,7 @@ void PixelCollision::update(void)
 			break;
 		}
 	}
-	if(_isWalk)
+	if (_isWalk)
 		_rc = RectMakeCenter(_x, _y, _playerMoveImage->getFrameWidth(), _playerMoveImage->getFrameHeight());
 	else
 		_rc = RectMakeCenter(_x, _y, _playerIdleImage->getFrameWidth(), _playerIdleImage->getFrameHeight());
@@ -102,9 +102,9 @@ void PixelCollision::update(void)
 void PixelCollision::render(void)
 {
 	float cameraX = _rc.left - _cameraRect.left;
-	float cameraY = _rc.top+ - _cameraRect.top;
+	float cameraY = _rc.top + -_cameraRect.top;
 	//cout << _x << ", " << _y << endl;
-	
+
 	if (_isWalk)
 	{
 		_playerMoveImage->aniRender(getMemDC(), cameraX, cameraY, _ani2);
@@ -154,3 +154,5 @@ void PixelCollision::setCameraRect(RECT rect)
 {
 	_cameraRect = rect;
 }
+
+

@@ -7,7 +7,7 @@
 #include "OptionScene.h"
 //Stage
 #include "StartScene.h"
-#include "PixelScene.h"//
+#include "OpeningScene.h"//
 #include "Boss1BeforeScene.h"
 #include "BossScene1.h"
 #include "BossScene2.h"
@@ -36,7 +36,7 @@ HRESULT MainGame::init(void) //초기화
 
 	// Stage1
 	SCENEMANAGER->addScene("Start", new StartScene);
-	SCENEMANAGER->addScene("Pixel", new PixelScene);
+	SCENEMANAGER->addScene("Opening", new OpeningScene);
 	SCENEMANAGER->addScene("BeforeBoss1", new Boss1BeforeScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
 	
@@ -47,7 +47,7 @@ HRESULT MainGame::init(void) //초기화
 
 	
 #pragma endregion 
-	SCENEMANAGER->changeScene("Title");
+	SCENEMANAGER->changeScene("Opening");
 	return S_OK;
 }
 

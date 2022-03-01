@@ -168,11 +168,12 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="KnifeMonster.h" />
+    <ClInclude Include="LastScene.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="OptionScene.h" />
     <ClInclude Include="PixelCollision.h" />
-    <ClInclude Include="PixelScene.h" />
+    <ClInclude Include="OpeningScene.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="RandomFunction.h" />
@@ -214,11 +215,12 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="KnifeMonster.cpp" />
+    <ClCompile Include="LastScene.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="OptionScene.cpp" />
     <ClCompile Include="PixelCollision.cpp" />
-    <ClCompile Include="PixelScene.cpp" />
+    <ClCompile Include="OpeningScene.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="RockThrowMonster.cpp" />
