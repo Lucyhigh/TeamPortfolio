@@ -31,26 +31,67 @@ void Inventory::update(void)
 		if (_categoryIndex >= 7) _categoryIndex = 7;
 	}
 
+	if (KEYMANAGER->isOnceKeyDown(VK_UP))
+	{
+		// 8개 단위 
+	}
+	if (KEYMANAGER->isOnceKeyDown(VK_DOWN))
+	{
+		// 8개 단위 
+	}
+	if (KEYMANAGER->isOnceKeyDown(VK_LEFT))
+	{
+		// 1개 단위 
+	}
+	if (KEYMANAGER->isOnceKeyDown(VK_RIGHT))
+	{
+		// 1개 단위 
+	}
 
 	_im->update();
 }
 
 void Inventory::render(void)
 {
-	_im->getItem()[1]->getCategory();
-		//= _vTOption.begin() + 1; // 0은 타이틀 명 
-	for (; _viTOption != _vTOption.end() - 2; _viTOption++) // 2는 수락, 뒤로 
+	for(int i = 0; i < _im->getItem().size();i++)
 	{
 	switch (_categoryIndex)
 	{
 	case 1 :
 		IMAGEMANAGER->findImage("inven1")->render(getMemDC(), 0, 0);
 
-		// 아이템 설명 할 것 
-		FONTMANAGER->drawText(getMemDC(), _viTOption->x, _viTOption->y,
-			"둥근모꼴", 25, 100, _TitleText[_viTOption->num].text, wcslen(_TitleText[_viTOption->num].text), MTEXT);
+		if(_im->getItem()[i]->getState == ItemState::SELECT)
+		{
+			// 아이템 설명 할 것 
+			// selected Item Name
+			FONTMANAGER->drawText2(getMemDC(), 420 ,245,
+				"둥근모꼴", 40, 100, _im->getItem()[i]->getName() , _im->getItem()[i]->getName().size(), MTEXT);
 
+			// selected Item Script
+			FONTMANAGER->drawText2(getMemDC(), 315, 345,
+				"둥근모꼴", 25, 100, _im->getItem()[i]->getScript(), _im->getItem()[i]->getScript().size(), MTEXT);
 
+			// 버튼 위치 . 퀘스트템은 수정필요 
+			IMAGEMANAGER->findImage("enter")->render(getMemDC(), CENTER_X + 120, WINSIZE_Y - 100);
+			IMAGEMANAGER->findImage("esc")->render(getMemDC(), CENTER_X + 355, WINSIZE_Y - 100);
+
+			if (_im->getItem()[i]->getEquip())
+			{
+				// 장착했다면 해제
+				FONTMANAGER->drawText(getMemDC(), (CENTER_X + 50) + IMAGEMANAGER->findImage("enter")->getWidth() + 25, WINSIZE_Y - 98,
+					"둥근모꼴", 25, 100, _InvenTEXT[1].text, wcslen(_InvenTEXT[1].text), BTEXT);
+			}
+			else 
+			{
+				// 아니면 장착 
+				FONTMANAGER->drawText(getMemDC(), (CENTER_X + 50) + IMAGEMANAGER->findImage("enter")->getWidth() + 25, WINSIZE_Y - 98,
+					"둥근모꼴", 25, 100, _InvenTEXT[0].text, wcslen(_InvenTEXT[0].text), BTEXT);
+			}
+
+			FONTMANAGER->drawText(getMemDC(), (CENTER_X + 285) + IMAGEMANAGER->findImage("space")->getWidth() + 25, WINSIZE_Y - 98,
+				"둥근모꼴", 25, 100, _InvenTEXT[2].text, wcslen(_InvenTEXT[2].text), BTEXT);
+
+		}
 		break;
 	case 2:
 		IMAGEMANAGER->findImage("inven2")->render(getMemDC(), 0, 0);
@@ -75,23 +116,14 @@ void Inventory::render(void)
 	default:
 		break;
 	}
-	}
-	// 버튼 위치 . 퀘스트템은 수정필요 
-	IMAGEMANAGER->findImage("enter")->render(getMemDC(), CENTER_X + 120, WINSIZE_Y - 100);
-	IMAGEMANAGER->findImage("esc")->render(getMemDC(), CENTER_X + 355, WINSIZE_Y - 100);
-
-	// 수락, 뒤로 
-	_viTOption = _vTOption.end() - 2;
-	FONTMANAGER->drawText(getMemDC(), (CENTER_X + 120) + IMAGEMANAGER->findImage("enter")->getWidth() + 25, WINSIZE_Y - 98,
-		"둥근모꼴", 25, 100, _TitleText[_viTOption->num].text, wcslen(_TitleText[_viTOption->num].text), BTEXT);
-
-	_viTOption = _vTOption.end() - 1;
-	FONTMANAGER->drawText(getMemDC(), (CENTER_X + 355) + IMAGEMANAGER->findImage("esc")->getWidth() + 25, WINSIZE_Y - 98,
-		"둥근모꼴", 25, 100, _TitleText[_viTOption->num].text, wcslen(_TitleText[_viTOption->num].text), BTEXT);
-
+	
 
 	// 카테고리 인덱스를 넣어서, 해당 카테고리 아이템만 그릴 수 있도록 수정 
+	// 함수 내부에서 카테고리 인덱스에 맞는 아이템만 출력 	
 	_im->render(_categoryIndex);
+	}
+
+
 
 
 

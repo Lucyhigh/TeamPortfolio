@@ -1,6 +1,6 @@
 #include "Stdafx.h"
 #include "Item.h"
-#include "AniScene.h"
+
 
 HRESULT Item::init(void)
 {
@@ -45,7 +45,7 @@ void Item::draw(void)
 			break;
 		case ItemState::SELECT:
 			_slotImg->frameRender(getMemDC(), _posX, _posY, 6, 0);
-			_ani->render(_posX, _posY);
+			_ani->render(_posX, _posY); // 선택아이템은 테두리 강조
 
 			break;
 		case ItemState::MEACULPANONE:
