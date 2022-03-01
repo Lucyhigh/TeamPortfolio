@@ -214,4 +214,5 @@ void Inventory::setEquipment(int num)
 	_items.erase(_items.begin() + num);
 }
 */
+// 여기부터 수정 필요
 
