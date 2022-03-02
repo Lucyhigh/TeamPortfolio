@@ -1,2 +1,3 @@
-﻿  ImageClass.cpp
+﻿  Boss1BeforeScene.cpp
+e:\gitproject\teamportfolio\teamportfolio\teamportfoilo\boss1beforescene.cpp(101): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
   teamPortfoilo.vcxproj -> E:\GitProject\TeamPortfolio\TeamPortfolio\x64\Debug\teamPortfoilo.exe

@@ -84,7 +84,7 @@ void BossScene1::render(void)
    
 	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
 	{ 
-		//GAMEMANAGER->getMonster()[i]->ObjectRender(); 
+		GAMEMANAGER->getMonster()[i]->ObjectRender(); 
 	}
 
 	GAMEMANAGER->getPlayer()->ObjectRender();

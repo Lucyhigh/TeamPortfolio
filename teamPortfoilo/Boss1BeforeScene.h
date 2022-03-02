@@ -1,5 +1,6 @@
 #pragma once
 #include "GameNode.h"
+#include "UIScene.h"
 #include "Camera.h"
 
 class Boss1BeforeScene : public GameNode
@@ -13,6 +14,8 @@ private:
     RECT* floor1;
     RECT* floor2;
     RECT _ObjectRc;
+
+	UIScene* _ui;
 
     float _x, _y;
     int _count;

@@ -7,8 +7,8 @@ HRESULT Boss1BeforeScene::init(void)
     _objectImage = IMAGEMANAGER->findImage("stand");
    
     floor0 = new RECT{ 0, 600, _mapImage->getWidth(), 670 };
-    floor1 = new RECT{ 1100, 0, 1300, 1000 };
-    floor2 = new RECT{ 0, 0, 100, 1000 };
+    floor1 = new RECT{ _mapImage->getWidth(), 0, _mapImage->getWidth()+100, _mapImage->getHeight() };
+    floor2 = new RECT{ 0, 0, 100, _mapImage->getHeight() };
     _floor.push_back(floor0);
     _floor.push_back(floor1);
     _floor.push_back(floor2);
@@ -18,10 +18,12 @@ HRESULT Boss1BeforeScene::init(void)
     _x = _mapImage->getWidth()*0.5;
     _y = WINSIZE_Y - 170;
     _ObjectRc = RectMakeCenter(_x, _y, _objectImage->getFrameWidth(), _objectImage->getFrameHeight());
-
+	_ui = new UIScene;
+	_ui->init();
     _camera = new Camera;
     _camera->init();
     _camera->setLimitsX(CENTER_X, _mapImage->getWidth());
+    _camera->setLimitsY(CENTER_Y, _mapImage->getHeight());
 
     _indexA = 0;
     _count = 0;
@@ -40,16 +42,9 @@ void Boss1BeforeScene::release(void)
 void Boss1BeforeScene::update(void)
 {
     _count++;
-    POINT cameraPos;
-    cameraPos.x = GAMEMANAGER->getPlayer()->getPoint().x;
-    cameraPos.y = _camera->getCameraPos().y;
-
-	_camera->setCameraPos(cameraPos);
-    _camera->update();
-    GAMEMANAGER->getPlayer()->setCameraRect(_camera->getScreenRect());
-    GAMEMANAGER->getPlayer()->ObjectUpdate();
-
-    if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON) || GAMEMANAGER->getPlayer()->getPoint().x >= _mapImage->getWidth())
+    
+	cout << GAMEMANAGER->getPlayer()->getPoint().x << endl;
+    if (GAMEMANAGER->getPlayer()->getPoint().x >= _mapImage->getWidth())
     {
     	SCENEMANAGER->changeScene("Boss1");
     }
@@ -61,11 +56,11 @@ void Boss1BeforeScene::update(void)
     int objectCenterY = (_ObjectRc.top + _ObjectRc.bottom) * 0.5;
     if (getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
     {
-        if (KEYMANAGER->isToggleKey('E'))
+        if (KEYMANAGER->isOnceKeyDown('E'))
         {
-            _indexA++;
-            //자동 세이브 
-            //체력 포션 풀로 채워짐
+			_indexA = 1;
+			GAMEMANAGER->getPlayer()->setHp(GAMEMANAGER->getPlayer()->getHp(BaseEnum::MAX),136);
+			_ui->setPotion();
         }
     }
 
@@ -84,6 +79,14 @@ void Boss1BeforeScene::update(void)
         IMAGEMANAGER->findImage("stand")->setFrameY(1);
         IMAGEMANAGER->findImage("stand")->setFrameX(_indexA);
     }
+	POINT cameraPos;
+	cameraPos.x = GAMEMANAGER->getPlayer()->getPoint().x;
+	cameraPos.y = _camera->getCameraPos().y;
+
+	_camera->setCameraPos(cameraPos);
+	_camera->update();
+	GAMEMANAGER->getPlayer()->setCameraRect(_camera->getScreenRect());
+	GAMEMANAGER->getPlayer()->ObjectUpdate();
 }
 
 void Boss1BeforeScene::render(void)

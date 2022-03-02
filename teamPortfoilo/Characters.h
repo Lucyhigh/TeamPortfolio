@@ -91,4 +91,6 @@ class BaseData
 
 			// Ãß°¡ º» 
 			POINT getPoint();
+
+			void setHp(bool UpAndDown, int num);
 };

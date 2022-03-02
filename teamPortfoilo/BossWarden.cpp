@@ -21,7 +21,7 @@ BossWarden::BossWarden()
 	ObjectUpdate = bind(&BossWarden::update, this);
 	ObjectRender = bind(&BossWarden::render, this);
 }
-BossWarden::~BossWarden() { }
+BossWarden::~BossWarden(){}
 
 HRESULT BossWarden::init(POINT point, vector<RECT*> floor)
 {

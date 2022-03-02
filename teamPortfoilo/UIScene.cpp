@@ -125,3 +125,11 @@ void UIScene::showPoint(void)
 		"µÕ±Ù¸ğ²Ã", 25, 100, RGB(171, 154, 63));						 // ÆùÆ®
 }
 
+void UIScene::setPotion()
+{
+	_rviPotion = _vPotion.rbegin();
+	for (; _rviPotion != _vPotion.rend(); ++_rviPotion)
+	{
+		_rviPotion->use = false;
+	}
+}
