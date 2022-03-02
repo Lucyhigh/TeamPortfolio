@@ -28,21 +28,21 @@ void EndingScene::update(void)
             _textIndex++;
             if (_textIndex >= 3)
             {
-                _timer = 0;
+                _timer = 30;
             }
         }
         
-
-        _alpha -= 1;
+        _alpha -= 2;
         _bgAlpha += 1;
         _textAlpha += 2;
         if (_bgAlpha >= 255) _bgAlpha = 255;
         if (_alpha <= 0) _alpha = 0;
         if (_textAlpha >= 100) _textAlpha = 100;
     }
+
     if (_textIndex >= 3)
     {
-        if (_timer > 180)
+        if (_timer > 240)
         {
             SCENEMANAGER->changeScene("Title");
         }

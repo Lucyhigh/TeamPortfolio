@@ -8,9 +8,7 @@ HRESULT Boss1BeforeScene::init(void)
 	_symbolImage = IMAGEMANAGER->findImage("SymbolObj");
 	_breakSymbolImage = IMAGEMANAGER->findImage("breakSymbolObj");
 	_SkeletonImage = IMAGEMANAGER->findImage("breakableSkeleton");
-    IMAGEMANAGER->findImage("보스1전FrontDoor");
-    IMAGEMANAGER->findImage("버튼");
-	IMAGEMANAGER->findImage("k");
+
 
     floor0 = new RECT{ 0, 600, _mapImage->getWidth(), 670 };
     floor1 = new RECT{ _mapImage->getWidth(), 0, _mapImage->getWidth()+100, _mapImage->getHeight() };
@@ -19,7 +17,7 @@ HRESULT Boss1BeforeScene::init(void)
     _floor.push_back(floor1);
     _floor.push_back(floor2);
 
-    GAMEMANAGER->getPlayer()->ObjectInit({ 0,0 }, _floor);
+    GAMEMANAGER->getPlayer()->ObjectInit({ 100,570 }, _floor);
 
     _x = _mapImage->getWidth()*0.5;
     _y = WINSIZE_Y - 170;
@@ -191,9 +189,9 @@ void Boss1BeforeScene::render(void)
     int objectCenterX = (_ObjectRc.left + _ObjectRc.right) * 0.5;
     int objectCenterY = (_ObjectRc.top + _ObjectRc.bottom) * 0.5;
 
-	/*
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
+	
     IMAGEMANAGER->loopRender("보스1 뒷배경", getMemDC(), &rc1,
         _camera->getScreenRect().left * bgSpeed,
         _camera->getScreenRect().top * bgSpeed);
@@ -205,29 +203,10 @@ void Boss1BeforeScene::render(void)
 
     IMAGEMANAGER->frameRender("stand", getMemDC(), objectPosX, objectPosY);
 
-    GAMEMANAGER->getPlayer()->ObjectRender();
-	
-    IMAGEMANAGER->render("보스1전 FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
-	*/
 
-	IMAGEMANAGER->frameRender("stand", getMemDC(), objectPosX, objectPosY);
     if (getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
     {
         IMAGEMANAGER->render("버튼", getMemDC(), objectPosCenterX-40, objectPosY - 30);
-        if (KEYMANAGER->isToggleKey('E'))
-        {
-            if (_ptMouse.x > CENTER_X - 300 && _ptMouse.y > CENTER_Y)
-            {
-                //IMAGEMANAGER->render("선택창2", getMemDC(), CENTER_X - 300, CENTER_Y - 250);
-            }
-            else
-            {
-                //IMAGEMANAGER->render("선택창1", getMemDC(), CENTER_X - 300, CENTER_Y - 250);
-            }
-        }
-        else
-        {
-        }
     }
 
 	int _symbolPosCenterX = ((_SymbolRc.left + _SymbolRc.right) * 0.5) - _camera->getScreenRect().left;
@@ -247,6 +226,8 @@ void Boss1BeforeScene::render(void)
 	}
 
 	IMAGEMANAGER->frameRender("breakableSkeleton", getMemDC(), _skeletonPosX, _skeletonPosY, _indexD, 0);
+
+    GAMEMANAGER->getPlayer()->ObjectRender();
 
     IMAGEMANAGER->render("보스1전FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
     _camera->render();
