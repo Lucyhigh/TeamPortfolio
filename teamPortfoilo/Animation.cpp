@@ -139,7 +139,6 @@ void Animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 	_loop = loop;
 
 	_playList.clear();
-	//리버스 /루프 할거니?
 
 	if (_loop)
 	{
@@ -156,10 +155,43 @@ void Animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 		}
 	}
 }
+
+void Animation::setPlayReverseFrame(int start, int end, int framX, bool loop)
+{
+	_loop = loop;
+	_playList.clear();
+
+	int temp = start - (framX); 
+	int i = start;
+	while (true)
+	{
+		i--;
+		if (i == temp)
+		{
+			start += framX;   // 23 27 31
+			temp = start - (framX); // 20 24 29 
+			i = start;
+		}
+		_playList.push_back(i);
+
+		if (i == end)
+		{
+			break;
+		}
+	}
+}
+
+
 // 초당 프레임 갱신 횟수
 void Animation::setFPS(int framePerSec)
 {
 	_frameUpdateSec = 1.0f / static_cast<float>(framePerSec);
+}
+
+// 초당 프레임 갱신 횟수
+void Animation::setFPS(int framePerSec, int maxSec)
+{
+	_frameUpdateSec = maxSec / static_cast<float>(framePerSec);
 }
 
 // 프레임 업데이트

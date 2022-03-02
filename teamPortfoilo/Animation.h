@@ -35,13 +35,15 @@ public:
 	void setDefPlayFrame(bool reverse = false, bool loop = false);
 	void setPlayFrame(int* playArr = nullptr, int arrLen = 0, bool loop = false);
 	void setPlayFrame(int start, int end, bool reverse = false, bool loop = false);
+	void setPlayReverseFrame(int start, int end, int framX, bool loop);
+
 
 	// 초당 프레임 갱신 횟수
 	void setFPS(int framePerSec);
+	void setFPS(int framePerSec, int maxSec);
 
 	// 프레임 업데이트 
 	void frameUpdate(float elpasedTime);
-
 	void AniStart(void);
 	void AniStop(void);
 	void AniPause(void);
@@ -52,6 +54,7 @@ public:
 
 	// 프레임 위치 얻어옴
 	inline POINT getFramePos(void) { return _frameList[_playList[_nowPlayIdx]]; }
+	inline int getFrame(void) { return _nowPlayIdx; }
 
 	// 현재 에니메이션의 프레임 위치 순서 얻기
 	inline int getFrameIdx(void)

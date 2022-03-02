@@ -1,6 +1,7 @@
 #pragma once
 #include "GameNode.h"
 #include "BossWarden.h"
+#include "BossIsadora.h"
 #include "KnifeMonster.h"
 #include "ColliderManager.h"
 #include "Camera.h"
@@ -14,7 +15,7 @@ private:
 
     Camera* _camera;
     Image* _image;
-	BossWarden* boss;
+	BossIsadora* boss;
 	RECT* floor0;
 	RECT* floor1;
 	RECT* floor2;

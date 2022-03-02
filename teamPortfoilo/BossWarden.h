@@ -34,6 +34,7 @@ class BossWarden : public BaseData, GameNode
 		vector<pair<float,Image*>> effect;
 
 		void clearSmash(int) override;
+		void setHit(int) override;
 	public:
 		BossWarden();
 		~BossWarden();

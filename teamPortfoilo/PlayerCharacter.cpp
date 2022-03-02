@@ -19,8 +19,6 @@ PlayerCharacter::~PlayerCharacter() { } // ! DO NOTING
 HRESULT PlayerCharacter::init(POINT point, vector<RECT*>floor)
 {
 	this->floor = floor;
-    point.x = 400;
-    point.y = CENTER_Y;
 	_Collider[BaseEnum::UNIT] = RectMakeCenter(point.x, point.y, 50, 60);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
@@ -55,6 +53,7 @@ void PlayerCharacter::update(void)
 	_inputUpdate();
 	_inputAnimation();
 	//_smashRender();
+
 }
 
 void PlayerCharacter::render(void)
@@ -77,7 +76,9 @@ void PlayerCharacter::render(void)
 
 	for (int i = 0; i < smash.size(); i++)
 	{
-		Rectangle(getMemDC(), smash[i].first.left, smash[i].first.top, smash[i].first.right, smash[i].first.bottom);
+		float smashX = smash[i].first.left - _cameraRect.left;
+		float smashY = smash[i].first.top - _cameraRect.top;
+		Rectangle(getMemDC(), smashX-5, smashY-5, smashX+5, smashY+5);
 	}
 
 	if (_image != nullptr)
@@ -434,57 +435,48 @@ void PlayerCharacter::_updateAttack()
 		return;
 	}
 
-	long left = _Collider[BaseEnum::UNIT].left - _cameraRect.left;
-	long top = _Collider[BaseEnum::UNIT].top - _cameraRect.top;
-	long right = _Collider[BaseEnum::UNIT].right - _cameraRect.left;
-	long bottom = _Collider[BaseEnum::UNIT].bottom - _cameraRect.top;
-
 	if (_isLook != 1)
 	{
 		smash.clear();
-		mid = { 0, top + ((bottom - top) / 2) };
+		mid = { 0, _Collider[BaseEnum::UNIT].top + ((_Collider[BaseEnum::UNIT].bottom - _Collider[BaseEnum::UNIT].top) / 2) };
 		if (_isLeft != 1)
 		{
-			mid.x = left;
+			mid.x = _Collider[BaseEnum::UNIT].left;
 		}
 		else
 		{
-			mid.x = right;
+			mid.x = _Collider[BaseEnum::UNIT].right;
 		}
 
 		if (_isLook != -1)
 		{
 			smash.push_back
-			(pair<RECT, Image>{ RectMakeCenter(mid.x, top - 20, 10, 10), Image() });
-			smash.push_back
-			(pair<RECT, Image>{  RectMakeCenter(mid.x + (_isLeft * 50), top, 10, 10), Image() });
+			(pair<RECT, Image>{ RectMakeCenter(mid.x+ (_isLeft * 25), mid.y-25, 10, 10), Image() });
 		}
 		smash.push_back
 		(pair<RECT, Image>{ RectMakeCenter(mid.x + (_isLeft * 75), mid.y, 10, 10), Image() });
 		smash.push_back
-		(pair<RECT, Image>{ RectMakeCenter(mid.x + (_isLeft * 50), bottom, 10, 10), Image() });
+		(pair<RECT, Image>{ RectMakeCenter(mid.x + (_isLeft * 25), mid.y+25, 10, 10), Image() });
 	}
 	else
 	{
-		mid = { left + (( right - left) / 2) , top };
-		smash.push_back // ÁÂ  
-		(pair<RECT, Image>{ RectMakeCenter(mid.x - 40, mid.y - 50, 10, 10), Image() });
-		smash.push_back // Áß¾Ó 
+		
+		mid = { _Collider[BaseEnum::UNIT].left + ((_Collider[BaseEnum::UNIT].right - _Collider[BaseEnum::UNIT].left) / 2) , _Collider[BaseEnum::UNIT].top };
+		
+		smash.push_back 
 		(pair<RECT, Image>{ RectMakeCenter(mid.x, mid.y - 75, 10, 10), Image() });
-		smash.push_back // ¿ì
-		(pair<RECT, Image>{ RectMakeCenter(mid.x + 40, mid.y - 50, 10, 10), Image() });
 	}
 }
 
 bool PlayerCharacter::_updateHit()
 {
 	static int a = 0;
-	// ¾È¸Â¾Ñ´Ù!
+
 	if (_isHit == 0 || _state == UnitState::SLIDE) { return false; }
 
 	if (a == 0)
 	{
-		_jump["Weight"] = 2;
+		_jump["Weight"] = 1;
 		_state = UnitState::JUMP;
 	}
 
@@ -671,6 +663,7 @@ void PlayerCharacter::_inputAnimation()
 	else if (_state == UnitState::UPATTACK)
 	{
 		_image = IMAGEMANAGER->findImage("²¿±ò»ó´Ü¾îÅÃ");
+
 		_image->setY(_Collider[BaseEnum::UNIT].top - 10);
 
 		if (_isLeft != -1)

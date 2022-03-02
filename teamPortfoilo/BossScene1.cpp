@@ -1,4 +1,5 @@
 #include "Stdafx.h"
+#include "FirePillar.h"
 #include "BossScene1.h"
 
 HRESULT BossScene1::init(void)
@@ -7,16 +8,17 @@ HRESULT BossScene1::init(void)
     _image = IMAGEMANAGER->findImage("보스1배경");
 
 	floor0 = new RECT { 0, 600, _image->getWidth(),670};
-	floor1 = new RECT{ 1100, 0, 1300, 1000 };
-	floor2 = new RECT{ 0, 0, 100, 1000 };
+	floor1 = new RECT{ 0, 0, 100, _image->getHeight() };
+	floor2 = new RECT{ _image->getWidth()-100, 0, _image->getWidth(), _image->getHeight() };
 
 	_floor.push_back(floor0);
-	//_floor.push_back(floor1);
-	//_floor.push_back(floor2);
+	_floor.push_back(floor1);
+	_floor.push_back(floor2);
 
-	GAMEMANAGER->getPlayer()->ObjectInit({ 0,0 }, _floor);
-	boss = new BossWarden();
-	boss->init({ 0,0 }, _floor);
+	GAMEMANAGER->getPlayer()->ObjectInit({ 400,CENTER_Y }, _floor);
+	
+	boss = new BossIsadora();
+	boss->init({ _image->getWidth()/2,CENTER_Y }, _floor);
 	_monster.push_back(boss);
 	GAMEMANAGER->setMonster(_monster);
 
@@ -75,12 +77,12 @@ void BossScene1::render(void)
 		GAMEMANAGER->getMonster()[i]->ObjectRender(); 
 	}
 
-	for (int i = 0; i < _floor.size(); i++)
-	{
-		Rectangle(getMemDC(),_floor[i]->left, _floor[i]->top, _floor[i]->right, _floor[i]->bottom);
-	}
-
 	GAMEMANAGER->getPlayer()->ObjectRender();
 	_collider->render();
 	_camera->render();
+
+	for (int i = 0; i < _floor.size(); i++)
+	{
+		//Rectangle(getMemDC(),_floor[i]->left, _floor[i]->top, _floor[i]->right, _floor[i]->bottom);
+	}
 }

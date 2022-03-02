@@ -5,20 +5,21 @@
 class GameManger : public SingletonBase<GameManger>
 {
 	private:
-		static PlayerCharacter* player;
-		static vector<BaseData*> monster;
+		 PlayerCharacter* player;
+		 vector<BaseData*> monster;
 
 	public:
 		GameManger();
 		~GameManger();
 		void init();
 
-		static PlayerCharacter* getPlayer() { return player; }
-		static void setPlayer(PlayerCharacter* User) { player = User; }
-		static void clearPlayer() { player = nullptr; }
+		 PlayerCharacter* getPlayer() { return player; }
+		 void setPlayer(PlayerCharacter* User) { player = User; }
+		 void clearPlayer() { player = nullptr; }
 		
-		static vector<BaseData*> getMonster() { return monster; }
-		static void setMonster(vector<BaseData*> Monster) { monster = Monster; }
-		static void clearMonster() { monster.clear(); }
-		static void clearMonster(int num) { monster.erase(monster.begin()+num); }
+		 vector<BaseData*> getMonster() { return monster; }
+		 void setMonster(vector<BaseData*> Monster) { monster = Monster; }
+		 void setMonster(BaseData* Monster) { monster.push_back(Monster); }
+		 void clearMonster() { monster.clear(); }
+		 void clearMonster(int num) { monster.erase(monster.begin()+num); }
 };

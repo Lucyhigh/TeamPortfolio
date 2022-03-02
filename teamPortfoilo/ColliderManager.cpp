@@ -16,7 +16,7 @@ void ColliderManager::update(void)
 	{ 
 		try
 		{
-			updateEffect();
+			//updateEffect();
 		}
 		catch (int a) { }
 	}
@@ -35,15 +35,15 @@ inline void ColliderManager::smashCollider()
 	int smash = GAMEMANAGER->getPlayer()->getSmash().size();
 	if ( smash > 0)
 	{ 
-		RECT temp;
+		RECT temp[3];
 		for (int i = 0; i < smash; i++)
 		{
 			for (int h = 0; h < GAMEMANAGER->getMonster().size(); h++)
 			{
-				if (IntersectRect(&temp, &GAMEMANAGER->getPlayer()->getSmash()[i].first, &GAMEMANAGER->getMonster()[h]->getCollider()) && GAMEMANAGER->getMonster()[h]->getHp(BaseEnum::STATE) !=0)
+				if (IntersectRect(&temp[0], &GAMEMANAGER->getPlayer()->getSmash()[i].first, &GAMEMANAGER->getMonster()[h]->getCollider()) && GAMEMANAGER->getMonster()[h]->getHp(BaseEnum::STATE) !=0)
 				{ 
-					RECT result = GAMEMANAGER->getPlayer()->getSmash()[i].first;
-					addEffect(result);
+					//RECT result = GAMEMANAGER->getPlayer()->getSmash()[i].first;
+					//addEffect(result);
 					GAMEMANAGER->getPlayer()->clearSmash(i);
 					GAMEMANAGER->getMonster()[h]->setHit(i);
 					GAMEMANAGER->getPlayer()->setAttack(true);
@@ -64,9 +64,9 @@ inline void ColliderManager::smashCollider()
 			{
 				if (GAMEMANAGER->getPlayer()->getState() != PlayerCharacter::UnitState::SLIDE)
 				{
-					addEffect(GAMEMANAGER->getPlayer()->getCollider());
+					//addEffect(GAMEMANAGER->getPlayer()->getCollider());
 					GAMEMANAGER->getPlayer()->setHit(i);
-					GAMEMANAGER->getMonster()[i]->clearSmash(i);
+					GAMEMANAGER->getMonster()[i]->clearSmash(h);
 					//GAMEMANAGER->getMonster()[i]->setAttack(true);
 				}
 				return;
@@ -105,19 +105,27 @@ void ColliderManager::updateEffect()
 {
 	for (int i = 0; i < _effect.size(); i++)
 	{
-		if (0.1f + _effect[i].first >= TIMEMANAGER->getWorldTime()) 
-		{
-			continue;
-		}
+		if (0.1f + _effect[i].first >= TIMEMANAGER->getWorldTime()) { continue; }
 		_effect[i].first = TIMEMANAGER->getWorldTime();
-		if (_effect[i].second->getFrameX() < _effect[i].second->getMaxFrameX())
+		
+		try
 		{
-			_effect[i].second->setFrameX(_effect[i].second->getFrameX() + 1);
+			updateEffect();
+
+			if (_effect[i].second->getFrameX() < _effect[i].second->getMaxFrameX())
+			{
+
+				_effect[i].second->setFrameX(_effect[i].second->getFrameX() + 1);
+			}
+			else
+			{
+				_effect.erase(_effect.begin() + i);
+				break;
+			}
 		}
-		else
+		catch (int a) 
 		{
-			_effect.erase(_effect.begin() + i);
-			break;
+			a = 0;
 		}
 	}
 }

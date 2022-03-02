@@ -43,27 +43,12 @@ class PlayerCharacter : public BaseData, public GameNode
 		void _updataJump();
 		Image* _effect;
 
-		// 기타 
-		// int _point; // 소지 포인트 여기? 임시로 UI에서 사용.
-
-        //카메라 
-        //Image* _image;
-        //RECT _rcPlayer;
-
         RECT _cameraRect;
 
-        //캐릭터 위치 겟셋
-
-        //void setPlayerPosX(float x);
-        //void setPlayerPosY(float y);
-
-       //RECT getPlayerRect();
-        //void setCameraRect(RECT rect);
-
 public:
-		//기본 
 		UnitState getState();
 		void setCameraRect(RECT rect);
+		RECT getCamareRect() { return _cameraRect; }
 		PlayerCharacter();
 		~PlayerCharacter();
 

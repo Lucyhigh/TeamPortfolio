@@ -9,7 +9,7 @@
 		int BaseData::getHp(BaseEnum getData)
 		{
 			if (getData == BaseEnum::STATE) { return _hp[BaseEnum::STATE]; }
-			else if (getData == BaseEnum::STATE) { return _hp[BaseEnum::MAX]; }
+			else if (getData == BaseEnum::MAX) { return _hp[BaseEnum::MAX]; }
 			else return GETERROR;
 		}
 
@@ -17,7 +17,7 @@
 		int BaseData::getMp(BaseEnum getData)
 		{
 			if (getData == BaseEnum::STATE) { return _mp[BaseEnum::STATE]; }
-			else if (getData == BaseEnum::STATE) { return _mp[BaseEnum::MAX]; }
+			else if (getData == BaseEnum::MAX) { return _mp[BaseEnum::MAX]; }
 			else return GETERROR;
 		}
 
@@ -60,7 +60,7 @@
 		// 공격 입력 ( 데미지 ++ ) 
 		void BaseData::setHit(int damage)
 		{ 
-			if (_isHit == 0) { _isHit = 1; }
+			_isHit = 1;
 		}
 
 		POINT BaseData::getPoint()

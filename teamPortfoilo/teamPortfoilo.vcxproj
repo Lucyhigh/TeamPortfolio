@@ -149,6 +149,7 @@
     <ClInclude Include="AniScene.h" />
     <ClInclude Include="AniTextScene.h" />
     <ClInclude Include="Boss1BeforeScene.h" />
+    <ClInclude Include="BossIsadora.h" />
     <ClInclude Include="BossScene1.h" />
     <ClInclude Include="BossScene2.h" />
     <ClInclude Include="BossWarden.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="CommonMarcroFuntion.h" />
     <ClInclude Include="FieldScene1.h" />
+    <ClInclude Include="FirePillar.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="GameManger.h" />
     <ClInclude Include="GameNode.h" />
@@ -194,6 +196,7 @@
     <ClCompile Include="AniScene.cpp" />
     <ClCompile Include="AniTextScene.cpp" />
     <ClCompile Include="Boss1BeforeScene.cpp" />
+    <ClCompile Include="BossIsadora.cpp" />
     <ClCompile Include="BossScene1.cpp" />
     <ClCompile Include="BossScene2.cpp" />
     <ClCompile Include="BossWarden.cpp" />
@@ -201,6 +204,7 @@
     <ClCompile Include="Characters.cpp" />
     <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="FieldScene1.cpp" />
+    <ClCompile Include="FirePillar.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameManger.cpp" />
     <ClCompile Include="GameNode.cpp" />
