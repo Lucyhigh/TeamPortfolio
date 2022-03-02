@@ -6,6 +6,7 @@
 #include "TitleScene.h"
 #include "SaveScene.h"
 #include "OptionScene.h"
+#include "TempSoundTest.h"
 //Stage
 #include "StartScene.h"
 #include "PixelScene.h"//
@@ -29,6 +30,9 @@ HRESULT MainGame::init(void) //초기화
 	// 사용하는 이미지 전체 
 	ImageClass imageClass = ImageClass();
 	imageClass.init();
+
+	TempSoundTest sound = TempSoundTest();
+	sound.init();
 
 
 #pragma region SceneManager
@@ -54,7 +58,7 @@ HRESULT MainGame::init(void) //초기화
 	
 #pragma endregion 
 	// 테스트용 씬체인저
-	SCENEMANAGER->changeScene("Title");
+	SCENEMANAGER->changeScene("BeforeBoss1");
 
 	return S_OK;
 }
@@ -73,6 +77,8 @@ void MainGame::update(void) // 갱신
 
 	SCENEMANAGER->update();
 
+	TempSoundTest sound = TempSoundTest();
+	sound.update();
 
 }
 

@@ -12,14 +12,14 @@ HRESULT ImageClass::init(void)
 #pragma region PlayerImage
 	IMAGEMANAGER->addFrameImage("²¿±ò´ë±â", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ", "Resources/Images/Player/p_jump.bmp", 1120, 158, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò½½¶óÀÌµå", "Resources/Images/Player/p_slide.bmp", 1455, 144, 15, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/p_attack.bmp", 1260, 144, 9, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/p_attack0.bmp", 1260, 144, 9, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ1", "Resources/Images/Player/p_attack1.bmp", 725, 144, 5, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ2", "Resources/Images/Player/p_attack2.bmp", 2600, 170, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò»ó´Ü¾îÅÃ", "Resources/Images/Player/p_upattack.bmp", 972, 148, 12, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ¾îÅÃ", "Resources/Images/Player/p_jumpattack.bmp", 1510, 200, 10, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ", "Resources/Images/Player/playerFrontJumpOn.bmp", 1120, 158, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò½½¶óÀÌµå", "Resources/Images/Player/playerSliding.bmp", 1455, 144, 15, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ1", "Resources/Images/Player/playerAttTwoAddEffe.bmp", 725, 144, 5, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ2", "Resources/Images/Player/playerAttThreeAddEffect.bmp", 2600, 170, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò»ó´Ü¾îÅÃ", "Resources/Images/Player/playerUpwardAtt.bmp", 972, 148, 12, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ¾îÅÃ", "Resources/Images/Player/playerJumpAttack.bmp", 1510, 200, 10, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ¾îÅÃÀÌÆåÆ®", "Resources/Images/Player/p_jumpattack_ef.bmp", 604, 200, 4, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò»ó´Ü¾îÅÃÀÌÆåÆ®", "Resources/Images/Player/p_upattack_ef.bmp", 320, 300, 4, 2, MGT);
 	IMAGEMANAGER->addFrameImage("°ø°ÝÀÌÆåÆ®", "Resources/Images/Player/effectTwo.bmp", 792, 164, 6, 2, MGT);
@@ -222,6 +222,9 @@ HRESULT ImageClass::init(void)
     IMAGEMANAGER->addImage("¹öÆ°", "Resources/Images/Object/buttomE.bmp", 35 * 1.9, 38 * 1.9, MGT);
     IMAGEMANAGER->addFrameImage("stand", "Resources/Images/Object/priedieuStand.bmp", 924, 310, 7, 1, MGT); // 462, 155
     IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/Object/itemObject.bmp", 260, 91, 10, 1, MGT); // 260,91
+	IMAGEMANAGER->addFrameImage("SymbolObj", "Resources/Images/Object/SymbolStatue.bmp", 162, 64, 6, 1, MGT);
+	IMAGEMANAGER->addFrameImage("breakSymbolObj", "Resources/Images/Object/breakSymbolStatue.bmp", 550, 120, 10, 1, MGT);
+	IMAGEMANAGER->addFrameImage("breakableSkeleton", "Resources/Images/Object/breakableSkeleton.bmp", 756 * 1.7, 101 * 1.7, 14, 1, MGT);
 
 	// Item
 	// Å¬¸®ÇÎ¸¶½ºÅ© »ç¿ë
