@@ -171,13 +171,15 @@ HRESULT ImageClass::init(void)
 
 	IMAGEMANAGER->addImage("씬1배경", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("보스1전배경", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);//
-	IMAGEMANAGER->addImage("보스1전FrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);//
+	IMAGEMANAGER->addImage("보스1전FrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);
+	IMAGEMANAGER->addImage("보스1전 바닥", "Resources/Images/BackGround/boss1beforeSceneFloor.bmp", 4360, 675,MGT);
+	IMAGEMANAGER->addImage("보스1전 뒷배경", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);
 
-	IMAGEMANAGER->addImage("보스1 바닥", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675, MGT);// TODO
-	IMAGEMANAGER->addImage("보스1 뒷배경", "Resources/Images/BackGround/boss1LastBG.bmp", 2460, 675);//
-	IMAGEMANAGER->addImage("보스1 뒷시체", "Resources/Images/BackGround/boss1bodysBG.bmp", 2460, 675,MGT);//
-	IMAGEMANAGER->addImage("보스1 앞시체", "Resources/Images/BackGround/boss1FrontBody.bmp", 2460, 675,MGT);//
-	IMAGEMANAGER->addImage("보스1 앞문", "Resources/Images/BackGround/boss1FrontDoor.bmp", 2460, 675,MGT);//
+	IMAGEMANAGER->addImage("보스1 바닥", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675, MGT);
+	IMAGEMANAGER->addImage("보스1 뒷배경", "Resources/Images/BackGround/boss1LastBG.bmp", 2460, 675);
+	IMAGEMANAGER->addImage("보스1 뒷시체", "Resources/Images/BackGround/boss1bodysBG.bmp", 2460, 675,MGT);
+	IMAGEMANAGER->addImage("보스1 앞시체", "Resources/Images/BackGround/boss1FrontBody.bmp", 2460, 675,MGT);
+	IMAGEMANAGER->addImage("보스1 앞문", "Resources/Images/BackGround/boss1FrontDoor.bmp", 2460, 675,MGT);
 
 	IMAGEMANAGER->addImage("씬2배경", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("씬3배경", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
@@ -257,7 +259,7 @@ HRESULT ImageClass::init(void)
 #pragma region Object
 
     IMAGEMANAGER->addImage("버튼", "Resources/Images/Object/buttomE.bmp", 35 * 1.9, 38 * 1.9, true, RGB(255, 0, 255));
-    IMAGEMANAGER->addFrameImage("deosgracias", "Resources/Images/Object/deosgracias.bmp", 1664, 1528, 13, 6, MGT); // 128,254.6
+    IMAGEMANAGER->addFrameImage("deosgracias", "Resources/Images/Object/deosgracias.bmp", 1664, 1536, 13, 6, MGT); // 128,256
     IMAGEMANAGER->addFrameImage("stand", "Resources/Images/Object/priedieuStand.bmp", 924, 310, 7, 1, MGT); // 462, 155
     IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/Object/itemObject.bmp", 260, 91, 10, 1, MGT); // 260,91
 

@@ -18,7 +18,6 @@ private:
 	UIScene* _ui;
 
     float _x, _y;
-    int _count;
     int _indexA;
 
 public:

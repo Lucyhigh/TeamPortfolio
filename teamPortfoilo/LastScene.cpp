@@ -26,17 +26,12 @@ void LastScene::release(void)
 
 void LastScene::update(void)
 {
-	cout << _pixel->getX() <<", "<< _pixel->getY() << endl;
+	cout << _pixel->getX() << ", " << _pixel->getY() << ", " << _count << endl;
 	_pixel->update("엔딩씬 픽셀");
-	if ( _pixel->getX() >= _image->getWidth()-100)
+	if ( _pixel->getX() >= _image->getWidth() - 300)
 	{
-		//엔딩이미지로 전환
-		//_pixel->setX(_image->getWidth() - 100);
-		//_count++;
-		if (_count > 10)
-		{
-			//다른 엔딩씬으로 넘어감
-		}
+		
+		_pixel->setX(_image->getWidth() - 300);
 
 	}
 	else if (_pixel->getX() <= 100)
@@ -50,6 +45,11 @@ void LastScene::update(void)
 		if (_pixel->getX() > 4000)
 		{
 			_pixel->setX(_pixel->getX() - 0.95);
+            _count++;
+            if (_count > 10)
+            {
+                SCENEMANAGER->changeScene("Ending");
+            }
 		}
 	}
 	POINT cameraPos;
@@ -60,7 +60,6 @@ void LastScene::update(void)
 	_camera->update();
 
 	_pixel->setCameraRect(_camera->getScreenRect());
-
 }
 
 void LastScene::render(void)

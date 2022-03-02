@@ -26,7 +26,6 @@ HRESULT Boss1BeforeScene::init(void)
     _camera->setLimitsY(CENTER_Y, _mapImage->getHeight());
 
     _indexA = 0;
-    _count = 0;
 
     return S_OK;
 }
@@ -41,9 +40,8 @@ void Boss1BeforeScene::release(void)
 
 void Boss1BeforeScene::update(void)
 {
-    _count++;
     
-    if (GAMEMANAGER->getPlayer()->getPoint().x >= _mapImage->getWidth())
+    if (GAMEMANAGER->getPlayer()->getPoint().x >= _mapImage->getWidth()-100)
     {
     	SCENEMANAGER->changeScene("Boss1");
     }
@@ -99,8 +97,6 @@ void Boss1BeforeScene::render(void)
 
 	float bgSpeed = 0.02;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
-	IMAGEMANAGER->loopRender("º¸½º1 µÞ¹è°æ", getMemDC(),&rc1 , objectPosX*bgSpeed, objectPosY*bgSpeed+50);//³òºÏÀ¸·Î ÇÈ½ºÄÌ´Ù³à¿Í¼­ ÀÛ¾÷¿¹Á¤
-	IMAGEMANAGER->loopRender("º¸½º1 µÞ½ÃÃ¼", getMemDC(),&rc1 , objectPosX*bgSpeed, objectPosY*bgSpeed);//
     IMAGEMANAGER->render("º¸½º1Àü¹è°æ", getMemDC(), 0, 0,
                                        _camera->getScreenRect().left,
 									   _camera->getScreenRect().top,
