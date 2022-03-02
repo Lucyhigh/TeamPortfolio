@@ -10,6 +10,7 @@ private:
     tagOnlyText _text[6];
 	Image* _image;
 	PixelCollision* _pixel;
+
 	int _count;
     int _bgAlpha;
     int _alpha;

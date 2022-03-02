@@ -1,2 +1,5 @@
-﻿  LastScene.cpp
+﻿  MainGame.cpp
+  OpeningScene.cpp
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\openingscene.cpp(57): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+  코드를 생성하고 있습니다...
   teamPortfoilo.vcxproj -> C:\Users\DevArc1\Documents\git projects\TeamPortfolio\x64\Debug\teamPortfoilo.exe

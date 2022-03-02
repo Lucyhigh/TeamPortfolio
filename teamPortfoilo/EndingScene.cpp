@@ -31,13 +31,7 @@ void EndingScene::update(void)
                 _timer = 0;
             }
         }
-        if (_textIndex >= 3)
-        {
-            if (_timer > 130)
-            {
-                SCENEMANAGER->changeScene("Title");
-            }
-        }
+        
 
         _alpha -= 1;
         _bgAlpha += 1;
@@ -46,7 +40,13 @@ void EndingScene::update(void)
         if (_alpha <= 0) _alpha = 0;
         if (_textAlpha >= 100) _textAlpha = 100;
     }
-    cout << _timer << endl;
+    if (_textIndex >= 3)
+    {
+        if (_timer > 180)
+        {
+            SCENEMANAGER->changeScene("Title");
+        }
+    }
 }
 
 void EndingScene::render(void)

@@ -11,12 +11,13 @@ HRESULT LastScene::init(void)
     _textAlpha = 0;
     _alpha = 0;
     _bgAlpha = 0;
+	_count = 0;
 
 	_camera = new Camera;
 	_camera->init();
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
 	_camera->setLimitsY(CENTER_Y, _image->getHeight());
-	_count = 0;
+
 	return S_OK;
 }
 
@@ -30,13 +31,11 @@ void LastScene::release(void)
 
 void LastScene::update(void)
 {
-	//cout << _pixel->getX() << ", " << _pixel->getY() << ", " << _count << endl;
-	
 	if ( _pixel->getX() >= _image->getWidth() - 400)
 	{
-		
-		_pixel->setX(_image->getWidth() - 400);
         _count++;
+		_pixel->setX(_image->getWidth() - 400);
+		
         if (_count > 30)
         {
             SCENEMANAGER->changeScene("Ending");
@@ -69,18 +68,17 @@ void LastScene::update(void)
 
 void LastScene::render(void)
 {
-    float bg1Speed = 0.9;
+    float bgSpeed = 0.9;
     RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
     IMAGEMANAGER->loopRender("라스트씬 뒷배경", getMemDC(), &rc1,
-        _camera->getScreenRect().left * bg1Speed,
-        _camera->getScreenRect().top * bg1Speed);
+        _camera->getScreenRect().left * bgSpeed,
+        _camera->getScreenRect().top * bgSpeed);
 
-//    IMAGEMANAGER->alphaRender("엔딩이미지1", getMemDC(), 0, 0, _bgAlpha);//엔피시
 
-	_pixel->render();
     IMAGEMANAGER->render("라스트씬 바닥", getMemDC(),
         -_camera->getScreenRect().left,
         -_camera->getScreenRect().top);
+	_pixel->render();
 
 	IMAGEMANAGER->render("라스트씬 앞배경", getMemDC(),
 		-_camera->getScreenRect().left,
