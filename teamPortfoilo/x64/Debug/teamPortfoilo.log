@@ -1,21 +1,2 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-﻿  BossIsadora.cpp
+﻿  MainGame.cpp
   teamPortfoilo.vcxproj -> C:\Users\bosch\Documents\TeamPortfolio\x64\Debug\teamPortfoilo.exe
-=======
-﻿  Boss1BeforeScene.cpp
-c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\boss1beforescene.cpp(99): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
-  teamPortfoilo.vcxproj -> C:\Users\DevArc1\Documents\git projects\TeamPortfolio\x64\Debug\teamPortfoilo.exe
->>>>>>> origin/EndingScene-add-yeeun
-=======
-﻿  SaveScene.cpp
-c:\users\user\desktop\team corn\teamportfoilo\savescene.cpp(145): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\user\desktop\team corn\teamportfoilo\savescene.cpp(155): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\user\desktop\team corn\teamportfoilo\savescene.cpp(159): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\user\desktop\team corn\teamportfoilo\savescene.cpp(177): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\user\desktop\team corn\teamportfoilo\savescene.cpp(187): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\user\desktop\team corn\teamportfoilo\savescene.cpp(193): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\user\desktop\team corn\teamportfoilo\savescene.cpp(223): warning C4101: 'saveFileName' :참조되지 않은 지역 변수입니다.
-c:\users\user\desktop\team corn\teamportfoilo\savescene.cpp(202): warning C4101: 'temp' :참조되지 않은 지역 변수입니다.
-  teamPortfoilo.vcxproj -> C:\Users\user\Desktop\team Corn\x64\Debug\teamPortfoilo.exe
->>>>>>> origin/KimEunhui

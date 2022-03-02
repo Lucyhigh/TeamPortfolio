@@ -1,29 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Animation.cpp">
-      <Filter>API FrameWork\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="AniScene.cpp">
-      <Filter>Blasphemous\UI\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="AniTextScene.cpp">
-      <Filter>Blasphemous\UI\Base</Filter>
-    </ClCompile>
     <ClCompile Include="BossScene1.cpp">
-      <Filter>Blasphemous\Stage1</Filter>
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClCompile>
     <ClCompile Include="BossScene2.cpp">
-      <Filter>Blasphemous\Stage2</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Blasphemous\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss1BeforeScene.cpp">
-      <Filter>Blasphemous\Stage1</Filter>
-    </ClCompile>
-    <ClCompile Include="BossWarden.cpp">
-      <Filter>Blasphemous\Characters\Boss</Filter>
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
     </ClCompile>
     <ClCompile Include="Characters.cpp">
       <Filter>Blasphemous\Characters</Filter>
@@ -31,17 +13,29 @@
     <ClCompile Include="ColliderManager.cpp">
       <Filter>Blasphemous\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="EndingScene.cpp">
-      <Filter>Blasphemous\Stage2</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldScene1.cpp">
-      <Filter>Blasphemous\Stage2</Filter>
-    </ClCompile>
-    <ClCompile Include="FontManager.cpp">
-      <Filter>API FrameWork\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="GameManger.cpp">
       <Filter>Blasphemous\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="BossWarden.cpp">
+      <Filter>Blasphemous\Characters\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCharacter.cpp">
+      <Filter>Blasphemous\Characters\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>Blasphemous\GameScene\MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="StartSecen.cpp">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingScene.cpp">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldScene1.cpp">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
     </ClCompile>
     <ClCompile Include="GameNode.cpp">
       <Filter>API FrameWork\GameNode</Filter>
@@ -49,56 +43,74 @@
     <ClCompile Include="Image.cpp">
       <Filter>API FrameWork\Image</Filter>
     </ClCompile>
-    <ClCompile Include="ImageClass.cpp">
-      <Filter>Blasphemous\UI\Base</Filter>
+    <ClCompile Include="Animation.cpp">
+      <Filter>API FrameWork\Image</Filter>
     </ClCompile>
-    <ClCompile Include="ImageManager.cpp">
+    <ClCompile Include="FontManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Blasphemous\UI\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyManager.cpp">
+    <ClCompile Include="ImageManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="MainGame.cpp">
-      <Filter>Blasphemous\MainGame</Filter>
-    </ClCompile>
-    <ClCompile Include="OptionScene.cpp">
-      <Filter>Blasphemous\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerCharacter.cpp">
-      <Filter>Blasphemous\Characters\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="ProgressBar.cpp">
-      <Filter>API FrameWork\Utillity</Filter>
-    </ClCompile>
-    <ClCompile Include="TextDataManager.cpp">
-      <Filter>API FrameWork\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="TempSoundManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Stdafx.cpp">
+      <Filter>API FrameWork\Stdafx</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>API FrameWork\Time</Filter>
     </ClCompile>
     <ClCompile Include="TimeManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>Blasphemous\UI</Filter>
+    <ClCompile Include="TextDataManager.cpp">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressBar.cpp">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyManager.cpp">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="WinAPI.cpp">
+      <Filter>API FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="TempSoundTest.cpp">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionScene.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageClass.cpp">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="AniScene.cpp">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="AniTextScene.cpp">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClCompile>
     <ClCompile Include="UIScene.cpp">
-      <Filter>Blasphemous\UI</Filter>
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClCompile>
     <ClCompile Include="KnifeMonster.cpp">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
-    </ClCompile>
-    <ClCompile Include="PixelCollision.cpp">
-      <Filter>Blasphemous\Pixel</Filter>
-    </ClCompile>
-    <ClCompile Include="PixelScene.cpp">
-      <Filter>Blasphemous\Pixel</Filter>
     </ClCompile>
     <ClCompile Include="RockThrowMonster.cpp">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
@@ -106,12 +118,10 @@
     <ClCompile Include="WheelMonster.cpp">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>API FrameWork\Manager</Filter>
+    <ClCompile Include="Boss1BeforeScene.cpp">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Camera.cpp">
-<<<<<<< HEAD
       <Filter>Blasphemous\Characters\Player</Filter>
     </ClCompile>
     <ClCompile Include="BossIsadora.cpp">
@@ -119,74 +129,20 @@
     </ClCompile>
     <ClCompile Include="FirePillar.cpp">
       <Filter>Blasphemous\Characters\Boss</Filter>
-=======
-      <Filter>Blasphemous\Camera</Filter>
-=======
-    <ClCompile Include="StartSecen.cpp">
-      <Filter>Blasphemous\Stage1</Filter>
->>>>>>> origin/KimEunhui
     </ClCompile>
-    <ClCompile Include="Stdafx.cpp">
-      <Filter>API FrameWork\Stdafx</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="OpeningScene.cpp">
-      <Filter>Blasphemous\GameScene\Stage1</Filter>
-    </ClCompile>
-    <ClCompile Include="LastScene.cpp">
-      <Filter>Blasphemous\GameScene\Pixel</Filter>
->>>>>>> origin/EndingScene-add-yeeun
-=======
-    <ClCompile Include="TempSoundTest.cpp">
-      <Filter>Blasphemous\UI\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>Blasphemous\UI\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>API FrameWork\Time</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>API FrameWork\Utillity</Filter>
-    </ClCompile>
-    <ClCompile Include="WinAPI.cpp">
-      <Filter>API FrameWork</Filter>
-    </ClCompile>
-    <ClCompile Include="Inventory.cpp">
-      <Filter>Blasphemous\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="SaveScene.cpp">
-      <Filter>Blasphemous\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemManager.cpp">
-      <Filter>Blasphemous\Manager</Filter>
->>>>>>> origin/KimEunhui
-    </ClCompile>
+    <ClCompile Include="SaveScene.cpp" />
+    <ClCompile Include="OpeningScene.cpp" />
+    <ClCompile Include="LastScene.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="PixelCollision.cpp" />
+    <ClCompile Include="ItemManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h">
-      <Filter>API FrameWork\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="AniScene.h">
-      <Filter>Blasphemous\UI\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="AniTextScene.h">
-      <Filter>Blasphemous\UI\Base</Filter>
-    </ClInclude>
     <ClInclude Include="BossScene1.h">
-      <Filter>Blasphemous\Stage1</Filter>
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClInclude>
     <ClInclude Include="BossScene2.h">
-      <Filter>Blasphemous\Stage2</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Blasphemous\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss1BeforeScene.h">
-      <Filter>Blasphemous\Stage1</Filter>
-    </ClInclude>
-    <ClInclude Include="BossWarden.h">
-      <Filter>Blasphemous\Characters\Boss</Filter>
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
     </ClInclude>
     <ClInclude Include="Characters.h">
       <Filter>Blasphemous\Characters</Filter>
@@ -194,17 +150,32 @@
     <ClInclude Include="ColliderManager.h">
       <Filter>Blasphemous\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="EndingScene.h">
-      <Filter>Blasphemous\Stage2</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldScene1.h">
-      <Filter>Blasphemous\Stage2</Filter>
-    </ClInclude>
-    <ClInclude Include="FontManager.h">
-      <Filter>API FrameWork\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="GameManger.h">
       <Filter>Blasphemous\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="BossWarden.h">
+      <Filter>Blasphemous\Characters\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCharacter.h">
+      <Filter>Blasphemous\Characters\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>Blasphemous\GameScene\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScene.h">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingScene.h">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldScene1.h">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SingletonBase.h">
+      <Filter>API FrameWork\DesignPattern</Filter>
     </ClInclude>
     <ClInclude Include="GameNode.h">
       <Filter>API FrameWork\GameNode</Filter>
@@ -212,62 +183,77 @@
     <ClInclude Include="Image.h">
       <Filter>API FrameWork\Image</Filter>
     </ClInclude>
-    <ClInclude Include="ImageClass.h">
-      <Filter>Blasphemous\UI\Base</Filter>
+    <ClInclude Include="Animation.h">
+      <Filter>API FrameWork\Image</Filter>
     </ClInclude>
-    <ClInclude Include="ImageManager.h">
+    <ClInclude Include="FontManager.h">
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Blasphemous\UI\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyManager.h">
+    <ClInclude Include="ImageManager.h">
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
     <ClInclude Include="ObjectManager.h">
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="MainGame.h">
-      <Filter>Blasphemous\MainGame</Filter>
-    </ClInclude>
-    <ClInclude Include="OptionScene.h">
-      <Filter>Blasphemous\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerCharacter.h">
-      <Filter>Blasphemous\Characters\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="ProgressBar.h">
-      <Filter>API FrameWork\Utillity</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomFunction.h">
-      <Filter>API FrameWork\Utillity</Filter>
-    </ClInclude>
-    <ClInclude Include="CommonMarcroFuntion.h">
-      <Filter>API FrameWork\Utillity</Filter>
-    </ClInclude>
-    <ClInclude Include="TextDataManager.h">
-      <Filter>API FrameWork\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="TempSoundManager.h">
       <Filter>API FrameWork\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Stdafx.h">
+      <Filter>API FrameWork\Stdafx</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>API FrameWork\Time</Filter>
     </ClInclude>
     <ClInclude Include="TimeManager.h">
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>Blasphemous\UI</Filter>
+    <ClInclude Include="TextDataManager.h">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonMarcroFuntion.h">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressBar.h">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomFunction.h">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyManager.h">
+      <Filter>API FrameWork\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="TempSoundTest.h">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionScene.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageClass.h">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="AniScene.h">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="AniTextScene.h">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClInclude>
     <ClInclude Include="UIScene.h">
-      <Filter>Blasphemous\UI</Filter>
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClInclude>
     <ClInclude Include="KnifeMonster.h">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelCollision.h">
-      <Filter>Blasphemous\Pixel</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelScene.h">
-      <Filter>Blasphemous\Pixel</Filter>
     </ClInclude>
     <ClInclude Include="RockThrowMonster.h">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
@@ -275,12 +261,10 @@
     <ClInclude Include="WheelMonster.h">
       <Filter>Blasphemous\Characters\FieldMonster</Filter>
     </ClInclude>
-    <ClInclude Include="SingletonBase.h">
-      <Filter>API FrameWork\DesignPattern</Filter>
+    <ClInclude Include="Boss1BeforeScene.h">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Camera.h">
-<<<<<<< HEAD
       <Filter>Blasphemous\Characters\Player</Filter>
     </ClInclude>
     <ClInclude Include="BossIsadora.h">
@@ -288,121 +272,79 @@
     </ClInclude>
     <ClInclude Include="FirePillar.h">
       <Filter>Blasphemous\Characters\Boss</Filter>
-=======
-      <Filter>Blasphemous\Camera</Filter>
-=======
-    <ClInclude Include="SceneManager.h">
-      <Filter>API FrameWork\Manager</Filter>
->>>>>>> origin/KimEunhui
     </ClInclude>
-    <ClInclude Include="StartScene.h">
-      <Filter>Blasphemous\Stage1</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="OpeningScene.h">
-      <Filter>Blasphemous\GameScene\Stage1</Filter>
-    </ClInclude>
-    <ClInclude Include="LastScene.h">
-      <Filter>Blasphemous\GameScene\Pixel</Filter>
->>>>>>> origin/EndingScene-add-yeeun
-=======
-    <ClInclude Include="Stdafx.h">
-      <Filter>API FrameWork\Stdafx</Filter>
-    </ClInclude>
-    <ClInclude Include="TempSoundTest.h">
-      <Filter>Blasphemous\UI\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Text.h">
-      <Filter>Blasphemous\UI\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>API FrameWork\Time</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>API FrameWork\Utillity</Filter>
-    </ClInclude>
-    <ClInclude Include="Inventory.h">
-      <Filter>Blasphemous\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="SaveScene.h">
-      <Filter>Blasphemous\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemManager.h">
-      <Filter>Blasphemous\Manager</Filter>
->>>>>>> origin/KimEunhui
-    </ClInclude>
+    <ClInclude Include="SaveScene.h" />
+    <ClInclude Include="OpeningScene.h" />
+    <ClInclude Include="LastScene.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="PixelCollision.h" />
+    <ClInclude Include="ItemManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="API FrameWork">
-      <UniqueIdentifier>{0ef56eef-0190-4d45-8462-dd3bdc5c33d1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\DesignPattern">
-      <UniqueIdentifier>{96e54757-47a7-4f2e-ad32-b2da0eef0ce9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\GameNode">
-      <UniqueIdentifier>{0825b504-77a4-4e07-adec-6c6e3dc92d15}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\Image">
-      <UniqueIdentifier>{f0091681-5329-472d-a96f-918411c53a24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\Manager">
-      <UniqueIdentifier>{f05751aa-a81d-4a97-923c-174ecb9db57f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\Stdafx">
-      <UniqueIdentifier>{371e059f-9d71-4cf1-8a43-6092c8594f5c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\Time">
-      <UniqueIdentifier>{49f703c0-7f8a-4f0a-a863-65ce6fa58277}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\Utillity">
-      <UniqueIdentifier>{72940afd-8133-46b3-bbb7-c118b5b2a3eb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Blasphemous">
-      <UniqueIdentifier>{56fac817-3c75-48b1-86db-4ff574b75f98}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blasphemous\Camera">
-      <UniqueIdentifier>{a45907ff-07f8-4834-a6a2-d3f6d6379fdf}</UniqueIdentifier>
+      <UniqueIdentifier>{8a87b973-d4b1-4de5-84c4-115d6f24d266}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blasphemous\Characters">
-      <UniqueIdentifier>{79e5ce64-23b5-4fa7-b25e-2d0fd90e0f74}</UniqueIdentifier>
+      <UniqueIdentifier>{02c07adc-22e1-46e7-a015-f8284ffad4d6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blasphemous\MainGame">
-      <UniqueIdentifier>{80a2645d-d2ab-44aa-b6d0-bdfd6e6c76f8}</UniqueIdentifier>
+    <Filter Include="Blasphemous\GameScene">
+      <UniqueIdentifier>{747be818-ce92-4d7f-b13e-97cb54f0aa0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\Stage2">
+      <UniqueIdentifier>{f6c8c55b-276c-4cce-b4ae-04add35acafb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\Stage1">
+      <UniqueIdentifier>{fd195f48-d8f8-44b7-babd-5348cdf574ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\MainGame">
+      <UniqueIdentifier>{21d6a9ed-afab-4ca5-bc7f-8b5d83a033e6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blasphemous\Manager">
-      <UniqueIdentifier>{002936c6-98bd-42e0-8c25-44073f7fb55c}</UniqueIdentifier>
+      <UniqueIdentifier>{5f7366de-9dad-40f8-90c6-679a8b16e27d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blasphemous\Stage2">
-      <UniqueIdentifier>{30a9e737-ecb4-43a4-b758-7d94023b9213}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blasphemous\Stage1">
-      <UniqueIdentifier>{19913851-7df0-463d-9a87-8ce93be38b62}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blasphemous\Pixel">
-      <UniqueIdentifier>{12cda41b-5bf5-48e5-82dc-5816df1bc471}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blasphemous\UI">
-      <UniqueIdentifier>{8bbbb81f-373b-41dd-9521-dc2782204003}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blasphemous\UI\Base">
-      <UniqueIdentifier>{0c9c1e75-12bf-4f8b-a0c8-65efcf74a58c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blasphemous\Characters\Player">
-      <UniqueIdentifier>{1d6c32d3-f508-45fe-90af-fcb9997b9705}</UniqueIdentifier>
+    <Filter Include="API FrameWork">
+      <UniqueIdentifier>{f010dc5a-83cd-4397-8e3f-44abf866a2ba}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blasphemous\Characters\Boss">
-      <UniqueIdentifier>{b03478ec-b6a6-425b-b2f4-cd3c4bf755a0}</UniqueIdentifier>
+      <UniqueIdentifier>{b3ca9e90-957b-465e-bc03-136790e7a4d0}</UniqueIdentifier>
     </Filter>
-<<<<<<< HEAD
-=======
+    <Filter Include="Blasphemous\Characters\Player">
+      <UniqueIdentifier>{ad1b9f77-f83e-4dab-82a8-cc0d60e3ae6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Manager">
+      <UniqueIdentifier>{ed8beac7-76af-4777-8921-365b14a30d30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\DesignPattern">
+      <UniqueIdentifier>{ca1576bb-3b10-4a69-9932-8deebb9aa76e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\GameNode">
+      <UniqueIdentifier>{a585ff9f-2f25-4dc0-8356-1e0748aaaf30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Image">
+      <UniqueIdentifier>{f38ecc35-eb77-4894-b039-ec40322e23b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Stdafx">
+      <UniqueIdentifier>{73c84344-cd04-4b47-ab49-4c6582ab3adf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Time">
+      <UniqueIdentifier>{354041a5-97bd-449c-9381-b15c3f0cb86d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Utility">
+      <UniqueIdentifier>{92296a46-b8a1-4534-a247-86fa082c6c81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\UI">
+      <UniqueIdentifier>{07e07b2a-f81f-4639-8f06-72ae05b7b85d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\UI\Base">
+      <UniqueIdentifier>{c44ef8f1-7005-4328-b332-80f0c2d12082}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Blasphemous\Characters\FieldMonster">
-      <UniqueIdentifier>{9c066b6c-297c-4ba4-b6ed-7f9bc639193c}</UniqueIdentifier>
+      <UniqueIdentifier>{aa6744a2-4d1f-4709-bfd0-e784795f8bc7}</UniqueIdentifier>
     </Filter>
->>>>>>> origin/KimEunhui
   </ItemGroup>
   <ItemGroup>
     <Text Include="MATH.txt">
-      <Filter>API FrameWork\Utillity</Filter>
+      <Filter>API FrameWork\Utility</Filter>
     </Text>
   </ItemGroup>
 </Project>

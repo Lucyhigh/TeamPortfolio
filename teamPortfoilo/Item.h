@@ -1,7 +1,6 @@
 #pragma once
 #include "GameNode.h"
-
-class AniScene;
+#include "AniScene.h"
 
 enum class Category
 {

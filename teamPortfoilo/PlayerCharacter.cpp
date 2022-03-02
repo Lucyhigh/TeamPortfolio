@@ -465,17 +465,9 @@ void PlayerCharacter::_updateAttack()
 	}
 	else
 	{
-<<<<<<< HEAD
-		
 		mid = { _Collider[BaseEnum::UNIT].left + ((_Collider[BaseEnum::UNIT].right - _Collider[BaseEnum::UNIT].left) / 2) , _Collider[BaseEnum::UNIT].top };
 		
 		smash.push_back 
-=======
-		mid = { left + ((right - left) / 2) , top };
-		smash.push_back // ÁÂ  
-		(pair<RECT, Image>{ RectMakeCenter(mid.x - 40, mid.y - 50, 10, 10), Image() });
-		smash.push_back // Áß¾Ó 
->>>>>>> origin/KimEunhui
 		(pair<RECT, Image>{ RectMakeCenter(mid.x, mid.y - 75, 10, 10), Image() });
 	}
 }

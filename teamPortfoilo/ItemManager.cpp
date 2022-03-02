@@ -1,9 +1,8 @@
 #include "Stdafx.h"
 #include "ItemManager.h"
 
-HRESULT ItemManager::init(void)
+ItemManager::ItemManager()
 {
-
 	vector<string> vData = TEXTDATAMANAGER->load("Resources/Item.txt");
 
 	for (int i = 0; i < vData.size(); i += 12)
@@ -22,20 +21,50 @@ HRESULT ItemManager::init(void)
 		// 이미지 관련 ------------------------------------------------------------------
 		ItemData->_iconX = atoi(vData[i + 10].c_str()); // 아이콘이미지 위치(프레임xy)
 		ItemData->_iconY = atoi(vData[i + 11].c_str());
-		ItemData->_iconImg = IMAGEMANAGER->findImage("items"); // 아이템 아이콘 이미지 조정 
+		ItemData->_iconImg = IMAGEMANAGER->findImage("items"); // 아이템 아이콘 프레임 
 		ItemData->_iconImg->setFrameX(ItemData->_iconX);
 		ItemData->_iconImg->setFrameY(ItemData->_iconY);
-		ItemData->_slotImg = IMAGEMANAGER->findImage("items"); // 아이템 슬롯 이미지 조정 
+		ItemData->_slotImg = IMAGEMANAGER->findImage("items"); // 아이템 슬롯 프레임(기본 미습득) 
 		ItemData->_slotImg->setFrameX(atoi(vData[i + 2].c_str()));
 		ItemData->_slotImg->setFrameY(0);
 
-		ItemData->_posX = 0 ; // 아이템 이미지 위치. 
-		ItemData->_posY = 0;
-		ItemData->_equipPosX = 0 ; // 아이템 이미지 위치. 
-		ItemData->_equipPosY = 0 ;
+		switch (ItemData->_category)
+		{
+		case Category::NONE:
+			break;
+		case Category::ROSARY:
+			break;
+		case Category::RELIC:
+			break;
+		case Category::QUEST:
+			break;
+		case Category::MEACULPA:
+			break;
+		case Category::BIBLE:
+			break;
+		case Category::SKILL:
+			break;
+		case Category::COLLECTION:
+			break;
+		default:
+			break;
+		}
+
+		//ItemData->_posX = 0; // 아이템 이미지 위치 -> 카테고리에 따라 다르게. 
+		//ItemData->_posY = 0;
+		ItemData->_posX = 172;
+		ItemData->_posY = 425;
+		ItemData->_equipPosX = 0; // 아이템 이미지 위치. 
+		ItemData->_equipPosY = 0;
 		_vItem.push_back(ItemData);
 	}
 
+}
+
+HRESULT ItemManager::init(void)
+{
+
+	
 
 	return S_OK;
 }
@@ -78,6 +107,8 @@ void ItemManager::render(int categoryIndex)
 		int i = (int)(*_viItem)->_category;
 		if (categoryIndex == i)
 		{
+			cout <<"아이템 카테고리+렌더 체크 : " << (*_viItem)->getName() << categoryIndex << " , " << i << endl;
+
 			(*_viItem)->render();
 		}
 	}
@@ -93,3 +124,5 @@ void ItemManager::removeItem(int arrNum)
 	_vItem.erase(_vItem.begin() + arrNum);
 
 }
+
+

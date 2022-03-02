@@ -83,17 +83,5 @@
 						(_Collider[BaseEnum::UNIT].bottom + _Collider[BaseEnum::UNIT].top) / 2 };
 		}
 
-		void BaseData::setHp(bool UpAndDown, int num)
-		{
-			if (UpAndDown == true)
-			{
-				_hp[BaseEnum::STATE] += num;
-			}
-			else
-			{
-				_hp[BaseEnum::STATE] -= num;
-			}
-		}
-
 	#pragma endregion
 

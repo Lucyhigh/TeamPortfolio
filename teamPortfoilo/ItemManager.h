@@ -12,7 +12,7 @@ private:
 	viItem _viItem;
 
 public:
-	ItemManager() {}
+	ItemManager();
 	~ItemManager() {}
 
 	HRESULT init(void);

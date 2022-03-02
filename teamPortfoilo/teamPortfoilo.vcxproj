@@ -104,8 +104,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>Stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -151,10 +149,7 @@
     <ClInclude Include="AniScene.h" />
     <ClInclude Include="AniTextScene.h" />
     <ClInclude Include="Boss1BeforeScene.h" />
-<<<<<<< HEAD
     <ClInclude Include="BossIsadora.h" />
-=======
->>>>>>> origin/KimEunhui
     <ClInclude Include="BossScene1.h" />
     <ClInclude Include="BossScene2.h" />
     <ClInclude Include="BossWarden.h" />
@@ -178,9 +173,9 @@
     <ClInclude Include="LastScene.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="OpeningScene.h" />
     <ClInclude Include="OptionScene.h" />
     <ClInclude Include="PixelCollision.h" />
-    <ClInclude Include="OpeningScene.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="RandomFunction.h" />
@@ -207,10 +202,7 @@
     <ClCompile Include="AniScene.cpp" />
     <ClCompile Include="AniTextScene.cpp" />
     <ClCompile Include="Boss1BeforeScene.cpp" />
-<<<<<<< HEAD
     <ClCompile Include="BossIsadora.cpp" />
-=======
->>>>>>> origin/KimEunhui
     <ClCompile Include="BossScene1.cpp" />
     <ClCompile Include="BossScene2.cpp" />
     <ClCompile Include="BossWarden.cpp" />
@@ -233,9 +225,9 @@
     <ClCompile Include="LastScene.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="OpeningScene.cpp" />
     <ClCompile Include="OptionScene.cpp" />
     <ClCompile Include="PixelCollision.cpp" />
-    <ClCompile Include="OpeningScene.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="RockThrowMonster.cpp" />
@@ -244,7 +236,6 @@
     <ClCompile Include="StartSecen.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="TempSoundManager.cpp" />
