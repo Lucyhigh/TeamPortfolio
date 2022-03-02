@@ -173,7 +173,6 @@ void Animation::frameUpdate(float elapsedTime)
 {
 	if (_isPlay)
 	{
-		//cout << _elapsedSec << ", " << elapsedTime << ", " << _frameUpdateSec << endl;
 		_elapsedSec += elapsedTime;
 
 		//프레임 업데이트시간이 되었으면
@@ -195,7 +194,6 @@ void Animation::frameUpdate(float elapsedTime)
 				}
 			}
 		}
-		//cout << _elapsedSec << ", " << elapsedTime << ", " << _frameUpdateSec << endl;
 	}
 }
 

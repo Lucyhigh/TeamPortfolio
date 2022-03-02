@@ -28,7 +28,7 @@ void OpeningScene::release(void)
 void OpeningScene::update(void)
 {
 	_pixel->update("¿ÀÇÁ´×¾À ÇÈ¼¿");
-	if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON) || _pixel->getX() >= _image->getWidth())
+	if (_pixel->getX() >= _image->getWidth())
 	{
 		SCENEMANAGER->changeScene("BeforeBoss1");
 	}
@@ -49,7 +49,6 @@ void OpeningScene::update(void)
 
 void OpeningScene::render(void)
 {
-	//cout << _camera->getScreenRect().left << " " << _camera->getScreenRect().top << endl;
 
 	IMAGEMANAGER->render("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ", getMemDC(), 0, 0,
 		_camera->getScreenRect().left, _camera->getScreenRect().top,
@@ -59,7 +58,6 @@ void OpeningScene::render(void)
 		_camera->getScreenRect().left, _camera->getScreenRect().top,
 		WINSIZE_X, WINSIZE_Y);*/
 
-	//cout << _camera->getScreenRect().left << " " << _camera->getScreenRect().top << endl;
 	float bgSpeed = 0.02;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
 	//IMAGEMANAGER->loopRender("¿ÀÇÁ´×¾À µÞ¹è°æ", getMemDC(),&rc1, 

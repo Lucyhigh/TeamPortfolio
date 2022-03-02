@@ -8,7 +8,7 @@ private:
 	Camera* _camera;
 	Image* _image;
 	PixelCollision* _pixel;
-
+	int _count;
 public:
 	HRESULT init(void);
 	void release(void);

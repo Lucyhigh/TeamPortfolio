@@ -43,7 +43,6 @@ void Boss1BeforeScene::update(void)
 {
     _count++;
     
-	cout << GAMEMANAGER->getPlayer()->getPoint().x << endl;
     if (GAMEMANAGER->getPlayer()->getPoint().x >= _mapImage->getWidth())
     {
     	SCENEMANAGER->changeScene("Boss1");
