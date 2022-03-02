@@ -170,10 +170,9 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("오프닝씬 픽셀", "Resources/Images/BackGround/openingScenePixel.bmp", 4150, 1694, MGT);
 
 	IMAGEMANAGER->addImage("씬1배경", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("보스1전배경", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);//
-	IMAGEMANAGER->addImage("보스1전FrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);
+	IMAGEMANAGER->addImage("보스1전 배경", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);
+	IMAGEMANAGER->addImage("보스1전 FrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);
 	IMAGEMANAGER->addImage("보스1전 바닥", "Resources/Images/BackGround/boss1beforeSceneFloor.bmp", 4360, 675,MGT);
-	IMAGEMANAGER->addImage("보스1전 뒷배경", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);
 
 	IMAGEMANAGER->addImage("보스1 바닥", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675, MGT);
 	IMAGEMANAGER->addImage("보스1 뒷배경", "Resources/Images/BackGround/boss1LastBG.bmp", 1200, 675);

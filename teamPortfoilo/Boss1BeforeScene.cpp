@@ -3,7 +3,7 @@
 
 HRESULT Boss1BeforeScene::init(void)
 {
-    _mapImage = IMAGEMANAGER->findImage("보스1전배경");
+    _mapImage = IMAGEMANAGER->findImage("보스1전 바닥");
     _objectImage = IMAGEMANAGER->findImage("stand");
    
     floor0 = new RECT{ 0, 600, _mapImage->getWidth(), 670 };
@@ -76,6 +76,7 @@ void Boss1BeforeScene::update(void)
         IMAGEMANAGER->findImage("stand")->setFrameY(1);
         IMAGEMANAGER->findImage("stand")->setFrameX(_indexA);
     }
+
 	POINT cameraPos;
 	cameraPos.x = GAMEMANAGER->getPlayer()->getPoint().x;
 	cameraPos.y = _camera->getCameraPos().y;
@@ -95,36 +96,21 @@ void Boss1BeforeScene::render(void)
     int objectCenterX = (_ObjectRc.left + _ObjectRc.right) * 0.5;
     int objectCenterY = (_ObjectRc.top + _ObjectRc.bottom) * 0.5;
 
-	float bgSpeed = 0.02;
+	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
-    IMAGEMANAGER->render("보스1전배경", getMemDC(), 0, 0,
+    IMAGEMANAGER->loopRender("보스1 뒷배경", getMemDC(), &rc1,
+        _camera->getScreenRect().left * bgSpeed,
+        _camera->getScreenRect().top * bgSpeed);
+
+    IMAGEMANAGER->render("보스1전 바닥", getMemDC(), 0, 0,
                                        _camera->getScreenRect().left,
 									   _camera->getScreenRect().top,
 									   WINSIZE_X, WINSIZE_Y);
 
-    GAMEMANAGER->getPlayer()->ObjectRender();
-
     IMAGEMANAGER->frameRender("stand", getMemDC(), objectPosX, objectPosY);
 
-    if (getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
-    {
-        IMAGEMANAGER->render("버튼", getMemDC(), objectPosCenterX-40, objectPosY - 30);
-        if (KEYMANAGER->isToggleKey('E'))
-        {
-            if (_ptMouse.x > CENTER_X - 300 && _ptMouse.y > CENTER_Y)
-            {
-                //IMAGEMANAGER->render("선택창2", getMemDC(), CENTER_X - 300, CENTER_Y - 250);
-            }
-            else
-            {
-                //IMAGEMANAGER->render("선택창1", getMemDC(), CENTER_X - 300, CENTER_Y - 250);
-            }
-        }
-        else
-        {
-        }
-    }
+    GAMEMANAGER->getPlayer()->ObjectRender();
 	
-    IMAGEMANAGER->render("보스1전FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
+    IMAGEMANAGER->render("보스1전 FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
     _camera->render();
 }
