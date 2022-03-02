@@ -22,8 +22,9 @@ HRESULT BossScene1::init(void)
 
     _camera = new Camera;
     _camera->init();
-    _camera->setLimitsX(CENTER_X, _image->getWidth()); //좌우 카메라 이동 제한
-
+    _camera->setLimitsX(CENTER_X, _image->getWidth()); 
+    _camera->setLimitsY(CENTER_X, _image->getHeight()); 
+  
 	return S_OK;
 }
 
@@ -48,7 +49,7 @@ void BossScene1::update(void)
 		GAMEMANAGER->getMonster()[i]->ObjectUpdate(); 
 	}
 
-    if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON) || GAMEMANAGER->getPlayer()->getPoint().x <= 0)
+    if ( GAMEMANAGER->getPlayer()->getPoint().x <= 50)
     {
         SCENEMANAGER->changeScene("BeforeBoss1");
     }
@@ -70,12 +71,12 @@ void BossScene1::render(void)
 	float bg2Speed = 0.02;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
 	IMAGEMANAGER->loopRender("보스1 뒷배경", getMemDC(), &rc1, 
-											_camera->getScreenRect().left*bg1Speed, 
-											_camera->getScreenRect().top*bg1Speed);
+											_camera->getScreenRect().left * bg1Speed, 
+											_camera->getScreenRect().top * bg1Speed);
 
 	IMAGEMANAGER->loopRender("보스1 뒷시체", getMemDC(), &rc1, 
-											_camera->getScreenRect().left*bg2Speed,
-											_camera->getScreenRect().top*bg1Speed);
+											_camera->getScreenRect().left * bg2Speed,
+											_camera->getScreenRect().top * bg2Speed);
 
     IMAGEMANAGER->render("보스1 바닥", getMemDC(), 0, 0,
                          _camera->getScreenRect().left, 
@@ -84,12 +85,12 @@ void BossScene1::render(void)
    
 	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
 	{ 
-		//GAMEMANAGER->getMonster()[i]->ObjectRender(); 
+		GAMEMANAGER->getMonster()[i]->ObjectRender(); 
 	}
 
 	GAMEMANAGER->getPlayer()->ObjectRender();
 	IMAGEMANAGER->render("보스1 앞문", getMemDC(), -_camera->getScreenRect().left, 0);
 	IMAGEMANAGER->render("보스1 앞시체", getMemDC(), -_camera->getScreenRect().left, 0);
-	_collider->render();
+	//_collider->render();
 	_camera->render();
 }
