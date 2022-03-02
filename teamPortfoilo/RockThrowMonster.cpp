@@ -17,7 +17,7 @@ HRESULT RockThrowMonster::init(POINT point, vector<RECT*> floor)
 	_throw = false;
 	this->floor = floor;
 	_state = UnitState::END;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(750, 550, 100, 100);
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(point.x, point.y, 100, 100);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
 	function<void()> _update;
@@ -37,7 +37,7 @@ void RockThrowMonster::update(void)
 	_updateSide();
 	_updateFloor();
 
-	if (abs(MONSTER_CENTER - PLAYER_CENTER) < 200 && !_throw)
+	if (abs(MONSTER_CENTER - PLAYER_CENTER) < 300 && !_throw)
 	{
 		_state = UnitState::THROW;
 		_rock();

@@ -13,7 +13,7 @@ HRESULT WheelMonster::init(POINT point, vector<RECT*> floor)
 {
 	this->floor = floor;
 	_state = UnitState::END;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(750, 550, 100, 100);
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(point.x, point.y, 100, 100);
 	_Collider[BaseEnum::UNIT].top--;
 	_Collider[BaseEnum::UNIT].bottom--;
 	function<void()> _update;
