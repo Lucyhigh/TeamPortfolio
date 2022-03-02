@@ -122,6 +122,7 @@
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
+<<<<<<< HEAD
       <Filter>Blasphemous\Characters\Player</Filter>
     </ClCompile>
     <ClCompile Include="BossIsadora.cpp">
@@ -129,6 +130,18 @@
     </ClCompile>
     <ClCompile Include="FirePillar.cpp">
       <Filter>Blasphemous\Characters\Boss</Filter>
+=======
+      <Filter>Blasphemous\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelCollision.cpp">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningScene.cpp">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClCompile>
+    <ClCompile Include="LastScene.cpp">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+>>>>>>> origin/EndingScene-add-yeeun
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +272,7 @@
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
+<<<<<<< HEAD
       <Filter>Blasphemous\Characters\Player</Filter>
     </ClInclude>
     <ClInclude Include="BossIsadora.h">
@@ -266,6 +280,18 @@
     </ClInclude>
     <ClInclude Include="FirePillar.h">
       <Filter>Blasphemous\Characters\Boss</Filter>
+=======
+      <Filter>Blasphemous\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelCollision.h">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningScene.h">
+      <Filter>Blasphemous\GameScene\Stage1</Filter>
+    </ClInclude>
+    <ClInclude Include="LastScene.h">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+>>>>>>> origin/EndingScene-add-yeeun
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -328,6 +354,12 @@
     </Filter>
     <Filter Include="Blasphemous\Characters\FieldMonster">
       <UniqueIdentifier>{aa6744a2-4d1f-4709-bfd0-e784795f8bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\Camera">
+      <UniqueIdentifier>{72819e9b-512a-4a77-a450-28d4b09675f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\Pixel">
+      <UniqueIdentifier>{f07753e1-d4ea-43cc-8ca5-86b0c1a2a59d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

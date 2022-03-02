@@ -29,7 +29,7 @@ void TimeManager::update(float lock)
 void TimeManager::render(HDC hdc)
 {
 	char str[256];
-
+	
 	SetBkMode(hdc, TRANSPARENT);
 	SetTextColor(hdc, RGB(255, 255, 255));
 
@@ -56,6 +56,7 @@ void TimeManager::render(HDC hdc)
 		TextOut(hdc, 0, 40, str, strlen(str));
 
 	}
+
 	//Release
 #else
 	if (_timer != nullptr)

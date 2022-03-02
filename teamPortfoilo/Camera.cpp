@@ -42,10 +42,16 @@ void Camera::setScreenRect(RECT screenRect)
     _screen = screenRect;
 }
 
-void Camera::setLimits(float leftLimit, float rightLimit)
+void Camera::setLimitsX(float leftLimit, float rightLimit)
 {
     _leftLimit = leftLimit;
     _rightLimit = rightLimit - CENTER_X;
+}
+
+void Camera::setLimitsY(float topLimit, float bottomLimit)
+{
+	_topLimit = topLimit;
+	_bottomLimit = bottomLimit - CENTER_Y;
 }
 
 POINT Camera::getCameraPos()
@@ -58,4 +64,6 @@ void Camera::setCameraPos(POINT cameraPos)
     _trace = cameraPos;
     _trace.x = _trace.x < _leftLimit ? _leftLimit : _trace.x;
     _trace.x = _trace.x > _rightLimit ? _rightLimit : _trace.x;
+	_trace.y = _trace.y < _topLimit ? _topLimit : _trace.y;
+	_trace.y = _trace.y > _bottomLimit ? _bottomLimit : _trace.y;
 }

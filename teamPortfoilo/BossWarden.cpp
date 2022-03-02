@@ -27,7 +27,7 @@ BossWarden::BossWarden()
 	ObjectRender = bind(&BossWarden::render, this);
 	_hp[BaseEnum::STATE] = 10;
 }
-BossWarden::~BossWarden() { }
+BossWarden::~BossWarden(){}
 
 HRESULT BossWarden::init(POINT point, vector<RECT*> floor)
 {

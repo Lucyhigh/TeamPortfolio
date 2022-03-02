@@ -27,10 +27,24 @@
 
 		// 충돌체(위치) 정보
 		RECT BaseData::getCollider()
-		{ return _Collider[BaseEnum::UNIT]; }
+		{ 
+            return _Collider[BaseEnum::UNIT]; 
+        }
 		// 충돌체(위치) 정보 변경
 		void BaseData::setCollider(RECT rect)
-		{ _Collider[BaseEnum::UNIT] = rect; }
+		{
+            _Collider[BaseEnum::UNIT] = rect; 
+        }
+        //충돌체 넓이
+        int BaseData::getWidth()
+        {
+            return  _Collider[BaseEnum::UNIT].right - _Collider[BaseEnum::UNIT].left;
+        }
+        //충돌체 높이
+        int BaseData::getHeight()
+        {
+            return  _Collider[BaseEnum::UNIT].top - _Collider[BaseEnum::UNIT].bottom;
+        }
 
 		// 현재 밟고 있는 발판
 		RECT BaseData::getStateFloor()
@@ -67,6 +81,18 @@
 		{
 			return POINT{ (_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2,
 						(_Collider[BaseEnum::UNIT].bottom + _Collider[BaseEnum::UNIT].top) / 2 };
+		}
+
+		void BaseData::setHp(bool UpAndDown, int num)
+		{
+			if (UpAndDown == true)
+			{
+				_hp[BaseEnum::STATE] += num;
+			}
+			else
+			{
+				_hp[BaseEnum::STATE] -= num;
+			}
 		}
 
 	#pragma endregion

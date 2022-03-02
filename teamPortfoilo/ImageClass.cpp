@@ -46,8 +46,8 @@ HRESULT ImageClass::init(void)
 #pragma region PlayerImage
 
 	// Å×½ºÆ®¿ë ÀÌ¹ÌÁö 
-	IMAGEMANAGER->addFrameImage("²¿±ò´ë±â", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò´ë±â", "Resources/Images/Player/p_idle.bmp", 1664 * 1.9, 146*1.9, 13, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106 * 1.9, 140*1.9, 14, 2, MGT);
 
 	// Player 
 	IMAGEMANAGER->addFrameImage("pIdle", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
@@ -171,13 +171,41 @@ HRESULT ImageClass::init(void)
 
 
 #pragma region Stage Scene
+    IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ¹Ù´Ú", "Resources/Images/BackGround/openingScenefloor.bmp", 4150, 1694, MGT);
+    IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ", "Resources/Images/BackGround/openingSceneAll.bmp", 4150, 1694);
+    IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À µÞ¹è°æ", "Resources/Images/BackGround/openingSceneLastBG.bmp", 4150, 1694);
+    IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ¾Õ½ÃÃ¼", "Resources/Images/BackGround/openingSceneFrontBody.bmp", 4150, 1694, MGT);
+    IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ¾Õ¹®", "Resources/Images/BackGround/openingSceneFrontDoor.bmp", 4150, 1694, MGT);
+	IMAGEMANAGER->addImage("¿ÀÇÁ´×¾À ÇÈ¼¿", "Resources/Images/BackGround/openingScenePixel.bmp", 4150, 1694, MGT);
 
 	IMAGEMANAGER->addImage("¾À1¹è°æ", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("º¸½º1Àü¹è°æ", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);//
-	IMAGEMANAGER->addImage("º¸½º1ÀüFrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);//
-	IMAGEMANAGER->addImage("º¸½º1¹è°æ", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675);//
+	IMAGEMANAGER->addImage("º¸½º1Àü ¹è°æ", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);
+	IMAGEMANAGER->addImage("º¸½º1Àü FrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);
+	IMAGEMANAGER->addImage("º¸½º1Àü ¹Ù´Ú", "Resources/Images/BackGround/boss1beforeSceneFloor.bmp", 4360, 675,MGT);
+
+	IMAGEMANAGER->addImage("º¸½º1 ¹Ù´Ú", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675, MGT);
+	IMAGEMANAGER->addImage("º¸½º1 µÞ¹è°æ", "Resources/Images/BackGround/boss1LastBG.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("º¸½º1 µÞ½ÃÃ¼", "Resources/Images/BackGround/boss1bodysBG.bmp", 2460, 675,MGT);
+	IMAGEMANAGER->addImage("º¸½º1 ¾Õ½ÃÃ¼", "Resources/Images/BackGround/boss1FrontBody.bmp", 2460, 675,MGT);
+	IMAGEMANAGER->addImage("º¸½º1 ¾Õ¹®", "Resources/Images/BackGround/boss1FrontDoor.bmp", 2460, 675,MGT);
+
 	IMAGEMANAGER->addImage("¾À2¹è°æ", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("¾À3¹è°æ", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
+
+	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À ¹Ù´Ú", "Resources/Images/BackGround/endingfloor.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À Å×½ºÆ®¹è°æ", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);//
+	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À µÞ¹è°æ", "Resources/Images/BackGround/endingBG.bmp", 5000, 1862);
+	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À ¾Õ¹è°æ", "Resources/Images/BackGround/endingFG.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À ¾Õ¹è°æ2", "Resources/Images/BackGround/endingFG2.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À ÇÈ¼¿", "Resources/Images/BackGround/endingScenePixel.bmp", 5000, 1862, MGT);
+
+	IMAGEMANAGER->addImage("¿£µùÀÌ¹ÌÁö1", "Resources/Images/Animation/endingl.bmp", WINSIZE_X,WINSIZE_Y);
+	IMAGEMANAGER->addImage("¿£µùÀÌ¹ÌÁö2", "Resources/Images/Animation/ending2.bmp", WINSIZE_X, WINSIZE_Y);
+    IMAGEMANAGER->addImage("¿£µùÀÌ¹ÌÁö3", "Resources/Images/Animation/ending3.bmp", WINSIZE_X, WINSIZE_Y);
+    IMAGEMANAGER->addImage("¿£µùÀÌ¹ÌÁö4", "Resources/Images/Animation/ending4.bmp", WINSIZE_X, WINSIZE_Y);
+    IMAGEMANAGER->addImage("¿£µùÀÌ¹ÌÁö5", "Resources/Images/Animation/ending5.bmp", WINSIZE_X,WINSIZE_Y);
+    IMAGEMANAGER->addImage("ÄÆÀüÈ¯", "Resources/Images/Animation/sceneChange.bmp", WINSIZE_X,WINSIZE_Y);
+
 
 	// ¼öÁ¤ ¹× ÀÚ¸® ÀâÀº ÀÌ¹ÌÁö 
 	IMAGEMANAGER->addImage("BossStage2_Bg", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
@@ -247,6 +275,7 @@ HRESULT ImageClass::init(void)
 #pragma region Object
 
     IMAGEMANAGER->addImage("¹öÆ°", "Resources/Images/Object/buttomE.bmp", 35 * 1.9, 38 * 1.9, true, RGB(255, 0, 255));
+    IMAGEMANAGER->addFrameImage("deosgracias", "Resources/Images/Object/deosgracias.bmp", 1664, 1536, 13, 6, MGT); // 128,256
     IMAGEMANAGER->addFrameImage("stand", "Resources/Images/Object/priedieuStand.bmp", 924, 310, 7, 1, MGT); // 462, 155
     IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/Object/itemObject.bmp", 260, 91, 10, 1, MGT); // 260,91
 

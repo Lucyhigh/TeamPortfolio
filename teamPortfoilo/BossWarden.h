@@ -8,7 +8,6 @@ class BossWarden : public BaseData, GameNode
 	{ IDLE, JUMPATTACK, ATTACK, JUMPIDLE, JUMP, START, DIE, END };
 
 	private:
-
 		int _isLeft, _isLook;
 		UnitState _state;
 		map<string, float> _jump = { { "Unit",0 }, { "Weight",0 } };

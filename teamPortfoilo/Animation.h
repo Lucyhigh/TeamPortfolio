@@ -52,8 +52,17 @@ public:
 	// 플레이 중?
 	inline bool isPlay(void) { return _isPlay; }
 
-	// 프레임 위치 얻어옴
-	inline POINT getFramePos(void) { return _frameList[_playList[_nowPlayIdx]]; }
+	inline POINT getFramePos(void) 
+	{ 
+		if (0 > _nowPlayIdx || _nowPlayIdx >= size(_playList)) 
+			return POINT{ 0,0 };
+		int frameListIndex = _playList[_nowPlayIdx];
+		if (0 > frameListIndex || frameListIndex >= size(_frameList))
+			return POINT{ 0,0 };
+
+		return _frameList[_playList[_nowPlayIdx]]; 
+	}
+	
 	inline int getFrame(void) { return _nowPlayIdx; }
 
 	// 현재 에니메이션의 프레임 위치 순서 얻기

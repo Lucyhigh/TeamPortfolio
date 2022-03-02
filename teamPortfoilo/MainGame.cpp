@@ -7,10 +7,12 @@
 #include "OptionScene.h"
 //Stage
 #include "StartScene.h"
+#include "OpeningScene.h"//
 #include "Boss1BeforeScene.h"
 #include "BossScene1.h"
 #include "BossScene2.h"
 #include "FieldScene1.h"
+#include "LastScene.h"
 #include "EndingScene.h"
 #pragma endregion 
 
@@ -35,12 +37,14 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 
 	// Stage1
 	SCENEMANAGER->addScene("Start", new StartScene);
+	SCENEMANAGER->addScene("Opening", new OpeningScene);
 	SCENEMANAGER->addScene("BeforeBoss1", new Boss1BeforeScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
 	
 	// Stage2
 	SCENEMANAGER->addScene("Boss2", new BossScene2);
 	SCENEMANAGER->addScene("Field1", new FieldScene1);
+	SCENEMANAGER->addScene("Last", new LastScene);
 	SCENEMANAGER->addScene("Ending", new EndingScene);
 
 	
