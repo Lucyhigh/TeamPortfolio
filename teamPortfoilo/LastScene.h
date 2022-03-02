@@ -11,7 +11,9 @@ private:
 	Image* _image;
 	PixelCollision* _pixel;
 	int _count;
-    
+    int _bgAlpha;
+    int _alpha;
+    int _textAlpha;
 public:
 	HRESULT init(void);
 	void release(void);

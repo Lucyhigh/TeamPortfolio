@@ -8,6 +8,10 @@ HRESULT LastScene::init(void)
 	_pixel = new PixelCollision;
 	_pixel->init(100,1790,"¿£µù¾À ÇÈ¼¿");
 
+    _textAlpha = 0;
+    _alpha = 0;
+    _bgAlpha = 0;
+
 	_camera = new Camera;
 	_camera->init();
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
@@ -37,7 +41,6 @@ void LastScene::update(void)
         {
             SCENEMANAGER->changeScene("Ending");
         }
-
 	}
 	else if (_pixel->getX() <= 100)
 	{
@@ -65,13 +68,15 @@ void LastScene::update(void)
 
 void LastScene::render(void)
 {
-	/*IMAGEMANAGER->render("¿£µù¾À µŞ¹è°æ", getMemDC(),
-		-_camera->getScreenRect().left,
-		-_camera->getScreenRect().top);*/
+	//IMAGEMANAGER->render("¿£µù¾À µŞ¹è°æ", getMemDC(),
+	//	-_camera->getScreenRect().left,
+	//	-_camera->getScreenRect().top);
 	IMAGEMANAGER->render("¿£µù¾À Å×½ºÆ®¹è°æ", getMemDC(), 0, 0,
 		_camera->getScreenRect().left, 
 		_camera->getScreenRect().top,
 		WINSIZE_X, WINSIZE_Y);
+    IMAGEMANAGER->alphaRender("¿£µùÀÌ¹ÌÁö2", getMemDC(), 0, 0, _bgAlpha);
+
 	_pixel->render();
 	IMAGEMANAGER->render("¿£µù¾À ¾Õ¹è°æ", getMemDC(),
 		-_camera->getScreenRect().left,
@@ -79,5 +84,7 @@ void LastScene::render(void)
 	IMAGEMANAGER->render("¿£µù¾À ¾Õ¹è°æ2", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
+
+    IMAGEMANAGER->alphaRender("ÄÆÀüÈ¯", getMemDC(), 0, 0, _alpha);
 	_camera->render();
 }
