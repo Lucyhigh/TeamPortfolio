@@ -5,9 +5,9 @@ HRESULT EndingScene::init(void)
 {
     _textIndex = 0;
     _textAlpha = 0;
-    _alpha = 0;
+    _alpha = 255;
     _bgAlpha = 0;
-    _timer = 0;
+    _timer = 0.0f;
     return S_OK;
 }
 
@@ -17,30 +17,36 @@ void EndingScene::release(void)
 
 void EndingScene::update(void)
 {
-
-    if (KEYMANAGER->isOnceKeyDown(VK_SPACE) && _textIndex < 3 && _bgAlpha >= 200)
+    _timer += 0.1f;
+    if (_timer > 30)
     {
-        _textAlpha = 0;
-        _bgAlpha = 0;
-        _alpha = 255;
-        _textIndex++;
-    }
-    if (_textIndex >= 3)
-    {
-        _timer += TIMEMANAGER->getElapsedTime();
-        if (_timer > 30)
+        if (KEYMANAGER->isOnceKeyDown(VK_SPACE) && _textIndex < 3 && _bgAlpha >= 200)
         {
-            SCENEMANAGER->changeScene("Title");
+            _textAlpha = 0;
+            _bgAlpha = 0;
+            _alpha = 255;
+            _textIndex++;
+            if (_textIndex >= 3)
+            {
+                _timer = 0;
+            }
         }
-    }
+        if (_textIndex >= 3)
+        {
+            if (_timer > 130)
+            {
+                SCENEMANAGER->changeScene("Title");
+            }
+        }
 
-    _alpha -= 1;
-    _bgAlpha += 1;
-    _textAlpha += 2;
-    if (_bgAlpha >= 255) _bgAlpha = 255;
-    if (_alpha <= 0) _alpha = 0;
-    if (_textAlpha >= 100) _textAlpha = 100;
-    cout << _textIndex << " , " << _textAlpha << endl;
+        _alpha -= 1;
+        _bgAlpha += 1;
+        _textAlpha += 2;
+        if (_bgAlpha >= 255) _bgAlpha = 255;
+        if (_alpha <= 0) _alpha = 0;
+        if (_textAlpha >= 100) _textAlpha = 100;
+    }
+    cout << _timer << endl;
 }
 
 void EndingScene::render(void)

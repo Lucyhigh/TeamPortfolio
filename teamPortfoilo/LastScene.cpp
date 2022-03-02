@@ -3,10 +3,10 @@
 
 HRESULT LastScene::init(void)
 {
-	_image = IMAGEMANAGER->findImage("¿£µù¾À Å×½ºÆ®¹è°æ");
+	_image = IMAGEMANAGER->findImage("¶ó½ºÆ®¾À ¹Ù´Ú");
 
 	_pixel = new PixelCollision;
-	_pixel->init(100,1790,"¿£µù¾À ÇÈ¼¿");
+	_pixel->init(100,1790,"¶ó½ºÆ®¾À ÇÈ¼¿");
 
     _textAlpha = 0;
     _alpha = 0;
@@ -30,12 +30,12 @@ void LastScene::release(void)
 
 void LastScene::update(void)
 {
-	cout << _pixel->getX() << ", " << _pixel->getY() << ", " << _count << endl;
-	_pixel->update("¿£µù¾À ÇÈ¼¿");
-	if ( _pixel->getX() >= _image->getWidth() - 300)
+	//cout << _pixel->getX() << ", " << _pixel->getY() << ", " << _count << endl;
+	
+	if ( _pixel->getX() >= _image->getWidth() - 400)
 	{
 		
-		_pixel->setX(_image->getWidth() - 300);
+		_pixel->setX(_image->getWidth() - 400);
         _count++;
         if (_count > 30)
         {
@@ -64,24 +64,28 @@ void LastScene::update(void)
 	_camera->update();
 
 	_pixel->setCameraRect(_camera->getScreenRect());
+    _pixel->update("¶ó½ºÆ®¾À ÇÈ¼¿");
 }
 
 void LastScene::render(void)
 {
-	//IMAGEMANAGER->render("¿£µù¾À µÞ¹è°æ", getMemDC(),
-	//	-_camera->getScreenRect().left,
-	//	-_camera->getScreenRect().top);
-	IMAGEMANAGER->render("¿£µù¾À Å×½ºÆ®¹è°æ", getMemDC(), 0, 0,
-		_camera->getScreenRect().left, 
-		_camera->getScreenRect().top,
-		WINSIZE_X, WINSIZE_Y);
-    IMAGEMANAGER->alphaRender("¿£µùÀÌ¹ÌÁö2", getMemDC(), 0, 0, _bgAlpha);
+    float bg1Speed = 0.9;
+    RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
+    IMAGEMANAGER->loopRender("¶ó½ºÆ®¾À µÞ¹è°æ", getMemDC(), &rc1,
+        _camera->getScreenRect().left * bg1Speed,
+        _camera->getScreenRect().top * bg1Speed);
+
+//    IMAGEMANAGER->alphaRender("¿£µùÀÌ¹ÌÁö1", getMemDC(), 0, 0, _bgAlpha);//¿£ÇÇ½Ã
 
 	_pixel->render();
-	IMAGEMANAGER->render("¿£µù¾À ¾Õ¹è°æ", getMemDC(),
+    IMAGEMANAGER->render("¶ó½ºÆ®¾À ¹Ù´Ú", getMemDC(),
+        -_camera->getScreenRect().left,
+        -_camera->getScreenRect().top);
+
+	IMAGEMANAGER->render("¶ó½ºÆ®¾À ¾Õ¹è°æ", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
-	IMAGEMANAGER->render("¿£µù¾À ¾Õ¹è°æ2", getMemDC(),
+	IMAGEMANAGER->render("¶ó½ºÆ®¾À ¾Õ¹è°æ2", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
 

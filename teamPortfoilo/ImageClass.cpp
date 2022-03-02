@@ -176,7 +176,7 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("보스1전 뒷배경", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);
 
 	IMAGEMANAGER->addImage("보스1 바닥", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675, MGT);
-	IMAGEMANAGER->addImage("보스1 뒷배경", "Resources/Images/BackGround/boss1LastBG.bmp", 2460, 675);
+	IMAGEMANAGER->addImage("보스1 뒷배경", "Resources/Images/BackGround/boss1LastBG.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("보스1 뒷시체", "Resources/Images/BackGround/boss1bodysBG.bmp", 2460, 675,MGT);
 	IMAGEMANAGER->addImage("보스1 앞시체", "Resources/Images/BackGround/boss1FrontBody.bmp", 2460, 675,MGT);
 	IMAGEMANAGER->addImage("보스1 앞문", "Resources/Images/BackGround/boss1FrontDoor.bmp", 2460, 675,MGT);
@@ -184,12 +184,12 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("씬2배경", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("씬3배경", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 
-	IMAGEMANAGER->addImage("엔딩씬 바닥", "Resources/Images/BackGround/endingfloor.bmp", 5000, 1862, MGT);
-	IMAGEMANAGER->addImage("엔딩씬 테스트배경", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);//
-	IMAGEMANAGER->addImage("엔딩씬 뒷배경", "Resources/Images/BackGround/endingBG.bmp", 5000, 1862);
-	IMAGEMANAGER->addImage("엔딩씬 앞배경", "Resources/Images/BackGround/endingFG.bmp", 5000, 1862, MGT);
-	IMAGEMANAGER->addImage("엔딩씬 앞배경2", "Resources/Images/BackGround/endingFG2.bmp", 5000, 1862, MGT);
-	IMAGEMANAGER->addImage("엔딩씬 픽셀", "Resources/Images/BackGround/endingScenePixel.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("라스트씬 바닥", "Resources/Images/BackGround/endingfloor.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("라스트씬 테스트배경", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);//
+	IMAGEMANAGER->addImage("라스트씬 뒷배경", "Resources/Images/BackGround/endingBG.bmp", 5000, 1862);
+	IMAGEMANAGER->addImage("라스트씬 앞배경", "Resources/Images/BackGround/endingFG.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("라스트씬 앞배경2", "Resources/Images/BackGround/endingFG2.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("라스트씬 픽셀", "Resources/Images/BackGround/endingScenePixel.bmp", 5000, 1862, MGT);
 
 	IMAGEMANAGER->addImage("엔딩이미지1", "Resources/Images/Animation/endingl.bmp", WINSIZE_X,WINSIZE_Y);
 	IMAGEMANAGER->addImage("엔딩이미지2", "Resources/Images/Animation/ending2.bmp", WINSIZE_X, WINSIZE_Y);

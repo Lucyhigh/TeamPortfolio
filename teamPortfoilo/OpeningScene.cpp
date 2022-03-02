@@ -52,7 +52,7 @@ void OpeningScene::render(void)
 
 	IMAGEMANAGER->render("¿ÀÇÁ´×¾À Å×½ºÆ®¹è°æ", getMemDC(), 0, 0,
 		_camera->getScreenRect().left, _camera->getScreenRect().top,
-		WINSIZE_X, WINSIZE_Y);//¸¶Á¨Å¸¿À·ùÀÖÀ½
+		WINSIZE_X, WINSIZE_Y);
 
 	/*IMAGEMANAGER->render("¿ÀÇÁ´×¾À ÇÈ¼¿", getMemDC(), 0, 0,
 		_camera->getScreenRect().left, _camera->getScreenRect().top,
