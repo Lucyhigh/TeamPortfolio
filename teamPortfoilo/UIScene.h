@@ -1,6 +1,7 @@
 #pragma once
 #include "GameNode.h"
 #include "ProgressBar.h"
+#include "Inventory.h"
 
 // 포션위치 수정여부 확인
 struct tagPotion
@@ -26,6 +27,10 @@ private:
 	vector<tagPotion> _vPotion;
 	vector<tagPotion>::reverse_iterator _rviPotion;
 
+
+	Inventory* _inven;
+	bool _openInventory;
+
 	// 소지포인트 관련 우상단 UI
 	int _point;
 
@@ -44,7 +49,7 @@ public:
 	void setPotion();
 
 	
-	void showPoint(void);
+	void showPoint(bool openInventory);
 	
 };
 

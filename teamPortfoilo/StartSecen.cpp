@@ -9,6 +9,9 @@ HRESULT StartScene::init(void)
 {
 	_ui = new UIScene;
 	_ui->init();
+
+
+
 	return S_OK;
 }
 
@@ -36,6 +39,5 @@ void StartScene::render(void)
 
 
 	_ui->render();
-	// 인벤토리 이미지 테스트 
-	IMAGEMANAGER->findImage("inven7")->render(getMemDC(), 0, 0);
+
 }

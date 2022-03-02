@@ -21,11 +21,11 @@ HRESULT AniSceneTitle::init(void)
 	_aMTitleBg->setDefPlayFrame(false, true);
 	_aMTitleBg->setFPS(5);
 	_aMTitleMain->setDefPlayFrame(false, true);
-	_aMTitleMain->setFPS(2);
+	_aMTitleMain->setFPS(1);
 	_aMTitleEff->setDefPlayFrame(false, true);
-	_aMTitleEff->setFPS(4);
+	_aMTitleEff->setFPS(2);
 	_aMTitleSelecte->setDefPlayFrame(true, true);
-	_aMTitleSelecte->setFPS(5);
+	_aMTitleSelecte->setFPS(2);
 
 
 	_aMTitleBg->AniStart();
@@ -70,6 +70,40 @@ void AniSceneTitle::render(int x, int y)
 }
 #pragma endregion
 
+#pragma region Item Select Animation
+HRESULT AniSceneItem::init(void)
+{
+	_aIItemSelect = IMAGEMANAGER->findImage("itemsCursor");
+
+	_aMItemSelect = new Animation;
+	_aMItemSelect->init(_aIItemSelect->getWidth(), _aIItemSelect->getHeight(), 57,57);
+
+	_aMItemSelect->setDefPlayFrame(false, true);
+	_aMItemSelect->setFPS(3);
+
+	_aMItemSelect->AniStart();
+
+	return S_OK;
+}
+
+void AniSceneItem::release(void)
+{
+	_aMItemSelect->release();
+	SAFE_DELETE(_aMItemSelect);
+}
+
+void AniSceneItem::update(void)
+{
+	_aMItemSelect->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
+
+}
+
+void AniSceneItem::render(int x, int y)
+{
+	_aIItemSelect->aniRender(getMemDC(), x, y, _aMItemSelect);
+
+}
+#pragma endregion
 
 #pragma region AniScene
 HRESULT AniScene::init(void)
@@ -102,3 +136,5 @@ void AniScene::render(void)
 }
 
 #pragma endregion
+
+

@@ -12,14 +12,14 @@ HRESULT ImageClass::init(void)
 #pragma region PlayerImage
 	IMAGEMANAGER->addFrameImage("²¿±ò´ë±â", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ", "Resources/Images/Player/p_jump.bmp", 1120, 158, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò½½¶óÀÌµå", "Resources/Images/Player/p_slide.bmp", 1455, 144, 15, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/p_attack.bmp", 1260, 144, 9, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/p_attack0.bmp", 1260, 144, 9, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ1", "Resources/Images/Player/p_attack1.bmp", 725, 144, 5, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ2", "Resources/Images/Player/p_attack2.bmp", 2600, 170, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò»ó´Ü¾îÅÃ", "Resources/Images/Player/p_upattack.bmp", 972, 148, 12, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ¾îÅÃ", "Resources/Images/Player/p_jumpattack.bmp", 1510, 200, 10, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ", "Resources/Images/Player/playerFrontJumpOn.bmp", 1120, 158, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò½½¶óÀÌµå", "Resources/Images/Player/playerSliding.bmp", 1455, 144, 15, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ1", "Resources/Images/Player/playerAttTwoAddEffe.bmp", 725, 144, 5, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ2", "Resources/Images/Player/playerAttThreeAddEffect.bmp", 2600, 170, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò»ó´Ü¾îÅÃ", "Resources/Images/Player/playerUpwardAtt.bmp", 972, 148, 12, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ¾îÅÃ", "Resources/Images/Player/playerJumpAttack.bmp", 1510, 200, 10, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ¾îÅÃÀÌÆåÆ®", "Resources/Images/Player/p_jumpattack_ef.bmp", 604, 200, 4, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò»ó´Ü¾îÅÃÀÌÆåÆ®", "Resources/Images/Player/p_upattack_ef.bmp", 320, 300, 4, 2, MGT);
 	IMAGEMANAGER->addFrameImage("°ø°ÝÀÌÆåÆ®", "Resources/Images/Player/effectTwo.bmp", 792, 164, 6, 2, MGT);
@@ -111,13 +111,6 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("¸Þ´º", "Resources/Images/cornObject/menu.bmp", 272, 360, 2, 1, MGT);
 	IMAGEMANAGER->addFrameImage("¸Þ´ºÃ¢", "Resources/Images/cornObject/menuDisplay.bmp", 3600, 675, 3, 1, MGT);
 
-	IMAGEMANAGER->addImage("»óÁ¡ ¸Þ¾ÆÄðÆÄ", "Resources/Images/BackGround/StoreWeaponTap.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("»óÁ¡ ±âµµ¹®", "Resources/Images/BackGround/StoreBibleTap.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("»óÁ¡ ¹¬ÁÖ", "Resources/Images/BackGround/StoreRosaryTap.bmp", 1200, 675);
-
-	IMAGEMANAGER->addImage("ÀÎº¥ ¸Þ¾ÆÄðÆÄ", "Resources/Images/BackGround/InventoryWeaponTap.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("ÀÎº¥ ±âµµ¹®", "Resources/Images/BackGround/InventoryBibleTap.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("ÀÎº¥ ¹¬ÁÖ", "Resources/Images/BackGround/InventoryRosaryTap.bmp", 1200, 675);
 
 #pragma region Stage Scene
 	// Stage 1
@@ -213,32 +206,6 @@ HRESULT ImageClass::init(void)
 #pragma endregion
 
 
-
-#pragma region Item
-	// ¹«±â - ¸Þ¾ÆÄðÆÄÀÇ ½ÉÀå
-	IMAGEMANAGER->addImage("¿ÀÀÏ ½ÉÀå On", "Resources/Images/item/weaponOn_01.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("¿ÀÀÏ ½ÉÀå Off", "Resources/Images/item/weaponOff_01.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("ÀÎ¼¾½º ½ÉÀå On", "Resources/Images/item/weaponOn_02.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("ÀÎ¼¾½º ½ÉÀå Off", "Resources/Images/item/weaponOff_02.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("³ì¾Æ³»¸° ½ÉÀå On", "Resources/Images/item/weaponOn_03.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("³ì¾Æ³»¸° ½ÉÀå Off", "Resources/Images/item/weaponOff_03.bmp", 60, 60, MGT);
-
-	// ¹æ¾î±¸ - ±âµµ¹®
-	IMAGEMANAGER->addImage("01 ±âµµ¹® On", "Resources/Images/item/bibleOn_01.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("01 ±âµµ¹® Off", "Resources/Images/item/bibleOff_01.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("02 ±âµµ¹® On", "Resources/Images/item/bibleOn_02.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("02 ±âµµ¹® Off", "Resources/Images/item/bibleOff_02.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("03 ±âµµ¹® On", "Resources/Images/item/bibleOn_03.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("03 ±âµµ¹® Off", "Resources/Images/item/bibleOff_03.bmp", 60, 60, MGT);
-
-	// ¾Ç¼¼¼­¸® - ¹¬ÁÖ
-	IMAGEMANAGER->addImage("01 ¹¬ÁÖ On", "Resources/Images/item/rosaryOn_01.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("01 ¹¬ÁÖ Off", "Resources/Images/item/rosaryOff_01.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("02 ¹¬ÁÖ On", "Resources/Images/item/rosaryOn_02.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("02 ¹¬ÁÖ Off", "Resources/Images/item/rosaryOff_02.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("03 ¹¬ÁÖ On", "Resources/Images/item/rosaryOn_03.bmp", 60, 60, MGT);
-	IMAGEMANAGER->addImage("03 ¹¬ÁÖ Off", "Resources/Images/item/rosaryOff_04.bmp", 60, 60, MGT);
-
 #pragma region UI Object
 	// etc : Resources/Images/UI/Æú´õ¸í ¶Ç´Â ÀÌ¹ÌÁö
 	// system
@@ -278,15 +245,17 @@ HRESULT ImageClass::init(void)
     IMAGEMANAGER->addFrameImage("deosgracias", "Resources/Images/Object/deosgracias.bmp", 1664, 1536, 13, 6, MGT); // 128,256
     IMAGEMANAGER->addFrameImage("stand", "Resources/Images/Object/priedieuStand.bmp", 924, 310, 7, 1, MGT); // 462, 155
     IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/Object/itemObject.bmp", 260, 91, 10, 1, MGT); // 260,91
+	IMAGEMANAGER->addFrameImage("SymbolObj", "Resources/Images/Object/SymbolStatue.bmp", 162, 64, 6, 1, MGT);
+	IMAGEMANAGER->addFrameImage("breakSymbolObj", "Resources/Images/Object/breakSymbolStatue.bmp", 550, 120, 10, 1, MGT);
+	IMAGEMANAGER->addFrameImage("breakableSkeleton", "Resources/Images/Object/breakableSkeleton.bmp", 756 * 1.7, 101 * 1.7, 14, 1, MGT);
 
-#pragma endregion
-
-
-#pragma region Item
-
+	// Item
 	// Å¬¸®ÇÎ¸¶½ºÅ© »ç¿ë
 	IMAGEMANAGER->addFrameImage("items", "Resources/Images/item/items.bmp", 510*1.9, 510 * 1.9,17,17, MGT); // 510,510->969,969
+	IMAGEMANAGER->addImage("item", "Resources/Images/item/items.bmp", 510 * 1.9, 510 * 1.9, MGT); // 510,510->969,969
+
 	IMAGEMANAGER->addFrameImage("itemsCursor", "Resources/Images/item/ItemCursorAlt.bmp", 150 * 1.9, 90 * 1.9,5,3, MGT); // 150,90->171
+
 
 #pragma endregion
 

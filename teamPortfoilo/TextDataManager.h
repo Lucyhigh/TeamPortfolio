@@ -11,8 +11,8 @@ FILE* file;
 
 시간없어서 텍스트만 할거임
 */
-#define SAVE_BUFFER 128
-#define LOAD_BUFFER 128
+#define SAVE_BUFFER 1280
+#define LOAD_BUFFER 1280
 class TextDataManager : public SingletonBase<TextDataManager>
 {
 public:
@@ -23,6 +23,9 @@ public:
     char* vectorArrayCombine(vector<string> vArray);
     vector<string> load(const char* fileName);
     vector<string> charArraySeparation(char charArray[]);
+	// csv 파일용
+	vector<string> loadFstream(const char* fileName);
+
 public:
     TextDataManager() {}
     ~TextDataManager() {}

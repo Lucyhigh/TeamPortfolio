@@ -128,39 +128,107 @@ void Animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 	_loop = loop;
 	_playList.clear();
 
-	if (reverse)
+	if (start == end)
 	{
-		if (_loop)
+		_playList.clear();
+		AniStop();
+		return;
+	}
+
+	if (start > end)
+	{
+		if (reverse)
 		{
-			for (int i = start; i < end; i++)
+			if (_loop)
 			{
-				_playList.push_back(i);
+				for (int i = start; i >= end; --i)
+				{
+					_playList.push_back(i);
+				}
+
+				for (int i = end + 1; i < start; ++i)
+				{
+					_playList.push_back(i);
+				}
 			}
-			for (int i = end - 2; i > start; i--)
+			else
 			{
-				_playList.push_back(i);
+				for (int i = start; i >= end; --i)
+				{
+					_playList.push_back(i);
+				}
+
+				for (int i = end + 1; i < start; ++i)
+				{
+					_playList.push_back(i);
+				}
 			}
 		}
 		else
 		{
-			for (int i = start; i < end; i++)
+			if (_loop)
 			{
-				_playList.push_back(i);
+				for (int i = start; i >= end; --i)
+				{
+					_playList.push_back(i);
+				}
 			}
-			for (int i = end - 2; i >= start; i--)
+			else
 			{
-				_playList.push_back(i);
+				for (int i = start; i >= end; --i)
+				{
+					_playList.push_back(i);
+				}
 			}
 		}
 	}
 	else
 	{
-		for (int i = start; i < end; i++)
+		if (reverse)
 		{
-			_playList.push_back(i);
+			if (_loop)
+			{
+				for (int i = start; i < end; ++i)
+				{
+					_playList.push_back(i);
+				}
+
+				for (int i = end - 1; i > start; --i)
+				{
+					_playList.push_back(i);
+				}
+			}
+			else
+			{
+				for (int i = start; i < end; ++i)
+				{
+					_playList.push_back(i);
+				}
+
+				for (int i = end - 1; i > start; --i)
+				{
+					_playList.push_back(i);
+				}
+			}
+		}
+		else
+		{
+			if (_loop)
+			{
+				for (int i = start; i < end; ++i)
+				{
+					_playList.push_back(i);
+				}
+			}
+			else
+			{
+				for (int i = start; i < end; ++i)
+				{
+					_playList.push_back(i);
+				}
+			}
 		}
 	}
-
 }
 
 void Animation::setPlayReverseFrame(int start, int end, int framX, bool loop)

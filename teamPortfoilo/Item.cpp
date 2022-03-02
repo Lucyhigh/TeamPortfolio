@@ -1,2 +1,80 @@
 #include "Stdafx.h"
 #include "Item.h"
+#include "AniScene.h"
+
+HRESULT Item::init(void)
+{
+	_ani = new AniSceneItem;
+	_ani->init();
+
+	return S_OK;
+}
+
+void Item::release(void)
+{
+	_ani->release();
+}
+
+void Item::update(void)
+{
+	_ani->update();
+}
+
+void Item::render(void)
+{
+	draw();
+}
+
+void Item::draw(void)
+{
+	if (_state == ItemState::NONE) 
+	{
+		// 슬롯 Y 프레임 0 고정 
+
+		_slotImg->frameRender(getMemDC(), _posX, _posY, 2, 0);
+
+	}
+	else 
+	{
+		switch (_state)
+		{
+			// 있다면 그리기 
+		case ItemState::HAVE:
+			_slotImg->frameRender(getMemDC(), _posX, _posY, 1, 0);
+
+			break;
+		case ItemState::SELECT:
+			_slotImg->frameRender(getMemDC(), _posX, _posY, 6, 0);
+			_ani->render(_posX, _posY);
+
+			break;
+		case ItemState::MEACULPANONE:
+			_slotImg->frameRender(getMemDC(), _posX, _posY, 6, 0);
+
+			break;
+		}
+		_iconImg->render(getMemDC(), _posX, _posY, _iconX *57, _iconY *57,57,57);
+	}
+}
+
+void Item::animation(void)
+{
+
+}
+
+
+void Item::setItem(ItemState state)
+{
+	_state = state;
+}
+
+void Item::setEquip(bool state)
+{
+	_equip = state;
+}
+
+void Item::setItem(float posX, float posY)
+{
+	_posX = posX; // 인벤토리에서 아이템 위치 
+	_posY = posY;
+}

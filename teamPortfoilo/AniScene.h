@@ -33,6 +33,29 @@ public:
 };
 #pragma endregion
 
+#pragma region Item Select Animation
+class AniSceneItem : public GameNode
+{
+private:
+
+	// aI : Animation Image
+	Image* _aIItemSelect;
+
+	// aM : Animation
+	Animation* _aMItemSelect;
+
+public:
+	AniSceneItem() {}
+	~AniSceneItem() {}
+
+	HRESULT init(void);
+	void release(void);
+	void update(void);
+	void render(void);
+	void render(int x, int y);
+
+};
+#pragma endregion
 
 class AniScene : public GameNode
 {

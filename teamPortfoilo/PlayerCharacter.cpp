@@ -1,4 +1,5 @@
 #include "Stdafx.h"
+#include "PlayerCharacter.h"
 #include "Animation.h"
 PlayerCharacter::UnitState PlayerCharacter::getState()
 {
@@ -11,6 +12,11 @@ PlayerCharacter::PlayerCharacter()
 	ObjectrRelease = bind(&PlayerCharacter::release, this);
 	ObjectUpdate = bind(&PlayerCharacter::update, this);
 	ObjectRender = bind(&PlayerCharacter::render, this);
+
+	_hp[BaseEnum::STATE] = 1;
+	_hp[BaseEnum::MAX] = 136;
+	_mp[BaseEnum::STATE] = 96;
+	_mp[BaseEnum::MAX] = 96;
 }
 
 PlayerCharacter::~PlayerCharacter() { } // ! DO NOTING
@@ -34,7 +40,7 @@ HRESULT PlayerCharacter::init(POINT point, vector<RECT*>floor)
 
 void PlayerCharacter::release(void)
 {
-	
+
 }
 
 void PlayerCharacter::update(void)
@@ -317,7 +323,7 @@ void PlayerCharacter::_updateFloor()
 {
 	RECT tamp[2] = { 0,0,0,0 };
 	tamp[1] = { _Collider[BaseEnum::UNIT].left + 10, _Collider[BaseEnum::UNIT].bottom - 10,
-				_Collider[BaseEnum::UNIT].right - 10, _Collider[BaseEnum::UNIT].bottom };
+			 _Collider[BaseEnum::UNIT].right - 10, _Collider[BaseEnum::UNIT].bottom };
 
 	for (int i = 0; i < floor.size(); i++)
 	{
@@ -350,7 +356,7 @@ int PlayerCharacter::_updateSide()
 		if (IntersectRect(&tamp[0], &_Collider[BaseEnum::UNIT], floor[i]))
 		{
 			tamp[1] = { _Collider[BaseEnum::UNIT].left - GAMESPEED, _Collider[BaseEnum::UNIT].top - GAMESPEED,
-							_Collider[BaseEnum::UNIT].left, _Collider[BaseEnum::UNIT].bottom - GAMESPEED };
+						_Collider[BaseEnum::UNIT].left, _Collider[BaseEnum::UNIT].bottom - GAMESPEED };
 
 			if (IntersectRect(&tamp[0], &tamp[1], floor[i]))
 			{
@@ -360,7 +366,7 @@ int PlayerCharacter::_updateSide()
 			}
 
 			tamp[1] = { _Collider[BaseEnum::UNIT].right, _Collider[BaseEnum::UNIT].top - GAMESPEED,
-							_Collider[BaseEnum::UNIT].right + GAMESPEED, _Collider[BaseEnum::UNIT].bottom - GAMESPEED };
+						_Collider[BaseEnum::UNIT].right + GAMESPEED, _Collider[BaseEnum::UNIT].bottom - GAMESPEED };
 			if (IntersectRect(&tamp[0], &tamp[1], floor[i]))
 			{
 				_Collider[BaseEnum::UNIT].left -= _Collider[BaseEnum::UNIT].right - floor[i]->left;
@@ -422,7 +428,7 @@ void PlayerCharacter::_updataJump()
 
 void PlayerCharacter::setCameraRect(RECT rect)
 {
-    _cameraRect = rect;
+	_cameraRect = rect;
 }
 
 void PlayerCharacter::_updateAttack()
@@ -459,10 +465,17 @@ void PlayerCharacter::_updateAttack()
 	}
 	else
 	{
+<<<<<<< HEAD
 		
 		mid = { _Collider[BaseEnum::UNIT].left + ((_Collider[BaseEnum::UNIT].right - _Collider[BaseEnum::UNIT].left) / 2) , _Collider[BaseEnum::UNIT].top };
 		
 		smash.push_back 
+=======
+		mid = { left + ((right - left) / 2) , top };
+		smash.push_back // ÁÂ  
+		(pair<RECT, Image>{ RectMakeCenter(mid.x - 40, mid.y - 50, 10, 10), Image() });
+		smash.push_back // Áß¾Ó 
+>>>>>>> origin/KimEunhui
 		(pair<RECT, Image>{ RectMakeCenter(mid.x, mid.y - 75, 10, 10), Image() });
 	}
 }
@@ -873,7 +886,7 @@ void PlayerCharacter::_inputAnimation()
 
 		if (0.09f + _Fram >= TIMEMANAGER->getWorldTime()) { return; }
 		_Fram = TIMEMANAGER->getWorldTime();
-        
+
 	}
 	else if (_state == UnitState::IDLE_0)
 	{
