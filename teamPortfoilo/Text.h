@@ -18,7 +18,7 @@ struct tagText
 struct tagImageWithText
 {
 	LPCWSTR name;
-	vector<string> imageMoodVec;
+	string imageVec;
 	LPCWSTR script;
 };
 

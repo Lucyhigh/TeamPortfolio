@@ -191,6 +191,14 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("엔딩씬 앞배경2", "Resources/Images/BackGround/endingFG2.bmp", 5000, 1862, MGT);
 	IMAGEMANAGER->addImage("엔딩씬 픽셀", "Resources/Images/BackGround/endingScenePixel.bmp", 5000, 1862, MGT);
 
+	IMAGEMANAGER->addImage("엔딩이미지1", "Resources/Images/Animation/endingl.bmp", WINSIZE_X,WINSIZE_Y);
+	IMAGEMANAGER->addImage("엔딩이미지2", "Resources/Images/Animation/ending2.bmp", WINSIZE_X, WINSIZE_Y);
+    IMAGEMANAGER->addImage("엔딩이미지3", "Resources/Images/Animation/ending3.bmp", WINSIZE_X, WINSIZE_Y);
+    IMAGEMANAGER->addImage("엔딩이미지4", "Resources/Images/Animation/ending4.bmp", WINSIZE_X, WINSIZE_Y);
+    IMAGEMANAGER->addImage("엔딩이미지5", "Resources/Images/Animation/ending5.bmp", WINSIZE_X,WINSIZE_Y);
+    IMAGEMANAGER->addImage("컷전환", "Resources/Images/Animation/sceneChange.bmp", WINSIZE_X,WINSIZE_Y);
+
+
 	// 수정 및 자리 잡은 이미지 
 	IMAGEMANAGER->addImage("BossStage2_Bg", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 

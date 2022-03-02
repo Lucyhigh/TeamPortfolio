@@ -49,7 +49,7 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 
 	
 #pragma endregion 
-	SCENEMANAGER->changeScene("Boss1");
+	SCENEMANAGER->changeScene("Ending");
 	return S_OK;
 }
 

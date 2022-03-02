@@ -32,6 +32,11 @@ void LastScene::update(void)
 	{
 		
 		_pixel->setX(_image->getWidth() - 300);
+        _count++;
+        if (_count > 30)
+        {
+            SCENEMANAGER->changeScene("Ending");
+        }
 
 	}
 	else if (_pixel->getX() <= 100)
@@ -45,11 +50,7 @@ void LastScene::update(void)
 		if (_pixel->getX() > 4000)
 		{
 			_pixel->setX(_pixel->getX() - 0.95);
-            _count++;
-            if (_count > 10)
-            {
-                SCENEMANAGER->changeScene("Ending");
-            }
+            
 		}
 	}
 	POINT cameraPos;
