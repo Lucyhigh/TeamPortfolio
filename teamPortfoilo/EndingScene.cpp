@@ -48,6 +48,7 @@ void EndingScene::update(void)
         if (_timer > 240)
         {
             SCENEMANAGER->changeScene("Title");
+			TEMPSOUNDMANAGER->stopMp3WithKey("Geli");
         }
     }
 }
