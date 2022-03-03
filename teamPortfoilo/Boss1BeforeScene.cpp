@@ -23,8 +23,8 @@ HRESULT Boss1BeforeScene::init(void)
     _y = WINSIZE_Y - 170;
     _ObjectRc = RectMakeCenter(_x, _y, _objectImage->getFrameWidth(), _objectImage->getFrameHeight());
 
-	//_ui = new UIScene;
-	//_ui->init();
+	_ui = new UIScene;
+	_ui->init();
 
 	_x = _mapImage->getWidth()*0.25;
 	_y = WINSIZE_Y - 100;

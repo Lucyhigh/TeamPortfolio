@@ -1,7 +1,7 @@
 ﻿  Stdafx.cpp
-  Animation.cpp
   AniScene.cpp
   AniTextScene.cpp
+  Animation.cpp
   Boss1BeforeScene.cpp
 c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\boss1beforescene.cpp(192): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
   BossIsadora.cpp
@@ -16,6 +16,8 @@ c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\bossscene1.c
 c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\collidermanager.cpp(21): warning C4101: 'a' :참조되지 않은 지역 변수입니다.
 c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\collidermanager.cpp(35): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\collidermanager.cpp(58): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  EndingScene.cpp
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\endingscene.cpp(82): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   FieldScene1.cpp
   FirePillar.cpp
   FontManager.cpp
@@ -32,14 +34,14 @@ c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\image.cpp(25
 c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\image.cpp(693): warning C4552: '-': 식의 결과가 사용되지 않습니다.
   ImageClass.cpp
   ImageManager.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
   Inventory.cpp
 c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(76): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(82): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(94): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(100): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(104): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  코드를 생성하고 있습니다...
-  컴파일하고 있습니다...
   Item.cpp
   ItemManager.cpp
   KeyManager.cpp
@@ -76,8 +78,6 @@ c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\savescene.cp
 c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\savescene.cpp(202): warning C4101: 'temp' :참조되지 않은 지역 변수입니다.
   SceneManager.cpp
   StartSecen.cpp
-  EndingScene.cpp
-c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\endingscene.cpp(82): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   TempSoundManager.cpp
   TempSoundTest.cpp
   Text.cpp
