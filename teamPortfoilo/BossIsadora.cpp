@@ -26,7 +26,8 @@ HRESULT BossIsadora::init(POINT point, vector<RECT*>floor)
 	{
 		{ UnitState::IDLE ,std::bind(&BossIsadora::_pattenIdle,this) },
 		{ UnitState::TRUNATTACK ,std::bind(&BossIsadora::_pattenTurnAttack,this) },
-		{ UnitState::FIREPILLARATTACK_0, std::bind(&BossIsadora::_pattenFirePollarAttack0,this) }
+		{ UnitState::FIREPILLARATTACK_0, std::bind(&BossIsadora::_pattenFirePollarAttack0,this) },
+		{ UnitState::START, std::bind(&BossIsadora::_pattenStart,this) }
 	};
 
 	_Collider[BaseEnum::UNIT] = RectMakeCenter(point.x, point.y, 70, 100);
@@ -35,7 +36,9 @@ HRESULT BossIsadora::init(POINT point, vector<RECT*>floor)
 	_pillar = new FirePillar();
 	_pillar->init({stateFloor.right/2,stateFloor.top}, this);
 	pillarDelly = true;
-	_pattenAni = new Animation();
+	_isLeft = 1;
+
+	_state = UnitState::START;
 
 	return S_OK;
 }
@@ -66,7 +69,6 @@ void BossIsadora::update(void)
 		return;
 	}
 
-	_inputLook();
 	_inputSide();
 
 	if (_state == UnitState::END) { _inputPatten(); }
@@ -74,7 +76,6 @@ void BossIsadora::update(void)
 	_inputImageXY();
 	_pattenFunc[_state]();
 	_inputEffect();
-
 	_pillar->update();
 }
 
@@ -88,7 +89,7 @@ void BossIsadora::render(void)
 	float top = _Collider[BaseEnum::UNIT].top - GAMEMANAGER->getPlayer()->getCamareRect().top;
 	float right = _Collider[BaseEnum::UNIT].right - GAMEMANAGER->getPlayer()->getCamareRect().left;
 	float bottom = _Collider[BaseEnum::UNIT].bottom - GAMEMANAGER->getPlayer()->getCamareRect().top;
-	Rectangle(getMemDC(), left, top, right, bottom);
+	//Rectangle(getMemDC(), left, top, right, bottom);
 
 
 	for (int i = 0; i < _effect.size(); i++)
@@ -108,7 +109,7 @@ void BossIsadora::render(void)
 
 void BossIsadora::_inputPatten()
 {
-	_state = (UnitState)2;// 현재 임시 ;
+	_state = (UnitState)RND->getInt(3);// 현재 임시 ;
 	_pattenAni = nullptr;
 
 	if (_state == UnitState::IDLE)
@@ -163,6 +164,12 @@ int BossIsadora::_inputSide()
 		}
 	}
 	return 0;
+}
+
+void BossIsadora::_pattenStart()
+{
+	if (_image != nullptr && _pattenAni != nullptr && _pattenAni->isPlay() == false)
+	{  _state = UnitState::END; }
 }
 
 void BossIsadora::_pattenIdle()
@@ -276,6 +283,7 @@ void BossIsadora::_pattenTurnAttack()
 	if (_pattenAni->isPlay() == false)
 	{
 		smash.clear();
+		_pattenSub.clear();
 		_state = UnitState::END;
 		_pattenAni = nullptr;
 	}
@@ -298,6 +306,8 @@ void BossIsadora::_pattenFirePollar(POINT point,int size)
 		_effect.back().second->setDefPlayFrame(true, false);
 		_effect.back().second->setFPS(28, 4);
 		_effect.back().second->AniStart();
+
+		result.first = RECT{ point.x - colliderSize / 2, 0, point.x + colliderSize / 2, point.y };
 
 		point.x += 100;
 		result.first = RECT{ point.x - colliderSize / 2, 0, point.x + colliderSize / 2, point.y };
@@ -342,7 +352,7 @@ void BossIsadora::_pattenFirePollarAttack0()
 		_isLeft = -1;
 		if (_isLeft == 1)
 		{
-			_pattenAni->setPlayFrame(36, 69, false, false);
+			//_pattenAni->setPlayFrame(36, 69, false, false);
 		}
 		else
 		{
@@ -352,12 +362,14 @@ void BossIsadora::_pattenFirePollarAttack0()
 		_pattenAni->AniStart();
 	}
 
-	if (_isLeft == -1 && _Collider[BaseEnum::UNIT].left >= GAMESPEED)
+	if (_isLeft == 1 && _Collider[BaseEnum::UNIT].right <= WINSIZE_X - GAMESPEED ||
+		_isLeft == -1 && _Collider[BaseEnum::UNIT].left >= GAMESPEED)
 	{
 		if (_pattenSub.size() == 0)
 		{
 			pillarDelly = true;
 			_pattenSub.clear();
+			smash.clear();
 			_state = UnitState::END;
 			return;
 		}
@@ -368,13 +380,27 @@ void BossIsadora::_pattenFirePollarAttack0()
 		}
 	}
 
-	if (getPoint().x < _pattenSub.front())
+	if (_isLeft == 1)
 	{
-		POINT point;
-		point.x = _pattenSub.front();
-		point.y = stateFloor.top;
-		_pattenFirePollar(point, 3);
-		_pattenSub.erase(_pattenSub.begin());
+		if (getPoint().x >= _pattenSub.back())
+		{
+			POINT point;
+			point.x = _pattenSub.front();
+			point.y = stateFloor.top - warpPoint.second.y;
+			_pattenFirePollar(point, 3);
+			_pattenSub.erase(_pattenSub.begin());
+		}
+	}
+	else
+	{
+		if (getPoint().x < _pattenSub.front())
+		{
+			POINT point;
+			point.x = _pattenSub.front();
+			point.y = stateFloor.top;
+			_pattenFirePollar(point, 3);
+			_pattenSub.erase(_pattenSub.begin());
+		}
 	}
 }
 
@@ -382,7 +408,17 @@ void BossIsadora::_inputAnimation()
 {
 	if (_pattenAni != nullptr) return;
 	
-	if (_state == UnitState::IDLE)
+	if (_state == UnitState::START)
+	{
+		_image = IMAGEMANAGER->findImage("bIsiIntro");
+		_pattenAni = new Animation();
+		_pattenAni->init(_image->getWidth(), _image->getHeight(), _image->getFrameWidth(), _image->getFrameHeight());
+
+		_pattenAni->setPlayFrame(0, 50, false, false);
+		_pattenAni->setFPS(50, 15);
+		_pattenAni->AniStart();
+	}
+	else if (_state == UnitState::IDLE)
 	{
 		_image = IMAGEMANAGER->findImage("blsiIdle");
 		_pattenAni = new Animation();
@@ -466,9 +502,6 @@ void BossIsadora::_inputAnimation()
 		}
 		_pattenAni->setFPS(32, 10);
 		_pattenAni->AniStart();
-
-		//34 59
-
 	}
 }
 
@@ -476,6 +509,11 @@ void BossIsadora::_inputImageXY()
 {
 	if (_image == nullptr) return;
 
+	if (_state == UnitState::START)
+	{
+		_image->setX(_Collider[BaseEnum::UNIT].left - 95);
+		_image->setY(_Collider[BaseEnum::UNIT].top - 90);
+	}
 	if (_state == UnitState::IDLE)
 	{
 		_image->setX(_Collider[BaseEnum::UNIT].left -140);
@@ -507,7 +545,7 @@ void BossIsadora::_inputEffect()
 
 		if (_effect[i].second->isPlay() == false)
 		{
-			smash.erase(smash.begin() + i);
+			//smash.erase(smash.begin() + i);
 			_effect.erase(_effect.begin() + i);
 			return;
 		}

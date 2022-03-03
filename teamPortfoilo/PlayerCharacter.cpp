@@ -289,7 +289,6 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 	{
 		_oldState = _state;
 		GAMEMANAGER->getUI()->usePotion();
-		//GAMEMANAGER->getUI()->setPotion();
 		if (_isLeft == 1)
 		{
 			IMAGEMANAGER->findImage("²¿±òÆ÷¼Ç")->setFrameY(0);

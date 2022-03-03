@@ -178,6 +178,16 @@ void BossWarden::_inputPatten()
 {
 	if (_hp[BaseEnum::STATE] <= 0)
 	{ 
+		if (_isLeft == 1)
+		{
+			IMAGEMANAGER->findImage("수호자죽음")->setFrameY(0);
+			IMAGEMANAGER->findImage("수호자죽음")->setFrameX(IMAGEMANAGER->findImage("수호자죽음")->getMaxFrameX());
+		}
+		else
+		{
+			IMAGEMANAGER->findImage("수호자죽음")->setFrameY(1);
+			IMAGEMANAGER->findImage("수호자죽음")->setFrameX(0);
+		}
 		_state = UnitState::DIE; return; 
 	}
 
@@ -193,6 +203,14 @@ void BossWarden::_inputPatten()
 	}
 	else if (_state == UnitState::ATTACK)
 	{
+		if (_isLeft == 1)
+		{
+			IMAGEMANAGER->findImage("수호자공격")->setFrameX(IMAGEMANAGER->findImage("수호자공격")->getMaxFrameX());
+		}
+		else
+		{
+			IMAGEMANAGER->findImage("수호자공격")->setFrameX(0);
+		}
 		_pattenDely = TIMEMANAGER->getWorldTime();
 	}
 
@@ -317,38 +335,53 @@ void BossWarden::_inputAnimation()
 		{
 			return;
 		}
-
 		_fram = TIMEMANAGER->getWorldTime();
-		if (_image->getFrameX() < _image->getMaxFrameX())
+
+		if(_isLeft == 1)
+		{ 
+			if (_image->getFrameX() > 0)
+			{
+				_image->setFrameX(_image->getFrameX() - 1);
+			}
+		}
+		else
 		{
-			_image->setFrameX(_image->getFrameX() + 1);
+			if (_image->getFrameX() < _image->getMaxFrameX())
+			{
+				_image->setFrameX(_image->getFrameX() + 1);
+			}
 		}
 	}
 	else if (_state == UnitState::DIE)
 	{
 		_image = IMAGEMANAGER->findImage("수호자죽음");
-
 		_image->setY(_Collider[BaseEnum::UNIT].top - 225);
+
 		if (_isLeft == 1)
 		{
-			_image->setFrameY(0);
-			_image->setX(_Collider[BaseEnum::UNIT].left - 125);
+			_image->setX(_Collider[BaseEnum::UNIT].left -510);
 		}
 		else
 		{
-			_image->setFrameY(1);
 			_image->setX(_Collider[BaseEnum::UNIT].left - 125);
 		}
 
-		if (0.1f + _fram >= TIMEMANAGER->getWorldTime())
-		{
-			return;
-		}
-
+		if (0.1f + _fram >= TIMEMANAGER->getWorldTime()) return;
 		_fram = TIMEMANAGER->getWorldTime();
-		if (_image->getFrameX() < _image->getMaxFrameX())
+
+		if (_isLeft == -1)
 		{
-			_image->setFrameX(_image->getFrameX() + 1);
+			if (_image->getFrameX() < _image->getMaxFrameX())
+			{
+				_image->setFrameX(_image->getFrameX() + 1);
+			}
+		}
+		else
+		{
+			if (_image->getFrameX() > 0)
+			{
+				_image->setFrameX(_image->getFrameX() - 1);
+			}
 		}
 	}
 }
@@ -419,29 +452,47 @@ void BossWarden::_updateJumpIdle()
 
 void BossWarden::_updateAttack()
 {
-	if (_image->getFrameX() < 15)
+	if (_isLeft == -1)
 	{
-		return;
+		if (_image->getFrameX() < 15)	 return;
+	}
+	else
+	{
+		if (_image->getFrameX() > 7)	return;
 	}
 
-	if (0.15f + _pattenDely >= TIMEMANAGER->getWorldTime())
-	{
-		return;
-	}
+	if (0.15f + _pattenDely >= TIMEMANAGER->getWorldTime()) return;
 	_pattenDely = TIMEMANAGER->getWorldTime();
 	
-	if (smash.size() > 4 && IMAGEMANAGER->findImage("수호자공격")->getFrameX() >= IMAGEMANAGER->findImage("수호자공격")->getMaxFrameX())
+	if (smash.size() > 4)
 	{
-		_state = UnitState::END;
-		IMAGEMANAGER->findImage("수호자공격")->setFrameX(0);
-		smash.clear();
+		if (_isLeft == -1)
+		{
+			if (_image->getFrameX() >= _image->getMaxFrameX())
+			{
+				_state = UnitState::END;
+				IMAGEMANAGER->findImage("수호자공격")->setFrameX(0);
+				smash.clear();
+			}
+		}
+		else
+		{
+			if (_image->getFrameX() <= 0)
+			{
+				_state = UnitState::END;
+				IMAGEMANAGER->findImage("수호자공격")->setFrameX(0);
+				smash.clear();
+			}
+		}
+
 		return;
 	}
 
 	pair<RECT, Image> result;
 	effect.push_back({ 0,new Image });
 	effect.back().first = TIMEMANAGER->getWorldTime();
-	effect.back().second->init("Resources/Images/Boss/tutoBossEffect.bmp", 2560, 128, 20, 1);
+	effect.back().second->init("Resources/Images/Boss/tutoBossEffect.bmp", 2560, 128, 20, 1,true,RGB(0,0,255));
+
 	if (smash.size() == 0)
 	{
 

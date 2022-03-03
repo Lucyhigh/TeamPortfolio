@@ -86,7 +86,7 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("bTutoEffect", "Resources/Images/Monster/Boss_Tutorial/tutoBossEffect.bmp", 640, 512, 5,4, MGT); // 5*4 ani
 
 	// Isidora -> bIsi
-	IMAGEMANAGER->addFrameImage("bIsiIntro", "Resources/Images/Monster/Boss_Isidora/isidoraIntro.bmp", 13056, 256, 51, 4, MGT); // 5*1
+	IMAGEMANAGER->addFrameImage("bIsiIntro", "Resources/Images/Monster/Boss_Isidora/isidoraIntro.bmp", 13056, 256, 51, 1, MGT); // 5*1
 	IMAGEMANAGER->addFrameImage("blsiIdle", "Resources/Images/Monster/Boss_Isidora/Isidora_idleFinal.bmp", 1360, 2048, 4, 8, MGT);
 	IMAGEMANAGER->addFrameImage("bIsiWarpOn", "Resources/Images/Monster/Boss_Isidora/Isidora_idleToVanishFinal.bmp", 1360, 2048, 4, 8, MGT); // 5*1	
 	IMAGEMANAGER->addFrameImage("bIsiWarpOff", "Resources/Images/Monster/Boss_Isidora/Isidora_outToTwirlFinal.bmp", 1020, 1536, 3, 6, MGT); // 5*1	

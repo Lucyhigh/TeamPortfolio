@@ -24,7 +24,6 @@ class BossIsadora : public  BaseData ,GameNode
 
 		FirePillar* _pillar;
 		
-		void _inputLook() { };
 		int _inputSide();
 		void _inputPatten();
 		void _inputEffect();
@@ -32,13 +31,13 @@ class BossIsadora : public  BaseData ,GameNode
 		void _inputImageXY();
 
 		void _inputAnimation();
-		// patten
 		map<UnitState,function<void()>> _pattenFunc;
 		Animation* _pattenAni;
 		vector<float> _pattenSub;
 		vector<pair<Image, Animation*>> _effect;
 		float _pattenDely;
 		
+		void _pattenStart();
 		void _pattenIdle();
 		void _pattenWarp();
 		void _pattenTurnAttack();
