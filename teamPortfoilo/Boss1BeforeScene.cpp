@@ -44,9 +44,13 @@ HRESULT Boss1BeforeScene::init(void)
     _camera->init();
     _camera->setLimitsX(CENTER_X, _mapImage->getWidth());
     _camera->setLimitsY(CENTER_Y, _mapImage->getHeight());
-
+    _isTalk = false;
     _indexA = _indexB = _indexC = _indexD = _indexE = _indexF = 0;
     _count = 0;
+    _textAlpha = 0;
+    _textIndex = 0;
+    _alpha = 0;
+    _bgAlpha = 0;
 
     return S_OK;
 }
@@ -67,9 +71,6 @@ void Boss1BeforeScene::update(void)
     {
     	SCENEMANAGER->changeScene("Boss1");
     }
-
-    int objectPosX = _ObjectRc.left - _camera->getScreenRect().left;
-    int objectPosY = _ObjectRc.top - _camera->getScreenRect().top;
 
     int objectCenterX = (_ObjectRc.left + _ObjectRc.right) * 0.5;
     int objectCenterY = (_ObjectRc.top + _ObjectRc.bottom) * 0.5;
@@ -97,12 +98,6 @@ void Boss1BeforeScene::update(void)
 		}
 	}
 
-	_breaksymbolPosX = _breakSymbolRc.left - _camera->getScreenRect().left;
-	_breaksymbolPosY = _breakSymbolRc.top - _camera->getScreenRect().top;
-
-	_skeletonPosX = _SkeletonRc.left - _camera->getScreenRect().left;
-	_skeletonPosY = _SkeletonRc.top - _camera->getScreenRect().top;
-
 	_skeletonCenterX = (_SkeletonRc.left + _SkeletonRc.right) * 0.5;
 	_skeletonCenterY = (_SkeletonRc.top + _SkeletonRc.bottom) * 0.5;
 
@@ -114,8 +109,25 @@ void Boss1BeforeScene::update(void)
 		}
 	}
 
-	_npcPosX = _npcRc.left - _camera->getScreenRect().left;
-	_npcPosY = _npcRc.top - _camera->getScreenRect().top;
+    _npcRcCenterX = (_npcRc.left + _npcRc.right) * 0.5;
+    _npcRcCenterY = (_npcRc.top + _npcRc.bottom) * 0.5;
+
+    if (getDistance(_npcRcCenterX, _npcRcCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
+    {
+        if (KEYMANAGER->isOnceKeyDown('E'))
+        {
+            if (!_isTalk)
+            {
+                _isTalk = true;
+            }
+        }
+    }
+    else
+    {
+        _isTalk = false;
+    }
+
+    cout << _isTalk << " , " << _npcRcCenterY << " , " << GAMEMANAGER->getPlayer()->getPoint().y << endl;//
 
     if (_indexA >= 1)
     {
@@ -155,7 +167,6 @@ void Boss1BeforeScene::update(void)
 		}
 		IMAGEMANAGER->findImage("SymbolObj")->setFrameX(_indexB);
 	}
-
 	else
 	{
 		if (_count % 15 == 0)
@@ -198,6 +209,25 @@ void Boss1BeforeScene::update(void)
 			}
 		}
 	}
+    if (_isTalk)
+    {
+        if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
+        {
+            if (_textIndex + 1 == TEXTNUM)
+            {
+                _isTalk = false;
+                return;
+            }
+            _textIndex++;
+            _textAlpha = 0;
+            _bgAlpha = 0;
+            _alpha = 255;
+        }
+    }
+    _textAlpha += 2;
+    if (_bgAlpha >= 255) _bgAlpha = 255;
+    if (_alpha <= 0) _alpha = 0;
+    if (_textAlpha >= 100) _textAlpha = 100;
 }
 
 void Boss1BeforeScene::render(void)
@@ -222,11 +252,43 @@ void Boss1BeforeScene::render(void)
 									   WINSIZE_X, WINSIZE_Y);
 
     IMAGEMANAGER->frameRender("stand", getMemDC(), objectPosX, objectPosY);
+    _npcPosX = _npcRc.left - _camera->getScreenRect().left;
+    _npcPosY = _npcRc.top - _camera->getScreenRect().top;
+    IMAGEMANAGER->frameRender("frameNpc", getMemDC(), _npcPosX, _npcPosY);
 
 
     if (getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
     {
-        IMAGEMANAGER->render("버튼", getMemDC(), objectPosCenterX-40, objectPosY - 30);
+        IMAGEMANAGER->render("버튼", getMemDC(), objectPosCenterX-40, objectPosY - 50);
+    }
+
+    _npcRcCenterX = (_npcRc.left + _npcRc.right) * 0.5;
+    _npcRcCenterY = (_npcRc.top + _npcRc.bottom) * 0.5;
+	
+    IMAGEMANAGER->frameRender("frameNpc", getMemDC(), _npcPosX, _npcPosY, _indexE, _indexF);
+
+    if (getDistance(_npcRcCenterX, _npcRcCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 300)
+    {
+        if (!_isTalk)
+        {
+            IMAGEMANAGER->render("버튼", getMemDC(), _npcRcCenterX - 30, _npcRcCenterY - 40);
+        }
+        else
+        {
+            IMAGEMANAGER->alphaRender("컷전환", getMemDC(), 0, WINSIZE_Y - 150, _textAlpha);
+            const int SCRIPT_MAX_LENGTH = 20;
+            SetTextAlign(getMemDC(), TA_CENTER);
+            FONTMANAGER->drawText(getMemDC(), CENTER_X, WINSIZE_Y*0.84, "둥근모꼴", 30, 100, _text[_textIndex].text,
+                SCRIPT_MAX_LENGTH, RGB(136, 127, 77));
+            if (wcslen(_text[_textIndex].text) > SCRIPT_MAX_LENGTH)
+            {
+                FONTMANAGER->drawText(getMemDC(), CENTER_X, WINSIZE_Y*0.90, "둥근모꼴", 30, 100,
+                    _text[_textIndex].text + SCRIPT_MAX_LENGTH,
+                    (SCRIPT_MAX_LENGTH < wcslen(_text[_textIndex].text)) ?
+                    wcslen(_text[_textIndex].text) - SCRIPT_MAX_LENGTH : SCRIPT_MAX_LENGTH,
+                    RGB(144, 98, 79));
+            }
+        }
     }
 
 	int _symbolPosCenterX = ((_SymbolRc.left + _SymbolRc.right) * 0.5) - _camera->getScreenRect().left;
@@ -240,16 +302,17 @@ void Boss1BeforeScene::render(void)
 
 		}
 	}
+
 	if (_isBreak && ! _isBreakEnd)
 	{
 		IMAGEMANAGER->frameRender("breakSymbolObj", getMemDC(), _breaksymbolPosX, _breaksymbolPosY, _indexC, 0);
 	}
 
 	IMAGEMANAGER->frameRender("breakableSkeleton", getMemDC(), _skeletonPosX, _skeletonPosY, _indexD, 0);
-	IMAGEMANAGER->frameRender("frameNpc", getMemDC(), _npcPosX, _npcPosY, _indexE, _indexF);
 
     GAMEMANAGER->getPlayer()->ObjectRender();
 
     IMAGEMANAGER->render("보스1전FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
+
     _camera->render();
 }

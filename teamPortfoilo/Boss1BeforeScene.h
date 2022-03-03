@@ -3,7 +3,7 @@
 #include "UIScene.h"
 #include "Camera.h"
 #include "Text.h"
-
+#define TEXTNUM 11
 class Boss1BeforeScene : public GameNode
 {
 private:
@@ -15,7 +15,7 @@ private:
     Image* _breakSymbolImage;
     Image* _SkeletonImage;
 	Image* _frameNpcImage;
-    tagOnlyText  _text[11];
+    tagOnlyText  _text[TEXTNUM];
     RECT* floor0;
     RECT* floor1;
     RECT* floor2;
@@ -39,11 +39,15 @@ private:
 
     int _skeletonPosX, _skeletonPosY;
     int _skeletonCenterX, _skeletonCenterY;
+    int _npcRcCenterX, _npcRcCenterY;
 
 	int _npcPosX, _npcPosY;
+    int _bgAlpha;
+    int _alpha;
+    int _textAlpha;
+    int  _textIndex;
 
-
-    bool _isBreak, _isBreakS, _isBreakEnd;
+    bool _isBreak, _isBreakS, _isBreakEnd,_isTalk;
 
 public:
     Boss1BeforeScene() :_text
