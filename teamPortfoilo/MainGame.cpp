@@ -7,6 +7,7 @@
 #include "SaveScene.h"
 #include "OptionScene.h"
 #include "TempSoundTest.h"
+#include "UIScene.h"
 //Stage
 #include "StartScene.h"
 #include "OpeningScene.h"//
@@ -23,18 +24,21 @@
 HRESULT MainGame::init(void) //초기화
 {
 	GameNode::init(TRUE);
-	TIMEMANAGER->init();
 
-	_player = new PlayerCharacter();
-	GAMEMANAGER->setPlayer(_player);
-
-	// 사용하는 이미지 전체 
 	ImageClass imageClass = ImageClass();
 	imageClass.init();
 
 	TempSoundTest sound = TempSoundTest();
 	sound.init();
 
+	TIMEMANAGER->init();
+
+	_player = new PlayerCharacter();
+	GAMEMANAGER->setPlayer(_player);
+
+	_ui = new UIScene();
+	_ui->init();
+	GAMEMANAGER->setUI(_ui);
 
 #pragma region SceneManager
 
@@ -60,11 +64,7 @@ HRESULT MainGame::init(void) //초기화
 	
 #pragma endregion 
 
-	// 테스트용 씬체인저
-	SCENEMANAGER->changeScene("Boss1");
-
-	// 테스트용 씬체인저
-	//SCENEMANAGER->changeScene("BeforeBoss1");
+	SCENEMANAGER->changeScene("Start");
 	return S_OK;
 }
 

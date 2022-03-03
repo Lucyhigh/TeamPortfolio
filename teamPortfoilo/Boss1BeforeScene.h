@@ -22,9 +22,6 @@ private:
 	RECT _breakSymbolRc;
 	RECT _SkeletonRc;
 
-
-	UIScene* _ui;
-
     float _x, _y;
 
     int _count;

@@ -23,8 +23,8 @@ HRESULT FirePillar::init(POINT mid, BossIsadora* tag)
 	_dely = TIMEMANAGER->getWorldTime();
 
 	_image = IMAGEMANAGER->findImage("bIsiFirePillar");
-	_image->setX(_Collider[BaseEnum::UNIT].left -10);
-	_image->setY(_Collider[BaseEnum::UNIT].top-25);
+	_image->setX(_Collider[BaseEnum::UNIT].left -60);
+	_image->setY(_Collider[BaseEnum::UNIT].top-55);
 
 	_framFirePillar = new Animation();
 	_framFirePillar->init(_image->getWidth(), _image->getHeight(), _image->getFrameWidth(), _image->getFrameHeight());

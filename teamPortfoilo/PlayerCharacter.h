@@ -8,10 +8,10 @@ public:
 	enum class UnitState
 	{
 		RUN, UNITNULL, IDLE_0, IDLE_1, JUMP,
-		SLIDE, PARING,
+		SLIDE, PARING, PARYER, POTION,
 		JUMPATTACK, JUMPATTACK_DOUBLE,
 		ATTACK, ATTACK_DOUBLE, ATTACK_TRIPLE,
-		DOWNATTACK, UPATTACK,
+		UPATTACK,
 	};
 
 private:
@@ -20,6 +20,7 @@ private:
 	UnitState _oldState;
 	UnitState _state;
 	float _Fram;
+	bool _paryer;
 	pair<bool, Animation*> _imageAni;
 
 	// ¿Œ«≤
@@ -45,14 +46,15 @@ private:
     RECT _cameraRect;
 
 public:
+		void setParyer(bool);
 		UnitState getState();
 		void setCameraRect(RECT rect);
 		RECT getCamareRect() { return _cameraRect; }
+
 		PlayerCharacter();
 		~PlayerCharacter();
-
-	HRESULT init(POINT, vector<RECT*>);
-	void release(void);
-	void update(void);
-	void render(void);
+		HRESULT init(POINT, vector<RECT*>);
+		void release(void);
+		void update(void);
+		void render(void);
 };

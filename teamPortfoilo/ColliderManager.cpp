@@ -16,7 +16,7 @@ void ColliderManager::update(void)
 	{ 
 		try
 		{
-			//updateEffect();
+			updateEffect();
 		}
 		catch (int a) { }
 	}
@@ -42,8 +42,8 @@ inline void ColliderManager::smashCollider()
 			{
 				if (IntersectRect(&temp[0], &GAMEMANAGER->getPlayer()->getSmash()[i].first, &GAMEMANAGER->getMonster()[h]->getCollider()) && GAMEMANAGER->getMonster()[h]->getHp(BaseEnum::STATE) !=0)
 				{ 
-					//RECT result = GAMEMANAGER->getPlayer()->getSmash()[i].first;
-					//addEffect(result);
+					RECT result = GAMEMANAGER->getPlayer()->getSmash()[i].first;
+					addEffect(result);
 					GAMEMANAGER->getPlayer()->clearSmash(i);
 					GAMEMANAGER->getMonster()[h]->setHit(i);
 					GAMEMANAGER->getPlayer()->setAttack(true);
@@ -64,10 +64,10 @@ inline void ColliderManager::smashCollider()
 			{
 				if (GAMEMANAGER->getPlayer()->getState() != PlayerCharacter::UnitState::SLIDE)
 				{
-					//addEffect(GAMEMANAGER->getPlayer()->getCollider());
+					addEffect(GAMEMANAGER->getPlayer()->getCollider());
 					GAMEMANAGER->getPlayer()->setHit(i);
 					GAMEMANAGER->getMonster()[i]->clearSmash(h);
-					//GAMEMANAGER->getMonster()[i]->setAttack(true);
+					GAMEMANAGER->getMonster()[i]->setAttack(true);
 				}
 				return;
 			}

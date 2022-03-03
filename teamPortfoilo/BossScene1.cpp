@@ -20,7 +20,7 @@ HRESULT BossScene1::init(void)
 
 	GAMEMANAGER->getPlayer()->ObjectInit({ 400,CENTER_Y }, _floor);
 	
-	boss = new BossIsadora();
+	boss = new BossWarden();
 	boss->init({ _image->getWidth()/2,CENTER_Y }, _floor);
 	_monster.push_back(boss);
 	GAMEMANAGER->setMonster(_monster);

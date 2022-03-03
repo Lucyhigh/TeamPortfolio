@@ -8,6 +8,7 @@ HRESULT Boss1BeforeScene::init(void)
 	_symbolImage = IMAGEMANAGER->findImage("SymbolObj");
 	_breakSymbolImage = IMAGEMANAGER->findImage("breakSymbolObj");
 	_SkeletonImage = IMAGEMANAGER->findImage("breakableSkeleton");
+
     IMAGEMANAGER->findImage("보스1전FrontDoor");
     IMAGEMANAGER->findImage("버튼");
 	IMAGEMANAGER->findImage("k");
@@ -19,14 +20,11 @@ HRESULT Boss1BeforeScene::init(void)
     _floor.push_back(floor1);
     _floor.push_back(floor2);
 
-    GAMEMANAGER->getPlayer()->ObjectInit({ 0,0 }, _floor);
+    GAMEMANAGER->getPlayer()->ObjectInit({ 400,400 }, _floor);
 
     _x = _mapImage->getWidth()*0.5;
     _y = WINSIZE_Y - 170;
     _ObjectRc = RectMakeCenter(_x, _y, _objectImage->getFrameWidth(), _objectImage->getFrameHeight());
-
-	//_ui = new UIScene;
-	//_ui->init();
 
 	_x = _mapImage->getWidth()*0.25;
 	_y = WINSIZE_Y - 100;
@@ -61,7 +59,6 @@ void Boss1BeforeScene::release(void)
 
 void Boss1BeforeScene::update(void)
 {
-    
     if (GAMEMANAGER->getPlayer()->getPoint().x >= _mapImage->getWidth()-100)
     {
     	SCENEMANAGER->changeScene("Boss1");
@@ -78,9 +75,14 @@ void Boss1BeforeScene::update(void)
         {
 			_indexA = 1;
 			GAMEMANAGER->getPlayer()->setHp(GAMEMANAGER->getPlayer()->getHp(BaseEnum::MAX),136);
-			_ui->setPotion();
+			GAMEMANAGER->getPlayer()->setParyer(true);
+			GAMEMANAGER->getUI()->setPotion();
         }
     }
+	else
+	{
+		GAMEMANAGER->getPlayer()->setParyer(false);
+	}
 
 	_symbolPosX = _SymbolRc.left - _camera->getScreenRect().left;
 	_symbolPosY = _SymbolRc.top - _camera->getScreenRect().top;
@@ -180,6 +182,8 @@ void Boss1BeforeScene::update(void)
 		}
 		IMAGEMANAGER->findImage("breakableSkeleton")->setFrameX(_indexD);
 	}
+	
+	GAMEMANAGER->getUI()->update();
 }
 
 void Boss1BeforeScene::render(void)
@@ -191,7 +195,7 @@ void Boss1BeforeScene::render(void)
     int objectCenterX = (_ObjectRc.left + _ObjectRc.right) * 0.5;
     int objectCenterY = (_ObjectRc.top + _ObjectRc.bottom) * 0.5;
 
-	/*
+	
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
     IMAGEMANAGER->loopRender("보스1 뒷배경", getMemDC(), &rc1,
@@ -207,8 +211,8 @@ void Boss1BeforeScene::render(void)
 
     GAMEMANAGER->getPlayer()->ObjectRender();
 	
-    IMAGEMANAGER->render("보스1전 FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
-	*/
+    //IMAGEMANAGER->render("보스1전 FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
+	
 
 	IMAGEMANAGER->frameRender("stand", getMemDC(), objectPosX, objectPosY);
     if (getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
@@ -250,4 +254,5 @@ void Boss1BeforeScene::render(void)
 
     IMAGEMANAGER->render("보스1전FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
     _camera->render();
+	GAMEMANAGER->getUI()->render();
 }
