@@ -8,7 +8,7 @@ HRESULT Boss1BeforeScene::init(void)
 	_symbolImage = IMAGEMANAGER->findImage("SymbolObj");
 	_breakSymbolImage = IMAGEMANAGER->findImage("breakSymbolObj");
 	_SkeletonImage = IMAGEMANAGER->findImage("breakableSkeleton");
-
+	_frameNpcImage = IMAGEMANAGER->findImage("frameNpc");
 
     floor0 = new RECT{ 0, 600, _mapImage->getWidth(), 670 };
     floor1 = new RECT{ _mapImage->getWidth(), 0, _mapImage->getWidth()+100, _mapImage->getHeight() };
@@ -19,31 +19,33 @@ HRESULT Boss1BeforeScene::init(void)
 
     GAMEMANAGER->getPlayer()->ObjectInit({ 100,570 }, _floor);
 
-    _x = _mapImage->getWidth()*0.5;
-    _y = WINSIZE_Y - 170;
-    _ObjectRc = RectMakeCenter(_x, _y, _objectImage->getFrameWidth(), _objectImage->getFrameHeight());
-
-	_ui = new UIScene;
-	_ui->init();
+	_x = _mapImage->getWidth()*0.5;
+	_y = WINSIZE_Y - 170;
+	_ObjectRc = RectMakeCenter(_x, _y, _objectImage->getFrameWidth(), _objectImage->getFrameHeight());
 
 	_x = _mapImage->getWidth()*0.25;
-	_y = WINSIZE_Y - 100;
+	_y = WINSIZE_Y - 135;
 	_SymbolRc = RectMakeCenter(_x, _y, _symbolImage->getFrameWidth(), _symbolImage->getFrameHeight());
 
 	_x = _mapImage->getWidth()*0.25 + 20;
-	_y = WINSIZE_Y - 125;
+	_y = WINSIZE_Y - 170;
 	_breakSymbolRc = RectMakeCenter(_x, _y, _breakSymbolImage->getFrameWidth(), _breakSymbolImage->getFrameHeight());
 
 	_x = _mapImage->getWidth() * 0.75 + 380;
 	_y = WINSIZE_Y - 225;
 	_SkeletonRc = RectMakeCenter(_x, _y, _SkeletonImage->getFrameWidth(), _SkeletonImage->getFrameHeight());
+
+	_x = _mapImage->getWidth() * 0.75 - 600;
+	_y = WINSIZE_Y - 180;
+	_npcRc = RectMakeCenter(_x, _y, _frameNpcImage->getFrameWidth(), _frameNpcImage->getFrameHeight());
+
 	
     _camera = new Camera;
     _camera->init();
     _camera->setLimitsX(CENTER_X, _mapImage->getWidth());
     _camera->setLimitsY(CENTER_Y, _mapImage->getHeight());
 
-    _indexA = _indexB = _indexC = _indexD = 0;
+    _indexA = _indexB = _indexC = _indexD = _indexE = _indexF = 0;
     _count = 0;
 
     return S_OK;
@@ -59,6 +61,7 @@ void Boss1BeforeScene::release(void)
 
 void Boss1BeforeScene::update(void)
 {
+	_count++;
     
     if (GAMEMANAGER->getPlayer()->getPoint().x >= _mapImage->getWidth()-100)
     {
@@ -88,7 +91,7 @@ void Boss1BeforeScene::update(void)
 
 	if (getDistance(_symbolCenterX, _symbolCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 100)
 	{
-		if (KEYMANAGER->isStayKeyDown('A'))
+		if (KEYMANAGER->isStayKeyDown('K'))
 		{
 			_isBreak = true;
 		}
@@ -105,11 +108,14 @@ void Boss1BeforeScene::update(void)
 
 	if (getDistance(_skeletonCenterX, _skeletonCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 300)
 	{
-		if (KEYMANAGER->isStayKeyDown('A'))
+		if (KEYMANAGER->isStayKeyDown('K'))
 		{
 			_isBreakS = true;
 		}
 	}
+
+	_npcPosX = _npcRc.left - _camera->getScreenRect().left;
+	_npcPosY = _npcRc.top - _camera->getScreenRect().top;
 
     if (_indexA >= 1)
     {
@@ -178,6 +184,20 @@ void Boss1BeforeScene::update(void)
 		}
 		IMAGEMANAGER->findImage("breakableSkeleton")->setFrameX(_indexD);
 	}
+
+	if (_count % 20 == 0)
+	{
+		_indexE++;
+		if (_indexE >= _frameNpcImage->getMaxFrameX())
+		{
+			_indexE = 0;
+			_indexF++;
+			if (_indexF >= _frameNpcImage->getMaxFrameX())
+			{
+				_indexF = 0;
+			}
+		}
+	}
 }
 
 void Boss1BeforeScene::render(void)
@@ -226,6 +246,7 @@ void Boss1BeforeScene::render(void)
 	}
 
 	IMAGEMANAGER->frameRender("breakableSkeleton", getMemDC(), _skeletonPosX, _skeletonPosY, _indexD, 0);
+	IMAGEMANAGER->frameRender("frameNpc", getMemDC(), _npcPosX, _npcPosY, _indexE, _indexF);
 
     GAMEMANAGER->getPlayer()->ObjectRender();
 

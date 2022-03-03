@@ -10,11 +10,18 @@ private:
     tagOnlyText _text[6];
 	Image* _image;
 	PixelCollision* _pixel;
+	Image* _frameNpcImage;
+	RECT _npcRc;
 
+	float _x, _y;
+	int _npcPosX;
 	int _count;
     int _bgAlpha;
     int _alpha;
     int _textAlpha;
+	int _indexCount;
+
+	int _indexA, _indexB;
 public:
 	HRESULT init(void);
 	void release(void);

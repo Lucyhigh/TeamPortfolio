@@ -4,6 +4,7 @@
 HRESULT LastScene::init(void)
 {
 	_image = IMAGEMANAGER->findImage("¶ó½ºÆ®¾À ¹Ù´Ú");
+	_frameNpcImage = IMAGEMANAGER->findImage("frameNpc");
 
 	_pixel = new PixelCollision;
 	_pixel->init(100,1790,"¶ó½ºÆ®¾À ÇÈ¼¿");
@@ -12,11 +13,17 @@ HRESULT LastScene::init(void)
     _alpha = 0;
     _bgAlpha = 0;
 	_count = 0;
+	_indexA = _indexB = _indexCount = 0;
 
 	_camera = new Camera;
 	_camera->init();
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
 	_camera->setLimitsY(CENTER_Y, _image->getHeight());
+
+
+	_x = _image->getWidth() * 0.1;
+	_y = WINSIZE_Y - 150;
+	_npcRc = RectMakeCenter(_x, _y, _frameNpcImage->getFrameWidth(), _frameNpcImage->getFrameHeight());
 
 	return S_OK;
 }
@@ -31,6 +38,9 @@ void LastScene::release(void)
 
 void LastScene::update(void)
 {
+	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
+	TEMPSOUNDMANAGER->playSoundWithKey("La");
+
 	if ( _pixel->getX() >= _image->getWidth() - 400)
 	{
         _count++;
@@ -39,6 +49,7 @@ void LastScene::update(void)
         if (_count > 30)
         {
             SCENEMANAGER->changeScene("Ending");
+			TEMPSOUNDMANAGER->stopMp3WithKey("La");
         }
 	}
 	else if (_pixel->getX() <= 100)
@@ -64,6 +75,24 @@ void LastScene::update(void)
 
 	_pixel->setCameraRect(_camera->getScreenRect());
     _pixel->update("¶ó½ºÆ®¾À ÇÈ¼¿");
+
+	_npcPosX = _npcRc.left - _camera->getScreenRect().left;
+
+	_indexCount++;
+	if (_indexCount % 20 == 0)
+	{
+		_indexA++;
+		_indexCount = 0;
+		if (_indexA >= _frameNpcImage->getMaxFrameX())
+		{
+			_indexA = 0;
+			_indexB++;
+			if (_indexB >= _frameNpcImage->getMaxFrameX())
+			{
+				_indexB = 0;
+			}
+		}
+	}
 }
 
 void LastScene::render(void)
@@ -89,4 +118,6 @@ void LastScene::render(void)
 
     IMAGEMANAGER->alphaRender("ÄÆÀüÈ¯", getMemDC(), 0, 0, _alpha);
 	_camera->render();
+
+	IMAGEMANAGER->frameRender("frameNpc", getMemDC(), _npcPosX, _npcRc.top, _indexA, _indexB);
 }

@@ -14,6 +14,7 @@ private:
     Image* _symbolImage;
     Image* _breakSymbolImage;
     Image* _SkeletonImage;
+	Image* _frameNpcImage;
     tagOnlyText  _text[11];
     RECT* floor0;
     RECT* floor1;
@@ -22,14 +23,14 @@ private:
     RECT _SymbolRc;
     RECT _breakSymbolRc;
     RECT _SkeletonRc;
-
+	RECT _npcRc;
 
     UIScene* _ui;
 
     float _x, _y;
 
     int _count;
-    int _indexA, _indexB, _indexC, _indexD;
+    int _indexA, _indexB, _indexC, _indexD, _indexE, _indexF;
 
     int _symbolPosX, _symbolPosY;
     int _symbolCenterX, _symbolCenterY;
@@ -38,6 +39,9 @@ private:
 
     int _skeletonPosX, _skeletonPosY;
     int _skeletonCenterX, _skeletonCenterY;
+
+	int _npcPosX, _npcPosY;
+
 
     bool _isBreak, _isBreakS, _isBreakEnd;
 
