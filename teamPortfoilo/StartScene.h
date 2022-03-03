@@ -5,10 +5,6 @@
 class StartScene : public GameNode
 {
 private:
-
-	UIScene* _ui;
-	
-
 public:
 	StartScene();
 	~StartScene() {}

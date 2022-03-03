@@ -82,10 +82,12 @@ void UIScene::update(void)
 	_hpBar->setPlayerHpGauge(_hp);
 	_hpBar->setPlayerMpGauge(_mp);
 
+	
 	if (KEYMANAGER->isOnceKeyDown('F'))
 	{
 		usePotion();
 	}
+	
 
 	_hpBar->update();
 
