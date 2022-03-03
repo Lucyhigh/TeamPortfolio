@@ -3,25 +3,30 @@
 #include "PixelCollision.h"
 #include "Camera.h"
 #include "Text.h"
+
+#define TEXTNUM 6
 class LastScene : public GameNode
 {
 private:
 	Camera* _camera;
-    tagOnlyText _text[6];
+    tagOnlyText _text[TEXTNUM];
 	Image* _image;
 	PixelCollision* _pixel;
 	Image* _frameNpcImage;
 	RECT _npcRc;
 
 	float _x, _y;
-	int _npcPosX;
 	int _count;
     int _bgAlpha;
-    int _alpha;
     int _textAlpha;
+    int _textIndex;
 	int _indexCount;
 
+    int _npcRcCenterX, _npcRcCenterY;
+    int _npcPosX, _npcPosY;
 	int _indexA, _indexB;
+
+    bool _isTalk;
 public:
 	HRESULT init(void);
 	void release(void);

@@ -40,8 +40,8 @@ private:
     int _skeletonPosX, _skeletonPosY;
     int _skeletonCenterX, _skeletonCenterY;
     int _npcRcCenterX, _npcRcCenterY;
-
 	int _npcPosX, _npcPosY;
+
     int _bgAlpha;
     int _alpha;
     int _textAlpha;

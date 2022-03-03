@@ -44,6 +44,7 @@ HRESULT Boss1BeforeScene::init(void)
     _camera->init();
     _camera->setLimitsX(CENTER_X, _mapImage->getWidth());
     _camera->setLimitsY(CENTER_Y, _mapImage->getHeight());
+
     _isTalk = false;
     _indexA = _indexB = _indexC = _indexD = _indexE = _indexF = 0;
     _count = 0;
@@ -126,8 +127,6 @@ void Boss1BeforeScene::update(void)
     {
         _isTalk = false;
     }
-
-    cout << _isTalk << " , " << _npcRcCenterY << " , " << GAMEMANAGER->getPlayer()->getPoint().y << endl;//
 
     if (_indexA >= 1)
     {
@@ -254,8 +253,6 @@ void Boss1BeforeScene::render(void)
     IMAGEMANAGER->frameRender("stand", getMemDC(), objectPosX, objectPosY);
     _npcPosX = _npcRc.left - _camera->getScreenRect().left;
     _npcPosY = _npcRc.top - _camera->getScreenRect().top;
-    IMAGEMANAGER->frameRender("frameNpc", getMemDC(), _npcPosX, _npcPosY);
-
 
     if (getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
     {
