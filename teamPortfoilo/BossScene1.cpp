@@ -29,6 +29,9 @@ HRESULT BossScene1::init(void)
     _camera->init();
     _camera->setLimitsX(CENTER_X, _image->getWidth()); 
     _camera->setLimitsY(CENTER_Y, _image->getHeight()); 
+
+	_bossHp = new BossUI;
+	_bossHp->init();
   
 	return S_OK;
 }
@@ -44,6 +47,9 @@ void BossScene1::release(void)
 
     _camera->release();
     SAFE_DELETE(_camera);
+
+	_bossHp->release();
+	SAFE_DELETE(_bossHp);
 }
 
 void BossScene1::update(void)
@@ -69,6 +75,7 @@ void BossScene1::update(void)
 	GAMEMANAGER->getPlayer()->setCameraRect(_camera->getScreenRect());
 	GAMEMANAGER->getPlayer()->ObjectUpdate();
 	GAMEMANAGER->getUI()->update();
+	_bossHp->update();
 }
 
 void BossScene1::render(void)
@@ -104,7 +111,15 @@ void BossScene1::render(void)
 	{
 		//Rectangle(getMemDC(),_floor[i]->left, _floor[i]->top, _floor[i]->right, _floor[i]->bottom);
 	}
+
+
+	SetTextAlign(getMemDC(), TA_CENTER);
+	LPCWSTR script = L"Ä§¹¬ÀÇ ºñÅº ÆÄ¼ö²Û";
+	FONTMANAGER->drawText(getMemDC(), CENTER_X, WINSIZE_Y - 90, "µÕ±Ù¸ğ²Ã", 22, 200,
+		script, wcslen(script), RGB(175, 175, 115));
+
 	GAMEMANAGER->getUI()->render();
+	_bossHp->render();
 }
 
 /*

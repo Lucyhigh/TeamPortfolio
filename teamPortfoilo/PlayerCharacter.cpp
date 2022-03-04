@@ -21,9 +21,9 @@ PlayerCharacter::PlayerCharacter()
 	ObjectUpdate = bind(&PlayerCharacter::update, this);
 	ObjectRender = bind(&PlayerCharacter::render, this);
 
-	_hp[BaseEnum::STATE] = 1;
+	_hp[BaseEnum::STATE] = 100;
 	_hp[BaseEnum::MAX] = 136;
-	_mp[BaseEnum::STATE] = 96;
+	_mp[BaseEnum::STATE] = 45;
 	_mp[BaseEnum::MAX] = 96;
 }
 

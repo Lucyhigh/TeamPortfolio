@@ -5,6 +5,7 @@
 #include "KnifeMonster.h"
 #include "ColliderManager.h"
 #include "Camera.h"
+#include "BossUI.h"
 
 class BossScene1 : public GameNode
 {
@@ -19,6 +20,8 @@ private:
 	RECT* floor0;
 	RECT* floor1;
 	RECT* floor2;
+
+	BossUI* _bossHp;
 
 public:
     BossScene1() {}

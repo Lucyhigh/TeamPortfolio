@@ -19,12 +19,11 @@ HRESULT ProgressBar::init(int x, int y, int width, int height)
 	return S_OK;
 }
 */ 
-
+#pragma region player HP
 
 HRESULT ProgressBar::init(float hp, float mp)
 {
 	
-	// 플레이어와 연동 필요 + 능력치도~~ 
 	_hpWidth = hp;
 	_mpWidth = mp;
 
@@ -76,11 +75,16 @@ void ProgressBar::release(void)
 {
 }
 
-void ProgressBar::update(void)
+void ProgressBar::update(float hp, float mp)
 {
+
+	_hpWidth = hp;
+	_mpWidth = mp;
+
 	//_rc = RectMakeCenter(_x, _y, _progressBarDown->getWidth(), _progressBarDown->getHeight());
 	if (_hpWidth >= _hpMaxWidth)  _hpWidth = _hpMaxWidth;
 	if (_mpWidth >= _mpMaxWidth)  _mpWidth = _mpMaxWidth;
+
 
 }
 
@@ -132,4 +136,69 @@ POINT ProgressBar::getHpMpBar()
 
 	return pos;
 }
+#pragma endregion
 
+
+#pragma region Boss HP
+
+HRESULT ProgressBarBoss::init(float hp)
+{
+	// 보스와 연동
+	_hpWidth = hp;
+	_hpWidthB = hp; // 실시간 hp 배경
+	_hpMaxWidth = hp;
+
+	// 여기서 이미지 관리
+	_hpBarBg = IMAGEMANAGER->findImage("bHpBarEmpty");
+	_hpBarCover = IMAGEMANAGER->findImage("bHpBarCover");
+	_hpBarTop = IMAGEMANAGER->findImage("bHpBarT");
+	_hpBarbottom = IMAGEMANAGER->findImage("bHpBarB");
+
+	// UI변동 크기 사용시 조정 필요 
+	_hpPos.x = _hpBarBg->getX() + 62;
+	_hpPos.y = _hpBarBg->getY() + 26;
+
+	return S_OK;
+}
+
+void ProgressBarBoss::release(void)
+{
+}
+
+void ProgressBarBoss::update(void)
+{
+	// 클리핑 이미지 렌더 너비
+	//if (_hpWidth <= _hpMaxWidth) _hpMaxWidth -=0.1f;
+	if (_hpWidth < _hpWidthB) _hpWidthB -= 0.2f;
+	if (_hpWidthB - _hpWidth > 100)_hpWidthB -= 0.4f;
+}
+
+void ProgressBarBoss::render(void)
+{
+	_hpBarBg->render(getMemDC(),IMAGEMANAGER->findImage("bHpBarEmpty")->getX(),
+		IMAGEMANAGER->findImage("bHpBarEmpty")->getY());
+	
+	_hpBarbottom->render(getMemDC(), _hpPos.x, _hpPos.y, 0, 0, _hpWidthB, _hpBarbottom->getHeight());
+	_hpBarTop->render(getMemDC(), _hpPos.x, _hpPos.y, 0, 0, _hpWidth, _hpBarbottom->getHeight());
+	
+	_hpBarCover->render(getMemDC(), IMAGEMANAGER->findImage("bHpBarCover")->getX(),
+		IMAGEMANAGER->findImage("bHpBarEmpty")->getY());
+
+}
+
+void ProgressBarBoss::setGauge(float currentScore, float maxScore)
+{
+}
+
+void ProgressBarBoss::setBossHpGauge(float hpScore)
+{
+	_hpWidth = hpScore;
+}
+
+POINT ProgressBarBoss::getHpMpBar()
+{
+	return POINT();
+}
+
+
+#pragma endregion
