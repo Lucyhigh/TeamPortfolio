@@ -70,6 +70,8 @@ void BossWarden::update(void)
 	_updateLook();
 	_updateFloor();
 	_updateSide();
+
+	if (_hp[BaseEnum::STATE] <= 0) { _state == UnitState::END; }
 	if (_state == UnitState::END) { _inputPatten(); }
 	_inputAnimation();
 	_pattenFunc[(int)_state]();
