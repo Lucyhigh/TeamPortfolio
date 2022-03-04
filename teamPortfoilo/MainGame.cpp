@@ -49,19 +49,16 @@ HRESULT MainGame::init(void) //초기화
 	SCENEMANAGER->addScene("BeforeBoss1", new Boss1BeforeScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
 
-
-	
 	// Stage2
 	SCENEMANAGER->addScene("Boss2", new BossScene2);
 	SCENEMANAGER->addScene("Field1", new FieldScene1);
 	SCENEMANAGER->addScene("Last", new LastScene);
 	SCENEMANAGER->addScene("Ending", new EndingScene);
 
-	
 #pragma endregion 
 
 	// 테스트용 씬체인저
-	SCENEMANAGER->changeScene("BeforeBoss1");
+	SCENEMANAGER->changeScene("Opening");
 
 	// 테스트용 씬체인저
 	//SCENEMANAGER->changeScene("BeforeBoss1");
