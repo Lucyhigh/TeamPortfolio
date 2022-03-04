@@ -100,7 +100,7 @@ void Boss1BeforeScene::update(void)
 
 	if (getDistance(_skeletonCenterX, _skeletonCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 300)
 	{
-		if (KEYMANAGER->isOnceKeyDown('K'))
+		if (KEYMANAGER->isOnceKeyDown('A'))
 		{
 			_isBreakS = true;
 		}

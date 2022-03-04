@@ -47,7 +47,7 @@ void BossScene1::release(void)
 void BossScene1::update(void)
 {
 	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
-	TEMPSOUNDMANAGER->playSoundWithKey("Geli");
+	TEMPSOUNDMANAGER->playSoundWithKey("Dame");
 
 	_collider->update();
 
@@ -59,7 +59,7 @@ void BossScene1::update(void)
     if ( GAMEMANAGER->getPlayer()->getPoint().x <= 50)
     {
         SCENEMANAGER->changeScene("BeforeBoss1");
-		TEMPSOUNDMANAGER->stopMp3WithKey("Geli");
+		TEMPSOUNDMANAGER->stopMp3WithKey("Dame");
     }
 
     POINT cameraPos;
