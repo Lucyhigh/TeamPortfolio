@@ -20,6 +20,7 @@ private:
 	float _speed;
 	int _x;
 	int _y;
+	int _count;
 	bool _isWalk;
 	bool _isLeft;
 	bool _isWakeUp;

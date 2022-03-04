@@ -47,6 +47,24 @@ void PixelCollision::release(void)
 
 void PixelCollision::update(char* image)
 {
+	if (KEYMANAGER->isOnceKeyDown('K'))
+	{
+		_ani3->AniStart();
+		_ani3->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
+		_count = 1;
+	}
+
+	if (_count >= 1)
+	{
+		_count++;
+		if (_count > 200)
+		{
+			_ani->AniStart();
+			_ani2->AniStart();
+			_isWakeUp = true;
+		}
+	}
+
 	if (_isWakeUp)
 	{
 		_ani->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
@@ -55,21 +73,21 @@ void PixelCollision::update(char* image)
 		{
 			_isLeft = false;
 			_isWalk = true;
-			_ani->setPlayFrame(0, 12, false, true);
-			_ani2->setPlayFrame(0, 13, false, true);
+			//_ani->setPlayFrame(0, 12, false, true);
+			//_ani2->setPlayFrame(0, 13, false, true);
 			_x += _speed;
 
-			if (_ani->isPlay() == false)
-				_ani->AniStart();
-			if (_ani2->isPlay() == false)
-				_ani2->AniStart();
+			//if (_ani->isPlay() == false)
+			//	_ani->AniStart();
+			//if (_ani2->isPlay() == false)
+			//	_ani2->AniStart();
 		}
 		else if (KEYMANAGER->isStayKeyDown(VK_LEFT))
 		{
 			_isLeft = true;
 			_isWalk = true;
-			_ani->setPlayFrame(13, 25, false, true);
-			_ani2->setPlayFrame(14, 25, false, true);
+			//_ani->setPlayFrame(13, 25, false, true);
+			//_ani2->setPlayFrame(14, 25, false, true);
 			_x -= _speed;
 		}
 		else
@@ -110,8 +128,10 @@ void PixelCollision::update(char* image)
 	}
 	else
 	{
-		_ani3->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
+		_rc = RectMakeCenter(_x, _y, _playerWakeUpImage->getFrameWidth(), _playerWakeUpImage->getFrameHeight());
 	}
+
+	cout << _isWakeUp << endl;
 }
 
 void PixelCollision::render(void)
@@ -134,6 +154,13 @@ void PixelCollision::render(void)
 	{
 		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY, _ani3);
 	}
+	int rcCenterX = (_rc.left + _rc.right)*0.5;
+	int rcCenterY = (_rc.top + _rc.bottom)*0.5;
+	if (!_isWakeUp)
+	{
+		IMAGEMANAGER->render("k", getMemDC(), rcCenterX, rcCenterY - 30);
+	}
+	//cout << rcCenterX << endl;
 }
 
 int PixelCollision::getX()
