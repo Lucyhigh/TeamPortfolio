@@ -264,7 +264,7 @@ void Boss1BeforeScene::render(void)
 
     if (getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
     {
-        IMAGEMANAGER->render("¹öÆ°", getMemDC(), objectPosCenterX-40, objectPosY - 50);
+        IMAGEMANAGER->render("e", getMemDC(), objectPosCenterX-25, objectPosY - 30);
     }
 	
     IMAGEMANAGER->frameRender("frameNpc", getMemDC(), _npcPosX, _npcPosY, _indexE, _indexF);
@@ -276,7 +276,7 @@ void Boss1BeforeScene::render(void)
 		IMAGEMANAGER->frameRender("SymbolObj", getMemDC(), _symbolPosX, _symbolPosY, _indexB, 0);
 		if (getDistance(_symbolCenterX, _symbolCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 100)
 		{
-			IMAGEMANAGER->render("k", getMemDC(), _symbolPosCenterX - 10 , _symbolPosY - 60);
+			IMAGEMANAGER->render("k", getMemDC(), _symbolPosCenterX-18, _symbolPosY - 60);
 
 		}
 	}
