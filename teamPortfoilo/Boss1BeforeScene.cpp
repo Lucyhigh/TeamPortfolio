@@ -315,6 +315,7 @@ void Boss1BeforeScene::render(void)
 					wcslen(_text[_textIndex].text) - SCRIPT_MAX_LENGTH : SCRIPT_MAX_LENGTH,
 					RGB(186, 177, 127));
 			}
+			IMAGEMANAGER->alphaRender("enter", getMemDC(), WINSIZE_X*0.90, WINSIZE_Y*0.90, _textAlpha + 100);
 		}
 	}
 }
