@@ -77,16 +77,15 @@ void UIScene::update(void)
 	_hp = GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE); // 136
 	_mp = GAMEMANAGER->getPlayer()->getMp(BaseEnum::STATE); // 96
 
-	_hpBar->setPlayerHpGauge(_hp);
+	_hpBar->setPlayerHpGauge(_hp); 
 	_hpBar->setPlayerMpGauge(_mp);
 	
 	if (KEYMANAGER->isOnceKeyDown('F'))
 	{
-		usePotion();
+	//	usePotion();
 	}
 	
-
-	_hpBar->update(_hp,_mp);
+	_hpBar->update();
 
 	_inven->update();
 	if (KEYMANAGER->isOnceKeyDown('I')) _openInventory = true;

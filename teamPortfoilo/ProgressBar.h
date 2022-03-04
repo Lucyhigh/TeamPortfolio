@@ -32,7 +32,7 @@ public:
 	HRESULT init(float hp, float mp); // player
 	HRESULT init(float hp); // boss
 	void release(void);
-	void update(float hp, float mp);
+	void update(void);
 	void render(void);
 
 	void setGauge(float currentScore, float maxScore);

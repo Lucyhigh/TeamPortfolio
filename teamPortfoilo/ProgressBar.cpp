@@ -75,11 +75,11 @@ void ProgressBar::release(void)
 {
 }
 
-void ProgressBar::update(float hp, float mp)
+void ProgressBar::update(void)
 {
 
-	_hpWidth = hp;
-	_mpWidth = mp;
+	_hpWidth = GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE);
+	_mpWidth = GAMEMANAGER->getPlayer()->getMp(BaseEnum::STATE);
 
 	//_rc = RectMakeCenter(_x, _y, _progressBarDown->getWidth(), _progressBarDown->getHeight());
 	if (_hpWidth >= _hpMaxWidth)  _hpWidth = _hpMaxWidth;
@@ -119,7 +119,6 @@ void ProgressBar::setGauge(float currentScore, float maxScore)
 void ProgressBar::setPlayerHpGauge(float hpScore)
 {
 	_hpWidth = hpScore;
-
 }
 
 void ProgressBar::setPlayerMpGauge(float mpScore)
