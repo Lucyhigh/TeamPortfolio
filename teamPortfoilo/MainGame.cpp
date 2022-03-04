@@ -10,7 +10,7 @@
 #include "UIScene.h"
 //Stage
 #include "StartScene.h"
-#include "OpeningScene.h"//
+#include "OpeningScene.h"
 #include "Boss1BeforeScene.h"
 #include "BossScene1.h"
 #include "BossScene2.h"
@@ -53,15 +53,12 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	SCENEMANAGER->addScene("BeforeBoss1", new Boss1BeforeScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
 
-
-	
 	// Stage2
 	SCENEMANAGER->addScene("Boss2", new BossScene2);
 	SCENEMANAGER->addScene("Field1", new FieldScene1);
 	SCENEMANAGER->addScene("Last", new LastScene);
 	//SCENEMANAGER->addScene("Boss1", new EndingScene);
 
-	
 #pragma endregion 
 
 	SCENEMANAGER->changeScene("Boss1");

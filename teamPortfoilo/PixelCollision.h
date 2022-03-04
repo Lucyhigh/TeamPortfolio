@@ -8,9 +8,11 @@ private:
   
     Image* _playerIdleImage;
     Image* _playerMoveImage;
+    Image* _playerWakeUpImage;
 	Image* _bgImage;
 	Animation* _ani;
 	Animation* _ani2;
+	Animation* _ani3;
     RECT _rc;
 	RECT _cameraRect;
 
@@ -20,6 +22,7 @@ private:
 	int _y;
 	bool _isWalk;
 	bool _isLeft;
+	bool _isWakeUp;
 public:
 	HRESULT init(float x, float y, char* image);
     void release(void);

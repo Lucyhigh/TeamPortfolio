@@ -9,10 +9,11 @@ HRESULT Boss1BeforeScene::init(void)
 	_breakSymbolImage = IMAGEMANAGER->findImage("breakSymbolObj");
 	_SkeletonImage = IMAGEMANAGER->findImage("breakableSkeleton");
 
-    IMAGEMANAGER->findImage("보스1전FrontDoor");
-    IMAGEMANAGER->findImage("버튼");
-	IMAGEMANAGER->findImage("k");
+    //IMAGEMANAGER->findImage("보스1전FrontDoor");
+    //IMAGEMANAGER->findImage("버튼");
+	//IMAGEMANAGER->findImage("k");
 
+	_frameNpcImage = IMAGEMANAGER->findImage("frameNpc");
     floor0 = new RECT{ 0, 600, _mapImage->getWidth(), 670 };
     floor1 = new RECT{ _mapImage->getWidth(), 0, _mapImage->getWidth()+100, _mapImage->getHeight() };
     floor2 = new RECT{ 0, 0, 100, _mapImage->getHeight() };
@@ -20,31 +21,39 @@ HRESULT Boss1BeforeScene::init(void)
     _floor.push_back(floor1);
     _floor.push_back(floor2);
 
-    GAMEMANAGER->getPlayer()->ObjectInit({ 400,400 }, _floor);
+    GAMEMANAGER->getPlayer()->ObjectInit({ 100,570 }, _floor);
 
-    _x = _mapImage->getWidth()*0.5;
-    _y = WINSIZE_Y - 170;
-    _ObjectRc = RectMakeCenter(_x, _y, _objectImage->getFrameWidth(), _objectImage->getFrameHeight());
+	_x = _mapImage->getWidth()*0.5;
+	_y = WINSIZE_Y - 170;
+	_ObjectRc = RectMakeCenter(_x, _y, _objectImage->getFrameWidth(), _objectImage->getFrameHeight());
 
 	_x = _mapImage->getWidth()*0.25;
-	_y = WINSIZE_Y - 100;
+	_y = WINSIZE_Y - 135;
 	_SymbolRc = RectMakeCenter(_x, _y, _symbolImage->getFrameWidth(), _symbolImage->getFrameHeight());
 
 	_x = _mapImage->getWidth()*0.25 + 20;
-	_y = WINSIZE_Y - 125;
+	_y = WINSIZE_Y - 170;
 	_breakSymbolRc = RectMakeCenter(_x, _y, _breakSymbolImage->getFrameWidth(), _breakSymbolImage->getFrameHeight());
 
 	_x = _mapImage->getWidth() * 0.75 + 380;
 	_y = WINSIZE_Y - 225;
 	_SkeletonRc = RectMakeCenter(_x, _y, _SkeletonImage->getFrameWidth(), _SkeletonImage->getFrameHeight());
-	
+
+	_x = _mapImage->getWidth() * 0.75 - 600;
+	_y = WINSIZE_Y - 180;
+	_npcRc = RectMakeCenter(_x, _y, _frameNpcImage->getFrameWidth(), _frameNpcImage->getFrameHeight());
+
     _camera = new Camera;
     _camera->init();
     _camera->setLimitsX(CENTER_X, _mapImage->getWidth());
     _camera->setLimitsY(CENTER_Y, _mapImage->getHeight());
-
-    _indexA = _indexB = _indexC = _indexD = 0;
+	_isBreak = _isBreakEnd = _isBreakS = _isTalk = false;
+    _indexA = _indexB = _indexC = _indexD = _indexE = _indexF = 0;
     _count = 0;
+    _textAlpha = 0;
+    _textIndex = 0;
+    _alpha = 0;
+    _bgAlpha = 0;
 
     return S_OK;
 }
@@ -59,13 +68,12 @@ void Boss1BeforeScene::release(void)
 
 void Boss1BeforeScene::update(void)
 {
+	_count++;
+    
     if (GAMEMANAGER->getPlayer()->getPoint().x >= _mapImage->getWidth()-100)
     {
     	SCENEMANAGER->changeScene("Boss1");
     }
-
-    int objectPosX = _ObjectRc.left - _camera->getScreenRect().left;
-    int objectPosY = _ObjectRc.top - _camera->getScreenRect().top;
 
     int objectCenterX = (_ObjectRc.left + _ObjectRc.right) * 0.5;
     int objectCenterY = (_ObjectRc.top + _ObjectRc.bottom) * 0.5;
@@ -84,36 +92,47 @@ void Boss1BeforeScene::update(void)
 		GAMEMANAGER->getPlayer()->setParyer(false);
 	}
 
-	_symbolPosX = _SymbolRc.left - _camera->getScreenRect().left;
-	_symbolPosY = _SymbolRc.top - _camera->getScreenRect().top;
-
 	_symbolCenterX = (_SymbolRc.left + _SymbolRc.right) * 0.5;
 	_symbolCenterY = (_SymbolRc.top + _SymbolRc.bottom) * 0.5;
 
 	if (getDistance(_symbolCenterX, _symbolCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 100)
 	{
-		if (KEYMANAGER->isStayKeyDown('A'))
+		if (KEYMANAGER->isOnceKeyDown('K'))
 		{
 			_isBreak = true;
 		}
 	}
-
-	_breaksymbolPosX = _breakSymbolRc.left - _camera->getScreenRect().left;
-	_breaksymbolPosY = _breakSymbolRc.top - _camera->getScreenRect().top;
-
-	_skeletonPosX = _SkeletonRc.left - _camera->getScreenRect().left;
-	_skeletonPosY = _SkeletonRc.top - _camera->getScreenRect().top;
 
 	_skeletonCenterX = (_SkeletonRc.left + _SkeletonRc.right) * 0.5;
 	_skeletonCenterY = (_SkeletonRc.top + _SkeletonRc.bottom) * 0.5;
 
 	if (getDistance(_skeletonCenterX, _skeletonCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 300)
 	{
-		if (KEYMANAGER->isStayKeyDown('A'))
+		if (KEYMANAGER->isOnceKeyDown('A'))
 		{
 			_isBreakS = true;
 		}
 	}
+
+	_npcRcCenterX = (_npcRc.left + _npcRc.right) * 0.5;
+	_npcRcCenterY = (_npcRc.top + _npcRc.bottom) * 0.5;
+
+    if (getDistance(_npcRcCenterX, _npcRcCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
+    {
+        if (KEYMANAGER->isOnceKeyDown('E'))
+        {
+            if (!_isTalk)
+            {
+                _isTalk = true;
+            }
+        }
+    }
+    else
+    {
+        _isTalk = false;
+    }
+
+    //cout << _isTalk << " , " << _npcRcCenterY << " , " << GAMEMANAGER->getPlayer()->getPoint().y << endl;//
 
     if (_indexA >= 1)
     {
@@ -153,7 +172,6 @@ void Boss1BeforeScene::update(void)
 		}
 		IMAGEMANAGER->findImage("SymbolObj")->setFrameX(_indexB);
 	}
-
 	else
 	{
 		if (_count % 15 == 0)
@@ -182,7 +200,41 @@ void Boss1BeforeScene::update(void)
 		}
 		IMAGEMANAGER->findImage("breakableSkeleton")->setFrameX(_indexD);
 	}
-	
+
+	if (_count % 20 == 0)
+	{
+		_indexE++;
+		if (_indexE >= _frameNpcImage->getMaxFrameX())
+		{
+			_indexE = 0;
+			_indexF++;
+			if (_indexF >= _frameNpcImage->getMaxFrameX())
+			{
+				_indexF = 0;
+			}
+		}
+	}
+    if (_isTalk)
+    {
+        if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
+        {
+            if (_textIndex + 1 == TEXTNUM)
+            {
+                _isTalk = false;
+                return;
+            }
+            _textIndex++;
+            _textAlpha = 0;
+            _bgAlpha = 0;
+            _alpha = 255;
+        }
+    }
+
+    _textAlpha += 2;
+    if (_bgAlpha >= 255) _bgAlpha = 255;
+    if (_alpha <= 0) _alpha = 0;
+    if (_textAlpha >= 100) _textAlpha = 100;
+
 	GAMEMANAGER->getUI()->update();
 }
 
@@ -195,9 +247,21 @@ void Boss1BeforeScene::render(void)
     int objectCenterX = (_ObjectRc.left + _ObjectRc.right) * 0.5;
     int objectCenterY = (_ObjectRc.top + _ObjectRc.bottom) * 0.5;
 
-	
+	_symbolPosX = _SymbolRc.left - _camera->getScreenRect().left;
+	_symbolPosY = _SymbolRc.top - _camera->getScreenRect().top;
+
+	_breaksymbolPosX = _breakSymbolRc.left - _camera->getScreenRect().left;
+	_breaksymbolPosY = _breakSymbolRc.top - _camera->getScreenRect().top;
+
+	_skeletonPosX = _SkeletonRc.left - _camera->getScreenRect().left;
+	_skeletonPosY = _SkeletonRc.top - _camera->getScreenRect().top;
+
+	_npcPosX = _npcRc.left - _camera->getScreenRect().left;
+	_npcPosY = _npcRc.top - _camera->getScreenRect().top;
+
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
+	
     IMAGEMANAGER->loopRender("보스1 뒷배경", getMemDC(), &rc1,
         _camera->getScreenRect().left * bgSpeed,
         _camera->getScreenRect().top * bgSpeed);
@@ -213,26 +277,14 @@ void Boss1BeforeScene::render(void)
 	
     //IMAGEMANAGER->render("보스1전 FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
 	
-
 	IMAGEMANAGER->frameRender("stand", getMemDC(), objectPosX, objectPosY);
+
     if (getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
     {
-        IMAGEMANAGER->render("버튼", getMemDC(), objectPosCenterX-40, objectPosY - 30);
-        if (KEYMANAGER->isToggleKey('E'))
-        {
-            if (_ptMouse.x > CENTER_X - 300 && _ptMouse.y > CENTER_Y)
-            {
-                //IMAGEMANAGER->render("선택창2", getMemDC(), CENTER_X - 300, CENTER_Y - 250);
-            }
-            else
-            {
-                //IMAGEMANAGER->render("선택창1", getMemDC(), CENTER_X - 300, CENTER_Y - 250);
-            }
-        }
-        else
-        {
-        }
+        IMAGEMANAGER->render("e", getMemDC(), objectPosCenterX-25, objectPosY - 30);
     }
+	
+    IMAGEMANAGER->frameRender("frameNpc", getMemDC(), _npcPosX, _npcPosY, _indexE, _indexF);
 
 	int _symbolPosCenterX = ((_SymbolRc.left + _SymbolRc.right) * 0.5) - _camera->getScreenRect().left;
 
@@ -241,10 +293,11 @@ void Boss1BeforeScene::render(void)
 		IMAGEMANAGER->frameRender("SymbolObj", getMemDC(), _symbolPosX, _symbolPosY, _indexB, 0);
 		if (getDistance(_symbolCenterX, _symbolCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 100)
 		{
-			IMAGEMANAGER->render("k", getMemDC(), _symbolPosCenterX - 10 , _symbolPosY - 60);
+			IMAGEMANAGER->render("k", getMemDC(), _symbolPosCenterX-18, _symbolPosY - 60);
 
 		}
 	}
+
 	if (_isBreak && ! _isBreakEnd)
 	{
 		IMAGEMANAGER->frameRender("breakSymbolObj", getMemDC(), _breaksymbolPosX, _breaksymbolPosY, _indexC, 0);
@@ -252,7 +305,35 @@ void Boss1BeforeScene::render(void)
 
 	IMAGEMANAGER->frameRender("breakableSkeleton", getMemDC(), _skeletonPosX, _skeletonPosY, _indexD, 0);
 
+    GAMEMANAGER->getPlayer()->ObjectRender();
+
     IMAGEMANAGER->render("보스1전FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
+
     _camera->render();
 	GAMEMANAGER->getUI()->render();
+
+	if (getDistance(_npcRcCenterX, _npcRcCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
+	{
+		if (!_isTalk)
+		{
+			IMAGEMANAGER->render("e", getMemDC(), objectPosCenterX + 470, objectPosY + 30);
+		}
+		else
+		{
+			IMAGEMANAGER->alphaRender("컷전환", getMemDC(), 0, WINSIZE_Y - 150, _textAlpha);
+			const int SCRIPT_MAX_LENGTH = 20;
+			SetTextAlign(getMemDC(), TA_CENTER);
+			FONTMANAGER->drawText(getMemDC(), CENTER_X, WINSIZE_Y*0.84, "둥근모꼴", 30, 100, _text[_textIndex].text,
+				SCRIPT_MAX_LENGTH, RGB(186, 177, 127));
+			if (wcslen(_text[_textIndex].text) > SCRIPT_MAX_LENGTH)
+			{
+				FONTMANAGER->drawText(getMemDC(), CENTER_X, WINSIZE_Y*0.90, "둥근모꼴", 30, 100,
+					_text[_textIndex].text + SCRIPT_MAX_LENGTH,
+					(SCRIPT_MAX_LENGTH < wcslen(_text[_textIndex].text)) ?
+					wcslen(_text[_textIndex].text) - SCRIPT_MAX_LENGTH : SCRIPT_MAX_LENGTH,
+					RGB(186, 177, 127));
+			}
+			IMAGEMANAGER->alphaRender("enter", getMemDC(), WINSIZE_X*0.90, WINSIZE_Y*0.90, _textAlpha + 100);
+		}
+	}
 }

@@ -8,11 +8,9 @@ HRESULT BossScene1::init(void)
     _image = IMAGEMANAGER->findImage("º¸½º1 ¹Ù´Ú");
 
 	floor0 = new RECT { 0, 600, _image->getWidth(),670};
-	floor1 = new RECT{ 0, 0, 100, _image->getHeight() };
+	floor1 = new RECT{ _image->getWidth(), 0, _image->getWidth()+100, 1000 };
 	floor2 = new RECT{ _image->getWidth()-100, 0, _image->getWidth(), _image->getHeight() };
 	
-	//floor1 = new RECT{ _image->getWidth(), 0, _image->getWidth()+100, 1000 };
-	//floor2 = new RECT{ 0, 0, -100, 1000 };
 
 	_floor.push_back(floor0);
 	_floor.push_back(floor1);
@@ -54,7 +52,11 @@ void BossScene1::release(void)
 
 void BossScene1::update(void)
 {
+	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
+	TEMPSOUNDMANAGER->playSoundWithKey("Dame");
+
 	_collider->update();
+
 	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
 	{ 
 		GAMEMANAGER->getMonster()[i]->ObjectUpdate(); 
@@ -63,6 +65,7 @@ void BossScene1::update(void)
     if ( GAMEMANAGER->getPlayer()->getPoint().x <= 50)
     {
         SCENEMANAGER->changeScene("BeforeBoss1");
+		TEMPSOUNDMANAGER->stopMp3WithKey("Dame");
     }
 
     POINT cameraPos;

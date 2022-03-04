@@ -131,13 +131,21 @@
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClCompile>
     <ClCompile Include="SaveScene.cpp" />
-    <ClCompile Include="OpeningScene.cpp" />
-    <ClCompile Include="LastScene.cpp" />
     <ClCompile Include="Inventory.cpp" />
-    <ClCompile Include="PixelCollision.cpp" />
     <ClCompile Include="ItemManager.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="BossUI.cpp">
       <Filter>Blasphemous\GameScene\UI</Filter>
+=======
+    <ClCompile Include="LastScene.cpp">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningScene.cpp">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelCollision.cpp">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+>>>>>>> origin/lasteunhui
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -277,13 +285,21 @@
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClInclude>
     <ClInclude Include="SaveScene.h" />
-    <ClInclude Include="OpeningScene.h" />
-    <ClInclude Include="LastScene.h" />
     <ClInclude Include="Inventory.h" />
-    <ClInclude Include="PixelCollision.h" />
     <ClInclude Include="ItemManager.h" />
+<<<<<<< HEAD
     <ClInclude Include="BossUI.h">
       <Filter>Blasphemous\GameScene\UI</Filter>
+=======
+    <ClInclude Include="PixelCollision.h">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="LastScene.h">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningScene.h">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+>>>>>>> origin/lasteunhui
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -346,6 +362,9 @@
     </Filter>
     <Filter Include="Blasphemous\Characters\FieldMonster">
       <UniqueIdentifier>{aa6744a2-4d1f-4709-bfd0-e784795f8bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\Pixel">
+      <UniqueIdentifier>{d2e74ef6-b987-4333-bcd8-468364eac839}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

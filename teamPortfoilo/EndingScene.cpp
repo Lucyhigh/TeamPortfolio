@@ -17,6 +17,9 @@ void EndingScene::release(void)
 
 void EndingScene::update(void)
 {
+	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
+	TEMPSOUNDMANAGER->playSoundWithKey("Geli");
+
     _timer += 0.1f;
     if (_timer > 30)
     {
@@ -28,23 +31,24 @@ void EndingScene::update(void)
             _textIndex++;
             if (_textIndex >= 3)
             {
-                _timer = 0;
+                _timer = 30;
             }
         }
         
-
-        _alpha -= 1;
+        _alpha -= 2;
         _bgAlpha += 1;
         _textAlpha += 2;
         if (_bgAlpha >= 255) _bgAlpha = 255;
         if (_alpha <= 0) _alpha = 0;
         if (_textAlpha >= 100) _textAlpha = 100;
     }
+
     if (_textIndex >= 3)
     {
-        if (_timer > 180)
+        if (_timer > 240)
         {
             SCENEMANAGER->changeScene("Title");
+			TEMPSOUNDMANAGER->stopMp3WithKey("Geli");
         }
     }
 }
