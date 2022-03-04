@@ -104,6 +104,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -152,6 +154,7 @@
     <ClInclude Include="BossIsadora.h" />
     <ClInclude Include="BossScene1.h" />
     <ClInclude Include="BossScene2.h" />
+    <ClInclude Include="BossUI.h" />
     <ClInclude Include="BossWarden.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Characters.h" />
@@ -205,6 +208,7 @@
     <ClCompile Include="BossIsadora.cpp" />
     <ClCompile Include="BossScene1.cpp" />
     <ClCompile Include="BossScene2.cpp" />
+    <ClCompile Include="BossUI.cpp" />
     <ClCompile Include="BossWarden.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Characters.cpp" />
@@ -236,6 +240,7 @@
     <ClCompile Include="StartSecen.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="TempSoundManager.cpp" />

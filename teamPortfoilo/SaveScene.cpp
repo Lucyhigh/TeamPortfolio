@@ -103,34 +103,12 @@ void SaveScene::showSaveData(void)
 	_viSave = _vSave.begin();
 	for (; _viSave != _vSave.end(); _viSave++)
 	{
-		/*
-		if (_saveIndex < 100)
+		if (_viSave->num == 1)
 		{
-			// 임시 - 저장된 파일이 없다면
-			_viSave->noneImage->render(getMemDC(), _viSave->x, _viSave->y);
-
-			// slotNum
-			FONTMANAGER->drawTextValue(getMemDC(), _viSave->num,						 // 변수
-				_viSave->x - 20, (_viSave->y + _viSave->noneImg->getHeight()*0.5) - 7,	 // 위치
-				"둥근모꼴", 30, 100, OTEXT);
-
-			// 저장 데이터 x , 새 게임
-			FONTMANAGER->drawText(getMemDC(), (CENTER_X + 20) + IMAGEMANAGER->findImage("enter")->getWidth() + 10, WINSIZE_Y - 98,
-				"둥근모꼴", 25, 100, _saveMenuText[0].text, wcslen(_saveMenuText[0].text), BTEXT);// 폰트
-
-			// 뒤로가기
-			FONTMANAGER->drawText(getMemDC(), (CENTER_X + 255) + IMAGEMANAGER->findImage("esc")->getWidth() +15, WINSIZE_Y - 98,
-			"둥근모꼴", 25, 100, _saveMenuText[2].text, wcslen(_saveMenuText[2].text), BTEXT);
-
-		}
-
-		else*/
-		{
-			// 저장된 파일이 있다면
+			// 저장된 파일을 선택 
 			if (_viSave->select)
 			{
 				_tempPoint = 1300; // 임시데이터 
-
 
 				_viSave->onImg->render(getMemDC(), _viSave->x, _viSave->y);
 				// slotNum
@@ -187,6 +165,7 @@ void SaveScene::showSaveData(void)
 					"둥근모꼴", 25, 100, tempTime, wcslen(tempTime), XTEXT);
 
 			}
+		
 
 			// 뒤로가기
 			FONTMANAGER->drawText(getMemDC(), (CENTER_X + 255) + IMAGEMANAGER->findImage("esc")->getWidth() + 65, WINSIZE_Y - 98,

@@ -130,13 +130,19 @@
     <ClCompile Include="FirePillar.cpp">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClCompile>
-    <ClCompile Include="SaveScene.cpp" />
     <ClCompile Include="OpeningScene.cpp" />
     <ClCompile Include="LastScene.cpp" />
-    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="PixelCollision.cpp" />
-    <ClCompile Include="ItemManager.cpp" />
     <ClCompile Include="BossUI.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveScene.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemManager.cpp">
       <Filter>Blasphemous\GameScene\UI</Filter>
     </ClCompile>
   </ItemGroup>
@@ -276,13 +282,19 @@
     <ClInclude Include="FirePillar.h">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClInclude>
-    <ClInclude Include="SaveScene.h" />
     <ClInclude Include="OpeningScene.h" />
     <ClInclude Include="LastScene.h" />
-    <ClInclude Include="Inventory.h" />
     <ClInclude Include="PixelCollision.h" />
-    <ClInclude Include="ItemManager.h" />
     <ClInclude Include="BossUI.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveScene.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemManager.h">
       <Filter>Blasphemous\GameScene\UI</Filter>
     </ClInclude>
   </ItemGroup>
