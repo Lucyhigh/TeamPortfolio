@@ -174,8 +174,8 @@ void FirePillar::_framFirePillarDie()
 	{
 		once = false;
 		_image = IMAGEMANAGER->findImage("bIsiFirePillarDie");
-		_image->setX(_Collider[BaseEnum::UNIT].left - 10);
-		_image->setY(_Collider[BaseEnum::UNIT].top - 25);
+		_image->setX(_Collider[BaseEnum::UNIT].left - 60);
+		_image->setY(_Collider[BaseEnum::UNIT].top - 55);
 		_framFirePillar = new Animation();
 		_framFirePillar->init(_image->getWidth(), _image->getHeight(), _image->getFrameWidth(), _image->getFrameHeight());
 		_framFirePillar->setPlayFrame(0, 10, false, false);

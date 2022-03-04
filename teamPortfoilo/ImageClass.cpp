@@ -92,7 +92,7 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("bIsiWarpOff", "Resources/Images/Monster/Boss_Isidora/Isidora_outToTwirlFinal.bmp", 1020, 1536, 3, 6, MGT); // 5*1	
 	IMAGEMANAGER->addFrameImage("bIsiWarpAttack", "Resources/Images/Monster/Boss_Isidora/ishidora_attack_effect.bmp", 2040, 3072, 6, 12, MGT); // 5*1	
 	IMAGEMANAGER->addFrameImage("blsiFirePillarAttack0", "Resources/Images/Monster/Boss_Isidora/Isidora_castSequenceFinal.bmp", 1700, 3072, 5, 12, MGT); // 5*1	
-
+	IMAGEMANAGER->addFrameImage("blsiDie", "Resources/Images/Monster/Boss_Isidora/Isidora_deathV3.bmp", 3400, 6144, 10, 24, MGT); // 5*1	
 
 	IMAGEMANAGER->addFrameImage("bIsiFireBall", "Resources/Images/Monster/Boss_Isidora/isidoraFireBallLoop.bmp", 600, 64, 12, 4, MGT); // 5*1
 	IMAGEMANAGER->addFrameImage("bIsiFirePillar", "Resources/Images/Monster/Boss_Isidora/Isidora_brazierFullLoop.bmp", 400*2, 540*2, 4, 3, MGT); // 5*1

@@ -13,6 +13,7 @@ class BossIsadora : public  BaseData ,GameNode
 			IDLE,
 			TRUNATTACK, 
 			FIREPILLARATTACK_0,
+			FIREPILLARATTACK_1,
 			DIE, END, START
 		};
 
@@ -21,7 +22,6 @@ class BossIsadora : public  BaseData ,GameNode
 		
 		pair<POINT,POINT> warpPoint;
 		UnitState _state;
-
 		FirePillar* _pillar;
 		
 		int _inputSide();
@@ -38,11 +38,14 @@ class BossIsadora : public  BaseData ,GameNode
 		float _pattenDely;
 		
 		void _pattenStart();
+		void _pattenDie();
 		void _pattenIdle();
 		void _pattenWarp();
 		void _pattenTurnAttack();
-		void _pattenFirePollar(POINT,int);
+		void _pattenFirePollar(UnitState,POINT);
 		void _pattenFirePollarAttack0();
+		void _pattenFirePollarAttack1();
+
 		
 		void clearSmash(int) override;
 	public:
