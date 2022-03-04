@@ -59,7 +59,7 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	SCENEMANAGER->addScene("Boss2", new BossScene2);
 	SCENEMANAGER->addScene("Field1", new FieldScene1);
 	SCENEMANAGER->addScene("Last", new LastScene);
-	SCENEMANAGER->addScene("Ending", new EndingScene);
+	//SCENEMANAGER->addScene("Boss1", new EndingScene);
 
 	
 #pragma endregion 

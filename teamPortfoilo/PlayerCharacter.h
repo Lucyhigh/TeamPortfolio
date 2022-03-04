@@ -42,7 +42,6 @@ private:
 	map<string, float> _slide = { { "State",0 }, { "Max",100 } };
 	void _updataJump();
 	Image* _effect;
-
     RECT _cameraRect;
 
 public:

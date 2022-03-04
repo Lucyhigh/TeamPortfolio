@@ -26,7 +26,9 @@ void ColliderManager::render(void)
 {
 	for (int i = 0; i < _effect.size(); i++)
 	{
-		_effect[i].second->frameRender(getMemDC(), _effect[i].second->getX(), _effect[i].second->getY(), _effect[i].second->getFrameX(), _effect[i].second->getFrameY());
+		float x = _effect[i].second->getX() - GAMEMANAGER->getPlayer()->getCamareRect().left;
+		float y = _effect[i].second->getY() - GAMEMANAGER->getPlayer()->getCamareRect().top;
+		_effect[i].second->frameRender(getMemDC(), x, y, _effect[i].second->getFrameX(), _effect[i].second->getFrameY());
 	}
 }
 
@@ -65,7 +67,7 @@ inline void ColliderManager::smashCollider()
 				if (GAMEMANAGER->getPlayer()->getState() != PlayerCharacter::UnitState::SLIDE)
 				{
 					addEffect(GAMEMANAGER->getPlayer()->getCollider());
-					GAMEMANAGER->getPlayer()->setHit(i);
+					GAMEMANAGER->getPlayer()->setHit(1);
 					GAMEMANAGER->getMonster()[i]->clearSmash(h);
 					GAMEMANAGER->getMonster()[i]->setAttack(true);
 				}
@@ -110,11 +112,8 @@ void ColliderManager::updateEffect()
 		
 		try
 		{
-			updateEffect();
-
 			if (_effect[i].second->getFrameX() < _effect[i].second->getMaxFrameX())
 			{
-
 				_effect[i].second->setFrameX(_effect[i].second->getFrameX() + 1);
 			}
 			else

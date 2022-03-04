@@ -63,10 +63,7 @@ void BossIsadora::update(void)
 
 	if (_hp[BaseEnum::STATE] <= 0)
 	{
-		_state = UnitState::DIE;
-		_inputAnimation();
-		_pillar->update();
-		return;
+		_state = UnitState::END;
 	}
 
 	_inputSide();
@@ -109,6 +106,14 @@ void BossIsadora::render(void)
 
 void BossIsadora::_inputPatten()
 {
+	if (_hp[BaseEnum::STATE] <= 0)
+	{
+		_state = UnitState::DIE;
+		smash.clear();
+		_effect.clear();
+		return;
+	}
+
 	_state = (UnitState)RND->getInt(3);// 현재 임시 ;
 	_pattenAni = nullptr;
 

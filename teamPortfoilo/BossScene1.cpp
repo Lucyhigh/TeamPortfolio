@@ -68,6 +68,7 @@ void BossScene1::update(void)
 
 	GAMEMANAGER->getPlayer()->setCameraRect(_camera->getScreenRect());
 	GAMEMANAGER->getPlayer()->ObjectUpdate();
+	GAMEMANAGER->getUI()->update();
 }
 
 void BossScene1::render(void)
@@ -96,13 +97,14 @@ void BossScene1::render(void)
 	GAMEMANAGER->getPlayer()->ObjectRender();
 	IMAGEMANAGER->render("보스1 앞문", getMemDC(), -_camera->getScreenRect().left, 0);
 	IMAGEMANAGER->render("보스1 앞시체", getMemDC(), -_camera->getScreenRect().left, 0);
-	//_collider->render();
+	_collider->render();
 	_camera->render();
 
 	for (int i = 0; i < _floor.size(); i++)
 	{
 		//Rectangle(getMemDC(),_floor[i]->left, _floor[i]->top, _floor[i]->right, _floor[i]->bottom);
 	}
+	GAMEMANAGER->getUI()->render();
 }
 
 /*
