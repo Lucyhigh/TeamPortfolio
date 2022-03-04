@@ -161,9 +161,9 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("inven7", "Resources/Images/BackGround/UI/Inventory7_collection.bmp", WINSIZE);
 
 	// UI Top Image : playerDie, bossDie ....
-	IMAGEMANAGER->addImage("pDie", "Resources/Images/UI/Top/die.bmp", 1200, 675 ); 
-	IMAGEMANAGER->addImage("bDie", "Resources/Images/UI/Top/bossDefeat.bmp", 1200, 675); 
-
+	IMAGEMANAGER->addImage("pDie", "Resources/Images/UI/Top/die.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("bDieBg", "Resources/Images/UI/Top/bossDefeatBg.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("bDie", "Resources/Images/UI/Top/bossDefeat.bmp", 1200, 675, MGT);
 #pragma endregion
 
 
@@ -236,10 +236,10 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("point", "Resources/Images/UI/point.bmp", 0,45, 160,80, MGT); //84,42
 
 	// Boss : T - Top, B - Bottom
-	IMAGEMANAGER->addImage("bHpBarEmpty", "Resources/Images/UI/bossHPBarEmpty.bmp", 664,62, MGT);
-	IMAGEMANAGER->addImage("bHpBarCover", "Resources/Images/UI/bossHPBarCover.bmp", 664, 62, MGT);
-	IMAGEMANAGER->addImage("bHpBarT", "Resources/Images/UI/bossHPBar.bmp", 664, 62, MGT);
-	IMAGEMANAGER->addImage("bHpBarB", "Resources/Images/UI/bossHPBar2.bmp", 664, 62, MGT);
+	IMAGEMANAGER->addImage("bHpBarEmpty", "Resources/Images/UI/bossHPBarEmpty.bmp", CENTER_X - 332, WINSIZE_Y - 70, 664, 62, MGT);
+	IMAGEMANAGER->addImage("bHpBarCover", "Resources/Images/UI/bossHPBarCover.bmp", CENTER_X - 332, WINSIZE_Y - 70, 664, 62, MGT);
+	IMAGEMANAGER->addImage("bHpBarT", "Resources/Images/UI/bossHPBar.bmp", 320, WINSIZE_Y - 30, 543, 15, MGT);
+	IMAGEMANAGER->addImage("bHpBarB", "Resources/Images/UI/bossHPBar2.bmp", 320, WINSIZE_Y - 30, 543, 15, MGT);
 
 
 	// button

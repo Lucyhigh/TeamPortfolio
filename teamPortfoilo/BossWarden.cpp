@@ -16,7 +16,7 @@ void BossWarden::clearSmash(int num)
 
 void BossWarden::setHit(int)
 {
-	_hp[BaseEnum::STATE] -=1;
+	_hp[BaseEnum::STATE] -=50;
 }
 
 BossWarden::BossWarden()
@@ -25,7 +25,7 @@ BossWarden::BossWarden()
 	ObjectrRelease = bind(&BossWarden::release, this);
 	ObjectUpdate = bind(&BossWarden::update, this);
 	ObjectRender = bind(&BossWarden::render, this);
-	_hp[BaseEnum::STATE] = 10;
+	_hp[BaseEnum::STATE] = 10 * 54;
 }
 BossWarden::~BossWarden(){}
 

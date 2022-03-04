@@ -25,8 +25,8 @@ HRESULT UIScene::init(void)
 
 #pragma region Hp Mp Potion
 	_hpBar = new ProgressBar;
-	_hpBar->init(136, 50);
-	_point = 10000;
+	_hpBar->init(_hp, _mp);
+	_point = 100;
 
 	// Æ÷¼Ç 
 	for (int i = 0; i < _potionMax; i++)
@@ -73,22 +73,18 @@ void UIScene::release(void)
 
 void UIScene::update(void)
 {
-	if (_hp >= 0)	_hp -= 0.03f;
-	if (_mp >= 0)	_mp -= 0.01f;
 
 	_hp = GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE); // 136
-	_mp = GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE); // 116
+	_mp = GAMEMANAGER->getPlayer()->getMp(BaseEnum::STATE); // 96
 
-	_hpBar->setPlayerHpGauge(_hp);
+	_hpBar->setPlayerHpGauge(_hp); 
 	_hpBar->setPlayerMpGauge(_mp);
-
 	
 	if (KEYMANAGER->isOnceKeyDown('F'))
 	{
-		usePotion();
+	//	usePotion();
 	}
 	
-
 	_hpBar->update();
 
 	_inven->update();

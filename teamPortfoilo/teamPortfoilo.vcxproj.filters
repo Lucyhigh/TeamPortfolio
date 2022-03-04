@@ -136,6 +136,9 @@
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="PixelCollision.cpp" />
     <ClCompile Include="ItemManager.cpp" />
+    <ClCompile Include="BossUI.cpp">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BossScene1.h">
@@ -279,6 +282,9 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="PixelCollision.h" />
     <ClInclude Include="ItemManager.h" />
+    <ClInclude Include="BossUI.h">
+      <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Blasphemous">

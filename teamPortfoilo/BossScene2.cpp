@@ -27,11 +27,16 @@ HRESULT BossScene2::init(void)
 	isdora->init({ _backGround->getWidth() / 2,CENTER_Y }, _floor);
 	GAMEMANAGER->setMonster(isdora);
 
+	_bossHp = new BossUI;
+	_bossHp->init();
+
 	return S_OK;
 }
 
 void BossScene2::release(void)
 {
+	_bossHp->release();
+	SAFE_DELETE(_bossHp);
 }
 
 void BossScene2::update(void)
@@ -49,6 +54,8 @@ void BossScene2::update(void)
 	}
 
 	_collider->update();
+	GAMEMANAGER->getUI()->update();
+	_bossHp->update();
 }
 
 void BossScene2::render(void)
@@ -59,4 +66,7 @@ void BossScene2::render(void)
 	{ GAMEMANAGER->getMonster()[i]->ObjectRender(); }
 
 	GAMEMANAGER->getPlayer()->ObjectRender();
+
+	GAMEMANAGER->getUI()->render();
+	_bossHp->render();
 }
