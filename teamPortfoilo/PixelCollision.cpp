@@ -3,8 +3,8 @@
 
 HRESULT PixelCollision::init(float x, float y, char* image)
 {
-	_playerIdleImage = IMAGEMANAGER->findImage("²¿±ò´ë±âP");
-	_playerMoveImage = IMAGEMANAGER->findImage("²¿±òÀÌµ¿P");
+	_playerIdleImage = IMAGEMANAGER->findImage("²¿±ò´ë±â");
+	_playerMoveImage = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
 	_playerWakeUpImage = IMAGEMANAGER->findImage("²¿±ò±â»ó");
 	_bgImage = IMAGEMANAGER->findImage(image);
 
@@ -12,9 +12,9 @@ HRESULT PixelCollision::init(float x, float y, char* image)
 	_ani2 = new Animation;
 	_ani3 = new Animation;
 
-	_ani->init(_playerIdleImage->getWidth(), _playerIdleImage->getHeight(), _playerIdleImage->getFrameWidth(), _playerIdleImage->getFrameHeight());
-	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), _playerMoveImage->getFrameWidth(), _playerMoveImage->getFrameHeight());
-	_ani3->init(_playerWakeUpImage->getWidth(), _playerWakeUpImage->getHeight(), _playerWakeUpImage->getFrameWidth(), _playerWakeUpImage->getFrameHeight());
+	_ani->init(_playerIdleImage->getWidth(), _playerIdleImage->getHeight(), 128,73);
+	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), 79,70);
+	_ani3->init(_playerWakeUpImage->getWidth(), _playerWakeUpImage->getHeight(), 128,128);
 	_ani->setFPS(7);
 	_ani->setPlayFrame(0, 12, false, true);
 
@@ -140,7 +140,7 @@ void PixelCollision::render(void)
 	}
 	else
 	{
-		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY - 70, _ani3);
+		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY-14, _ani3);
 	}
 }
 

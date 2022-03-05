@@ -1,9 +1,2 @@
-﻿  ImageClass.cpp
-<<<<<<< HEAD
-  OpeningScene.cpp
-c:\users\bosch\documents\teamportfolio\teamportfoilo\openingscene.cpp(64): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
-=======
-  PixelCollision.cpp
->>>>>>> b3ce92104713b37c4a1855a67c063c41fdf364cc
-  코드를 생성하고 있습니다...
-  teamPortfoilo.vcxproj -> C:\Users\bosch\Documents\TeamPortfolio\x64\Debug\teamPortfoilo.exe
+﻿  PixelCollision.cpp
+  teamPortfoilo.vcxproj -> E:\GitProject\TeamPortfolio\TeamPortfolio\x64\Debug\teamPortfoilo.exe

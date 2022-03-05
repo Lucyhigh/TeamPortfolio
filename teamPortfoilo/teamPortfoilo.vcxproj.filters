@@ -130,9 +130,6 @@
     <ClCompile Include="FirePillar.cpp">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClCompile>
-    <ClCompile Include="OpeningScene.cpp" />
-    <ClCompile Include="LastScene.cpp" />
-    <ClCompile Include="PixelCollision.cpp" />
     <ClCompile Include="BossUI.cpp">
       <Filter>Blasphemous\GameScene\UI</Filter>
     </ClCompile>
@@ -147,6 +144,15 @@
     </ClCompile>
     <ClCompile Include="Boss2BeforeScene.cpp">
       <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="LastScene.cpp">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningScene.cpp">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelCollision.cpp">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -285,9 +291,6 @@
     <ClInclude Include="FirePillar.h">
       <Filter>Blasphemous\Characters\Boss</Filter>
     </ClInclude>
-    <ClInclude Include="OpeningScene.h" />
-    <ClInclude Include="LastScene.h" />
-    <ClInclude Include="PixelCollision.h" />
     <ClInclude Include="BossUI.h">
       <Filter>Blasphemous\GameScene\UI</Filter>
     </ClInclude>
@@ -302,6 +305,15 @@
     </ClInclude>
     <ClInclude Include="Boss2BeforeScene.h">
       <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="LastScene.h">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningScene.h">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelCollision.h">
+      <Filter>Blasphemous\GameScene\Pixel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -364,6 +376,9 @@
     </Filter>
     <Filter Include="Blasphemous\Characters\FieldMonster">
       <UniqueIdentifier>{aa6744a2-4d1f-4709-bfd0-e784795f8bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\GameScene\Pixel">
+      <UniqueIdentifier>{29367146-ea9a-4fdc-b47b-66b633d6288e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
