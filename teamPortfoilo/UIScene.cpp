@@ -167,7 +167,6 @@ void UIScene::showPoint(bool openInventory)
 		FONTMANAGER->drawTextValue(getMemDC(), _point,					 // 변수
 			1100, IMAGEMANAGER->findImage("point")->getY() + 27,		 // 위치
 			"둥근모꼴", 25, 100, RGB(171, 154, 63));						 // 폰트
-
 	}
 }
 

@@ -80,12 +80,12 @@ void PlayerCharacter::render(void)
 	float top = _Collider[BaseEnum::UNIT].top - _cameraRect.top;
 	float right = _Collider[BaseEnum::UNIT].right - _cameraRect.left;
 	float bottom = _Collider[BaseEnum::UNIT].bottom - _cameraRect.top;
-
 	Rectangle(getMemDC(), left, top, right, bottom);
 
 	SelectObject(getMemDC(), oldBrush);
 	DeleteObject(myBrush);
 	hpen = (HPEN)::SelectObject(getMemDC(), hpenOld);
+
 
 	for (int i = 0; i < smash.size(); i++)
 	{
@@ -507,7 +507,7 @@ bool PlayerCharacter::_updateHit()
 
 	if (a >= 30)
 	{
-		_hp[BaseEnum::STATE] -= _isHit;
+		_hp[BaseEnum::STATE] -= 10;
 		_isHit = 0;
 		a = 0;
 		return true;

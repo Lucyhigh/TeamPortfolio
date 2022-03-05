@@ -22,9 +22,8 @@ class FirePillar : public BaseData , GameNode
 	void _updateFireball();
 	void _updateEffect();
 	POINT _fireballMid(int);
-	
 
-	vector<Animation*> pairSmash;
+	vector<pair<POINT,Animation*>> pairSmash;
 
 	Animation* _framFirePillar;
 	void _framFirePillarDie();

@@ -180,7 +180,6 @@ void ProgressBarBoss::render(void)
 	
 	_hpBarCover->render(getMemDC(), IMAGEMANAGER->findImage("bHpBarCover")->getX(),
 		IMAGEMANAGER->findImage("bHpBarEmpty")->getY());
-
 }
 
 void ProgressBarBoss::setGauge(float currentScore, float maxScore)

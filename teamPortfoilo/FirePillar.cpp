@@ -60,19 +60,19 @@ void FirePillar::update(void)
 	if (2.0f + _dely > TIMEMANAGER->getWorldTime()) { return; }
 	_dely = TIMEMANAGER->getWorldTime();
 	
-	/*
+
 	smash.push_back({ RECT{0,0,0,0}, Image() });
 	smash.back().second.init("Resources/Images/Monster/Boss_Isidora/isidoraFireBallLoop.bmp", 600, 64, 12, 1, MGT);
 	smash.back().first = RectMakeCenter(getPoint().x, _Collider[BaseEnum::UNIT].top, 40, 40);
 	smash.back().second.setX(smash.back().first.left-5);
 	smash.back().second.setY(smash.back().first.top-12);
 
-	pairSmash.push_back(new Animation());
-	pairSmash.back()->init(smash.back().second.getWidth(), smash.back().second.getHeight(), smash.back().second.getFrameWidth(), smash.back().second.getFrameHeight());
-	pairSmash.back()->setDefPlayFrame(false, true);
-	pairSmash.back()->setFPS(10,1); 
-	pairSmash.back()->AniStart();
-	*/
+	pairSmash.push_back({ POINT(),new Animation() });
+	pairSmash.back().first = GAMEMANAGER->getPlayer()->getPoint();
+	pairSmash.back().second->init(smash.back().second.getWidth(), smash.back().second.getHeight(), smash.back().second.getFrameWidth(), smash.back().second.getFrameHeight());
+	pairSmash.back().second->setDefPlayFrame(false, true);
+	pairSmash.back().second->setFPS(10,1);
+	pairSmash.back().second->AniStart();
 }
 
 void FirePillar::render(void)
@@ -85,7 +85,7 @@ void FirePillar::render(void)
 	{
 		float effectX = smash[i].first.left - GAMEMANAGER->getPlayer()->getCamareRect().left;
 		float effectY = smash[i].first.top - GAMEMANAGER->getPlayer()->getCamareRect().top;
-		smash[i].second.aniRender(getMemDC(), effectX, effectY, pairSmash[i]);
+		smash[i].second.aniRender(getMemDC(), effectX, effectY, pairSmash[i].second);
 	}
 
 	for (int i = 0; i < effect.size(); i++)
@@ -98,7 +98,8 @@ void FirePillar::render(void)
 
 POINT FirePillar::_fireballMid(int num)
 {
-	return POINT{ (smash[num].first.right + smash[num].first.left) / 2, (smash[num].first.bottom + smash[num].first.top) / 2 };
+	//return POINT{ (smash[num].first.right + smash[num].first.left) / 2, (smash[num].first.bottom + smash[num].first.top) / 2 };
+	return { 0,0 };
 }
 
 // ºÒ²ÉÀÇ ÀÌµ¿
@@ -109,8 +110,8 @@ void FirePillar::_updateFireball()
 	RECT temp;
 	for (int i = 0; i < smash.size(); i++)
 	{
-		mid = _fireballMid(i);
-		angle = atan2f(mid.x - GAMEMANAGER->getPlayer()->getPoint().x, mid.y - (stateFloor.top)) * 180 / 3.1415f;
+		mid = { (smash[i].first.right + smash[i].first.left) / 2, (smash[i].first.bottom + smash[i].first.top) / 2 };
+		angle = atan2f(mid.x - pairSmash[i].first.x, mid.y - (stateFloor.top+100)) * 180 / 3.1415f;
 		mid.x += cos(angle) * GAMESPEED;
 		mid.y += -sinf(angle) * GAMESPEED;
 
@@ -118,7 +119,7 @@ void FirePillar::_updateFireball()
 		smash[i].second.setX(smash[i].first.left - 5);
 		smash[i].second.setY(smash[i].first.top - 12);
 
-		pairSmash[i]->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
+		pairSmash[i].second->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 
 		if (IntersectRect(&temp, &smash[i].first, &GAMEMANAGER->getPlayer()->getCollider()))
 		{

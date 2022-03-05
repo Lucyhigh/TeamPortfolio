@@ -52,7 +52,14 @@ void BossUI::update(void)
 			}
 			else
 			{
-				_alpha -= 0.1;
+				if (_alpha > 300)
+				{
+					_alpha -= 0.1;
+				}
+				else
+				{
+					_isBossDead = false;
+				}
 			}
 		}
 		

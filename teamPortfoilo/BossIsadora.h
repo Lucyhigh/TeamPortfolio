@@ -22,6 +22,7 @@ class BossIsadora : public  BaseData ,GameNode
 		
 		pair<POINT,POINT> warpPoint;
 		UnitState _state;
+		UnitState _oldState;
 		FirePillar* _pillar;
 		
 		int _inputSide();
@@ -48,6 +49,7 @@ class BossIsadora : public  BaseData ,GameNode
 
 		
 		void clearSmash(int) override;
+		void setHit(int) override;
 	public:
 		BossIsadora();
 		~BossIsadora();

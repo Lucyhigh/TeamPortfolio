@@ -42,7 +42,7 @@ inline void ColliderManager::smashCollider()
 		{
 			for (int h = 0; h < GAMEMANAGER->getMonster().size(); h++)
 			{
-				if (IntersectRect(&temp[0], &GAMEMANAGER->getPlayer()->getSmash()[i].first, &GAMEMANAGER->getMonster()[h]->getCollider()) && GAMEMANAGER->getMonster()[h]->getHp(BaseEnum::STATE) !=0)
+				if (IntersectRect(&temp[0], &GAMEMANAGER->getPlayer()->getSmash()[i].first, &GAMEMANAGER->getMonster()[h]->getCollider()) && GAMEMANAGER->getMonster()[h]->getHp(BaseEnum::STATE) > 0)
 				{ 
 					RECT result = GAMEMANAGER->getPlayer()->getSmash()[i].first;
 					addEffect(result);

@@ -81,13 +81,6 @@ void BossWarden::update(void)
 
 void BossWarden::render(void)
 {
-	float left = _Collider[BaseEnum::UNIT].left - GAMEMANAGER->getPlayer()->getCamareRect().left;
-	float top = _Collider[BaseEnum::UNIT].top - GAMEMANAGER->getPlayer()->getCamareRect().top;
-	float right = _Collider[BaseEnum::UNIT].right - GAMEMANAGER->getPlayer()->getCamareRect().left;
-	float bottom = _Collider[BaseEnum::UNIT].bottom - GAMEMANAGER->getPlayer()->getCamareRect().top;
-
-	Rectangle(getMemDC(), left, top, right, bottom);
-
 	for (int i = 0; i < effect.size(); i++)
 	{
 		float effectX = effect[i].second->getX() - GAMEMANAGER->getPlayer()->getCamareRect().left;

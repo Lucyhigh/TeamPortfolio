@@ -4,7 +4,13 @@
 
 void BossIsadora::clearSmash(int num)
 {
-	smash[num].first.top = smash[num].first.bottom;
+	//smash[num].first = { 0,0,0,0 };
+	smash.erase(smash.begin() + num);
+}
+
+void BossIsadora::setHit(int)
+{
+	_hp[BaseEnum::STATE] -= 50;
 }
 
 BossIsadora::BossIsadora()
@@ -13,7 +19,7 @@ BossIsadora::BossIsadora()
 	ObjectrRelease = bind(&BossIsadora::release, this);
 	ObjectUpdate = bind(&BossIsadora::update, this);
 	ObjectRender = bind(&BossIsadora::render, this);
-	_hp[BaseEnum::STATE] = 1;
+	_hp[BaseEnum::STATE] = 10 * 54;
 }
 
 BossIsadora::~BossIsadora() { }
@@ -27,7 +33,7 @@ HRESULT BossIsadora::init(POINT point, vector<RECT*>floor)
 		{ UnitState::IDLE ,std::bind(&BossIsadora::_pattenIdle,this) },
 		{ UnitState::TRUNATTACK ,std::bind(&BossIsadora::_pattenTurnAttack,this) },
 		{ UnitState::FIREPILLARATTACK_0, std::bind(&BossIsadora::_pattenFirePollarAttack0,this) },
-		//{ UnitState::FIREPILLARATTACK_1, std::bind(&BossIsadora::_pattenFirePollarAttack1,this) },
+		{ UnitState::FIREPILLARATTACK_1, std::bind(&BossIsadora::_pattenFirePollarAttack1,this) },
 		{ UnitState::START, std::bind(&BossIsadora::_pattenStart,this) },
 		{ UnitState::DIE, std::bind(&BossIsadora::_pattenDie,this) }
 	};
@@ -40,6 +46,7 @@ HRESULT BossIsadora::init(POINT point, vector<RECT*>floor)
 	pillarDelly = true;
 	_isLeft = 1;
 
+	_oldState = UnitState::END;
 	_state = UnitState::START;
 
 	return S_OK;
@@ -73,8 +80,8 @@ void BossIsadora::update(void)
 	if (_state == UnitState::END) { _inputPatten(); }
 	_inputAnimation();
 	_inputImageXY();
-	_pattenFunc[_state]();
 	_inputEffect();
+	_pattenFunc[_state]();
 	_pillar->update();
 }
 
@@ -109,11 +116,15 @@ void BossIsadora::_inputPatten()
 		smash.clear();
 		_effect.clear();
 		_isWarp = 0;
+		pillarDelly = false;
 		_pattenAni = nullptr;
 		return;
 	}
 
-	_state = (UnitState)RND->getInt(3); // 현재 임시 ;
+	do { _state = (UnitState)RND->getInt(4); } 
+	while (_state == _oldState);
+	
+	_oldState = _state;
 	_pattenAni = nullptr;
 
 	if (_state == UnitState::IDLE)
@@ -131,12 +142,17 @@ void BossIsadora::_inputPatten()
 	{
 		_pattenSub.push_back(3);
 	}
-
-	if (_state == UnitState::FIREPILLARATTACK_0)
+	else if (_state == UnitState::FIREPILLARATTACK_0)
 	{
 		_pattenSub.push_back(CENTER_X+CENTER_X/2);
 		_pattenSub.push_back(CENTER_X);
 		_pattenSub.push_back(CENTER_X/2);
+	}
+	else if (_state == UnitState::FIREPILLARATTACK_1)
+	{
+		// 쏘기 
+		_pattenSub.push_back(0);
+		_pattenSub.push_back(TIMEMANAGER->getElapsedTime() + 2.0f);
 	}
 }
 
@@ -321,7 +337,7 @@ void BossIsadora::_pattenFirePollar(UnitState state, POINT point = {0,0} )
 		for (int i = 0; i < 3; i++)
 		{
 			if (i == 0) { point.x -= 100; } else { point.x += 100; }
-			result.first = RECT{ point.x - 40, 0, point.x + 80 / 2, point.y };
+			result.first = RECT{ point.x - 40, 0, point.x +40, point.y };
 
 			smash.push_back(result);
 			_effect.push_back({ Image(), new Animation() });
@@ -336,25 +352,40 @@ void BossIsadora::_pattenFirePollar(UnitState state, POINT point = {0,0} )
 	}
 	else if (state == UnitState::FIREPILLARATTACK_1)
 	{
+		if (_pattenSub.back() >= TIMEMANAGER->getWorldTime()) { return; }
+		_pattenSub.back() = TIMEMANAGER->getWorldTime() + 0.1f;
+		_pattenSub.front() += 80;
+
+		RECT 	temp = { 0,0,0,stateFloor.top };
+		if (smash.size() == 0)
+		{
+			temp.right = _pattenSub.front();
+		}
+		else
+		{
+			temp.right = _pattenSub.front();
+			temp.left = temp.right - 80;
+		}
+
+
+		if (temp.right > WINSIZE_X+400)
+		{
+			_effect.clear();
+			smash.clear();
+			_pattenSub.clear();
+			_state = UnitState::END;
+			return;
+		}
+
+		smash.push_back({ temp, Image() });
 		_effect.push_back({ Image(), new Animation() });
 		_effect.back().first.init("Resources/Images/Monster/Boss_Isidora/FireColumnAnticipation.bmp", 410 * 2, 900 * 2, 5, 3, MGT);
-	
-		for (int i=0; i < 5; i++)
-		{
-
-
-
-		}
-	
-
-		/*
-		result.first = RECT{ point.x - 40, 0, point.x + 80 / 2, point.y };
-		result.first = 
-		smash.push_back(result);
-		*/
-
-
-
+		_effect.back().second->init(_effect.back().first.getWidth(), _effect.back().first.getHeight(), _effect.back().first.getFrameWidth(), _effect.back().first.getFrameHeight());
+		_effect.back().first.setX(smash.back().first.left - 45);
+		_effect.back().first.setY(smash.back().first.top - 68);
+		_effect.back().second->setDefPlayFrame(true, false);
+		_effect.back().second->setFPS(28, 4);
+		_effect.back().second->AniStart();
 	}
 }
 
@@ -424,10 +455,7 @@ void BossIsadora::_pattenFirePollarAttack1()
 		_pattenAni->setFPS(9, 2);
 		_pattenAni->AniStart();
 	}
-
 	_pattenFirePollar(_state);
-
-
 }
 
 void BossIsadora::_inputAnimation()
@@ -593,7 +621,7 @@ void BossIsadora::_inputEffect()
 
 		if (_effect[i].second->isPlay() == false)
 		{
-			smash.clear();
+			if (smash.size() == _effect.size()) { clearSmash(i); }
 			_effect.erase(_effect.begin() + i);
 			return;
 		}
