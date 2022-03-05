@@ -10,8 +10,10 @@ HRESULT ImageClass::init(void)
 	// Å°°ªÀº ¿µ¹®À¸·Î! (¼öÁ¤¿¹Á¤)
 
 #pragma region PlayerImage
-	IMAGEMANAGER->addFrameImage("²¿±ò´ë±â", "Resources/Images/Player/p_idle.bmp", 1664 * 2, 146* 2, 13, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106 * 2, 140* 2, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò´ë±â", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò´ë±âP", "Resources/Images/Player/p_idle.bmp", 1664 * 2, 146 * 2, 13, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿P", "Resources/Images/Player/p_move.bmp", 1106 * 2, 140 * 2, 14, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ", "Resources/Images/Player/playerFrontJumpOn.bmp", 1120, 158, 14, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò½½¶óÀÌµå", "Resources/Images/Player/playerSliding.bmp", 1455, 144, 15, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);

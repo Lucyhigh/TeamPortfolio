@@ -3,8 +3,8 @@
 
 HRESULT PixelCollision::init(float x, float y, char* image)
 {
-	_playerIdleImage = IMAGEMANAGER->findImage("²¿±ò´ë±â");
-	_playerMoveImage = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
+	_playerIdleImage = IMAGEMANAGER->findImage("²¿±ò´ë±âP");
+	_playerMoveImage = IMAGEMANAGER->findImage("²¿±òÀÌµ¿P");
 	_playerWakeUpImage = IMAGEMANAGER->findImage("²¿±ò±â»ó");
 	_bgImage = IMAGEMANAGER->findImage(image);
 
@@ -57,7 +57,7 @@ void PixelCollision::update(char* image)
 	if (_count >= 1 && _isWakeUp == false)
 	{
 		_count++;
-		if (_count > 1000)
+		if (_count > 900)
 		{
 			_ani->AniStart();
 			_ani2->AniStart();
