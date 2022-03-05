@@ -70,8 +70,8 @@ void SaveScene::update(void)
 	{
 		// 임시 씬 저장. 세이브 데이터에서 씬 정보 저장 필요?
 		if (_saveIndex == 1) SCENEMANAGER->changeScene("Boss2");
-		if (_saveIndex == 2) SCENEMANAGER->changeScene("Start");
-		if (_saveIndex == 3) SCENEMANAGER->changeScene("Start");
+		if (_saveIndex == 2) SCENEMANAGER->changeScene("Opening");
+		if (_saveIndex == 3) SCENEMANAGER->changeScene("Opening");
 	}
 
 }
@@ -133,7 +133,7 @@ void SaveScene::showSaveData(void)
 					"둥근모꼴", 25, 100, OTEXT);
 
 				SetTextAlign(getMemDC(), TA_RIGHT);
-				LPCWSTR tempTime = L"플레이 시간 : 2h 4m ~ 16.7% 완료"; // 임시 누적시간, 진행율
+				LPCWSTR tempTime = L"플레이 시간 : 4h 4m ~ 86.7% 완료"; // 임시 누적시간, 진행율
 				FONTMANAGER->drawText(getMemDC(), _viSave->posEndX - 50, _viSave->y + 76,
 					"둥근모꼴", 25, 100, tempTime, wcslen(tempTime), OTEXT);
 
@@ -144,13 +144,15 @@ void SaveScene::showSaveData(void)
 			}
 			else
 			{
+				_viSave->offImg->render(getMemDC(), _viSave->x, _viSave->y);
+
 				FONTMANAGER->drawTextValue(getMemDC(), _viSave->num,						 // 변수
 					_viSave->x - 20, (_viSave->y + _viSave->noneImg->getHeight()*0.5) - 7,	 // 위치
 					"둥근모꼴", 30, 100, XTEXT);												 // 폰트
 
 				// 플레이어 세이브  정보 
 				SetTextAlign(getMemDC(), TA_LEFT);
-				LPCWSTR tempArea = L"침묵의 비탄 수도원"; // 임시 지역 텍스트 
+				LPCWSTR tempArea = L"알베로의 납골당"; // 임시 지역 텍스트 
 				FONTMANAGER->drawText(getMemDC(), _viSave->x + 90, _viSave->y + 25,
 					"둥근모꼴", 25, 100, tempArea, wcslen(tempArea), XTEXT);
 
@@ -160,7 +162,7 @@ void SaveScene::showSaveData(void)
 					"둥근모꼴", 25, 100, XTEXT);
 
 				SetTextAlign(getMemDC(), TA_RIGHT);
-				LPCWSTR tempTime = L"플레이 시간 : 2h 4m ~ 16.7% 완료"; // 임시 누적시간, 진행율
+				LPCWSTR tempTime = L"플레이 시간 : 4h 4m ~ 86.7% 완료"; // 임시 누적시간, 진행율
 				FONTMANAGER->drawText(getMemDC(), _viSave->posEndX - 50, _viSave->y + 76,
 					"둥근모꼴", 25, 100, tempTime, wcslen(tempTime), XTEXT);
 
