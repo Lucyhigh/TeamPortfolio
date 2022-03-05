@@ -3,10 +3,10 @@
 
 HRESULT OpeningScene::init(void)
 {
-	_image = IMAGEMANAGER->findImage("�����׾� �ٴ�");
+	_image = IMAGEMANAGER->findImage("openingSceneFloor");
 
 	_pixel = new PixelCollision;
-	_pixel->init(_image->getWidth()/2-150, 455, "�����׾� �ȼ�");
+	_pixel->init(_image->getWidth()/2-150, 455, "openingScenePixel");
 
 	_textAlpha = 0;
 	_alpha = 0;
@@ -54,18 +54,18 @@ void OpeningScene::update(void)
 	_camera->update();
 
 	_pixel->setCameraRect(_camera->getScreenRect());
-	_pixel->update("�����׾� �ȼ�");
+	_pixel->update("openingScenePixel");
 }
 
 void OpeningScene::render(void)
 {
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
-	IMAGEMANAGER->loopRender("�����׾� �޹��", getMemDC(), &rc1,
+	IMAGEMANAGER->loopRender("openingSceneLastBG", getMemDC(), &rc1,
 		_camera->getScreenRect().left * bgSpeed,
 		_camera->getScreenRect().top * bgSpeed);
 
-	IMAGEMANAGER->render("�����׾� �ٴ�", getMemDC(),
+	IMAGEMANAGER->render("openingSceneFloor", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
 
@@ -78,10 +78,10 @@ void OpeningScene::render(void)
 			_pixel->getY() - _camera->getScreenRect().top - 100);
 	}
 
-	IMAGEMANAGER->render("�����׾� �ս�ü", getMemDC(),
+	IMAGEMANAGER->render("openingSceneFrontBody", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
-	IMAGEMANAGER->render("�����׾� �չ�", getMemDC(),
+	IMAGEMANAGER->render("openingSceneFrontDoor", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
 

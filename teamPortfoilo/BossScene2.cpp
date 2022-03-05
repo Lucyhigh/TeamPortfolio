@@ -9,7 +9,7 @@ BossScene2::BossScene2(){
 
 HRESULT BossScene2::init(void)
 {
-	_image = IMAGEMANAGER->findImage("Boss2BG");
+	_image = IMAGEMANAGER->findImage("bg2");
 	_floor.resize(3);
 	_floor[0] = new RECT{ 0, 525, _image->getWidth(),670 };
 	_floor[1] = new RECT{ -100, 0, 0, _image->getHeight() };

@@ -20,13 +20,9 @@ public:
     void release(void);
     void update(void);
     void render(void);
+
 public:
-    OpeningScene():_text
-    {
-
-    }
-    {}
-    ~OpeningScene() {}
-
+    OpeningScene(){}
+    ~OpeningScene(){}
 };
 

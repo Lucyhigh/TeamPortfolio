@@ -5,10 +5,6 @@
 
 HRESULT ImageClass::init(void)
 {
-	// �̹����� ���� ���⿡ ���� 
-	// IMAGEMANAGER->addImage();
-	// Ű���� ��������! (��������)
-
 #pragma region PlayerImage
 	IMAGEMANAGER->addFrameImage("p_idle", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
 	IMAGEMANAGER->addFrameImage("p_move", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
@@ -166,14 +162,14 @@ HRESULT ImageClass::init(void)
     IMAGEMANAGER->addImage("openingSceneFrontDoor", "Resources/Images/BackGround/openingSceneFrontDoor.bmp", 4150 * 0.5, 1694 * 0.5, MGT);
 	IMAGEMANAGER->addImage("openingScenePixel", "Resources/Images/BackGround/openingScenePixel.bmp", 4150 * 0.5, 1694 * 0.5, MGT);
 
-	IMAGEMANAGER->addImage("boss1beforeSceneBg", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("boss1Bg", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("boss1beforeSceneBg2", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);
 	IMAGEMANAGER->addImage("boss1beforeSceneFrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);
 	IMAGEMANAGER->addImage("boss1beforeSceneFloor", "Resources/Images/BackGround/boss1beforeSceneFloor.bmp", 4360, 675,MGT);
 
 	IMAGEMANAGER->addImage("boss1Floor", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675, MGT);
 	IMAGEMANAGER->addImage("boss1LastBG", "Resources/Images/BackGround/boss1LastBG.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("boss1BodysBG", "Resources/Images/BackGround/boss1bodysBG.bmp", 2460, 675,MGT);
+	IMAGEMANAGER->addImage("boss1BodyBG", "Resources/Images/BackGround/boss1bodysBG.bmp", 2460, 675,MGT);
 	IMAGEMANAGER->addImage("boss1FrontBody", "Resources/Images/BackGround/boss1FrontBody.bmp", 2460, 675,MGT);
 	IMAGEMANAGER->addImage("boss1FrontDoor", "Resources/Images/BackGround/boss1FrontDoor.bmp", 2460, 675,MGT);
 

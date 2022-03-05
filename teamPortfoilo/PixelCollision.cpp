@@ -3,9 +3,9 @@
 
 HRESULT PixelCollision::init(float x, float y, char* image)
 {
-	_playerIdleImage = IMAGEMANAGER->findImage("������");
-	_playerMoveImage = IMAGEMANAGER->findImage("�����̵�");
-	_playerWakeUpImage = IMAGEMANAGER->findImage("������");
+	_playerIdleImage = IMAGEMANAGER->findImage("p_idle");
+	_playerMoveImage = IMAGEMANAGER->findImage("p_move");
+	_playerWakeUpImage = IMAGEMANAGER->findImage("p_rising");
 	_bgImage = IMAGEMANAGER->findImage(image);
 
 	_ani = new Animation;
@@ -145,8 +145,6 @@ void PixelCollision::render(void)
 	{
 		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY-14, _ani3);
 	}
-
-	//cout << rcCenterX << endl;
 }
 
 int PixelCollision::getX()
