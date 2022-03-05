@@ -10,21 +10,21 @@ HRESULT ImageClass::init(void)
 	// Ű���� ��������! (��������)
 
 #pragma region PlayerImage
-	IMAGEMANAGER->addFrameImage("������", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�����̵�", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("��������", "Resources/Images/Player/playerFrontJumpOn.bmp", 1120, 158, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("���򽽶��̵�", "Resources/Images/Player/playerSliding.bmp", 1455, 144, 15, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�������0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�������0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�������1", "Resources/Images/Player/playerAttTwoAddEffe.bmp", 725, 144, 5, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�������2", "Resources/Images/Player/playerAttThreeAddEffect.bmp", 2600, 170, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�����ܾ���", "Resources/Images/Player/playerUpwardAtt.bmp", 972, 148, 12, 2, MGT);
-	IMAGEMANAGER->addFrameImage("������������", "Resources/Images/Player/playerJumpAttack.bmp", 1510, 200, 10, 2, MGT);
-	IMAGEMANAGER->addFrameImage("����������������Ʈ", "Resources/Images/Player/p_jumpattack_ef.bmp", 604, 200, 4, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�����ܾ�������Ʈ", "Resources/Images/Player/p_upattack_ef.bmp", 320, 300, 4, 2, MGT);
+	IMAGEMANAGER->addFrameImage("Playeridle", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
+	IMAGEMANAGER->addFrameImage("PlayerMove", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("PlayerJump", "Resources/Images/Player/playerFrontJumpOn.bmp", 1120, 158, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("PlayerSlide", "Resources/Images/Player/playerSliding.bmp", 1455, 144, 15, 2, MGT);
+	IMAGEMANAGER->addFrameImage("PlayerAttack0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
+	IMAGEMANAGER->addFrameImage("PlayerAttack0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
+	IMAGEMANAGER->addFrameImage("PlayerAttack1", "Resources/Images/Player/playerAttTwoAddEffe.bmp", 725, 144, 5, 2, MGT);
+	IMAGEMANAGER->addFrameImage("PlayerAttack2", "Resources/Images/Player/playerAttThreeAddEffect.bmp", 2600, 170, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("Player_upattack", "Resources/Images/Player/playerUpwardAtt.bmp", 972, 148, 12, 2, MGT);
+	IMAGEMANAGER->addFrameImage("Player_jumpAttack", "Resources/Images/Player/playerJumpAttack.bmp", 1510, 200, 10, 2, MGT);
+	IMAGEMANAGER->addFrameImage("Player_jumpAttackef", "Resources/Images/Player/p_jumpattack_ef.bmp", 604, 200, 4, 2, MGT);
+	IMAGEMANAGER->addFrameImage("Player_upattackef", "Resources/Images/Player/p_upattack_ef.bmp", 320, 300, 4, 2, MGT);
 	IMAGEMANAGER->addFrameImage("��������Ʈ", "Resources/Images/Player/effectTwo.bmp", 792, 164, 6, 2, MGT);
-	IMAGEMANAGER->addFrameImage("����⵵", "Resources/Images/Player/playerParyer.bmp", 1404, 208, 18, 2, MGT);
-	IMAGEMANAGER->addFrameImage("��������", "Resources/Images/Player/playerPotion.bmp", 1900, 280, 19, 2, MGT);
+	IMAGEMANAGER->addFrameImage("PlayerPray", "Resources/Images/Player/playerParyer.bmp", 1404, 208, 18, 2, MGT);
+	IMAGEMANAGER->addFrameImage("PlayerPotion", "Resources/Images/Player/playerPotion.bmp", 1900, 280, 19, 2, MGT);
 	IMAGEMANAGER->addFrameImage("������", "Resources/Images/Player/p_risingFromFallen.bmp", 896, 768, 7, 6, MGT);
 
 #pragma endregion

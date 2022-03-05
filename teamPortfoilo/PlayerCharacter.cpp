@@ -5,8 +5,8 @@
 void PlayerCharacter::setParyer(bool set)
 {
 	_paryer = set;
-	if (_isLeft == 1) { IMAGEMANAGER->findImage("²¿±ò±âµµ")->setFrameX(0); }
-	else { IMAGEMANAGER->findImage("²¿±ò±âµµ")->setFrameX(IMAGEMANAGER->findImage("²¿±ò±âµµ")->getMaxFrameX()); }
+	if (_isLeft == 1) { IMAGEMANAGER->findImage("PlayerPray")->setFrameX(0); }
+	else { IMAGEMANAGER->findImage("PlayerPray")->setFrameX(IMAGEMANAGER->findImage("PlayerPray")->getMaxFrameX()); }
 }
 
 PlayerCharacter::UnitState PlayerCharacter::getState()
@@ -199,11 +199,11 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 			_isAttack = false;
 			if (_isLeft != -1)
 			{
-				IMAGEMANAGER->findImage("²¿±ò¾îÅÃ1")->setFrameX(0);
+				IMAGEMANAGER->findImage("PlayerAttack1")->setFrameX(0);
 			}
 			else
 			{
-				IMAGEMANAGER->findImage("²¿±ò¾îÅÃ1")->setFrameX(IMAGEMANAGER->findImage("²¿±ò¾îÅÃ1")->getMaxFrameX());
+				IMAGEMANAGER->findImage("PlayerAttack1")->setFrameX(IMAGEMANAGER->findImage("PlayerAttack1")->getMaxFrameX());
 			}
 			return UnitState::ATTACK_DOUBLE;
 		}
@@ -212,19 +212,19 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 			_isAttack = false;
 			if (_isLeft != -1)
 			{
-				IMAGEMANAGER->findImage("²¿±ò¾îÅÃ2")->setFrameX(0);
+				IMAGEMANAGER->findImage("PlayerAttack2")->setFrameX(0);
 			}
 			else
 			{
-				IMAGEMANAGER->findImage("²¿±ò¾îÅÃ2")->setFrameX(IMAGEMANAGER->findImage("²¿±ò¾îÅÃ2")->getMaxFrameX());
+				IMAGEMANAGER->findImage("PlayerAttack2")->setFrameX(IMAGEMANAGER->findImage("PlayerAttack2")->getMaxFrameX());
 			}
 			return UnitState::ATTACK_TRIPLE;
 		}
 		else if (_state == UnitState::JUMPATTACK)
 		{
 			_isAttack = false;
-			IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃÀÌÆåÆ®")->setFrameX(2);
-			IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃ")->setFrameX(4);
+			IMAGEMANAGER->findImage("Player_jumpAttackef")->setFrameX(2);
+			IMAGEMANAGER->findImage("Player_jumpAttack")->setFrameX(4);
 			return UnitState::JUMPATTACK_DOUBLE;
 		}
 
@@ -234,14 +234,14 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 			_isAttack = false;
 			if (_state == UnitState::JUMP)
 			{
-				IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃÀÌÆåÆ®")->setFrameX(0);
+				IMAGEMANAGER->findImage("Player_jumpAttackef")->setFrameX(0);
 				if (_isLeft != -1)
 				{
-					IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃ")->setFrameX(0);
+					IMAGEMANAGER->findImage("Player_jumpAttack")->setFrameX(0);
 				}
 				else
 				{
-					IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃ")->setFrameX(IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃ")->getMaxFrameX());
+					IMAGEMANAGER->findImage("Player_jumpAttack")->setFrameX(IMAGEMANAGER->findImage("Player_jumpAttack")->getMaxFrameX());
 				}
 				return UnitState::JUMPATTACK;
 			}
@@ -249,11 +249,11 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 			{
 				if (_isLeft != -1)
 				{
-					IMAGEMANAGER->findImage("²¿±ò»ó´Ü¾îÅÃ")->setFrameX(0);
+					IMAGEMANAGER->findImage("Player_upattackef")->setFrameX(0);
 				}
 				else
 				{
-					IMAGEMANAGER->findImage("²¿±ò»ó´Ü¾îÅÃ")->setFrameX(IMAGEMANAGER->findImage("²¿±ò»ó´Ü¾îÅÃ")->getMaxFrameX());
+					IMAGEMANAGER->findImage("Player_upattackef")->setFrameX(IMAGEMANAGER->findImage("Player_upattackef")->getMaxFrameX());
 				}
 				return UnitState::UPATTACK;
 			}
@@ -262,11 +262,11 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 				_isAttack = false;
 				if (_isLeft != -1)
 				{
-					IMAGEMANAGER->findImage("²¿±ò¾îÅÃ0")->setFrameX(0);
+					IMAGEMANAGER->findImage("PlayerAttack0")->setFrameX(0);
 				}
 				else
 				{
-					IMAGEMANAGER->findImage("²¿±ò¾îÅÃ0")->setFrameX(IMAGEMANAGER->findImage("²¿±ò¾îÅÃ0")->getMaxFrameX());
+					IMAGEMANAGER->findImage("PlayerAttack0")->setFrameX(IMAGEMANAGER->findImage("PlayerAttack0")->getMaxFrameX());
 				}
 				return UnitState::ATTACK;
 			}
@@ -282,7 +282,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 		_oldState = _state;
 		smash.clear();
 		_slide["Max"] = 0.5f + TIMEMANAGER->getWorldTime();
-		IMAGEMANAGER->findImage("²¿±ò½½¶óÀÌµå")->setFrameX(0);
+		IMAGEMANAGER->findImage("PlayerSlide")->setFrameX(0);
 		return UnitState::SLIDE;
 	}
 	else if (KEYMANAGER->isOnceKeyDown('E') && _state == UnitState::IDLE_0 || _state == UnitState::IDLE_1)
@@ -291,13 +291,13 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 		GAMEMANAGER->getUI()->usePotion();
 		if (_isLeft == 1)
 		{
-			IMAGEMANAGER->findImage("²¿±òÆ÷¼Ç")->setFrameY(0);
-			IMAGEMANAGER->findImage("²¿±òÆ÷¼Ç")->setFrameX(0);
+			IMAGEMANAGER->findImage("PlayerPotion")->setFrameY(0);
+			IMAGEMANAGER->findImage("PlayerPotion")->setFrameX(0);
 		}
 		else
 		{
-			IMAGEMANAGER->findImage("²¿±òÆ÷¼Ç")->setFrameY(1);
-			IMAGEMANAGER->findImage("²¿±òÆ÷¼Ç")->setFrameX(IMAGEMANAGER->findImage("²¿±òÆ÷¼Ç")->getMaxFrameX());
+			IMAGEMANAGER->findImage("PlayerPotion")->setFrameY(1);
+			IMAGEMANAGER->findImage("PlayerPotion")->setFrameX(IMAGEMANAGER->findImage("PlayerPotion")->getMaxFrameX());
 		}
 		return UnitState::POTION;
 	}
@@ -350,7 +350,7 @@ void PlayerCharacter::_updateFloor()
 			smash.clear();
 			_Collider[BaseEnum::UNIT].top -= _Collider[BaseEnum::UNIT].bottom - tamp[0].top;
 			_Collider[BaseEnum::UNIT].bottom -= _Collider[BaseEnum::UNIT].bottom - tamp[0].top;
-			IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ")->setFrameX(0);
+			IMAGEMANAGER->findImage("PlayerJump")->setFrameX(0);
 			stateFloor = *floor[i];
 			break;
 		}
@@ -434,7 +434,7 @@ void PlayerCharacter::_updataJump()
 
 			_oldState = _state;
 			_state = UnitState::UNITNULL;
-			IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ")->setFrameX(0);
+			IMAGEMANAGER->findImage("PlayerJump")->setFrameX(0);
 
 			for (auto iter = _jump.begin(); iter != _jump.end(); ++iter)
 			{
@@ -519,7 +519,7 @@ void PlayerCharacter::_inputAnimation()
 {
 	if (_state == UnitState::SLIDE)
 	{
-		_image = IMAGEMANAGER->findImage("²¿±ò½½¶óÀÌµå");
+		_image = IMAGEMANAGER->findImage("PlayerSlide");
 		_image->setY(_Collider[BaseEnum::UNIT].top - 9);
 
 		if (_isLeft != -1)
@@ -545,7 +545,7 @@ void PlayerCharacter::_inputAnimation()
 	}
 	else if (_state == UnitState::ATTACK)
 	{
-		_image = IMAGEMANAGER->findImage("²¿±ò¾îÅÃ0");
+		_image = IMAGEMANAGER->findImage("PlayerAttack0");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 10);
 
@@ -591,7 +591,7 @@ void PlayerCharacter::_inputAnimation()
 	}
 	else if (_state == UnitState::ATTACK_DOUBLE)
 	{
-		_image = IMAGEMANAGER->findImage("²¿±ò¾îÅÃ1");
+		_image = IMAGEMANAGER->findImage("PlayerAttack1");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 10);
 
@@ -637,7 +637,7 @@ void PlayerCharacter::_inputAnimation()
 	}
 	else if (_state == UnitState::ATTACK_TRIPLE)
 	{
-		_image = IMAGEMANAGER->findImage("²¿±ò¾îÅÃ2");
+		_image = IMAGEMANAGER->findImage("PlayerAttack2");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 24);
 
@@ -684,7 +684,7 @@ void PlayerCharacter::_inputAnimation()
 	}
 	else if (_state == UnitState::UPATTACK)
 	{
-		_image = IMAGEMANAGER->findImage("²¿±ò»ó´Ü¾îÅÃ");
+		_image = IMAGEMANAGER->findImage("Player_upattack");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 10);
 
@@ -730,8 +730,8 @@ void PlayerCharacter::_inputAnimation()
 	}
 	else if (_state == UnitState::JUMPATTACK)
 	{
-		_image = IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃ");
-		_effect = IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃÀÌÆåÆ®");
+		_image = IMAGEMANAGER->findImage("Player_upattack");
+		_effect = IMAGEMANAGER->findImage("Player_upattackef");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 30);
 		_effect->setY(_Collider[BaseEnum::UNIT].top - 30);
@@ -794,8 +794,8 @@ void PlayerCharacter::_inputAnimation()
 	}
 	else if (_state == UnitState::JUMPATTACK_DOUBLE)
 	{
-		_image = IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃ");
-		_effect = IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ¾îÅÃÀÌÆåÆ®");
+		_image = IMAGEMANAGER->findImage("Player_jumpAttack");
+		_effect = IMAGEMANAGER->findImage("Player_jumpAttackef");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 30);
 		_effect->setY(_Collider[BaseEnum::UNIT].top - 30);
@@ -857,7 +857,7 @@ void PlayerCharacter::_inputAnimation()
 	}
 	else if (_state == UnitState::JUMP)
 	{
-		_image = IMAGEMANAGER->findImage("²¿±òÁ¡ÇÁ");
+		_image = IMAGEMANAGER->findImage("PlayerJump");
 
 		if (_isLeft != -1)
 		{
@@ -883,7 +883,7 @@ void PlayerCharacter::_inputAnimation()
 	}
 	else if (_state == UnitState::RUN)
 	{
-		_image = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
+		_image = IMAGEMANAGER->findImage("PlayerMove");
 		if (_isLeft != -1)
 		{
 			_image->setX(_Collider[BaseEnum::UNIT].left - 10);
@@ -903,14 +903,14 @@ void PlayerCharacter::_inputAnimation()
 		if (0.02f + _Fram >= TIMEMANAGER->getWorldTime()) { return; }
 		_Fram = TIMEMANAGER->getWorldTime();
 
-		_image = IMAGEMANAGER->findImage("²¿±ò´ë±â");
+		_image = IMAGEMANAGER->findImage("Playeridle");
 
 		_image->setX(_Collider[BaseEnum::UNIT].left - 35);
 		_image->setY(_Collider[BaseEnum::UNIT].top - 14);
 	}
 	else if (_state == UnitState::PARYER)
 	{
-		_image = IMAGEMANAGER->findImage("²¿±ò±âµµ");
+		_image = IMAGEMANAGER->findImage("PlayerPray");
 		_image->setY(_Collider[BaseEnum::UNIT].top-45);
 
 		if (_isLeft == 1)
@@ -953,7 +953,7 @@ void PlayerCharacter::_inputAnimation()
 	}
 	else if (_state == UnitState::POTION)
 	{
-		_image = IMAGEMANAGER->findImage("²¿±òÆ÷¼Ç");
+		_image = IMAGEMANAGER->findImage("PlayerPotion");
 		_image->setY(_Collider[BaseEnum::UNIT].top-78);
 		_image->setX(_Collider[BaseEnum::UNIT].left - 25);
 
