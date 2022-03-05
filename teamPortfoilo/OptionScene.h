@@ -1,9 +1,8 @@
 #pragma once
 #include "GameNode.h"
 
-#define TITLEMENU 6
-#define INMENU 9
-
+#define TITLEMENU 7
+#define INMENU 10
 
 struct tagOptionSlot
 {
@@ -17,48 +16,16 @@ struct tagOptionSlot
 // 옵션 : 동영상, 사운드 
 // 동영상 - 창모드(풀스크린/창), 해상도(기본(1200*675/ 추가2가지..?)
 // 사운드 - 전체음량, 배경음량, 효과음량, 음성음량 조정
-class OptionSceneTITLE : public GameNode
+class OptionScene : public GameNode
 {
 private:
-	bool _isTitleMenu; // 타이틀에서 메뉴 진입?
+	bool _isTitleMenu; // 타이틀에서 메뉴 진입시
 
 	// Title option ------------------------------------------------------------
 	vector<tagOptionSlot> _vTOption;
 	vector<tagOptionSlot>::iterator _viTOption;
 	int _TOptinIndex; // 동영상, 소리, 등등
 	tagOnlyText _TitleText[TITLEMENU];
-
-public:
-	OptionSceneTITLE() :
-		_TitleText
-	{	
-		L"게임",
-		L"접근성",
-		L"동영상",
-		L"사운드",
-		L"수락",
-		L"뒤로",
-	}
-	{}
-	~OptionSceneTITLE() {}
-
-	HRESULT init(void);
-	void release(void);
-	void update(void);
-	void render(void);
-
-	// option : T - Title / I - InGame
-	void setIsTitleOption(bool state) {  _isTitleMenu = state; } // 외부에서 옵션으로 진입 시 
-	void selectOption(int optionIndex);
-	void showOption(void);
-
-
-};
-
-
-class OptionScene : public GameNode
-{
-private:
 
 	// InGame option ------------------------------------------------------------
 	vector<tagOptionSlot> _vIOption;
@@ -68,8 +35,19 @@ private:
 
 public:
 	OptionScene() :
-	_InGameText
+		_TitleText
+	{	
+		L"옵션",
+		L"게임",
+		L"접근성",
+		L"동영상",
+		L"사운드",
+		L"수락",
+		L"뒤로",
+	},
+	 _InGameText
 	{
+		L"옵션",
 		L"게임",
 		L"접근성",
 		L"동영상",
@@ -84,12 +62,16 @@ public:
 	~OptionScene() {}
 
 	HRESULT init(void);
+	HRESULT init(bool isTitleMenu);
 	void release(void);
 	void update(void);
 	void render(void);
 
 	// option : T - Title / I - InGame
+	void setIsTitleOption(bool state) {  _isTitleMenu = state; } // 외부에서 옵션으로 진입 시 
+	void selectTOption(int optionIndex);
 	void selectIOption(int optionIndex);
+	void showTOption(void);
 	void showIOption(void);
 
 };

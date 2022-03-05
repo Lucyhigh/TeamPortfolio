@@ -52,9 +52,9 @@ HRESULT UIScene::init(void)
 	_inven->init();
 	_openInventory = false;
 
-	_option = new ();
-	_option->init();
 	_openOption = false;
+	_option = new OptionScene;
+	_option->init(_openOption);
 
 	return S_OK;
 }
@@ -74,6 +74,9 @@ void UIScene::release(void)
 
 	_inven->release();
 	SAFE_DELETE(_inven);
+
+	_option->release();
+	SAFE_DELETE(_option);
 }
 
 void UIScene::update(void)
@@ -91,9 +94,10 @@ void UIScene::update(void)
 	if (KEYMANAGER->isOnceKeyDown('I')) _openInventory = true;
 	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _openInventory = false;
 
-
-	if (KEYMANAGER->isOnceKeyDown('O')) _openOption = true;
-	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _openOption = false;
+	
+	// if (KEYMANAGER->isOnceKeyDown('O')) _openOption = true;
+	// if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _openOption = false;
+	// if(_openOption)_option->update();
 
 }
 
@@ -108,6 +112,11 @@ void UIScene::render(void)
 	}
 
 	showPoint(_openInventory);
+
+	if (_openOption)
+	{
+		_option->render();
+	}
 }
 
 void UIScene::usePotion()

@@ -2,7 +2,7 @@
 #include "OptionScene.h"
 
 
-HRESULT OptionSceneTITLE::init(void)
+HRESULT OptionScene::init(void)
 {
 
 	_isTitleMenu = true;
@@ -21,11 +21,63 @@ HRESULT OptionSceneTITLE::init(void)
 	}
 	_TOptinIndex = 1;
 
+	// InGame OPTION ------------
+	for (int i = 0; i < INMENU; i++)
+	{
+		tagOptionSlot optionInfo;
+		optionInfo.num = i;
+		optionInfo.x = 340;
+		optionInfo.y = 140 + (i * 57);
+		optionInfo.onImg = new Image;
+		optionInfo.onImg->init("Resources/Images/UI/optionSelect.bmp", optionInfo.x, optionInfo.y, 16, 31, MGT);
+		optionInfo.select = false;
+		_vIOption.push_back(optionInfo);
+	}
+	_IOptinIndex = 1;
+
 
 	return S_OK;
 }
 
-void OptionSceneTITLE::release(void)
+
+HRESULT OptionScene::init(bool isTitleMenu)
+{
+	
+	_isTitleMenu = false;
+
+	// Title OPTION ------------
+	for (int i = 0; i < TITLEMENU; i++)
+	{
+		tagOptionSlot optionInfo;
+		optionInfo.num = i;
+		optionInfo.x = 340;
+		optionInfo.y = 140 + (i * 57);
+		optionInfo.onImg = new Image;
+		optionInfo.onImg->init("Resources/Images/UI/optionSelect.bmp", optionInfo.x, optionInfo.y, 16, 31, MGT);
+		optionInfo.select = false;
+		_vTOption.push_back(optionInfo);
+	}
+	_TOptinIndex = 1;
+
+	// InGame OPTION ------------
+	for (int i = 0; i < INMENU; i++)
+	{
+		tagOptionSlot optionInfo;
+		optionInfo.num = i;
+		optionInfo.x = 340;
+		optionInfo.y = 140 + (i * 57);
+		optionInfo.onImg = new Image;
+		optionInfo.onImg->init("Resources/Images/UI/optionSelect.bmp", optionInfo.x, optionInfo.y, 16, 31, MGT);
+		optionInfo.select = false;
+		_vIOption.push_back(optionInfo);
+	}
+	_IOptinIndex = 1;
+
+
+	return S_OK;
+}
+
+void OptionScene::release(void)
 {
 	_viTOption = _vTOption.begin();
 	for (; _viTOption != _vTOption.end(); _viTOption++)
@@ -34,14 +86,16 @@ void OptionSceneTITLE::release(void)
 	}
 	_vTOption.clear();
 
+	_viIOption = _vIOption.begin();
+	for (; _viIOption != _vIOption.end(); _viIOption++)
+	{
+		SAFE_DELETE(_viIOption->onImg);
+	}
+	_vIOption.clear();
 }
 
-void OptionSceneTITLE::update(void)
+void OptionScene::update(void)
 {
-	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE))
-	{
-		 SCENEMANAGER->changeScene("Title");
-	}
 
 	if( _isTitleMenu)
 	{
@@ -56,21 +110,36 @@ void OptionSceneTITLE::update(void)
 			if (_TOptinIndex > TITLEMENU - 3) _TOptinIndex = 1;
 		}
 
-		selectOption(_TOptinIndex);
+		selectTOption(_TOptinIndex);
 	}
-	
+	else
+	{
+		if (KEYMANAGER->isOnceKeyDown(VK_UP))
+		{
+			_IOptinIndex--;
+			if (_IOptinIndex < 1) _IOptinIndex = TITLEMENU - 3;
+		}
+		if (KEYMANAGER->isOnceKeyDown(VK_DOWN))
+		{
+			_IOptinIndex++;
+			if (_IOptinIndex > TITLEMENU - 3) _IOptinIndex = 1;
+		}
+
+		selectIOption(_IOptinIndex);
+	}
 }
 
-void OptionSceneTITLE::render(void)
+void OptionScene::render(void)
 {
 	IMAGEMANAGER->findImage("menuOptionBg")->render(getMemDC());
 
-	if (_isTitleMenu)	showOption();
+	if (_isTitleMenu)	showTOption();
+	else showIOption();
 }
 
 
 // Title OPTION ------------------------------------------------------------------------------------
-void OptionSceneTITLE::selectOption( int optionIndex)
+void OptionScene::selectTOption( int optionIndex)
 {
 	_viTOption = _vTOption.begin();
 	for (; _viTOption != _vTOption.end(); _viTOption++)
@@ -80,7 +149,7 @@ void OptionSceneTITLE::selectOption( int optionIndex)
 	}
 }
 
-void OptionSceneTITLE::showOption(void)
+void OptionScene::showTOption(void)
 {
 	IMAGEMANAGER->findImage("enter")->render(getMemDC(), CENTER_X + 120, WINSIZE_Y - 100);
 	IMAGEMANAGER->findImage("esc")->render(getMemDC(), CENTER_X + 355, WINSIZE_Y - 100);
@@ -121,71 +190,6 @@ void OptionSceneTITLE::showOption(void)
 }
 
 
-//===============================================================================
-
-HRESULT OptionScene::init(void)
-{
-
-	// InGame OPTION ------------
-	for (int i = 0; i < INMENU; i++)
-	{
-		tagOptionSlot optionInfo;
-		optionInfo.num = i;
-		optionInfo.x = 340;
-		optionInfo.y = 140 + (i * 57);
-		optionInfo.onImg = new Image;
-		optionInfo.onImg->init("Resources/Images/UI/optionSelect.bmp", optionInfo.x, optionInfo.y, 16, 31, MGT);
-		optionInfo.select = false;
-		_vIOption.push_back(optionInfo);
-	}
-	_IOptinIndex = 1;
-
-
-	return S_OK;
-}
-
-void OptionScene::release(void)
-{
-	_viIOption = _vIOption.begin();
-	for (; _viIOption != _vIOption.end(); _viIOption++)
-	{
-		SAFE_DELETE(_viIOption->onImg);
-	}
-	_vIOption.clear();
-}
-
-void OptionScene::update(void)
-{
-	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE))
-	{
-		;
-	}
-
-	
-
-		if (KEYMANAGER->isOnceKeyDown(VK_UP))
-		{
-			_IOptinIndex--;
-			if (_IOptinIndex < 1) _IOptinIndex = TITLEMENU - 3;
-		}
-		if (KEYMANAGER->isOnceKeyDown(VK_DOWN))
-		{
-			_IOptinIndex++;
-			if (_IOptinIndex > TITLEMENU - 3) _IOptinIndex = 1;
-		}
-
-		selectIOption(_IOptinIndex);
-
-}
-
-void OptionScene::render(void)
-{
-	IMAGEMANAGER->findImage("menuOptionBg")->render(getMemDC());
-
-	showIOption();
-}
-
-
 
 // InGame OPTION ------------------------------------------------------------------------------------
 
@@ -194,7 +198,9 @@ void OptionScene::selectIOption(int optionIndex)
 	_viIOption = _vIOption.begin();
 	for (; _viIOption != _vIOption.end(); _viIOption++)
 	{
-		if (_viIOption->num == optionIndex) _viIOption->select = true;	}
+		if (_viIOption->num == optionIndex) _viIOption->select = true;
+		else _viTOption->select = false;
+	}
 }
 
 
