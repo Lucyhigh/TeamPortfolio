@@ -33,8 +33,8 @@ HRESULT ImageClass::init(void)
 
 #pragma endregion
 
-	IMAGEMANAGER->addImage("���̺�", "Resources/test/save.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("�޴�", "Resources/test/menu.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("save", "Resources/test/save.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("menu", "Resources/test/menu.bmp", 1200, 675);
 
 	// ================================================================================================================
 

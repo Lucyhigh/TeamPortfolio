@@ -176,13 +176,13 @@ void BossWarden::_inputPatten()
 	{ 
 		if (_isLeft == 1)
 		{
-			IMAGEMANAGER->findImage("수호자죽음")->setFrameY(0);
-			IMAGEMANAGER->findImage("수호자죽음")->setFrameX(IMAGEMANAGER->findImage("수호자죽음")->getMaxFrameX());
+			IMAGEMANAGER->findImage("WardenDead")->setFrameY(0);
+			IMAGEMANAGER->findImage("WardenDead")->setFrameX(IMAGEMANAGER->findImage("WardenDead")->getMaxFrameX());
 		}
 		else
 		{
-			IMAGEMANAGER->findImage("수호자죽음")->setFrameY(1);
-			IMAGEMANAGER->findImage("수호자죽음")->setFrameX(0);
+			IMAGEMANAGER->findImage("WardenDead")->setFrameY(1);
+			IMAGEMANAGER->findImage("WardenDead")->setFrameX(0);
 		}
 		_state = UnitState::DIE; return; 
 	}
@@ -194,18 +194,18 @@ void BossWarden::_inputPatten()
 	}
 	else if (_state == UnitState::JUMPATTACK) 
 	{ 
-		IMAGEMANAGER->findImage("수호자점프")->setFrameX(0);
+		IMAGEMANAGER->findImage("WardenJump")->setFrameX(0);
 		_jump["Weight"] = 6.0f; 
 	}
 	else if (_state == UnitState::ATTACK)
 	{
 		if (_isLeft == 1)
 		{
-			IMAGEMANAGER->findImage("수호자공격")->setFrameX(IMAGEMANAGER->findImage("수호자공격")->getMaxFrameX());
+			IMAGEMANAGER->findImage("WardenAttack")->setFrameX(IMAGEMANAGER->findImage("WardenAttack")->getMaxFrameX());
 		}
 		else
 		{
-			IMAGEMANAGER->findImage("수호자공격")->setFrameX(0);
+			IMAGEMANAGER->findImage("WardenAttack")->setFrameX(0);
 		}
 		_pattenDely = TIMEMANAGER->getWorldTime();
 	}
@@ -218,7 +218,7 @@ void BossWarden::_inputAnimation()
 	// 여기가 문제 
 	if (_state == UnitState::IDLE)
 	{
-		_image = IMAGEMANAGER->findImage("수호자대기");
+		_image = IMAGEMANAGER->findImage("WardenIdle");
 
 		if (_isLeft == 1)
 		{
@@ -250,7 +250,7 @@ void BossWarden::_inputAnimation()
 	}
 	else if (_state == UnitState::JUMPATTACK)
 	{
-		_image = IMAGEMANAGER->findImage("수호자점프");
+		_image = IMAGEMANAGER->findImage("WardenJump");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 175);
 
@@ -282,7 +282,7 @@ void BossWarden::_inputAnimation()
 	}
 	else if (_state == UnitState::JUMPIDLE)
 	{
-		_image = IMAGEMANAGER->findImage("수호자점프");
+		_image = IMAGEMANAGER->findImage("WardenJump");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 175);
 		if (_isLeft == 1)
@@ -313,7 +313,7 @@ void BossWarden::_inputAnimation()
 	}
 	else if (_state == UnitState::ATTACK)
 	{
-		_image = IMAGEMANAGER->findImage("수호자공격");
+		_image = IMAGEMANAGER->findImage("WardenAttack");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 175);
 		if (_isLeft == 1)
@@ -350,7 +350,7 @@ void BossWarden::_inputAnimation()
 	}
 	else if (_state == UnitState::DIE)
 	{
-		_image = IMAGEMANAGER->findImage("수호자죽음");
+		_image = IMAGEMANAGER->findImage("WardenDead");
 		_image->setY(_Collider[BaseEnum::UNIT].top - 225);
 
 		if (_isLeft == 1)
@@ -390,7 +390,7 @@ void BossWarden::_updateIdle()
 
 void BossWarden::_updateJump()
 {
-	if (_state == UnitState::JUMPATTACK && IMAGEMANAGER->findImage("수호자점프")->getFrameX() < 9 )
+	if (_state == UnitState::JUMPATTACK && IMAGEMANAGER->findImage("WardenJump")->getFrameX() < 9 )
 	{ 
 		return; 
 	}
@@ -470,7 +470,7 @@ void BossWarden::_updateAttack()
 			if (_image->getFrameX() >= _image->getMaxFrameX())
 			{
 				_state = UnitState::END;
-				IMAGEMANAGER->findImage("수호자공격")->setFrameX(0);
+				IMAGEMANAGER->findImage("WardenAttack")->setFrameX(0);
 				smash.clear();
 			}
 		}
@@ -479,7 +479,7 @@ void BossWarden::_updateAttack()
 			if (_image->getFrameX() <= 0)
 			{
 				_state = UnitState::END;
-				IMAGEMANAGER->findImage("수호자공격")->setFrameX(0);
+				IMAGEMANAGER->findImage("WardenAttack")->setFrameX(0);
 				smash.clear();
 			}
 		}
