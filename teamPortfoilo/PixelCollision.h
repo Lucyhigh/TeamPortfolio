@@ -8,9 +8,11 @@ private:
   
     Image* _playerIdleImage;
     Image* _playerMoveImage;
+    Image* _playerWakeUpImage;
 	Image* _bgImage;
 	Animation* _ani;
 	Animation* _ani2;
+	Animation* _ani3;
     RECT _rc;
 	RECT _cameraRect;
 
@@ -18,8 +20,10 @@ private:
 	float _speed;
 	int _x;
 	int _y;
+	int _count;
 	bool _isWalk;
 	bool _isLeft;
+	bool _isWakeUp;
 public:
 	HRESULT init(float x, float y, char* image);
     void release(void);
@@ -29,6 +33,8 @@ public:
 	int getX();
 	int getY();
 	void setX(int x);
+
+	bool getWakeUp();
 
 	float getPlayerPosX();
 	void setPlayerPosX(float x);

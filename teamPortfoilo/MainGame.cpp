@@ -53,8 +53,6 @@ HRESULT MainGame::init(void) //초기화
 	SCENEMANAGER->addScene("BeforeBoss1", new Boss1BeforeScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
 
-
-	
 	// Stage2
 	SCENEMANAGER->addScene("Boss2", new BossScene2);
 	SCENEMANAGER->addScene("Field1", new FieldScene1);
@@ -64,7 +62,7 @@ HRESULT MainGame::init(void) //초기화
 	
 #pragma endregion 
 
-	SCENEMANAGER->changeScene("Boss2");
+	SCENEMANAGER->changeScene("Field1");
 	return S_OK;
 }
 
