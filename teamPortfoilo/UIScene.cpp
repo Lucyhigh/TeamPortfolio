@@ -50,6 +50,11 @@ HRESULT UIScene::init(void)
 
 	_inven = new Inventory();
 	_inven->init();
+	_openInventory = false;
+
+	_option = new ();
+	_option->init();
+	_openOption = false;
 
 	return S_OK;
 }
@@ -85,6 +90,10 @@ void UIScene::update(void)
 	_inven->update();
 	if (KEYMANAGER->isOnceKeyDown('I')) _openInventory = true;
 	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _openInventory = false;
+
+
+	if (KEYMANAGER->isOnceKeyDown('O')) _openOption = true;
+	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _openOption = false;
 
 }
 

@@ -30,6 +30,7 @@ private:
 
 	Inventory* _inven;
 	bool _openInventory;
+	bool _openOption;
 
 	// 소지포인트 관련 우상단 UI
 	int _point;
@@ -55,6 +56,8 @@ public:
 	void setPotion();
 	void showPoint(bool openInventory);
 	void showPopup();
+
+	void openOption(bool state) { _openOption = state; }
 	
 };
 
