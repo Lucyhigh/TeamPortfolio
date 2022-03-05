@@ -271,8 +271,8 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("frameNpc", "Resources/Images/Object/deosgracias.bmp", 1664, 1536, 13, 6, MGT);
 	IMAGEMANAGER->addFrameImage("SandNPCStanding", "Resources/Images/Object/sandNpcStand.bmp", 924, 840, 7, 7, MGT);
 	//IMAGEMANAGER->addFrameImage("SandNPCStanding", "Resources/Images/Object/sandNpcStand2.bmp", 924, 840, 7, 7, MGT);
-	IMAGEMANAGER->addFrameImage("SandNPC", "Resources/Images/Object/sandNpc.bmp", 927, 468, 7, 4, MGT);
-	//IMAGEMANAGER->addFrameImage("SandNPC", "Resources/Images/Object/sandNpc2.bmp", 924, 476, 7, 4, MGT);
+	//IMAGEMANAGER->addFrameImage("SandNPC", "Resources/Images/Object/sandNpc.bmp", 924 * 2, 480 * 2, 7, 4, MGT);
+	IMAGEMANAGER->addFrameImage("SandNPC", "Resources/Images/Object/sandNpc2.bmp", 924 * 2, 480 * 2, 7, 4, MGT);
 
 	// Item
 	// 클리핑마스크 사용
