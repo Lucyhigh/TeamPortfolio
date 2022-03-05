@@ -8,7 +8,8 @@ HRESULT BossUI::init(void)
 	_hpBar = new ProgressBarBoss;
 	_hpBar->init(_hp); // init(_hp);
 
-	_alpha = 300;
+	_alpha = 255;
+	_alphaBack = false;
 	_isBossDead = false;
 
 	_count = 0;
@@ -34,35 +35,19 @@ void BossUI::update(void)
 		_isBossDead = true;
 	}
 
+
 	if (_isBossDead)
 	{
-		if (KEYMANAGER->isToggleKey('Z')) 		cout << _count << endl;
-
 		_count++;
-		if (_count >= 100)
+		if (_count >= 600)
 		{
-			if (_alphaBack == false)
+			_alpha -= 0.3f;
+			if (_alpha <= 0)
 			{
-				_alpha += 1;
-				if (_alpha >= 550)
-				{
-					_alpha = 450;
-					_alphaBack = true;
-				}
-			}
-			else
-			{
-				if (_alpha > 300)
-				{
-					_alpha -= 0.4;
-				}
-				else
-				{
-					_isBossDead = false;
-				}
+				_alpha = 0;
+				_isBossDead = false;
 			}
 		}
-		
 	}
 
 }
@@ -71,7 +56,7 @@ void BossUI::render(void)
 {
 	_hpBar->render();
 
-	if (_isBossDead)
+	if (_isBossDead && _count >= 200)
 	{
 		IMAGEMANAGER->findImage("bDieBg")->alphaRender(getMemDC(), _alpha*0.5);
 		IMAGEMANAGER->findImage("bDie")->alphaRender(getMemDC(), _alpha);

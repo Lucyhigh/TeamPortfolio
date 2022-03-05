@@ -21,7 +21,7 @@ PlayerCharacter::PlayerCharacter()
 	ObjectUpdate = bind(&PlayerCharacter::update, this);
 	ObjectRender = bind(&PlayerCharacter::render, this);
 
-	_hp[BaseEnum::STATE] = 70;
+	_hp[BaseEnum::STATE] = 20;
 	_hp[BaseEnum::MAX] = 136;
 	_mp[BaseEnum::STATE] = 45;
 	_mp[BaseEnum::MAX] = 96;
@@ -71,6 +71,7 @@ void PlayerCharacter::update(void)
 
 void PlayerCharacter::render(void)
 {
+	/*
 	HPEN hpen = CreatePen(PS_SOLID, 3, RGB(255, 0, 0));
 	HPEN hpenOld = (HPEN)::SelectObject(getMemDC(), (HGDIOBJ)hpen);
 	HBRUSH myBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
@@ -85,7 +86,7 @@ void PlayerCharacter::render(void)
 	SelectObject(getMemDC(), oldBrush);
 	DeleteObject(myBrush);
 	hpen = (HPEN)::SelectObject(getMemDC(), hpenOld);
-
+	*/
 
 	for (int i = 0; i < smash.size(); i++)
 	{

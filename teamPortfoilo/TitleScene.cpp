@@ -74,12 +74,12 @@ void TitleScene::update(void)
 	{
 		if (_menuIndex == 0)SCENEMANAGER->changeScene("Save");
 		if (_menuIndex == 1)SCENEMANAGER->changeScene("Option");
-
+		if (_menuIndex == 2)PostQuitMessage(0);
 	}
-		if (_menuIndex == 2)
-		{
-			if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) PostQuitMessage(0);
-		}
+		//if (_menuIndex == 2)
+		//{
+		//	if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) PostQuitMessage(0);
+		//}
 
 }
 

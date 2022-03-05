@@ -165,8 +165,8 @@ void ProgressBarBoss::update(void)
 {
 	// 클리핑 이미지 렌더 너비
 	//if (_hpWidth <= _hpMaxWidth) _hpMaxWidth -=0.1f;
-	if (_hpWidth < _hpWidthB) _hpWidthB -= 0.2f;
-	if (_hpWidthB - _hpWidth > 100)_hpWidthB -= 0.4f;
+	if (_hpWidth < _hpWidthB) _hpWidthB -= 0.3f;
+	if (_hpWidthB - _hpWidth > 100)_hpWidthB -= 0.6f;
 
 }
 
