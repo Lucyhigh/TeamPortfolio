@@ -15,17 +15,6 @@ HRESULT BossUI::init(void)
 	return S_OK;
 }
 
-HRESULT BossUI::init(int hp)
-{
-
-	_hp = (float)GAMEMANAGER->getMonster()[0]->getHp(BaseEnum::STATE); // n번째 보스
-	_hpBar = new ProgressBarBoss;
-	_hpBar->init(hp);
-
-	_alpha = 300;
-	_isBossDead = false;
-	return S_OK;
-}
 
 void BossUI::release(void)
 {

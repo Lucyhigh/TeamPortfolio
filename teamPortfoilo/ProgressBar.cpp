@@ -27,13 +27,13 @@ HRESULT ProgressBar::init(float hp, float mp)
 	_hpWidth = hp;
 	_mpWidth = mp;
 
-	_hpMaxWidth = hp;
-	_mpMaxWidth = mp;
+	_hpMaxWidth = GAMEMANAGER->getPlayer()->getHp(BaseEnum::MAX);
+	_mpMaxWidth = GAMEMANAGER->getPlayer()->getMp(BaseEnum::MAX);
 
 	// 여기서 이미지 관리
-	IMAGEMANAGER->addImage("pHp", "Resources/Images/UI/UI_Hp_gauge.bmp", _hpWidth, 6);
-	IMAGEMANAGER->addImage("pMp", "Resources/Images/UI/UI_Mp_gauge.bmp", _mpWidth, 6);
-	IMAGEMANAGER->addImage("pMpFull", "Resources/Images/UI/UI_fullMp_gauge.bmp", _mpWidth, 6);
+	IMAGEMANAGER->addImage("pHp", "Resources/Images/UI/UI_Hp_gauge.bmp", _hpMaxWidth, 6);
+	IMAGEMANAGER->addImage("pMp", "Resources/Images/UI/UI_Mp_gauge.bmp", _mpMaxWidth, 6);
+	IMAGEMANAGER->addImage("pMpFull", "Resources/Images/UI/UI_fullMp_gauge.bmp", _mpMaxWidth, 6);
 	//IMAGEMANAGER->addImage("pMpFullEffect", "Resources/Images/UI/UI_fullMp_gauge_effect.bmp", 12, 6);
 	_hpBarBg = IMAGEMANAGER->findImage("pHpBarEmpty");
 	_hpBarCover = IMAGEMANAGER->findImage("pHpBarCover");
@@ -77,9 +77,6 @@ void ProgressBar::release(void)
 
 void ProgressBar::update(void)
 {
-
-	_hpWidth = GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE);
-	_mpWidth = GAMEMANAGER->getPlayer()->getMp(BaseEnum::STATE);
 
 	//_rc = RectMakeCenter(_x, _y, _progressBarDown->getWidth(), _progressBarDown->getHeight());
 	if (_hpWidth >= _hpMaxWidth)  _hpWidth = _hpMaxWidth;
@@ -170,6 +167,7 @@ void ProgressBarBoss::update(void)
 	//if (_hpWidth <= _hpMaxWidth) _hpMaxWidth -=0.1f;
 	if (_hpWidth < _hpWidthB) _hpWidthB -= 0.2f;
 	if (_hpWidthB - _hpWidth > 100)_hpWidthB -= 0.4f;
+
 }
 
 void ProgressBarBoss::render(void)

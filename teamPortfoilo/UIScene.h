@@ -45,10 +45,7 @@ public:
 
 	void usePotion();
 	void showPotion(void);
-	// 포션병 회복 또는 업그레이드
 	void setPotion();
-
-	
 	void showPoint(bool openInventory);
 	
 };
