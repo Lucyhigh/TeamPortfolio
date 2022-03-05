@@ -55,14 +55,13 @@ HRESULT MainGame::init(void) //초기화
 	// Stage2
 	SCENEMANAGER->addScene("BeforeBoss2", new Boss2BeforeScene);
 	SCENEMANAGER->addScene("Boss2", new BossScene2);
-	SCENEMANAGER->addScene("Field1", new FieldScene1);
 	SCENEMANAGER->addScene("Last", new LastScene);
-	//SCENEMANAGER->addScene("Boss1", new EndingScene);
+	SCENEMANAGER->addScene("Ending", new EndingScene);
 
 	
 #pragma endregion 
 
-	SCENEMANAGER->changeScene("Opening");
+	SCENEMANAGER->changeScene("Ending");
 	return S_OK;
 }
 
@@ -73,7 +72,7 @@ void MainGame::release(void)
 	SCENEMANAGER->release();
 }
 
-void MainGame::update(void) // 갱신
+void MainGame::update(void)
 {
 	SCENEMANAGER->update();
 	GameNode::update();
@@ -85,16 +84,13 @@ void MainGame::update(void) // 갱신
 
 }
 
-void MainGame::render(void) // 그려줘
+void MainGame::render(void)
 {
-	//검은색 빈 비트맵
-	 //PatBlt() : 사각형 영역을 브러쉬로 채우는 함수
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 	TIMEMANAGER->render(getMemDC());
 
-	// ※ 씬 이미지 출력 ※
 	SCENEMANAGER->render();
 
-	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
+	this->getBackBuffer()->render(getHDC());
 
 }

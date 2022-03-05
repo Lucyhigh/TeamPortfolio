@@ -13,7 +13,7 @@ HRESULT Boss1BeforeScene::init(void)
     IMAGEMANAGER->findImage("¹öÆ°");
 	IMAGEMANAGER->findImage("k");
 
-    floor0 = new RECT{ 0, 600, _image->getWidth(), 670 };
+    floor0 = new RECT{ 0, 630, _image->getWidth(), 670 };
     floor1 = new RECT{ _image->getWidth(), 0, _image->getWidth()+100, _image->getHeight() };
     floor2 = new RECT{ 0, 0, 100, _image->getHeight() };
     _floor.push_back(floor0);

@@ -20,7 +20,6 @@ HRESULT LastScene::init(void)
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
 	_camera->setLimitsY(CENTER_Y, _image->getHeight());
 
-
 	_x = _image->getWidth() * 0.1;
 	_y = 1710;
 	_npcRc = RectMakeCenter(_x, _y, _frameNpcImage->getFrameWidth(), _frameNpcImage->getFrameHeight());
@@ -69,7 +68,6 @@ void LastScene::update(void)
 
 	_npcRcCenterX = (_npcRc.left + _npcRc.right) * 0.5;
 	_npcRcCenterY = (_npcRc.top + _npcRc.bottom) * 0.5;
-	// cout << _npcRcCenterX << " , " << _npcRcCenterY <<endl;
 
 	if (getDistance(_npcRcCenterX, _npcRcCenterY, _pixel->getX(), _pixel->getY()) < 200)
 	{
@@ -133,8 +131,6 @@ void LastScene::update(void)
 
 void LastScene::render(void)
 {
-
-	cout << endl;
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
 	IMAGEMANAGER->loopRender("¶ó½ºÆ®¾À µÞ¹è°æ", getMemDC(), &rc1,

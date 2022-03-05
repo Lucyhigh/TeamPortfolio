@@ -12,9 +12,9 @@ HRESULT PixelCollision::init(float x, float y, char* image)
 	_ani2 = new Animation;
 	_ani3 = new Animation;
 
-	_ani->init(_playerIdleImage->getWidth(), _playerIdleImage->getHeight(), 128, 73);//대기
-	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), 79, 70);//이동
-	_ani3->init(_playerWakeUpImage->getWidth(), _playerWakeUpImage->getHeight(), 128, 128);//기상
+	_ani->init(_playerIdleImage->getWidth(), _playerIdleImage->getHeight(), 128, 73);
+	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), 79, 70);
+	_ani3->init(_playerWakeUpImage->getWidth(), _playerWakeUpImage->getHeight(), 128, 128);
 
 	_ani->setFPS(7);
 	_ani->setPlayFrame(0, 12, false, true);
@@ -52,12 +52,12 @@ void PixelCollision::update(char* image)
 		_ani3->AniStart();
 		_count = 1;
 	}
-		_ani3->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
+	_ani3->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 
 	if (_count >= 1)
 	{
 		_count++;
-		if (_count > 200)
+		if (_count > 300)
 		{
 			_ani->AniStart();
 			_ani2->AniStart();
@@ -69,13 +69,13 @@ void PixelCollision::update(char* image)
 	{
 		_ani->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 		_ani2->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
-		if (KEYMANAGER->isStayKeyDown(VK_RIGHT))
+		if (KEYMANAGER->isStayKeyDown('A'))
 		{
 			_isLeft = false;
 			_isWalk = true;
 			_x += _speed;
 		}
-		else if (KEYMANAGER->isStayKeyDown(VK_LEFT))
+		else if (KEYMANAGER->isStayKeyDown('D'))
 		{
 			_isLeft = true;
 			_isWalk = true;
@@ -121,6 +121,8 @@ void PixelCollision::update(char* image)
 	{
 		_rc = RectMakeCenter(_x, _y, _playerWakeUpImage->getFrameWidth(), _playerWakeUpImage->getFrameHeight());
 	}
+
+	cout << _isWakeUp << endl;
 }
 
 void PixelCollision::render(void)
@@ -141,8 +143,10 @@ void PixelCollision::render(void)
 	}
 	else
 	{
-		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY-11, _ani3);
+		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY - 11, _ani3);
 	}
+
+	//cout << rcCenterX << endl;
 }
 
 int PixelCollision::getX()
@@ -189,5 +193,3 @@ void PixelCollision::setCameraRect(RECT rect)
 {
 	_cameraRect = rect;
 }
-
-
