@@ -31,9 +31,6 @@
     <ClCompile Include="EndingScene.cpp">
       <Filter>Blasphemous\GameScene\Stage2</Filter>
     </ClCompile>
-    <ClCompile Include="FieldScene1.cpp">
-      <Filter>Blasphemous\GameScene\Stage2</Filter>
-    </ClCompile>
     <ClCompile Include="TitleScene.cpp">
       <Filter>Blasphemous\GameScene\UI</Filter>
     </ClCompile>
@@ -109,15 +106,6 @@
     <ClCompile Include="Item.cpp">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
     </ClCompile>
-    <ClCompile Include="KnifeMonster.cpp">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
-    </ClCompile>
-    <ClCompile Include="RockThrowMonster.cpp">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
-    </ClCompile>
-    <ClCompile Include="WheelMonster.cpp">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
-    </ClCompile>
     <ClCompile Include="Boss1BeforeScene.cpp">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClCompile>
@@ -184,9 +172,6 @@
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClInclude>
     <ClInclude Include="EndingScene.h">
-      <Filter>Blasphemous\GameScene\Stage2</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldScene1.h">
       <Filter>Blasphemous\GameScene\Stage2</Filter>
     </ClInclude>
     <ClInclude Include="TitleScene.h">
@@ -269,15 +254,6 @@
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Blasphemous\GameScene\UI\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="KnifeMonster.h">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
-    </ClInclude>
-    <ClInclude Include="RockThrowMonster.h">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
-    </ClInclude>
-    <ClInclude Include="WheelMonster.h">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
     </ClInclude>
     <ClInclude Include="Boss1BeforeScene.h">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
@@ -373,9 +349,6 @@
     </Filter>
     <Filter Include="Blasphemous\GameScene\UI\Base">
       <UniqueIdentifier>{c44ef8f1-7005-4328-b332-80f0c2d12082}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blasphemous\Characters\FieldMonster">
-      <UniqueIdentifier>{aa6744a2-4d1f-4709-bfd0-e784795f8bc7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blasphemous\GameScene\Pixel">
       <UniqueIdentifier>{29367146-ea9a-4fdc-b47b-66b633d6288e}</UniqueIdentifier>

@@ -37,11 +37,12 @@ void EndingScene::update(void)
     }
     if (_textIndex >= 3)
     {
-        if (_timer > 800)
+        if (_timer > 500)
         {
             SCENEMANAGER->changeScene("Title");
         }
     }
+	cout << _timer << endl;
 }
 
 void EndingScene::render(void)

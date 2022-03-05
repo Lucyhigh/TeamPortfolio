@@ -54,7 +54,7 @@ void BossScene2::update(void)
 	}
 	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 70)
 	{
-		SCENEMANAGER->changeScene("Boss2");
+		SCENEMANAGER->changeScene("Last");
 	}
 	_collider->update();
 	GAMEMANAGER->getUI()->update();

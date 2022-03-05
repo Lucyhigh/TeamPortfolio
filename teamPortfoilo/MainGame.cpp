@@ -15,7 +15,6 @@
 #include "BossScene1.h"
 #include "Boss2BeforeScene.h"
 #include "BossScene2.h"
-#include "FieldScene1.h"
 #include "LastScene.h"
 #include "EndingScene.h"
 #pragma endregion 
@@ -59,7 +58,7 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	SCENEMANAGER->addScene("Ending", new EndingScene);
 
 //<<<<<<< HEAD
-	SCENEMANAGER->changeScene("Opening");
+	SCENEMANAGER->changeScene("Last");
 //=======
 //	SCENEMANAGER->changeScene("Ending");
 //>>>>>>> 2d2b20b6327ba3be6030d8294fab9fa1e764b48d
