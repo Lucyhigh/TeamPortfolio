@@ -21,6 +21,10 @@ private:
 	int _count;
 	int _indexA, _indexB;
 
+	bool _areaTextOn;
+	int _areaTextAlpha;
+
+
 public:
 	Boss2BeforeScene() {}
 	~Boss2BeforeScene() {}

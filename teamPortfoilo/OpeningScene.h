@@ -15,6 +15,12 @@ private:
     int _bgAlpha;
     int _alpha;
     int _textAlpha;
+
+
+	bool _areaTextOn;
+	int _areaTextAlpha;
+
+
 public:
     HRESULT init(void);
     void release(void);

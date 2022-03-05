@@ -24,6 +24,9 @@ HRESULT LastScene::init(void)
 	_y = 1710;
 	_npcRc = RectMakeCenter(_x, _y, _frameNpcImage->getFrameWidth(), _frameNpcImage->getFrameHeight());
 
+	_areaTextOn = false;
+	_areaTextAlpha = 0;
+
 	return S_OK;
 }
 
@@ -37,6 +40,23 @@ void LastScene::release(void)
 
 void LastScene::update(void)
 {
+
+	if (_areaTextOn)
+	{
+		_areaTextAlpha -= 0.05f;
+		if (_areaTextAlpha <= 0) _areaTextAlpha = 0;
+	}
+	else
+	{
+		_areaTextAlpha++;
+		if (_areaTextAlpha >= 255)
+		{
+			_areaTextAlpha = 255; _areaTextOn = true;
+		}
+	}
+
+
+
 	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
 	TEMPSOUNDMANAGER->playSoundWithKey("La");
 
@@ -189,4 +209,7 @@ void LastScene::render(void)
 			IMAGEMANAGER->alphaRender("enter", getMemDC(), WINSIZE_X*0.90, WINSIZE_Y*0.90, _textAlpha + 70);
 		}
 	}
+
+	IMAGEMANAGER->findImage("area4")->alphaRender(getMemDC(), 0, 130, _areaTextAlpha);
+	GAMEMANAGER->getUI()->render();
 }

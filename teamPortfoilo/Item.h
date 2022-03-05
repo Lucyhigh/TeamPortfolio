@@ -4,7 +4,7 @@
 
 enum class Category
 {
-	// 인벤토리 순서
+	// inventory cateNum
 	NONE, 
 	ROSARY, 
 	RELIC, 
@@ -17,38 +17,37 @@ enum class Category
 
 enum class ItemState
 {
-	// 미습득, 습득, 선택, 메아쿨파 미선택
 	NONE, HAVE, SELECT, MEACULPANONE
 };
 
 class Item : public GameNode
 {
 public:
-	AniSceneItem* _ani; // 아이템 선택시 테두리 애니메이션
+	AniSceneItem* _ani; // outlineAnimation
 
-	Image* _slotImg; // 이미지 파일에서 클리핑 할 것. 
+	Image* _slotImg;  
 	Image* _iconImg;
 	Image* _equipImg;
 
-	int _index; // 전체 아이템 중 n번째 아이템 순번. 나중에 조건문에 넣을 대상 
-	int _cateIndex; // 카테고리의 n번째 아이템
-	Category _category; // Y 프레임 
-	ItemState _state; // 기본 NONE
-	string _name;	// 파일입출력 
-	string _script;  // 파일입출력 
-	bool _equip; // true면 각 카테고리의 장비 위치에도 이미지 노출 , 스킬이면 해금 
+	int _index;				// all item index 
+	int _cateIndex;			// categoty index
+	Category _category;		// Y frame 
+	ItemState _state;		// standard NONE
+	string _name;			// file inOut 
+	string _script;			// file inOut 
+	bool _equip;  
 	bool _isSelect;
-	int _hp; // 장착여부에 따라 스탯 조정
+	int _hp; 
 	int _mp;
 	int _att;
 	int _dff;
-	int _iconX; // 아이콘 이미지 위치 - 반복문으로 인벤토리에 자리잡기 -> 스위치문으로 카테고리에 따라 자리 바꾸기 
+	int _iconX;				// icon image position in bmp
 	int _iconY;
-	float _posX; // 아이템 위치 
+	float _posX;			// image position in inventory
 	float _posY;
-	float _equipPosX; // 장착 아이템 위치 
+	float _equipPosX;		// equip item show position
 	float _equipPosY;
-	string _script2;  // 퀘스트 아이템 상세 설명
+	string _script2;		// quest item script
 	//LPCWSTR  _testScript;
 public:
 	Item() {}

@@ -18,6 +18,11 @@ HRESULT OpeningScene::init(void)
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
 	_camera->setLimitsY(CENTER_Y, _image->getHeight());
 
+
+
+	_areaTextOn = false;
+	_areaTextAlpha = 0;
+
 	return S_OK;
 }
 
@@ -31,7 +36,20 @@ void OpeningScene::release(void)
 
 void OpeningScene::update(void)
 {
-	cout << _ptMouse.y << endl;
+	if (_areaTextOn)
+	{
+		_areaTextAlpha -= 0.05f;
+		if (_areaTextAlpha <= 0) _areaTextAlpha = 0;
+	}
+	else
+	{
+		_areaTextAlpha++;
+		if (_areaTextAlpha >= 255)
+		{
+			_areaTextAlpha = 255; _areaTextOn = true;
+		}
+	}
+
 
 	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
 	TEMPSOUNDMANAGER->playSoundWithKey("Luto");
@@ -55,6 +73,8 @@ void OpeningScene::update(void)
 
 	_pixel->setCameraRect(_camera->getScreenRect());
 	_pixel->update("openingScenePixel");
+
+	GAMEMANAGER->getUI()->update();
 }
 
 void OpeningScene::render(void)
@@ -87,4 +107,7 @@ void OpeningScene::render(void)
 
 
 	_camera->render();
+
+	IMAGEMANAGER->findImage("area1")->alphaRender(getMemDC(), 0, 130, _areaTextAlpha);
+	GAMEMANAGER->getUI()->render();
 }

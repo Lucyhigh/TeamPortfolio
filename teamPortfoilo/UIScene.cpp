@@ -26,7 +26,7 @@ HRESULT UIScene::init(void)
 #pragma region Hp Mp Potion
 	_hpBar = new ProgressBar;
 	_hpBar->init(_hp, _mp);
-	_point = 100;
+	_point = 0;
 
 	// Æ÷¼Ç 
 	for (int i = 0; i < _potionMax; i++)

@@ -69,7 +69,7 @@ void SaveScene::update(void)
 	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
 	{
 		// 임시 씬 저장. 세이브 데이터에서 씬 정보 저장 필요?
-		if (_saveIndex == 1) SCENEMANAGER->changeScene("Boss2");
+		if (_saveIndex == 1) SCENEMANAGER->changeScene("Last");
 		if (_saveIndex == 2) SCENEMANAGER->changeScene("Opening");
 		if (_saveIndex == 3) SCENEMANAGER->changeScene("Opening");
 	}
@@ -123,7 +123,7 @@ void SaveScene::showSaveData(void)
 
 				// 플레이어 세이브  정보 
 				SetTextAlign(getMemDC(), TA_LEFT);
-				LPCWSTR tempArea = L"알베로의 납골당"; // 임시 지역 텍스트 
+				LPCWSTR tempArea = L"기적의 요람"; // 임시 지역 텍스트 
 				FONTMANAGER->drawText(getMemDC(), _viSave->x + 90, _viSave->y + 25,
 					"둥근모꼴", 25, 100, tempArea, wcslen(tempArea), OTEXT);
 
@@ -152,7 +152,7 @@ void SaveScene::showSaveData(void)
 
 				// 플레이어 세이브  정보 
 				SetTextAlign(getMemDC(), TA_LEFT);
-				LPCWSTR tempArea = L"알베로의 납골당"; // 임시 지역 텍스트 
+				LPCWSTR tempArea = L"기적의 요람"; // 임시 지역 텍스트 
 				FONTMANAGER->drawText(getMemDC(), _viSave->x + 90, _viSave->y + 25,
 					"둥근모꼴", 25, 100, tempArea, wcslen(tempArea), XTEXT);
 

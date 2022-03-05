@@ -16,7 +16,7 @@ HRESULT AniSceneTitle::init(void)
 	_aMTitleEff = new Animation;
 	_aMTitleEff->init(_aITitleEff->getWidth(), _aITitleEff->getHeight(), 1200, 675);
 	_aMTitleSelecte = new Animation;
-	_aMTitleSelecte->init(_aITitleSelecte->getWidth(), _aITitleSelecte->getHeight(), 140,140);
+	_aMTitleSelecte->init(_aITitleSelecte->getWidth(), _aITitleSelecte->getHeight(),48,48);
 
 	_aMTitleBg->setDefPlayFrame(false, true);
 	_aMTitleBg->setFPS(5);
@@ -24,7 +24,7 @@ HRESULT AniSceneTitle::init(void)
 	_aMTitleMain->setFPS(1);
 	_aMTitleEff->setDefPlayFrame(false, true);
 	_aMTitleEff->setFPS(2);
-	_aMTitleSelecte->setDefPlayFrame(true, true);
+	_aMTitleSelecte->setDefPlayFrame(false, true);
 	_aMTitleSelecte->setFPS(2);
 
 

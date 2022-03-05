@@ -70,7 +70,13 @@ void BossScene2::render(void)
 
 	GAMEMANAGER->getPlayer()->ObjectRender();
 
+	_collider->render();
+
+	SetTextAlign(getMemDC(), TA_CENTER);
+	LPCWSTR script = L"죽은자들을 위해 노래하는 성녀, 이시도라";
+	FONTMANAGER->drawText(getMemDC(), CENTER_X, WINSIZE_Y - 90, "둥근모꼴", 22, 200,
+		script, wcslen(script), RGB(175, 175, 115));
+
 	GAMEMANAGER->getUI()->render();
 	_bossHp->render();
-	_collider->render();
 }

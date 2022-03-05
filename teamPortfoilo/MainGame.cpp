@@ -55,16 +55,9 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	SCENEMANAGER->addScene("Last", new LastScene);
 	SCENEMANAGER->addScene("Ending", new EndingScene);
 
-<<<<<<< HEAD
-	SCENEMANAGER->changeScene("Boss1");
-	//SCENEMANAGER->changeScene("Ending");
-=======
-//<<<<<<< HEAD
-	SCENEMANAGER->changeScene("Opening");
-//=======
-//	SCENEMANAGER->changeScene("Ending");
-//>>>>>>> 2d2b20b6327ba3be6030d8294fab9fa1e764b48d
->>>>>>> origin/YEE
+
+	SCENEMANAGER->changeScene("BeforeBoss1");
+
 	return S_OK;
 }
 
