@@ -13,7 +13,6 @@ HRESULT OpeningScene::init(void)
     _bgAlpha = 0;
     _count = 0;
 
-
 	_camera = new Camera;
 	_camera->init();
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
@@ -70,8 +69,11 @@ void OpeningScene::render(void)
 
 	_pixel->render();
 
-	//if (!_pixel->getWakeUp())
+	if (!_pixel->getWakeUp())
 	{
+		IMAGEMANAGER->render("k", getMemDC(),
+			_pixel->getX() - _camera->getScreenRect().left,
+			_pixel->getY() - _camera->getScreenRect().top - 100);
 	}
 	cout << _pixel->getX() << " , " << _image->getWidth()*0.4 << endl;
 
@@ -82,8 +84,6 @@ void OpeningScene::render(void)
 											-_camera->getScreenRect().left, 
 											-_camera->getScreenRect().top);
 
-	IMAGEMANAGER->render("k", getMemDC(), 
-							 _pixel->getX() -_camera->getScreenRect().left,
-							 _pixel->getY() -_camera->getScreenRect().top - 100);
+	
 	_camera->render();
 }

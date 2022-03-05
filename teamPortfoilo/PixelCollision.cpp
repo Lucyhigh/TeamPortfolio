@@ -16,13 +16,13 @@ HRESULT PixelCollision::init(float x, float y, char* image)
 	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), 79, 70);//이동
 	_ani3->init(_playerWakeUpImage->getWidth(), _playerWakeUpImage->getHeight(), 128, 128);//기상
 
-	_ani->setFPS(6);
+	_ani->setFPS(7);
 	_ani->setPlayFrame(0, 12, false, true);
 
-	_ani2->setFPS(6);
+	_ani2->setFPS(7);
 	_ani2->setPlayFrame(0, 13, false, true);
 
-	_ani3->setFPS(6);
+	_ani3->setFPS(7);
 	_ani3->setDefPlayFrame(false, false);
 
 	_isWalk = false;
@@ -50,9 +50,9 @@ void PixelCollision::update(char* image)
 	if (KEYMANAGER->isOnceKeyDown('K'))
 	{
 		_ani3->AniStart();
-		_ani3->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 		_count = 1;
 	}
+		_ani3->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 
 	if (_count >= 1)
 	{
@@ -152,7 +152,7 @@ void PixelCollision::render(void)
 	}
 	else
 	{
-		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY, _ani3);
+		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY-11, _ani3);
 	}
 	
 	//cout << rcCenterX << endl;
