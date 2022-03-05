@@ -77,7 +77,7 @@ void OpeningScene::render(void)
 	{
 		IMAGEMANAGER->render("k", getMemDC(),
 			_pixel->getX() - _camera->getScreenRect().left,
-			_pixel->getY() - _camera->getScreenRect().top - 100);
+			_pixel->getY() - _camera->getScreenRect().top - 200);
 	}
 
 	IMAGEMANAGER->render("오프닝씬 앞시체", getMemDC(),
