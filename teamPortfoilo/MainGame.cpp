@@ -9,8 +9,7 @@
 #include "TempSoundTest.h"
 #include "UIScene.h"
 //Stage
-#include "StartScene.h"
-#include "OpeningScene.h"//
+#include "OpeningScene.h"
 #include "Boss1BeforeScene.h"
 #include "BossScene1.h"
 #include "Boss2BeforeScene.h"
@@ -46,7 +45,6 @@ HRESULT MainGame::init(void) //초기화
 	SCENEMANAGER->addScene("Option", new OptionScene);
 
 	// Stage1
-	SCENEMANAGER->addScene("Start", new StartScene);
 	SCENEMANAGER->addScene("Opening", new OpeningScene);
 	SCENEMANAGER->addScene("BeforeBoss1", new Boss1BeforeScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
@@ -58,7 +56,7 @@ HRESULT MainGame::init(void) //초기화
 	SCENEMANAGER->addScene("Ending", new EndingScene);
 
 //<<<<<<< HEAD
-	SCENEMANAGER->changeScene("Last");
+	SCENEMANAGER->changeScene("Opening");
 //=======
 //	SCENEMANAGER->changeScene("Ending");
 //>>>>>>> 2d2b20b6327ba3be6030d8294fab9fa1e764b48d

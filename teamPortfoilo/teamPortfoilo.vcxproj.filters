@@ -25,9 +25,6 @@
     <ClCompile Include="MainGame.cpp">
       <Filter>Blasphemous\GameScene\MainGame</Filter>
     </ClCompile>
-    <ClCompile Include="StartSecen.cpp">
-      <Filter>Blasphemous\GameScene\Stage1</Filter>
-    </ClCompile>
     <ClCompile Include="EndingScene.cpp">
       <Filter>Blasphemous\GameScene\Stage2</Filter>
     </ClCompile>
@@ -167,9 +164,6 @@
     </ClInclude>
     <ClInclude Include="MainGame.h">
       <Filter>Blasphemous\GameScene\MainGame</Filter>
-    </ClInclude>
-    <ClInclude Include="StartScene.h">
-      <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClInclude>
     <ClInclude Include="EndingScene.h">
       <Filter>Blasphemous\GameScene\Stage2</Filter>

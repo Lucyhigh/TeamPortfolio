@@ -10,47 +10,39 @@ HRESULT ImageClass::init(void)
 	// Ű���� ��������! (��������)
 
 #pragma region PlayerImage
-	IMAGEMANAGER->addFrameImage("������", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�����̵�", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("��������", "Resources/Images/Player/playerFrontJumpOn.bmp", 1120, 158, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("���򽽶��̵�", "Resources/Images/Player/playerSliding.bmp", 1455, 144, 15, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�������0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�������0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�������1", "Resources/Images/Player/playerAttTwoAddEffe.bmp", 725, 144, 5, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�������2", "Resources/Images/Player/playerAttThreeAddEffect.bmp", 2600, 170, 14, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�����ܾ���", "Resources/Images/Player/playerUpwardAtt.bmp", 972, 148, 12, 2, MGT);
-	IMAGEMANAGER->addFrameImage("������������", "Resources/Images/Player/playerJumpAttack.bmp", 1510, 200, 10, 2, MGT);
-	IMAGEMANAGER->addFrameImage("����������������Ʈ", "Resources/Images/Player/p_jumpattack_ef.bmp", 604, 200, 4, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�����ܾ�������Ʈ", "Resources/Images/Player/p_upattack_ef.bmp", 320, 300, 4, 2, MGT);
-	IMAGEMANAGER->addFrameImage("��������Ʈ", "Resources/Images/Player/effectTwo.bmp", 792, 164, 6, 2, MGT);
-	IMAGEMANAGER->addFrameImage("����⵵", "Resources/Images/Player/playerParyer.bmp", 1404, 208, 18, 2, MGT);
-	IMAGEMANAGER->addFrameImage("��������", "Resources/Images/Player/playerPotion.bmp", 1900, 280, 19, 2, MGT);
-	IMAGEMANAGER->addFrameImage("������", "Resources/Images/Player/p_risingFromFallen.bmp", 896, 768, 7, 6, MGT);
+	IMAGEMANAGER->addFrameImage("p_idle", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_move", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_FrontJumpOn", "Resources/Images/Player/playerFrontJumpOn.bmp", 1120, 158, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_Sliding", "Resources/Images/Player/playerSliding.bmp", 1455, 144, 15, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_AttZero", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_AttOne", "Resources/Images/Player/playerAttTwoAddEffe.bmp", 725, 144, 5, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_AttTwo", "Resources/Images/Player/playerAttThreeAddEffect.bmp", 2600, 170, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_UpwardAtt", "Resources/Images/Player/playerUpwardAtt.bmp", 972, 148, 12, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_JumpAttack", "Resources/Images/Player/playerJumpAttack.bmp", 1510, 200, 10, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_jumpattack", "Resources/Images/Player/p_jumpattack_ef.bmp", 604, 200, 4, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_upattack_ef", "Resources/Images/Player/p_upattack_ef.bmp", 320, 300, 4, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_atk_ef", "Resources/Images/Player/effectTwo.bmp", 792, 164, 6, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_paryer", "Resources/Images/Player/playerParyer.bmp", 1404, 208, 18, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_potion", "Resources/Images/Player/playerPotion.bmp", 1900, 280, 19, 2, MGT);
+	IMAGEMANAGER->addFrameImage("p_rising", "Resources/Images/Player/p_risingFromFallen.bmp", 896, 768, 7, 6, MGT);
 
 #pragma endregion
 
 #pragma region BossImage
 
-	IMAGEMANAGER->addFrameImage("��ȣ�ڴ��", "Resources/Images/Boss/BossWardenIdle.bmp", 1650*2, 334*2, 10, 2, MGT);
-	IMAGEMANAGER->addFrameImage("��ȣ������", "Resources/Images/Boss/BassWardenJump.bmp", 5425*2, 414*2, 25, 2, MGT);
-	IMAGEMANAGER->addFrameImage("��ȣ�ڰ���", "Resources/Images/Boss/tutoBossAttack.bmp", 8280 * 2, 430 * 2, 24, 2, MGT);
-	IMAGEMANAGER->addFrameImage("��ȣ������", "Resources/Images/Boss/tutoBossDead.bmp", 20384 * 2, 494 * 2, 49, 2, MGT);
+	IMAGEMANAGER->addFrameImage("WardenIdle", "Resources/Images/Boss/BossWardenIdle.bmp", 1650*2, 334*2, 10, 2, MGT);
+	IMAGEMANAGER->addFrameImage("WardenJump", "Resources/Images/Boss/BassWardenJump.bmp", 5425*2, 414*2, 25, 2, MGT);
+	IMAGEMANAGER->addFrameImage("WardenAttack", "Resources/Images/Boss/tutoBossAttack.bmp", 8280 * 2, 430 * 2, 24, 2, MGT);
+	IMAGEMANAGER->addFrameImage("WardenDead", "Resources/Images/Boss/tutoBossDead.bmp", 20384 * 2, 494 * 2, 49, 2, MGT);
 
 #pragma endregion
 
-	// �÷��̾� / ���� / �ʵ� / UI / Item / �ִϸ��̼� ��
-
-	// �׽�Ʈ�� �̹��� 
 	IMAGEMANAGER->addImage("���̺�", "Resources/test/save.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("�޴�", "Resources/test/menu.bmp", 1200, 675);
 
 	// ================================================================================================================
 
 #pragma region PlayerImage
-
-	// �׽�Ʈ�� �̹��� 
-	IMAGEMANAGER->addFrameImage("������", "Resources/Images/Player/p_idle.bmp", 1664 * 1.9, 146*1.9, 13, 2, MGT);
-	IMAGEMANAGER->addFrameImage("�����̵�", "Resources/Images/Player/p_move.bmp", 1106 * 1.9, 140*1.9, 14, 2, MGT);
 
 	// Player 
 	IMAGEMANAGER->addFrameImage("pIdle", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
@@ -104,9 +96,9 @@ HRESULT ImageClass::init(void)
 
 #pragma region UI Scene 
 
-	// Ÿ��Ʋ �̹��� 
+	// title image
 	IMAGEMANAGER->addImage("AnyButton", "Resources/Images/BackGround/UI/anyButtonBg.bmp", 1200, 675);
-	// Ÿ��Ʋ �ִϸ��̼� �̹��� 640*360
+	// title image 640*360
 	IMAGEMANAGER->addImage("titleBg", "Resources/Images/Object/titleBg.bmp", 9600,360,15,1, MGT);
 	IMAGEMANAGER->addImage("titleMain", "Resources/Images/Object/titleMain.bmp", 8960, 360, 14, 1, MGT);
 	IMAGEMANAGER->addImage("titleEffect", "Resources/Images/Object/titleEffect.bmp", 28160, 360, 44, 1, MGT);
@@ -167,43 +159,43 @@ HRESULT ImageClass::init(void)
 
 
 #pragma region Stage Scene
-    IMAGEMANAGER->addImage("�����׾� �ٴ�", "Resources/Images/BackGround/openingScenefloor.bmp", 4150 * 0.5, 1694 * 0.5, MGT);
-    IMAGEMANAGER->addImage("�����׾� �׽�Ʈ���", "Resources/Images/BackGround/openingSceneAll.bmp", 4150 * 0.5, 1694 * 0.5);
-    IMAGEMANAGER->addImage("�����׾� �޹��", "Resources/Images/BackGround/openingSceneLastBG.bmp", 4150 * 0.5, 1694 * 0.5);
-    IMAGEMANAGER->addImage("�����׾� �ս�ü", "Resources/Images/BackGround/openingSceneFrontBody.bmp", 4150 * 0.5, 1694 * 0.5, MGT);
-    IMAGEMANAGER->addImage("�����׾� �չ�", "Resources/Images/BackGround/openingSceneFrontDoor.bmp", 4150 * 0.5, 1694 * 0.5, MGT);
-	IMAGEMANAGER->addImage("�����׾� �ȼ�", "Resources/Images/BackGround/openingScenePixel.bmp", 4150 * 0.5, 1694 * 0.5, MGT);
+    IMAGEMANAGER->addImage("openingSceneFloor", "Resources/Images/BackGround/openingScenefloor.bmp", 4150 * 0.5, 1694 * 0.5, MGT);
+    IMAGEMANAGER->addImage("openingSceneAll", "Resources/Images/BackGround/openingSceneAll.bmp", 4150 * 0.5, 1694 * 0.5);
+    IMAGEMANAGER->addImage("openingSceneLastBG", "Resources/Images/BackGround/openingSceneLastBG.bmp", 4150 * 0.5, 1694 * 0.5);
+    IMAGEMANAGER->addImage("openingSceneFrontBody", "Resources/Images/BackGround/openingSceneFrontBody.bmp", 4150 * 0.5, 1694 * 0.5, MGT);
+    IMAGEMANAGER->addImage("openingSceneFrontDoor", "Resources/Images/BackGround/openingSceneFrontDoor.bmp", 4150 * 0.5, 1694 * 0.5, MGT);
+	IMAGEMANAGER->addImage("openingScenePixel", "Resources/Images/BackGround/openingScenePixel.bmp", 4150 * 0.5, 1694 * 0.5, MGT);
 
-	IMAGEMANAGER->addImage("��1���", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("����1�� ���", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);
-	IMAGEMANAGER->addImage("����1�� FrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);
-	IMAGEMANAGER->addImage("����1�� �ٴ�", "Resources/Images/BackGround/boss1beforeSceneFloor.bmp", 4360, 675,MGT);
+	IMAGEMANAGER->addImage("boss1beforeSceneBg", "Resources/Images/BackGround/bg1.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("boss1beforeSceneBg2", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675);
+	IMAGEMANAGER->addImage("boss1beforeSceneFrontDoor", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675,MGT);
+	IMAGEMANAGER->addImage("boss1beforeSceneFloor", "Resources/Images/BackGround/boss1beforeSceneFloor.bmp", 4360, 675,MGT);
 
-	IMAGEMANAGER->addImage("����1 �ٴ�", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675, MGT);
-	IMAGEMANAGER->addImage("����1 �޹��", "Resources/Images/BackGround/boss1LastBG.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("����1 �޽�ü", "Resources/Images/BackGround/boss1bodysBG.bmp", 2460, 675,MGT);
-	IMAGEMANAGER->addImage("����1 �ս�ü", "Resources/Images/BackGround/boss1FrontBody.bmp", 2460, 675,MGT);
-	IMAGEMANAGER->addImage("����1 �չ�", "Resources/Images/BackGround/boss1FrontDoor.bmp", 2460, 675,MGT);
+	IMAGEMANAGER->addImage("boss1Floor", "Resources/Images/BackGround/boss1floor.bmp", 2460, 675, MGT);
+	IMAGEMANAGER->addImage("boss1LastBG", "Resources/Images/BackGround/boss1LastBG.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("boss1BodysBG", "Resources/Images/BackGround/boss1bodysBG.bmp", 2460, 675,MGT);
+	IMAGEMANAGER->addImage("boss1FrontBody", "Resources/Images/BackGround/boss1FrontBody.bmp", 2460, 675,MGT);
+	IMAGEMANAGER->addImage("boss1FrontDoor", "Resources/Images/BackGround/boss1FrontDoor.bmp", 2460, 675,MGT);
 
-	IMAGEMANAGER->addImage("��2���", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("��3���", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("bg2", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("bg3", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 
-	IMAGEMANAGER->addImage("����2�� ���", "Resources/Images/BackGround/Boss2before.bmp", 1200, 675);
-	IMAGEMANAGER->addImage("����2�� FrontDoor", "Resources/Images/BackGround/Boss2beforeFG.bmp", 1200, 675,MGT);
+	IMAGEMANAGER->addImage("Boss2beforeBG", "Resources/Images/BackGround/Boss2before.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("Boss2beforeFrontDoor", "Resources/Images/BackGround/Boss2beforeFG.bmp", 1200, 675,MGT);
 
-	IMAGEMANAGER->addImage("��Ʈ�� �ٴ�", "Resources/Images/BackGround/endingfloor.bmp", 5000, 1862, MGT);
-	IMAGEMANAGER->addImage("��Ʈ�� �׽�Ʈ���", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);//
-	IMAGEMANAGER->addImage("��Ʈ�� �޹��", "Resources/Images/BackGround/endingBG.bmp", 5000, 1862);
-	IMAGEMANAGER->addImage("��Ʈ�� �չ��", "Resources/Images/BackGround/endingFG.bmp", 5000, 1862, MGT);
-	IMAGEMANAGER->addImage("��Ʈ�� �չ��2", "Resources/Images/BackGround/endingFG2.bmp", 5000, 1862, MGT);
-	IMAGEMANAGER->addImage("��Ʈ�� �ȼ�", "Resources/Images/BackGround/endingScenePixel.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("LastSceneFloor", "Resources/Images/BackGround/endingfloor.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("LastSceneTest", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);//
+	IMAGEMANAGER->addImage("LastSceneBG", "Resources/Images/BackGround/endingBG.bmp", 5000, 1862);
+	IMAGEMANAGER->addImage("LastSceneFG", "Resources/Images/BackGround/endingFG.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("LastSceneFG2", "Resources/Images/BackGround/endingFG2.bmp", 5000, 1862, MGT);
+	IMAGEMANAGER->addImage("LastScenePixel", "Resources/Images/BackGround/endingScenePixel.bmp", 5000, 1862, MGT);
 
-	IMAGEMANAGER->addImage("�����̹���1", "Resources/Images/Animation/endingl.bmp", WINSIZE_X,WINSIZE_Y);
-	IMAGEMANAGER->addImage("�����̹���2", "Resources/Images/Animation/ending2.bmp", WINSIZE_X, WINSIZE_Y);
-    IMAGEMANAGER->addImage("�����̹���3", "Resources/Images/Animation/ending3.bmp", WINSIZE_X, WINSIZE_Y);
-    IMAGEMANAGER->addImage("�����̹���4", "Resources/Images/Animation/ending4.bmp", WINSIZE_X, WINSIZE_Y);
-    IMAGEMANAGER->addImage("�����̹���5", "Resources/Images/Animation/ending5.bmp", WINSIZE_X,WINSIZE_Y);
-    IMAGEMANAGER->addImage("����ȯ", "Resources/Images/Animation/sceneChange.bmp", WINSIZE_X,WINSIZE_Y);
+	IMAGEMANAGER->addImage("Ending1", "Resources/Images/Animation/endingl.bmp", WINSIZE_X,WINSIZE_Y);
+	IMAGEMANAGER->addImage("Ending2", "Resources/Images/Animation/ending2.bmp", WINSIZE_X, WINSIZE_Y);
+    IMAGEMANAGER->addImage("Ending3", "Resources/Images/Animation/ending3.bmp", WINSIZE_X, WINSIZE_Y);
+    IMAGEMANAGER->addImage("Ending4", "Resources/Images/Animation/ending4.bmp", WINSIZE_X, WINSIZE_Y);
+    IMAGEMANAGER->addImage("Ending5", "Resources/Images/Animation/ending5.bmp", WINSIZE_X,WINSIZE_Y);
+    IMAGEMANAGER->addImage("changeScene", "Resources/Images/Animation/sceneChange.bmp", WINSIZE_X,WINSIZE_Y);
 
 
 	// ���� �� �ڸ� ���� �̹��� 
@@ -253,7 +245,7 @@ HRESULT ImageClass::init(void)
 
 #pragma region Object
 
-	IMAGEMANAGER->addImage("��ư", "Resources/Images/Object/buttomE.bmp", 35 * 1.9, 38 * 1.9, true, RGB(255, 0, 255));
+	IMAGEMANAGER->addImage("button", "Resources/Images/Object/buttomE.bmp", 35 * 1.9, 38 * 1.9, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("deosgracias", "Resources/Images/Object/deosgracias.bmp", 1664, 1536, 13, 6, MGT); // 128,256
 	IMAGEMANAGER->addFrameImage("stand", "Resources/Images/Object/priedieuStand.bmp", 924, 310, 7, 1, MGT); // 462, 155
 	IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/Object/itemObject.bmp", 260, 91, 10, 1, MGT); // 260,91

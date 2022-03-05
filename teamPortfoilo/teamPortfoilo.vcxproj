@@ -184,7 +184,6 @@
     <ClInclude Include="SaveScene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SingletonBase.h" />
-    <ClInclude Include="StartScene.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="EndingScene.h" />
     <ClInclude Include="TempSoundManager.h" />
@@ -232,7 +231,6 @@
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="SaveScene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="StartSecen.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
