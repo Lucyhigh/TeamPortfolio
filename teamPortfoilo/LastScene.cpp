@@ -20,6 +20,7 @@ HRESULT LastScene::init(void)
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
 	_camera->setLimitsY(CENTER_Y, _image->getHeight());
 
+
 	_x = _image->getWidth() * 0.1;
 	_y = 1710;
 	_npcRc = RectMakeCenter(_x, _y, _frameNpcImage->getFrameWidth(), _frameNpcImage->getFrameHeight());
@@ -68,6 +69,7 @@ void LastScene::update(void)
 
 	_npcRcCenterX = (_npcRc.left + _npcRc.right) * 0.5;
 	_npcRcCenterY = (_npcRc.top + _npcRc.bottom) * 0.5;
+	// cout << _npcRcCenterX << " , " << _npcRcCenterY <<endl;
 
 	if (getDistance(_npcRcCenterX, _npcRcCenterY, _pixel->getX(), _pixel->getY()) < 200)
 	{
@@ -131,6 +133,8 @@ void LastScene::update(void)
 
 void LastScene::render(void)
 {
+
+	cout << endl;
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
 	IMAGEMANAGER->loopRender("¶ó½ºÆ®¾À µÞ¹è°æ", getMemDC(), &rc1,
@@ -165,7 +169,7 @@ void LastScene::render(void)
 	{
 		if (!_isTalk)
 		{
-			IMAGEMANAGER->render("e", getMemDC(), _npcPosX+43, _npcPosY-7);
+			IMAGEMANAGER->render("e", getMemDC(), _npcPosX + 43, _npcPosY - 7);
 		}
 		else
 		{
@@ -182,7 +186,7 @@ void LastScene::render(void)
 					wcslen(_text[_textIndex].text) - SCRIPT_MAX_LENGTH : SCRIPT_MAX_LENGTH,
 					RGB(186, 177, 127));
 			}
-			IMAGEMANAGER->alphaRender("enter", getMemDC(), WINSIZE_X*0.90, WINSIZE_Y*0.90,_textAlpha + 70);
+			IMAGEMANAGER->alphaRender("enter", getMemDC(), WINSIZE_X*0.90, WINSIZE_Y*0.90, _textAlpha + 70);
 		}
 	}
 }

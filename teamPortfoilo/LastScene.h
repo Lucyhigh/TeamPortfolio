@@ -4,7 +4,7 @@
 #include "Camera.h"
 #include "Text.h"
 
-#define TEXTNUM 6
+#define TEXTNUM 7
 class LastScene : public GameNode
 {
 private:
@@ -34,7 +34,6 @@ public:
 	void render(void);
 
 public:
-	//데오그라시스 대사 한번 다 뱉은 후에는 이후에 4번대사 반복
 	LastScene() :_text
 	{
 		L"그대는 지나온 길에서의 고통들을 해방시켰다.",
@@ -47,7 +46,8 @@ public:
 
 		L"그리고 지금, 기적과의 마지막 교분이 그대를 기다리고 있다.",
 
-		L"허나, 기적이 그대의 죄 많은 심장에 얼마나 스며들었는지는 그대만이 아는 것이다."
+		L"허나, 기적이 그대의 죄 많은 심장에 얼마나 스며들었는지는 그대만이 아는 것이다.",
+		L"그리고 지금, 기적과의 마지막 교분이 그대를 기다리고 있다."
 	}
 	{}
 	~LastScene() {}

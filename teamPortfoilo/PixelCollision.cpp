@@ -3,8 +3,10 @@
 
 HRESULT PixelCollision::init(float x, float y, char* image)
 {
-	_playerIdleImage = IMAGEMANAGER->findImage("²¿±ò´ë±â");
-	_playerMoveImage = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
+	_playerIdleImageL = IMAGEMANAGER->findImage("²¿±ò´ë±â");
+	_playerMoveImageL = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
+	_playerIdleImageR = IMAGEMANAGER->findImage("²¿±ò´ë±â");
+	_playerMoveImageR = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
 	_playerWakeUpImage = IMAGEMANAGER->findImage("²¿±ò±â»ó");
 	_bgImage = IMAGEMANAGER->findImage(image);
 
@@ -12,18 +14,26 @@ HRESULT PixelCollision::init(float x, float y, char* image)
 	_ani2 = new Animation;
 	_ani3 = new Animation;
 
-	_ani->init(_playerIdleImage->getWidth(), _playerIdleImage->getHeight(), 128, 73);
-	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), 79, 70);
+	_ani->init(_playerIdleImageL->getWidth(), _playerIdleImageL->getHeight(), 128, 73);
+	_ani2->init(_playerMoveImageL->getWidth(), _playerMoveImageL->getHeight(), 79, 70);
 	_ani3->init(_playerWakeUpImage->getWidth(), _playerWakeUpImage->getHeight(), 128, 128);
+	_ani4->init(_playerIdleImageR->getWidth(), _playerIdleImageL->getHeight(), 128, 73);
+	_ani5->init(_playerMoveImageR->getWidth(), _playerMoveImageL->getHeight(), 79, 70);
 
 	_ani->setFPS(7);
-	_ani->setPlayFrame(0, 12, false, true);
+	_ani->setDefPlayFrame(false, false);
 
 	_ani2->setFPS(7);
-	_ani2->setPlayFrame(0, 13, false, true);
+	_ani2->setDefPlayFrame(false, false);
 
 	_ani3->setFPS(7);
 	_ani3->setDefPlayFrame(false, false);
+
+	_ani4->setFPS(7);
+	_ani4->setDefPlayFrame(false, false);
+
+	_ani5->setFPS(7);
+	_ani5->setDefPlayFrame(false, false);
 
 	_isWalk = false;
 	_isLeft = false;
@@ -32,7 +42,7 @@ HRESULT PixelCollision::init(float x, float y, char* image)
 
 	_x = x;
 	_y = y;
-	_rc = RectMakeCenter(_x, _y, _playerIdleImage->getWidth(), _playerIdleImage->getHeight());
+	_rc = RectMakeCenter(_x, _y, _playerIdleImageL->getWidth(), _playerIdleImageL->getHeight());
 	return S_OK;
 }
 void PixelCollision::release(void)
@@ -42,6 +52,10 @@ void PixelCollision::release(void)
 	_ani2->release();
 	SAFE_DELETE(_ani2);
 	_ani3->release();
+	SAFE_DELETE(_ani3);
+	_ani4->release();
+	SAFE_DELETE(_ani2);
+	_ani5->release();
 	SAFE_DELETE(_ani3);
 }
 
@@ -61,21 +75,23 @@ void PixelCollision::update(char* image)
 		{
 			_ani->AniStart();
 			_ani2->AniStart();
+			_ani4->AniStart();
+			_ani5->AniStart();
 			_isWakeUp = true;
 		}
 	}
 
 	if (_isWakeUp)
 	{
-		_ani->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
-		_ani2->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
-		if (KEYMANAGER->isStayKeyDown('A'))
+		
+		
+		if (KEYMANAGER->isStayKeyDown('D'))
 		{
 			_isLeft = false;
 			_isWalk = true;
 			_x += _speed;
 		}
-		else if (KEYMANAGER->isStayKeyDown('D'))
+		else if (KEYMANAGER->isStayKeyDown('A'))
 		{
 			_isLeft = true;
 			_isWalk = true;
@@ -88,17 +104,17 @@ void PixelCollision::update(char* image)
 
 		if (_isLeft)
 		{
-			_ani->setPlayFrame(13, 25, false, true);
-			_ani2->setPlayFrame(14, 25, false, true);
+			_ani->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
+			_ani2->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 		}
 		else if (!_isLeft)
 		{
-			_ani->setPlayFrame(0, 12, false, true);
-			_ani2->setPlayFrame(0, 13, false, true);
+			_ani4->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
+			_ani5->frameUpdate(TIMEMANAGER->getElapsedTime() * 1);
 		}
 
 		int bgHeight = _bgImage->getHeight() / 2 + _y;
-		_probeY = _y + _playerIdleImage->getFrameHeight() / 2;
+		_probeY = _y + _playerIdleImageL->getFrameHeight() / 2;
 
 		for (int i = _probeY - 30; i < _probeY + 30; i++)
 		{
@@ -108,14 +124,14 @@ void PixelCollision::update(char* image)
 			int b = GetBValue(color);
 			if (!(r == 255 && g == 0 && b == 255))
 			{
-				_y = i - _playerIdleImage->getFrameHeight() / 2;
+				_y = i - _playerIdleImageL->getFrameHeight() / 2;
 				break;
 			}
 		}
 		if (_isWalk)
-			_rc = RectMakeCenter(_x, _y, _playerMoveImage->getFrameWidth(), _playerMoveImage->getFrameHeight());
+			_rc = RectMakeCenter(_x, _y, _playerMoveImageL->getFrameWidth(), _playerMoveImageL->getFrameHeight());
 		else
-			_rc = RectMakeCenter(_x, _y, _playerIdleImage->getFrameWidth(), _playerIdleImage->getFrameHeight());
+			_rc = RectMakeCenter(_x, _y, _playerIdleImageL->getFrameWidth(), _playerIdleImageL->getFrameHeight());
 	}
 	else
 	{
@@ -132,21 +148,33 @@ void PixelCollision::render(void)
 
 	if (_isWakeUp)
 	{
-		if (_isWalk)
+		if (_isLeft)
 		{
-			_playerMoveImage->aniRender(getMemDC(), cameraX, cameraY, _ani2);
+			if (_isWalk)
+			{
+				_playerMoveImageL->aniRender(getMemDC(), cameraX, cameraY, _ani2);
+			}
+			else if (!_isWalk)
+			{
+				_playerIdleImageL->aniRender(getMemDC(), cameraX, cameraY, _ani);
+			}
 		}
-		else if (!_isWalk)
+		else
 		{
-			_playerIdleImage->aniRender(getMemDC(), cameraX, cameraY, _ani);
+			if (_isWalk)
+			{
+				_playerMoveImageR->aniRender(getMemDC(), cameraX, cameraY, _ani2);
+			}
+			else if (!_isWalk)
+			{
+				_playerIdleImageR->aniRender(getMemDC(), cameraX, cameraY, _ani);
+			}
 		}
 	}
 	else
 	{
 		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY - 11, _ani3);
 	}
-
-	//cout << rcCenterX << endl;
 }
 
 int PixelCollision::getX()

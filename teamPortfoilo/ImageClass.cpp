@@ -26,8 +26,11 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("≤ø±Ú±‚µµ", "Resources/Images/Player/playerParyer.bmp", 1404, 208, 18, 2, MGT);
 	IMAGEMANAGER->addFrameImage("≤ø±Ú∆˜º«", "Resources/Images/Player/playerPotion.bmp", 1900, 280, 19, 2, MGT);
 	IMAGEMANAGER->addFrameImage("≤ø±Ú±‚ªÛ", "Resources/Images/Player/p_risingFromFallen.bmp", 896, 768, 7, 6, MGT);
-	//playerPotion
-
+	//playerLR
+	IMAGEMANAGER->addFrameImage("≤ø±Ú¥Î±‚R", "Resources/Images/Player/p_idle.bmp", 1664, 73, 13, 1, MGT);
+	IMAGEMANAGER->addFrameImage("≤ø±Ú¿ÃµøR", "Resources/Images/Player/p_move.bmp", 1106, 70, 14, 1, MGT);
+	IMAGEMANAGER->addFrameImage("≤ø±Ú¥Î±‚L", "Resources/Images/Player/p_idle.bmp", 1664, 73, 13, 1, MGT);
+	IMAGEMANAGER->addFrameImage("≤ø±Ú¿ÃµøL", "Resources/Images/Player/p_move.bmp", 1106, 70, 14, 1, MGT);
 #pragma endregion
 
 
