@@ -41,7 +41,7 @@ void AniTextScene::update(void)
 void AniTextScene::render(void)
 {
 
-	const int SCRIPT_MAX_LENGTH = 55;
+	const int SCRIPT_MAX_LENGTH_ = 55;
 	if (_npc == NPC::GREENCORN &&  _textIndex < 3 )
 	{
 		FONTMANAGER->drawText(getMemDC(), WINSIZE_X*0.22, WINSIZE_Y*0.84, 

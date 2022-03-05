@@ -8,6 +8,7 @@
 
 class Inventory :public GameNode
 {
+
 private:
 
 	AniSceneItem* _ani; // 아이템 선택시 테두리 애니메이션

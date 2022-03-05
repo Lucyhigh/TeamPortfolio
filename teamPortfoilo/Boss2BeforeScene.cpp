@@ -5,9 +5,9 @@ HRESULT Boss2BeforeScene::init(void)
 {
 	_image = IMAGEMANAGER->findImage("보스2전 배경");
 
-	floor0 = new RECT{ 0, 600, _image->getWidth(), 670 };//
-	//floor1 = new RECT{ _image->getWidth(), 0, _image->getWidth() + 100, _image->getHeight() };
-	//floor2 = new RECT{ 0, 0, 100, _image->getHeight() };//
+	floor0 = new RECT{ 0, 630, _image->getWidth(), 670 };//
+	floor1 = new RECT{ _image->getWidth(), 0, _image->getWidth() + 100, _image->getHeight() };
+	floor2 = new RECT{ 0, 0, 100, _image->getHeight() };//
 
 	_floor.push_back(floor0);
 	_floor.push_back(floor1);
@@ -35,9 +35,9 @@ void Boss2BeforeScene::release(void)
 
 void Boss2BeforeScene::update(void)
 {
-	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 100)
+	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 50)
 	{
-		//SCENEMANAGER->changeScene("Boss2");
+		SCENEMANAGER->changeScene("Boss2");
 	}
 
 	POINT cameraPos;
@@ -59,10 +59,10 @@ void Boss2BeforeScene::render(void)
 										_camera->getScreenRect().top,
 										WINSIZE_X, WINSIZE_Y);
 
+	GAMEMANAGER->getPlayer()->ObjectRender();
 
 	IMAGEMANAGER->render("보스2전 FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
 
-	GAMEMANAGER->getPlayer()->ObjectRender();
 	_camera->render();
 
 	GAMEMANAGER->getUI()->render();
