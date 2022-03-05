@@ -12,6 +12,8 @@ HRESULT ImageClass::init(void)
 #pragma region PlayerImage
 	IMAGEMANAGER->addFrameImage("²¿±ò´ë±â", "Resources/Images/Player/p_idle.bmp", 1664, 146, 13, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿", "Resources/Images/Player/p_move.bmp", 1106, 140, 14, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò´ë±âP", "Resources/Images/Player/p_idle.bmp", 1664 * 2, 146 * 2, 13, 2, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿P", "Resources/Images/Player/p_move.bmp", 1106 * 2, 140 * 2, 14, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±òÁ¡ÇÁ", "Resources/Images/Player/playerFrontJumpOn.bmp", 1120, 158, 14, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò½½¶óÀÌµå", "Resources/Images/Player/playerSliding.bmp", 1455, 144, 15, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò¾îÅÃ0", "Resources/Images/Player/playerAttOneAddEffet.bmp", 1260, 144, 9, 2, MGT);
@@ -25,12 +27,8 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("°ø°ÝÀÌÆåÆ®", "Resources/Images/Player/effectTwo.bmp", 792, 164, 6, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò±âµµ", "Resources/Images/Player/playerParyer.bmp", 1404, 208, 18, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±òÆ÷¼Ç", "Resources/Images/Player/playerPotion.bmp", 1900, 280, 19, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò±â»ó", "Resources/Images/Player/p_risingFromFallen.bmp", 896, 768, 7, 6, MGT);
-	//playerLR
-	IMAGEMANAGER->addFrameImage("²¿±ò´ë±âL", "Resources/Images/Player/p_idleLeft.bmp", 1664, 73, 13, 1, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò´ë±âR", "Resources/Images/Player/p_idleRight.bmp", 1664, 73, 13, 1, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿L", "Resources/Images/Player/playerMoveLeft.bmp", 1106, 70, 14, 1, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿R", "Resources/Images/Player/playerMoveRight.bmp", 1106, 70, 14, 1, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò±â»ó", "Resources/Images/Player/p_risingFromFallen.bmp", 896 * 2, 768 * 2, 7, 6, MGT);
+	
 #pragma endregion
 
 
