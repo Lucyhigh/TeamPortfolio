@@ -20,7 +20,6 @@ HRESULT LastScene::init(void)
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
 	_camera->setLimitsY(CENTER_Y, _image->getHeight());
 
-
 	_x = _image->getWidth() * 0.1;
 	_y = 1710;
 	_npcRc = RectMakeCenter(_x, _y, _frameNpcImage->getFrameWidth(), _frameNpcImage->getFrameHeight());
