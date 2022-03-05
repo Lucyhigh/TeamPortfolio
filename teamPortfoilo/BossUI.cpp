@@ -43,8 +43,8 @@ void BossUI::update(void)
 		{
 			if (_alphaBack == false)
 			{
-				_alpha += 0.1;
-				if (_alpha >= 450)
+				_alpha += 1;
+				if (_alpha >= 550)
 				{
 					_alpha = 450;
 					_alphaBack = true;
@@ -54,7 +54,7 @@ void BossUI::update(void)
 			{
 				if (_alpha > 300)
 				{
-					_alpha -= 0.1;
+					_alpha -= 0.4;
 				}
 				else
 				{
