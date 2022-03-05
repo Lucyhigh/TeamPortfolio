@@ -58,7 +58,7 @@ HRESULT MainGame::init(void) //초기화
 #pragma endregion 
 
 	// 테스트용 씬체인저
-	SCENEMANAGER->changeScene("Opening");
+	SCENEMANAGER->changeScene("Last");
 
 	// 테스트용 씬체인저
 	//SCENEMANAGER->changeScene("BeforeBoss1");

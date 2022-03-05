@@ -169,7 +169,7 @@ void LastScene::render(void)
 	{
 		if (!_isTalk)
 		{
-			IMAGEMANAGER->render("e", getMemDC(),(_image->getWidth() * 0.1 )-20, WINSIZE_Y - 270);
+			IMAGEMANAGER->render("e", getMemDC(), _npcPosX+43, _npcPosY-7);
 		}
 		else
 		{

@@ -70,11 +70,10 @@ void OpeningScene::render(void)
 
 	_pixel->render();
 
-	if (!_pixel->getWakeUp())
+	//if (!_pixel->getWakeUp())
 	{
-		IMAGEMANAGER->render("k", getMemDC(), _pixel->getX(), _pixel->getY() - 50);
 	}
-	cout << _pixel->getX() << " , " << _pixel->getY() - 50 << endl;
+	cout << _pixel->getX() << " , " << _image->getWidth()*0.4 << endl;
 
 	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¾Õ½ÃÃ¼", getMemDC(), 
 											-_camera->getScreenRect().left,
@@ -82,5 +81,9 @@ void OpeningScene::render(void)
 	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¾Õ¹®", getMemDC(), 
 											-_camera->getScreenRect().left, 
 											-_camera->getScreenRect().top);
+
+	IMAGEMANAGER->render("k", getMemDC(), 
+							 _pixel->getX() -_camera->getScreenRect().left,
+							 _pixel->getY() -_camera->getScreenRect().top - 100);
 	_camera->render();
 }
