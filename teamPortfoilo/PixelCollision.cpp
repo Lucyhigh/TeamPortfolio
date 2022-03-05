@@ -3,9 +3,9 @@
 
 HRESULT PixelCollision::init(float x, float y, char* image)
 {
-	_playerIdleImage = IMAGEMANAGER->findImage("²¿±ò´ë±â");
-	_playerMoveImage = IMAGEMANAGER->findImage("²¿±òÀÌµ¿");
-	_playerWakeUpImage = IMAGEMANAGER->findImage("²¿±ò±â»ó");
+	_playerIdleImage = IMAGEMANAGER->findImage("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+	_playerMoveImage = IMAGEMANAGER->findImage("ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½");
+	_playerWakeUpImage = IMAGEMANAGER->findImage("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 	_bgImage = IMAGEMANAGER->findImage(image);
 
 	_ani = new Animation;
@@ -56,7 +56,7 @@ void PixelCollision::update(char* image)
 	if (_count >= 1 && _isWakeUp == false)
 	{
 		_count++;
-		if (_count > 900)
+		if (_count > 1000)
 		{
 			_ani->AniStart();
 			_ani2->AniStart();
@@ -120,6 +120,8 @@ void PixelCollision::update(char* image)
 	{
 		_rc = RectMakeCenter(_x, _y, _playerWakeUpImage->getFrameWidth(), _playerWakeUpImage->getFrameHeight());
 	}
+
+	//cout << _isWakeUp << endl;
 }
 
 void PixelCollision::render(void)
@@ -136,12 +138,15 @@ void PixelCollision::render(void)
 		else if (!_isWalk)
 		{
 			_playerIdleImage->aniRender(getMemDC(), cameraX, cameraY, _ani);
+			cout << _ani->getFrame() << endl;
 		}
 	}
 	else
 	{
 		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY-14, _ani3);
 	}
+
+	//cout << rcCenterX << endl;
 }
 
 int PixelCollision::getX()

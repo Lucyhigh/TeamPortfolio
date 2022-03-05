@@ -3,10 +3,10 @@
 
 HRESULT OpeningScene::init(void)
 {
-	_image = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ¹Ù´Ú");
+	_image = IMAGEMANAGER->findImage("ï¿½ï¿½ï¿½ï¿½ï¿½×¾ï¿½ ï¿½Ù´ï¿½");
 
 	_pixel = new PixelCollision;
-	_pixel->init(_image->getWidth()/2-150, 455, "¿ÀÇÁ´×¾À ÇÈ¼¿");
+	_pixel->init(_image->getWidth()/2-150, 455, "ï¿½ï¿½ï¿½ï¿½ï¿½×¾ï¿½ ï¿½È¼ï¿½");
 
 	_textAlpha = 0;
 	_alpha = 0;
@@ -54,18 +54,18 @@ void OpeningScene::update(void)
 	_camera->update();
 
 	_pixel->setCameraRect(_camera->getScreenRect());
-	_pixel->update("¿ÀÇÁ´×¾À ÇÈ¼¿");
+	_pixel->update("ï¿½ï¿½ï¿½ï¿½ï¿½×¾ï¿½ ï¿½È¼ï¿½");
 }
 
 void OpeningScene::render(void)
 {
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
-	IMAGEMANAGER->loopRender("¿ÀÇÁ´×¾À µÞ¹è°æ", getMemDC(), &rc1,
+	IMAGEMANAGER->loopRender("ï¿½ï¿½ï¿½ï¿½ï¿½×¾ï¿½ ï¿½Þ¹ï¿½ï¿½", getMemDC(), &rc1,
 		_camera->getScreenRect().left * bgSpeed,
 		_camera->getScreenRect().top * bgSpeed);
 
-	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¹Ù´Ú", getMemDC(),
+	IMAGEMANAGER->render("ï¿½ï¿½ï¿½ï¿½ï¿½×¾ï¿½ ï¿½Ù´ï¿½", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
 
@@ -78,10 +78,10 @@ void OpeningScene::render(void)
 			_pixel->getY() - _camera->getScreenRect().top - 100);
 	}
 
-	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¾Õ½ÃÃ¼", getMemDC(),
+	IMAGEMANAGER->render("ï¿½ï¿½ï¿½ï¿½ï¿½×¾ï¿½ ï¿½Õ½ï¿½Ã¼", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
-	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¾Õ¹®", getMemDC(),
+	IMAGEMANAGER->render("ï¿½ï¿½ï¿½ï¿½ï¿½×¾ï¿½ ï¿½Õ¹ï¿½", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
 
