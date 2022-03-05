@@ -4,6 +4,8 @@
 HRESULT Boss2BeforeScene::init(void)
 {
 	_image = IMAGEMANAGER->findImage("보스2전 배경");
+	_npcsimage = IMAGEMANAGER->findImage("SandNPCStanding");
+	_npcimage = IMAGEMANAGER->findImage("SandNPC");
 
 	floor0 = new RECT{ 0, 630, _image->getWidth(), 670 };//
 	floor1 = new RECT{ _image->getWidth(), 0, _image->getWidth() + 100, _image->getHeight() };
@@ -22,6 +24,8 @@ HRESULT Boss2BeforeScene::init(void)
 
 	_count = 0;
 
+	_indexA = _indexB = 0;
+
 	return S_OK;
 }
 
@@ -35,6 +39,8 @@ void Boss2BeforeScene::release(void)
 
 void Boss2BeforeScene::update(void)
 {
+	_count++;
+
 	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 50)
 	{
 		SCENEMANAGER->changeScene("Boss2");
@@ -50,18 +56,34 @@ void Boss2BeforeScene::update(void)
 	GAMEMANAGER->getPlayer()->setCameraRect(_camera->getScreenRect());
 	GAMEMANAGER->getPlayer()->ObjectUpdate();
 	GAMEMANAGER->getUI()->update();
+
+	if (_count % 20 == 0)
+	{
+		_indexA++;
+		if (_indexA >= _npcimage->getMaxFrameX())
+		{
+			_indexA = 0;
+			_indexB++;
+			if (_indexB >= _npcimage->getMaxFrameX())
+			{
+				_indexB = 0;
+			}
+		}
+	}
 }
 
 void Boss2BeforeScene::render(void)
 {
 	IMAGEMANAGER->render("보스2전 배경", getMemDC(), 0, 0,
-										_camera->getScreenRect().left,
-										_camera->getScreenRect().top,
-										WINSIZE_X, WINSIZE_Y);
+		_camera->getScreenRect().left,
+		_camera->getScreenRect().top,
+		WINSIZE_X, WINSIZE_Y);
+
+	IMAGEMANAGER->frameRender("SandNPC", getMemDC(), WINSIZE_X - 500, WINSIZE_Y - 100, _indexA, _indexB);
 
 	GAMEMANAGER->getPlayer()->ObjectRender();
 
-	IMAGEMANAGER->render("보스2전 FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
+	//IMAGEMANAGER->render("보스2전 FrontDoor", getMemDC(), -_camera->getScreenRect().left, 0);
 
 	_camera->render();
 

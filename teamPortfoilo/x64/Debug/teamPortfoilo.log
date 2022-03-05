@@ -1,1 +1,4 @@
-﻿  teamPortfoilo.vcxproj -> E:\GitProject\TeamPortfolio\TeamPortfolio\x64\Debug\teamPortfoilo.exe
+﻿  MainGame.cpp
+e:\포트폴리오\고깔원정대\teamportfolio\teamportfoilo\lastscene.h(7): warning C4005: 'TEXTNUM': 매크로 재정의
+  e:\포트폴리오\고깔원정대\teamportfolio\teamportfoilo\boss1beforescene.h(6): note: 'TEXTNUM'의 이전 정의를 참조하십시오.
+  teamPortfoilo.vcxproj -> E:\포트폴리오\고깔원정대\TeamPortfolio\x64\Debug\teamPortfoilo.exe
