@@ -27,7 +27,7 @@ HRESULT BossIsadora::init(POINT point, vector<RECT*>floor)
 		{ UnitState::IDLE ,std::bind(&BossIsadora::_pattenIdle,this) },
 		{ UnitState::TRUNATTACK ,std::bind(&BossIsadora::_pattenTurnAttack,this) },
 		{ UnitState::FIREPILLARATTACK_0, std::bind(&BossIsadora::_pattenFirePollarAttack0,this) },
-		{ UnitState::FIREPILLARATTACK_1, std::bind(&BossIsadora::_pattenFirePollarAttack1,this) },
+		//{ UnitState::FIREPILLARATTACK_1, std::bind(&BossIsadora::_pattenFirePollarAttack1,this) },
 		{ UnitState::START, std::bind(&BossIsadora::_pattenStart,this) },
 		{ UnitState::DIE, std::bind(&BossIsadora::_pattenDie,this) }
 	};
@@ -113,7 +113,7 @@ void BossIsadora::_inputPatten()
 		return;
 	}
 
-	_state = (UnitState)3;//RND->getInt(3); // 현재 임시 ;
+	_state = (UnitState)RND->getInt(3); // 현재 임시 ;
 	_pattenAni = nullptr;
 
 	if (_state == UnitState::IDLE)

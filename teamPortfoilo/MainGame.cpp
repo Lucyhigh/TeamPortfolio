@@ -28,8 +28,8 @@ HRESULT MainGame::init(void) //초기화
 	ImageClass imageClass = ImageClass();
 	imageClass.init();
 
-	TempSoundTest sound = TempSoundTest();
-	sound.init();
+	//TempSoundTest sound = TempSoundTest();
+	//sound.init();
 
 	TIMEMANAGER->init();
 
@@ -64,7 +64,7 @@ HRESULT MainGame::init(void) //초기화
 	
 #pragma endregion 
 
-	SCENEMANAGER->changeScene("Boss1");
+	SCENEMANAGER->changeScene("Boss2");
 	return S_OK;
 }
 

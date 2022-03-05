@@ -69,4 +69,5 @@ void BossScene2::render(void)
 
 	GAMEMANAGER->getUI()->render();
 	_bossHp->render();
+	_collider->render();
 }
