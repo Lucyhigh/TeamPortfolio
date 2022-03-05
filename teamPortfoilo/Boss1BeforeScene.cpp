@@ -3,7 +3,7 @@
 
 HRESULT Boss1BeforeScene::init(void)
 {
-	_mapImage = IMAGEMANAGER->findImage("º¸½º1Àü ¹Ù´Ú");
+	_mapImage = IMAGEMANAGER->findImage("boss1beforeSceneFloor");
 	_objectImage = IMAGEMANAGER->findImage("stand");
 	_symbolImage = IMAGEMANAGER->findImage("SymbolObj");
 	_breakSymbolImage = IMAGEMANAGER->findImage("breakSymbolObj");
@@ -51,6 +51,9 @@ HRESULT Boss1BeforeScene::init(void)
 	_textIndex = 0;
 	_alpha = 0;
 	_bgAlpha = 0;
+
+	_areaTextOn = false;
+	_areaTextAlpha = 0;
 
 	return S_OK;
 }
@@ -323,4 +326,7 @@ void Boss1BeforeScene::render(void)
 			IMAGEMANAGER->alphaRender("enter", getMemDC(), WINSIZE_X*0.90, WINSIZE_Y*0.90, _textAlpha + 100);
 		}
 	}
+
+	IMAGEMANAGER->findImage("area2")->alphaRender(getMemDC(), 0, 130, _areaTextAlpha);
+	GAMEMANAGER->getUI()->render();
 }

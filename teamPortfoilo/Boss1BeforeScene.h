@@ -50,6 +50,10 @@ private:
 
 	bool _isBreak, _isBreakS, _isBreakEnd, _isTalk;
 
+
+	bool _areaTextOn;
+	int _areaTextAlpha;
+
 public:
 	Boss1BeforeScene() :_text
 	{
