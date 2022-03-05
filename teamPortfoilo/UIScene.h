@@ -34,6 +34,13 @@ private:
 	// 소지포인트 관련 우상단 UI
 	int _point;
 
+
+private:
+
+	int _popupAlpha;
+	bool _firstPotion;
+
+
 public:
 	UIScene() {}
 	~UIScene() {}
@@ -47,6 +54,7 @@ public:
 	void showPotion(void);
 	void setPotion();
 	void showPoint(bool openInventory);
+	void showPopup();
 	
 };
 

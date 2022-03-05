@@ -357,7 +357,7 @@ void BossIsadora::_pattenFirePollar(UnitState state, POINT point = {0,0} )
 		_pattenSub.front() += 80;
 
 		RECT 	temp = { 0,0,0,stateFloor.top };
-		if (smash.size() == 0)
+		if (_pattenSub.front() == 80)
 		{
 			temp.right = _pattenSub.front();
 		}
