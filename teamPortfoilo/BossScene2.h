@@ -6,7 +6,7 @@
 class BossScene2 : public GameNode
 {
 private:
-	Image* _backGround;
+	Image* _image;
 	ColliderManager* _collider;
 	Camera* _camera;
 	BossIsadora* isdora;

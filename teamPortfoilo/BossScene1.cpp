@@ -7,9 +7,9 @@ HRESULT BossScene1::init(void)
 	_collider = new ColliderManager();
     _image = IMAGEMANAGER->findImage("º¸½º1 ¹Ù´Ú");
 
-	floor0 = new RECT { 0, 600, _image->getWidth(),670};
+	floor0 = new RECT { 0, 630, _image->getWidth(),670};
 	floor1 = new RECT{ 0, 0, 100, _image->getHeight() };
-	floor2 = new RECT{ _image->getWidth()-100, 0, _image->getWidth(), _image->getHeight() };
+	floor2 = new RECT{ _image->getWidth()-70, 0, _image->getWidth(), _image->getHeight() };
 	
 	//floor1 = new RECT{ _image->getWidth(), 0, _image->getWidth()+100, 1000 };
 	//floor2 = new RECT{ 0, 0, -100, 1000 };
@@ -18,7 +18,7 @@ HRESULT BossScene1::init(void)
 	_floor.push_back(floor1);
 	_floor.push_back(floor2);
 
-	GAMEMANAGER->getPlayer()->ObjectInit({ 400,CENTER_Y }, _floor);
+	GAMEMANAGER->getPlayer()->ObjectInit({ 100,600 }, _floor);
 	
 	boss = new BossWarden();
 	boss->init({ _image->getWidth()/2,CENTER_Y }, _floor);
@@ -60,7 +60,7 @@ void BossScene1::update(void)
 		GAMEMANAGER->getMonster()[i]->ObjectUpdate(); 
 	}
 
-    if ( GAMEMANAGER->getPlayer()->getPoint().x <= 50)
+    if ( GAMEMANAGER->getPlayer()->getPoint().x <= 100)
     {
         SCENEMANAGER->changeScene("BeforeBoss1");
     }
@@ -114,7 +114,6 @@ void BossScene1::render(void)
 	{
 		//Rectangle(getMemDC(),_floor[i]->left, _floor[i]->top, _floor[i]->right, _floor[i]->bottom);
 	}
-
 
 	SetTextAlign(getMemDC(), TA_CENTER);
 	LPCWSTR script = L"Ä§¹¬ÀÇ ºñÅº ÆÄ¼ö²Û";

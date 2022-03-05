@@ -42,10 +42,11 @@ void LastScene::update(void)
 
 	if (_pixel->getX() >= _image->getWidth() - 400)
 	{
+		_camera->setLimitsY(_image->getWidth() - 500, _image->getHeight());
 		_count++;
 		_pixel->setX(_image->getWidth() - 400);
 
-		if (_count > 30)
+		if (_count > 50)
 		{
 			SCENEMANAGER->changeScene("Ending");
 			TEMPSOUNDMANAGER->stopMp3WithKey("La");

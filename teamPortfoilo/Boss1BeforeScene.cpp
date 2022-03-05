@@ -10,14 +10,14 @@ HRESULT Boss1BeforeScene::init(void)
 	_SkeletonImage = IMAGEMANAGER->findImage("breakableSkeleton");
 	_frameNpcImage = IMAGEMANAGER->findImage("frameNpc");
 
-	floor0 = new RECT{ 0, 600, _mapImage->getWidth(), 670 };
+	floor0 = new RECT{ 0, 630, _mapImage->getWidth(), 670 };
 	floor1 = new RECT{ _mapImage->getWidth(), 0, _mapImage->getWidth() + 100, _mapImage->getHeight() };
 	floor2 = new RECT{ 0, 0, 100, _mapImage->getHeight() };
 	_floor.push_back(floor0);
 	_floor.push_back(floor1);
 	_floor.push_back(floor2);
 
-	GAMEMANAGER->getPlayer()->ObjectInit({ 400,400 }, _floor);
+	GAMEMANAGER->getPlayer()->ObjectInit({ 50,500 }, _floor);
 
 	_x = _mapImage->getWidth()*0.5;
 	_y = WINSIZE_Y - 170;
