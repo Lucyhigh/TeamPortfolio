@@ -9,6 +9,8 @@ private:
 	vector<RECT*> _floor;
 	Camera* _camera;
 	Image* _image;
+	Image* _npcsimage;
+	Image* _npcimage;
 
 	RECT* floor0;
 	RECT* floor1;
@@ -17,6 +19,7 @@ private:
 	float _x, _y;
 
 	int _count;
+	int _indexA, _indexB;
 
 public:
 	Boss2BeforeScene() {}
