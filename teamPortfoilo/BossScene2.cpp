@@ -9,22 +9,22 @@ BossScene2::BossScene2(){
 
 HRESULT BossScene2::init(void)
 {
-	_backGround = IMAGEMANAGER->findImage("Boss2BG");
+	_image = IMAGEMANAGER->findImage("bg2");
 	_floor.resize(3);
-	_floor[0] = new RECT{ 0, 525, _backGround->getWidth(),670 };
-	_floor[1] = new RECT{ -100, 0, 0, _backGround->getHeight() };
-	_floor[2] = new RECT{ _backGround->getWidth(), 0, _backGround->getWidth()+100, _backGround->getHeight() };
-	GAMEMANAGER->getPlayer()->ObjectInit({ 400,CENTER_Y }, _floor);
+	_floor[0] = new RECT{ 0, 525, _image->getWidth(),670 };
+	_floor[1] = new RECT{ -100, 0, 0, _image->getHeight() };
+	_floor[2] = new RECT{ _image->getWidth(), 0, _image->getWidth()+100, _image->getHeight() };
+	GAMEMANAGER->getPlayer()->ObjectInit({ 100,600 }, _floor);
 
 	_collider = new ColliderManager();
 
 	_camera = new Camera();
 	_camera->init();
-	_camera->setLimitsX(CENTER_X, _backGround->getWidth());
-	_camera->setLimitsY(CENTER_Y, _backGround->getHeight());
+	_camera->setLimitsX(CENTER_X, _image->getWidth());
+	_camera->setLimitsY(CENTER_Y, _image->getHeight());
 
 	isdora = new BossIsadora();
-	isdora->init({ _backGround->getWidth() / 2,CENTER_Y }, _floor);
+	isdora->init({ _image->getWidth() / 2,CENTER_Y }, _floor);
 	GAMEMANAGER->setMonster(isdora);
 
 	_bossHp = new BossUI;
@@ -52,7 +52,10 @@ void BossScene2::update(void)
 	{
 		GAMEMANAGER->getMonster()[i]->ObjectUpdate();
 	}
-
+	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 70)
+	{
+		SCENEMANAGER->changeScene("Last");
+	}
 	_collider->update();
 	GAMEMANAGER->getUI()->update();
 	_bossHp->update();
@@ -60,7 +63,7 @@ void BossScene2::update(void)
 
 void BossScene2::render(void)
 {
-	_backGround->render(getMemDC(),0,0);
+	_image->render(getMemDC(),0,0);
 
 	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
 	{ GAMEMANAGER->getMonster()[i]->ObjectRender(); }

@@ -3,21 +3,21 @@
 
 HRESULT Boss1BeforeScene::init(void)
 {
-	_mapImage = IMAGEMANAGER->findImage("º¸½º1Àü ¹Ù´Ú");
+	_mapImage = IMAGEMANAGER->findImage("boss1beforeSceneFloor");
 	_objectImage = IMAGEMANAGER->findImage("stand");
 	_symbolImage = IMAGEMANAGER->findImage("SymbolObj");
 	_breakSymbolImage = IMAGEMANAGER->findImage("breakSymbolObj");
 	_SkeletonImage = IMAGEMANAGER->findImage("breakableSkeleton");
 	_frameNpcImage = IMAGEMANAGER->findImage("frameNpc");
 
-	floor0 = new RECT{ 0, 600, _mapImage->getWidth(), 670 };
+	floor0 = new RECT{ 0, 630, _mapImage->getWidth(), 670 };
 	floor1 = new RECT{ _mapImage->getWidth(), 0, _mapImage->getWidth() + 100, _mapImage->getHeight() };
 	floor2 = new RECT{ 0, 0, 100, _mapImage->getHeight() };
 	_floor.push_back(floor0);
 	_floor.push_back(floor1);
 	_floor.push_back(floor2);
 
-	GAMEMANAGER->getPlayer()->ObjectInit({ 400,400 }, _floor);
+	GAMEMANAGER->getPlayer()->ObjectInit({ 50,500 }, _floor);
 
 	_x = _mapImage->getWidth()*0.5;
 	_y = WINSIZE_Y - 170;
@@ -256,11 +256,11 @@ void Boss1BeforeScene::render(void)
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
 
-	IMAGEMANAGER->loopRender("º¸½º1 µÞ¹è°æ", getMemDC(), &rc1,
+	IMAGEMANAGER->loopRender("boss1Bg", getMemDC(), &rc1,
 		_camera->getScreenRect().left * bgSpeed,
 		_camera->getScreenRect().top * bgSpeed);
 
-	IMAGEMANAGER->render("º¸½º1Àü ¹Ù´Ú", getMemDC(), 0, 0,
+	IMAGEMANAGER->render("boss1beforeSceneFloor", getMemDC(), 0, 0,
 		_camera->getScreenRect().left,
 		_camera->getScreenRect().top,
 		WINSIZE_X, WINSIZE_Y);
@@ -295,7 +295,7 @@ void Boss1BeforeScene::render(void)
 
 	GAMEMANAGER->getPlayer()->ObjectRender();
 
-	IMAGEMANAGER->render("º¸½º1ÀüFrontDoor", getMemDC(), -_camera->getScreenRect().left, 0);
+	IMAGEMANAGER->render("boss1beforeSceneFrontDoor", getMemDC(), -_camera->getScreenRect().left, 0);
 
 	_camera->render();
 
@@ -307,7 +307,7 @@ void Boss1BeforeScene::render(void)
 		}
 		else
 		{
-			IMAGEMANAGER->alphaRender("ÄÆÀüÈ¯", getMemDC(), 0, WINSIZE_Y - 150, _textAlpha);
+			IMAGEMANAGER->alphaRender("changeScene", getMemDC(), 0, WINSIZE_Y - 150, _textAlpha);
 			const int SCRIPT_MAX_LENGTH = 20;
 			SetTextAlign(getMemDC(), TA_CENTER);
 			FONTMANAGER->drawText(getMemDC(), CENTER_X, WINSIZE_Y*0.84, "µÕ±Ù¸ð²Ã", 30, 100, _text[_textIndex].text,

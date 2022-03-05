@@ -3,7 +3,7 @@
 
 HRESULT Boss2BeforeScene::init(void)
 {
-	_image = IMAGEMANAGER->findImage("보스2전 배경");
+	_image = IMAGEMANAGER->findImage("Boss2beforeBG");
 	_npcsimage = IMAGEMANAGER->findImage("SandNPCStanding");
 	_npcimage = IMAGEMANAGER->findImage("SandNPC");
 
@@ -15,7 +15,7 @@ HRESULT Boss2BeforeScene::init(void)
 	_floor.push_back(floor1);
 	_floor.push_back(floor2);
 
-	GAMEMANAGER->getPlayer()->ObjectInit({ 100,600 }, _floor);//
+	GAMEMANAGER->getPlayer()->ObjectInit({ 100,630 }, _floor);//
 
 	_camera = new Camera;
 	_camera->init();
@@ -41,7 +41,7 @@ void Boss2BeforeScene::update(void)
 {
 	_count++;
 
-	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 50)
+	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 100)
 	{
 		SCENEMANAGER->changeScene("Boss2");
 	}
@@ -74,7 +74,7 @@ void Boss2BeforeScene::update(void)
 
 void Boss2BeforeScene::render(void)
 {
-	IMAGEMANAGER->render("보스2전 배경", getMemDC(), 0, 0,
+	IMAGEMANAGER->render("Boss2beforeBG", getMemDC(), 0, 0,
 		_camera->getScreenRect().left,
 		_camera->getScreenRect().top,
 		WINSIZE_X, WINSIZE_Y);
@@ -83,7 +83,7 @@ void Boss2BeforeScene::render(void)
 
 	GAMEMANAGER->getPlayer()->ObjectRender();
 
-	//IMAGEMANAGER->render("보스2전 FrontDoor", getMemDC(), -_camera->getScreenRect().left, 0);
+	IMAGEMANAGER->render("Boss2beforeFrontDoor", getMemDC(), -_camera->getScreenRect().left, 0);
 
 	_camera->render();
 

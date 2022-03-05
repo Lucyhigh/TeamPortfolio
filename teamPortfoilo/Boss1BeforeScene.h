@@ -17,7 +17,7 @@ private:
 	Image* _frameNpcImage;
 	tagOnlyText  _text[TEXTNUM];
 	RECT* floor0;
-	RECT* floor1;
+	RECT* floor1;  
 	RECT* floor2;
 	RECT _ObjectRc;
 	RECT _SymbolRc;

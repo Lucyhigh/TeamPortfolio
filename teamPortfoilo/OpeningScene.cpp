@@ -3,10 +3,10 @@
 
 HRESULT OpeningScene::init(void)
 {
-	_image = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ¹Ù´Ú");
+	_image = IMAGEMANAGER->findImage("openingSceneFloor");
 
 	_pixel = new PixelCollision;
-	_pixel->init(1680, 944, "¿ÀÇÁ´×¾À ÇÈ¼¿");
+	_pixel->init(_image->getWidth()/2-150, 455, "openingScenePixel");
 
 	_textAlpha = 0;
 	_alpha = 0;
@@ -31,6 +31,8 @@ void OpeningScene::release(void)
 
 void OpeningScene::update(void)
 {
+	cout << _ptMouse.y << endl;
+
 	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
 	TEMPSOUNDMANAGER->playSoundWithKey("Luto");
 
@@ -52,18 +54,18 @@ void OpeningScene::update(void)
 	_camera->update();
 
 	_pixel->setCameraRect(_camera->getScreenRect());
-	_pixel->update("¿ÀÇÁ´×¾À ÇÈ¼¿");
+	_pixel->update("openingScenePixel");
 }
 
 void OpeningScene::render(void)
 {
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
-	IMAGEMANAGER->loopRender("¿ÀÇÁ´×¾À µÞ¹è°æ", getMemDC(), &rc1,
+	IMAGEMANAGER->loopRender("openingSceneLastBG", getMemDC(), &rc1,
 		_camera->getScreenRect().left * bgSpeed,
 		_camera->getScreenRect().top * bgSpeed);
 
-	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¹Ù´Ú", getMemDC(),
+	IMAGEMANAGER->render("openingSceneFloor", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
 
@@ -72,14 +74,14 @@ void OpeningScene::render(void)
 	if (!_pixel->getWakeUp())
 	{
 		IMAGEMANAGER->render("k", getMemDC(),
-			_pixel->getX() - _camera->getScreenRect().left,
+			_pixel->getX() - _camera->getScreenRect().left-5,
 			_pixel->getY() - _camera->getScreenRect().top - 100);
 	}
 
-	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¾Õ½ÃÃ¼", getMemDC(),
+	IMAGEMANAGER->render("openingSceneFrontBody", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
-	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¾Õ¹®", getMemDC(),
+	IMAGEMANAGER->render("openingSceneFrontDoor", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
 

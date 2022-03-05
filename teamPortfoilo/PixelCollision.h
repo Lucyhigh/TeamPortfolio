@@ -5,7 +5,6 @@
 class PixelCollision : public GameNode
 {
 private:
-
 	Image* _playerIdleImage;
 	Image* _playerMoveImage;
 	Image* _playerIdleImageL;
