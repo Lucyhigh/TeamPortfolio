@@ -58,7 +58,7 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	SCENEMANAGER->addScene("Last", new LastScene);
 	SCENEMANAGER->addScene("Ending", new EndingScene);
 
-	SCENEMANAGER->changeScene("Title");
+	SCENEMANAGER->changeScene("Last");
 	return S_OK;
 }
 
