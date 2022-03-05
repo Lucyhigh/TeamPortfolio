@@ -70,6 +70,12 @@ void OpeningScene::render(void)
 
 	_pixel->render();
 
+	if (!_pixel->getWakeUp())
+	{
+		IMAGEMANAGER->render("k", getMemDC(), _pixel->getX(), _pixel->getY() - 50);
+	}
+	cout << _pixel->getX() << " , " << _pixel->getY() - 50 << endl;
+
 	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¾Õ½ÃÃ¼", getMemDC(), 
 											-_camera->getScreenRect().left,
 											-_camera->getScreenRect().top);

@@ -34,6 +34,8 @@ public:
 	int getY();
 	void setX(int x);
 
+	bool getWakeUp();
+
 	float getPlayerPosX();
 	void setPlayerPosX(float x);
 

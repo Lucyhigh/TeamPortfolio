@@ -154,12 +154,7 @@ void PixelCollision::render(void)
 	{
 		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY, _ani3);
 	}
-	int rcCenterX = (_rc.left + _rc.right)*0.5;
-	int rcCenterY = (_rc.top + _rc.bottom)*0.5;
-	if (!_isWakeUp)
-	{
-		IMAGEMANAGER->render("k", getMemDC(), rcCenterX, rcCenterY - 30);
-	}
+	
 	//cout << rcCenterX << endl;
 }
 
@@ -176,6 +171,11 @@ int PixelCollision::getY()
 void PixelCollision::setX(int x)
 {
 	_x = x;
+}
+
+bool PixelCollision::getWakeUp()
+{
+	return _isWakeUp;
 }
 
 float PixelCollision::getPlayerPosX()
