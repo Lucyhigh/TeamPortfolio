@@ -18,7 +18,7 @@ HRESULT BossUI::init(void)
 HRESULT BossUI::init(int hp)
 {
 
-	 _hp = (float)GAMEMANAGER->getMonster()[0]->getHp(BaseEnum::STATE); // n번째 보스
+	_hp = (float)GAMEMANAGER->getMonster()[0]->getHp(BaseEnum::STATE); // n번째 보스
 	_hpBar = new ProgressBarBoss;
 	_hpBar->init(hp);
 
@@ -35,7 +35,7 @@ void BossUI::release(void)
 
 void BossUI::update(void)
 {
-	
+
 	_hp = (float)GAMEMANAGER->getMonster()[0]->getHp(BaseEnum::STATE); // 543
 	_hpBar->setBossHpGauge(_hp);
 	_hpBar->update();
@@ -47,10 +47,10 @@ void BossUI::update(void)
 
 	if (_isBossDead)
 	{
-		if(KEYMANAGER->isToggleKey('Z')) 		cout << _count << endl;
+		if (KEYMANAGER->isToggleKey('Z')) 		cout << _count << endl;
 
 		_count++;
-		if(_count >= 1200)
+		if (_count >= 1200)
 		{
 			_alpha -= 0.1;
 			if (_alpha <= 0) _alpha = 0;
@@ -65,7 +65,7 @@ void BossUI::render(void)
 {
 	_hpBar->render();
 
-	if (_isBossDead )
+	if (_isBossDead)
 	{
 		IMAGEMANAGER->findImage("bDieBg")->alphaRender(getMemDC(), _alpha*0.5);
 		IMAGEMANAGER->findImage("bDie")->alphaRender(getMemDC(), _alpha);
