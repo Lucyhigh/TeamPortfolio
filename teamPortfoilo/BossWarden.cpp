@@ -34,6 +34,7 @@ HRESULT BossWarden::init(POINT point, vector<RECT*> floor)
 	this->floor = floor;
 	_state = UnitState::END;
 	_Collider[BaseEnum::UNIT] = RectMakeCenter(point.x, point.y, 200, 225);
+
 	function<void()> _update;
 	_update = std::bind(&BossWarden::_updateIdle,this);
 	_pattenFunc.push_back(_update);
@@ -47,7 +48,7 @@ HRESULT BossWarden::init(POINT point, vector<RECT*> floor)
 	_pattenFunc.push_back(_update);
 	_update = std::bind(&BossWarden::_updateStart, this);
 	_pattenFunc.push_back(_update);
-	_update = std::bind(&BossWarden::_updateDie, this);
+	_update = std::bind(&BossWarden::_updateJump, this);
 	_pattenFunc.push_back(_update);
 
 	if (GAMEMANAGER->getPlayer()->getCollider().left - _Collider[BaseEnum::UNIT].left <= 0)
@@ -71,7 +72,7 @@ void BossWarden::update(void)
 	_updateFloor();
 	_updateSide();
 
-	if (_hp[BaseEnum::STATE] <= 0) { _state == UnitState::END; }
+	if (_hp[BaseEnum::STATE] <= 0 && _state != UnitState::DIE) { _state = UnitState::END; }
 	if (_state == UnitState::END) { _inputPatten(); }
 	_inputAnimation();
 	_pattenFunc[(int)_state]();
@@ -401,7 +402,7 @@ void BossWarden::_updateJump()
 		return; 
 	}
 
-	if (_state != UnitState::JUMP)
+	if (_state != UnitState::JUMP && _state != UnitState::DIE)
 	{
 		if (_isLeft == -1 && _Collider[BaseEnum::UNIT].left >= 10)
 		{
@@ -438,7 +439,10 @@ void BossWarden::_updateJump()
 			}
 			else
 			{
-				_state = UnitState::END;
+				if (_state != UnitState::DIE)
+				{
+					_state = UnitState::END;
+				}
 			}
 		}
 	}

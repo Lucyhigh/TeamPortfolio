@@ -10,6 +10,7 @@ private:
 	float _hp;
 
 	float _alpha;
+	bool _alphaBack;
 	bool _isBossDead;
 	bool _imgEnd;
 	int _count;

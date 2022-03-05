@@ -39,14 +39,24 @@ void BossUI::update(void)
 		if (KEYMANAGER->isToggleKey('Z')) 		cout << _count << endl;
 
 		_count++;
-		if (_count >= 1200)
+		if (_count >= 100)
 		{
-			_alpha -= 0.1;
-			if (_alpha <= 0) _alpha = 0;
+			if (_alphaBack == false)
+			{
+				_alpha += 0.1;
+				if (_alpha >= 450)
+				{
+					_alpha = 450;
+					_alphaBack = true;
+				}
+			}
+			else
+			{
+				_alpha -= 0.1;
+			}
 		}
-
+		
 	}
-
 
 }
 
