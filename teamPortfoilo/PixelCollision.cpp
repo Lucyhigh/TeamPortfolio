@@ -12,9 +12,9 @@ HRESULT PixelCollision::init(float x, float y, char* image)
 	_ani2 = new Animation;
 	_ani3 = new Animation;
 
-	_ani->init(_playerIdleImage->getWidth(), _playerIdleImage->getHeight(), 256, 146);//128, 73
-	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), 158, 140);//79, 70
-	_ani3->init(_playerWakeUpImage->getWidth(), _playerWakeUpImage->getHeight(), 256, 256);//128, 128
+	_ani->init(_playerIdleImage->getWidth(), _playerIdleImage->getHeight(), 256, 146);
+	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), 158, 140);
+	_ani3->init(_playerWakeUpImage->getWidth(), _playerWakeUpImage->getHeight(), 256, 256);
 
 	_ani->setFPS(7);
 	_ani->setPlayFrame(0, 12, false, true);
@@ -141,10 +141,8 @@ void PixelCollision::render(void)
 	}
 	else
 	{
-		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY - 21, _ani3);
+		_playerWakeUpImage->aniRender(getMemDC(), cameraX, cameraY - 70, _ani3);
 	}
-
-	//cout << rcCenterX << endl;
 }
 
 int PixelCollision::getX()

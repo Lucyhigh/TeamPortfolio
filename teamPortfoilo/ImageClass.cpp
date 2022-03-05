@@ -25,7 +25,7 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("°ø°ÝÀÌÆåÆ®", "Resources/Images/Player/effectTwo.bmp", 792, 164, 6, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò±âµµ", "Resources/Images/Player/playerParyer.bmp", 1404, 208, 18, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±òÆ÷¼Ç", "Resources/Images/Player/playerPotion.bmp", 1900, 280, 19, 2, MGT);
-	IMAGEMANAGER->addFrameImage("²¿±ò±â»ó", "Resources/Images/Player/p_risingFromFallen.bmp", 896 * 2, 768, 7, 6, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò±â»ó", "Resources/Images/Player/p_risingFromFallen.bmp", 896 * 2, 768 * 2, 7, 6, MGT);
 	
 #pragma endregion
 
