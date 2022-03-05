@@ -278,7 +278,7 @@ void BossIsadora::_pattenTurnAttack()
 		return;
 	}
 
-	if (smash.size() == 0)
+	if (smash.size() == 9)
 	{
 		RECT smashPoint = {
 			_Collider[BaseEnum::UNIT].left, stateFloor.top-25,
@@ -303,6 +303,8 @@ void BossIsadora::_pattenTurnAttack()
 	}
 	else
 	{
+		if (smash.size() == 0) { smash.push_back({  { 0,0,0,0 }, Image() }); }
+
 		if (_isLeft == -1)
 		{
 			smash.back().first = {

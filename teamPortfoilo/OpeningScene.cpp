@@ -6,7 +6,9 @@ HRESULT OpeningScene::init(void)
 	_image = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ¹Ù´Ú");
 
 	_pixel = new PixelCollision;
-	_pixel->init(1680, 944, "¿ÀÇÁ´×¾À ÇÈ¼¿");
+	//_pixel->init(1680, 944, "¿ÀÇÁ´×¾À ÇÈ¼¿");
+	_pixel->init(_image->getWidth()/2-100, 455, "¿ÀÇÁ´×¾À ÇÈ¼¿");
+
 
 	_textAlpha = 0;
 	_alpha = 0;
@@ -31,6 +33,8 @@ void OpeningScene::release(void)
 
 void OpeningScene::update(void)
 {
+	cout << _ptMouse.y << endl;
+
 	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
 	TEMPSOUNDMANAGER->playSoundWithKey("Luto");
 

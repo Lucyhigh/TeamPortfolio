@@ -12,9 +12,9 @@ HRESULT PixelCollision::init(float x, float y, char* image)
 	_ani2 = new Animation;
 	_ani3 = new Animation;
 
-	_ani->init(_playerIdleImage->getWidth(), _playerIdleImage->getHeight(), 128, 73);
-	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), 79, 70);
-	_ani3->init(_playerWakeUpImage->getWidth(), _playerWakeUpImage->getHeight(), 128, 128);
+	_ani->init(_playerIdleImage->getWidth(), _playerIdleImage->getHeight(), _playerIdleImage->getFrameWidth(), _playerIdleImage->getFrameHeight());
+	_ani2->init(_playerMoveImage->getWidth(), _playerMoveImage->getHeight(), _playerMoveImage->getFrameWidth(), _playerMoveImage->getFrameHeight());
+	_ani3->init(_playerWakeUpImage->getWidth(), _playerWakeUpImage->getHeight(), _playerWakeUpImage->getFrameWidth(), _playerWakeUpImage->getFrameHeight());
 
 	_ani->setFPS(7);
 	_ani->setPlayFrame(0, 12, false, true);
