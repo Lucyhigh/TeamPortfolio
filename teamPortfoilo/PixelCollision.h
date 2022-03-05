@@ -5,18 +5,22 @@
 class PixelCollision : public GameNode
 {
 private:
-  
-    Image* _playerIdleImage;
-    Image* _playerMoveImage;
-    Image* _playerWakeUpImage;
+
+	Image* _playerIdleImageR;
+	Image* _playerMoveImageR;
+	Image* _playerIdleImageL;
+	Image* _playerMoveImageL;
+	Image* _playerWakeUpImage;
 	Image* _bgImage;
 	Animation* _ani;
 	Animation* _ani2;
 	Animation* _ani3;
-    RECT _rc;
+	Animation* _ani4;
+	Animation* _ani5;
+	RECT _rc;
 	RECT _cameraRect;
 
-    int _probeY;
+	int _probeY;
 	float _speed;
 	int _x;
 	int _y;
@@ -26,9 +30,9 @@ private:
 	bool _isWakeUp;
 public:
 	HRESULT init(float x, float y, char* image);
-    void release(void);
-    void update(char* image);
-    void render(void);
+	void release(void);
+	void update(char* image);
+	void render(void);
 
 	int getX();
 	int getY();
@@ -44,7 +48,6 @@ public:
 
 	void setCameraRect(RECT rect);
 public:
-    PixelCollision() {}
-    ~PixelCollision() {}
+	PixelCollision() {}
+	~PixelCollision() {}
 };
-

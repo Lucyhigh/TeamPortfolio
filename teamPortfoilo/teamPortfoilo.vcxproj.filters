@@ -145,6 +145,9 @@
     <ClCompile Include="ItemManager.cpp">
       <Filter>Blasphemous\GameScene\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Boss2BeforeScene.cpp">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BossScene1.h">
@@ -296,6 +299,9 @@
     </ClInclude>
     <ClInclude Include="ItemManager.h">
       <Filter>Blasphemous\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss2BeforeScene.h">
+      <Filter>Blasphemous\GameScene\Stage2</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

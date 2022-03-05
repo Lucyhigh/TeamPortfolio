@@ -169,7 +169,7 @@ void LastScene::render(void)
 	{
 		if (!_isTalk)
 		{
-			IMAGEMANAGER->render("e", getMemDC(), _npcPosX+43, _npcPosY-7);
+			IMAGEMANAGER->render("e", getMemDC(), _npcPosX + 43, _npcPosY - 7);
 		}
 		else
 		{
@@ -186,7 +186,7 @@ void LastScene::render(void)
 					wcslen(_text[_textIndex].text) - SCRIPT_MAX_LENGTH : SCRIPT_MAX_LENGTH,
 					RGB(186, 177, 127));
 			}
-			IMAGEMANAGER->alphaRender("enter", getMemDC(), WINSIZE_X*0.90, WINSIZE_Y*0.90,_textAlpha + 70);
+			IMAGEMANAGER->alphaRender("enter", getMemDC(), WINSIZE_X*0.90, WINSIZE_Y*0.90, _textAlpha + 70);
 		}
 	}
 }

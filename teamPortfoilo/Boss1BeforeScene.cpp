@@ -3,7 +3,7 @@
 
 HRESULT Boss1BeforeScene::init(void)
 {
-    _mapImage = IMAGEMANAGER->findImage("보스1전 바닥");
+    _image = IMAGEMANAGER->findImage("보스1전 바닥");
     _objectImage = IMAGEMANAGER->findImage("stand");
 	_symbolImage = IMAGEMANAGER->findImage("SymbolObj");
 	_breakSymbolImage = IMAGEMANAGER->findImage("breakSymbolObj");
@@ -13,35 +13,35 @@ HRESULT Boss1BeforeScene::init(void)
     IMAGEMANAGER->findImage("버튼");
 	IMAGEMANAGER->findImage("k");
 
-    floor0 = new RECT{ 0, 600, _mapImage->getWidth(), 670 };
-    floor1 = new RECT{ _mapImage->getWidth(), 0, _mapImage->getWidth()+100, _mapImage->getHeight() };
-    floor2 = new RECT{ 0, 0, 100, _mapImage->getHeight() };
+    floor0 = new RECT{ 0, 630, _image->getWidth(), 670 };
+    floor1 = new RECT{ _image->getWidth(), 0, _image->getWidth()+100, _image->getHeight() };
+    floor2 = new RECT{ 0, 0, 100, _image->getHeight() };
     _floor.push_back(floor0);
     _floor.push_back(floor1);
     _floor.push_back(floor2);
 
     GAMEMANAGER->getPlayer()->ObjectInit({ 400,400 }, _floor);
 
-    _x = _mapImage->getWidth()*0.5;
+    _x = _image->getWidth()*0.5;
     _y = WINSIZE_Y - 170;
     _ObjectRc = RectMakeCenter(_x, _y, _objectImage->getFrameWidth(), _objectImage->getFrameHeight());
 
-	_x = _mapImage->getWidth()*0.25;
+	_x = _image->getWidth()*0.25;
 	_y = WINSIZE_Y - 100;
 	_SymbolRc = RectMakeCenter(_x, _y, _symbolImage->getFrameWidth(), _symbolImage->getFrameHeight());
 
-	_x = _mapImage->getWidth()*0.25 + 20;
+	_x = _image->getWidth()*0.25 + 20;
 	_y = WINSIZE_Y - 125;
 	_breakSymbolRc = RectMakeCenter(_x, _y, _breakSymbolImage->getFrameWidth(), _breakSymbolImage->getFrameHeight());
 
-	_x = _mapImage->getWidth() * 0.75 + 380;
+	_x = _image->getWidth() * 0.75 + 380;
 	_y = WINSIZE_Y - 225;
 	_SkeletonRc = RectMakeCenter(_x, _y, _SkeletonImage->getFrameWidth(), _SkeletonImage->getFrameHeight());
 	
     _camera = new Camera;
     _camera->init();
-    _camera->setLimitsX(CENTER_X, _mapImage->getWidth());
-    _camera->setLimitsY(CENTER_Y, _mapImage->getHeight());
+    _camera->setLimitsX(CENTER_X, _image->getWidth());
+    _camera->setLimitsY(CENTER_Y, _image->getHeight());
 
     _indexA = _indexB = _indexC = _indexD = 0;
     _count = 0;
@@ -59,7 +59,7 @@ void Boss1BeforeScene::release(void)
 
 void Boss1BeforeScene::update(void)
 {
-    if (GAMEMANAGER->getPlayer()->getPoint().x >= _mapImage->getWidth()-100)
+    if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth()-100)
     {
     	SCENEMANAGER->changeScene("Boss1");
     }

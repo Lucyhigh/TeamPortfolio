@@ -25,8 +25,12 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("°ø°ÝÀÌÆåÆ®", "Resources/Images/Player/effectTwo.bmp", 792, 164, 6, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±ò±âµµ", "Resources/Images/Player/playerParyer.bmp", 1404, 208, 18, 2, MGT);
 	IMAGEMANAGER->addFrameImage("²¿±òÆ÷¼Ç", "Resources/Images/Player/playerPotion.bmp", 1900, 280, 19, 2, MGT);
-	//playerPotion
-
+	IMAGEMANAGER->addFrameImage("²¿±ò±â»ó", "Resources/Images/Player/p_risingFromFallen.bmp", 896, 768, 7, 6, MGT);
+	//playerLR
+	IMAGEMANAGER->addFrameImage("²¿±ò´ë±âR", "Resources/Images/Player/p_idle.bmp", 1664, 73, 13, 1, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿R", "Resources/Images/Player/p_move.bmp", 1106, 70, 14, 1, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±ò´ë±âL", "Resources/Images/Player/p_idle.bmp", 1664, 73, 13, 1, MGT);
+	IMAGEMANAGER->addFrameImage("²¿±òÀÌµ¿L", "Resources/Images/Player/p_move.bmp", 1106, 70, 14, 1, MGT);
 #pragma endregion
 
 
@@ -189,6 +193,9 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("¾À2¹è°æ", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("¾À3¹è°æ", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 
+	IMAGEMANAGER->addImage("º¸½º2Àü ¹è°æ", "Resources/Images/BackGround/Boss2before.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("º¸½º2Àü FrontDoor", "Resources/Images/BackGround/Boss2beforeFG.bmp", 1200, 675,MGT);
+
 	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À ¹Ù´Ú", "Resources/Images/BackGround/endingfloor.bmp", 5000, 1862, MGT);
 	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À Å×½ºÆ®¹è°æ", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);//
 	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À µÞ¹è°æ", "Resources/Images/BackGround/endingBG.bmp", 5000, 1862);
@@ -258,6 +265,7 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("SymbolObj", "Resources/Images/Object/SymbolStatue.bmp", 162, 64, 6, 1, MGT);
 	IMAGEMANAGER->addFrameImage("breakSymbolObj", "Resources/Images/Object/breakSymbolStatue.bmp", 550, 120, 10, 1, MGT);
 	IMAGEMANAGER->addFrameImage("breakableSkeleton", "Resources/Images/Object/breakableSkeleton.bmp", 756 * 1.7, 101 * 1.7, 14, 1, MGT);
+	IMAGEMANAGER->addFrameImage("frameNpc", "Resources/Images/Object/deosgracias.bmp", 1664, 1536, 13, 6, MGT);
 
 	// Item
 	// Å¬¸®ÇÎ¸¶½ºÅ© »ç¿ë

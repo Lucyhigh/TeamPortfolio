@@ -64,7 +64,10 @@ void BossScene1::update(void)
     {
         SCENEMANAGER->changeScene("BeforeBoss1");
     }
-
+	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 100)
+	{
+		SCENEMANAGER->changeScene("BeforeBoss2");
+	}
     POINT cameraPos;
 	cameraPos.x = GAMEMANAGER->getPlayer()->getPoint().x;
     cameraPos.y = _camera->getCameraPos().y;

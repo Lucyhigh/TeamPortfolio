@@ -20,18 +20,13 @@ void EndingScene::update(void)
     _timer += 0.1f;
     if (_timer > 30)
     {
-        if (KEYMANAGER->isOnceKeyDown(VK_SPACE) && _textIndex < 3 && _bgAlpha >= 200)
+        if (KEYMANAGER->isOnceKeyDown(VK_RETURN) && _textIndex < 3 && _bgAlpha >= 200)
         {
             _textAlpha = 0;
             _bgAlpha = 0;
             _alpha = 255;
             _textIndex++;
-            if (_textIndex >= 3)
-            {
-                _timer = 0;
-            }
         }
-        
 
         _alpha -= 1;
         _bgAlpha += 1;
@@ -42,7 +37,7 @@ void EndingScene::update(void)
     }
     if (_textIndex >= 3)
     {
-        if (_timer > 180)
+        if (_timer > 800)
         {
             SCENEMANAGER->changeScene("Title");
         }
@@ -81,6 +76,9 @@ void EndingScene::render(void)
             wcslen(_text[_textIndex].text) - SCRIPT_MAX_LENGTH : SCRIPT_MAX_LENGTH,
             RGB(136, 127, 77));
     }
-
+	if (_textIndex < 3)
+	{
+		IMAGEMANAGER->alphaRender("enter", getMemDC(), WINSIZE_X*0.90, WINSIZE_Y*0.90, _textAlpha + 70);
+	}
     IMAGEMANAGER->alphaRender("ÄÆÀüÈ¯", getMemDC(), 0, 0, _alpha);
 }
