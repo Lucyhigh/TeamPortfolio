@@ -189,6 +189,9 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("¾À2¹è°æ", "Resources/Images/BackGround/bg2.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("¾À3¹è°æ", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 
+	IMAGEMANAGER->addImage("º¸½º2Àü ¹è°æ", "Resources/Images/BackGround/Boss2before.bmp", 1200, 675);
+	IMAGEMANAGER->addImage("º¸½º2Àü FrontDoor", "Resources/Images/BackGround/Boss2beforeFG.bmp", 1200, 675,MGT);
+
 	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À ¹Ù´Ú", "Resources/Images/BackGround/endingfloor.bmp", 5000, 1862, MGT);
 	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À Å×½ºÆ®¹è°æ", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);//
 	IMAGEMANAGER->addImage("¶ó½ºÆ®¾À µÞ¹è°æ", "Resources/Images/BackGround/endingBG.bmp", 5000, 1862);

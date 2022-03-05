@@ -8,7 +8,7 @@ class Boss1BeforeScene : public GameNode
 private:
     vector<RECT*> _floor;
     Camera* _camera;
-    Image* _mapImage;
+    Image* _image;
     Image* _objectImage;
 	Image* _symbolImage;
 	Image* _breakSymbolImage;

@@ -151,6 +151,7 @@
     <ClInclude Include="AniScene.h" />
     <ClInclude Include="AniTextScene.h" />
     <ClInclude Include="Boss1BeforeScene.h" />
+    <ClInclude Include="Boss2BeforeScene.h" />
     <ClInclude Include="BossIsadora.h" />
     <ClInclude Include="BossScene1.h" />
     <ClInclude Include="BossScene2.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="AniScene.cpp" />
     <ClCompile Include="AniTextScene.cpp" />
     <ClCompile Include="Boss1BeforeScene.cpp" />
+    <ClCompile Include="Boss2BeforeScene.cpp" />
     <ClCompile Include="BossIsadora.cpp" />
     <ClCompile Include="BossScene1.cpp" />
     <ClCompile Include="BossScene2.cpp" />

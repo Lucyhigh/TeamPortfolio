@@ -1,2 +1,6 @@
-﻿  MainGame.cpp
-  teamPortfoilo.vcxproj -> C:\Users\bosch\Documents\TeamPortfolio\x64\Debug\teamPortfoilo.exe
+﻿  Boss1BeforeScene.cpp
+e:\gitproject\teamportfolio\teamportfolio\teamportfoilo\boss1beforescene.cpp(199): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+  Boss2BeforeScene.cpp
+  MainGame.cpp
+  코드를 생성하고 있습니다...
+  teamPortfoilo.vcxproj -> E:\GitProject\TeamPortfolio\TeamPortfolio\x64\Debug\teamPortfoilo.exe
