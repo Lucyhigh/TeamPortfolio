@@ -4,7 +4,7 @@
 
 #define INVENTEXT 3
 #define ITEMTEXT 8
-#define SCRIPT_MAX_LENGTH 20
+#define SCRIPT_MAX_LENGTH3 20
 
 class Inventory :public GameNode
 {
