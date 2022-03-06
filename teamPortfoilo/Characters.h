@@ -96,13 +96,13 @@ public:
 
 	void setHp(bool UpAndDown, int num)
 	{
-		if (UpAndDown == true)
+		if (_hp[BaseEnum::STATE] + num >= _hp[BaseEnum::MAX])
 		{
-			_hp[BaseEnum::STATE] += num;
+			_hp[BaseEnum::STATE] = _hp[BaseEnum::MAX];
 		}
 		else
 		{
-			_hp[BaseEnum::STATE] -= num;
+			_hp[BaseEnum::STATE] += num;
 		}
 	}
 

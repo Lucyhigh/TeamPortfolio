@@ -111,7 +111,7 @@ void FirePillar::_updateFireball()
 	for (int i = 0; i < smash.size(); i++)
 	{
 		mid = { (smash[i].first.right + smash[i].first.left) / 2, (smash[i].first.bottom + smash[i].first.top) / 2 };
-		angle = atan2f(mid.x - pairSmash[i].first.x, mid.y - (stateFloor.top+100)) * 180 / 3.1415f;
+		angle = atan2f(mid.x - pairSmash[i].first.x, mid.y - (stateFloor.top+50)) * 180 / 3.1415f;
 		mid.x += cos(angle) * GAMESPEED;
 		mid.y += -sinf(angle) * GAMESPEED;
 

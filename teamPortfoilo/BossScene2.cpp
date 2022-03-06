@@ -9,12 +9,13 @@ BossScene2::BossScene2(){
 
 HRESULT BossScene2::init(void)
 {
-	_image = IMAGEMANAGER->findImage("bg2");
+	GAMEMANAGER->clearMonster();
+	_image = IMAGEMANAGER->findImage("Boss2BG");
 	_floor.resize(3);
 	_floor[0] = new RECT{ 0, 525, _image->getWidth(),670 };
 	_floor[1] = new RECT{ -100, 0, 0, _image->getHeight() };
 	_floor[2] = new RECT{ _image->getWidth(), 0, _image->getWidth()+100, _image->getHeight() };
-	GAMEMANAGER->getPlayer()->ObjectInit({ 100,600 }, _floor);
+	GAMEMANAGER->getPlayer()->ObjectInit({ 100,400 }, _floor);
 
 	_collider = new ColliderManager();
 
@@ -52,10 +53,13 @@ void BossScene2::update(void)
 	{
 		GAMEMANAGER->getMonster()[i]->ObjectUpdate();
 	}
-	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 70)
+
+
+	if (GAMEMANAGER->getPlayer()->getCollider().right >= _image->getWidth() - 70)
 	{
 		SCENEMANAGER->changeScene("Last");
 	}
+
 	_collider->update();
 	GAMEMANAGER->getUI()->update();
 	_bossHp->update();

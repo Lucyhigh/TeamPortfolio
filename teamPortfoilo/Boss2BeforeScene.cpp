@@ -15,7 +15,7 @@ HRESULT Boss2BeforeScene::init(void)
 	_floor.push_back(floor1);
 	_floor.push_back(floor2);
 
-	GAMEMANAGER->getPlayer()->ObjectInit({ 100,630 }, _floor);//
+	GAMEMANAGER->getPlayer()->ObjectInit({ 100,400 }, _floor);//
 
 	_camera = new Camera;
 	_camera->init();
