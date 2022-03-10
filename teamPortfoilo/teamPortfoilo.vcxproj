@@ -175,7 +175,6 @@
     <ClInclude Include="OpeningScene.h" />
     <ClInclude Include="OptionScene.h" />
     <ClInclude Include="PixelCollision.h" />
-    <ClInclude Include="PixelScene.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="RandomFunction.h" />
@@ -223,7 +222,6 @@
     <ClCompile Include="OpeningScene.cpp" />
     <ClCompile Include="OptionScene.cpp" />
     <ClCompile Include="PixelCollision.cpp" />
-    <ClCompile Include="PixelScene.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="SaveScene.cpp" />

@@ -85,9 +85,6 @@
     <ClCompile Include="PixelCollision.cpp">
       <Filter>Blasphemous\Pixel</Filter>
     </ClCompile>
-    <ClCompile Include="PixelScene.cpp">
-      <Filter>Blasphemous\Pixel</Filter>
-    </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
@@ -226,9 +223,6 @@
       <Filter>Blasphemous\UI</Filter>
     </ClInclude>
     <ClInclude Include="PixelCollision.h">
-      <Filter>Blasphemous\Pixel</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelScene.h">
       <Filter>Blasphemous\Pixel</Filter>
     </ClInclude>
     <ClInclude Include="SingletonBase.h">
