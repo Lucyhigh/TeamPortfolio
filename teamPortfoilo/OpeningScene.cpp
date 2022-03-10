@@ -50,14 +50,13 @@ void OpeningScene::update(void)
 		}
 	}
 
-
 	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
-	TEMPSOUNDMANAGER->playSoundWithKey("Luto");
+	TEMPSOUNDMANAGER->playSoundWithKey("por");
 
 	if (_pixel->getX() >= _image->getWidth())
 	{
 		SCENEMANAGER->changeScene("BeforeBoss1");
-		TEMPSOUNDMANAGER->stopMp3WithKey("Luto");
+		TEMPSOUNDMANAGER->stopMp3WithKey("por");
 	}
 	else if (_pixel->getX() <= 250)
 	{
