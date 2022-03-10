@@ -14,20 +14,27 @@ void BossWarden::clearSmash(int num)
 	}
 }
 
+void BossWarden::setHit(int)
+{
+	_hp[BaseEnum::STATE] -=50;
+}
+
 BossWarden::BossWarden()
 { 
 	ObjectInit = bind(&BossWarden::init, this, std::placeholders::_1, std::placeholders::_2);
 	ObjectrRelease = bind(&BossWarden::release, this);
 	ObjectUpdate = bind(&BossWarden::update, this);
 	ObjectRender = bind(&BossWarden::render, this);
+	_hp[BaseEnum::STATE] = 10 * 54;
 }
-BossWarden::~BossWarden() { }
+BossWarden::~BossWarden(){}
 
 HRESULT BossWarden::init(POINT point, vector<RECT*> floor)
 {
 	this->floor = floor;
 	_state = UnitState::END;
-	_Collider[BaseEnum::UNIT] = RectMakeCenter(600, 450, 200, 225);
+	_Collider[BaseEnum::UNIT] = RectMakeCenter(point.x, point.y, 200, 225);
+
 	function<void()> _update;
 	_update = std::bind(&BossWarden::_updateIdle,this);
 	_pattenFunc.push_back(_update);
@@ -41,7 +48,7 @@ HRESULT BossWarden::init(POINT point, vector<RECT*> floor)
 	_pattenFunc.push_back(_update);
 	_update = std::bind(&BossWarden::_updateStart, this);
 	_pattenFunc.push_back(_update);
-	_update = std::bind(&BossWarden::_updateDie, this);
+	_update = std::bind(&BossWarden::_updateJump, this);
 	_pattenFunc.push_back(_update);
 
 	if (GAMEMANAGER->getPlayer()->getCollider().left - _Collider[BaseEnum::UNIT].left <= 0)
@@ -64,32 +71,29 @@ void BossWarden::update(void)
 	_updateLook();
 	_updateFloor();
 	_updateSide();
+
+	if (_hp[BaseEnum::STATE] <= 0 && _state != UnitState::DIE) { _state = UnitState::END; }
 	if (_state == UnitState::END) { _inputPatten(); }
 	_inputAnimation();
 	_pattenFunc[(int)_state]();
 	_inputEffect();
-
 }
 
 void BossWarden::render(void)
 {
-	Rectangle(getMemDC(), _Collider[BaseEnum::UNIT].left, _Collider[BaseEnum::UNIT].top, _Collider[BaseEnum::UNIT].right, _Collider[BaseEnum::UNIT].bottom);
+	for (int i = 0; i < effect.size(); i++)
+	{
+		float effectX = effect[i].second->getX() - GAMEMANAGER->getPlayer()->getCamareRect().left;
+		float effectY = effect[i].second->getY() - GAMEMANAGER->getPlayer()->getCamareRect().top;
+		effect[i].second->frameRender(getMemDC(), effectX, effectY, effect[i].second->getFrameX(), effect[i].second->getFrameY());
+	}
 
 	if (_image != nullptr)
 	{
-		_image->frameRender(getMemDC(), _image->getX(), _image->getY(), _image->getFrameX(), _image->getFrameY());
+		float imageX = _image->getX() - GAMEMANAGER->getPlayer()->getCamareRect().left;
+		float imageY = _image->getY() - GAMEMANAGER->getPlayer()->getCamareRect().top;
+		_image->frameRender(getMemDC(), imageX, imageY, _image->getFrameX(), _image->getFrameY());
 	}
-
-	for (int i = 0; i < smash.size(); i++)
-	{ 
-		//Rectangle(getMemDC(), smash[i].first.left, smash[i].first.top, smash[i].first.right, smash[i].first.bottom); 
-	}
-
-	for (int i = 0; i < effect.size(); i++)
-	{
-		effect[i].second->frameRender(getMemDC(), effect[i].second->getX(), effect[i].second->getY(), effect[i].second->getFrameX(), effect[i].second->getFrameY());
-	}
-
 }
 
 void BossWarden::_updateFloor()
@@ -170,20 +174,39 @@ void BossWarden::_inputPatten()
 {
 	if (_hp[BaseEnum::STATE] <= 0)
 	{ 
+		if (_isLeft == 1)
+		{
+			IMAGEMANAGER->findImage("WardenDead")->setFrameY(0);
+			IMAGEMANAGER->findImage("WardenDead")->setFrameX(IMAGEMANAGER->findImage("WardenDead")->getMaxFrameX());
+		}
+		else
+		{
+			IMAGEMANAGER->findImage("WardenDead")->setFrameY(1);
+			IMAGEMANAGER->findImage("WardenDead")->setFrameX(0);
+		}
 		_state = UnitState::DIE; return; 
 	}
-	_state = (UnitState)2;//RND->getInt(3);
+
+	_state = (UnitState)RND->getInt(3);
 	if (_state == UnitState::IDLE) 
 	{ 
 		_pattenDely = TIMEMANAGER->getWorldTime() + 2; 
 	}
 	else if (_state == UnitState::JUMPATTACK) 
 	{ 
-		IMAGEMANAGER->findImage("수호자점프")->setFrameX(0);
-		_jump["Weight"] = 13.0f; 
+		IMAGEMANAGER->findImage("WardenJump")->setFrameX(0);
+		_jump["Weight"] = 6.0f; 
 	}
 	else if (_state == UnitState::ATTACK)
 	{
+		if (_isLeft == 1)
+		{
+			IMAGEMANAGER->findImage("WardenAttack")->setFrameX(IMAGEMANAGER->findImage("WardenAttack")->getMaxFrameX());
+		}
+		else
+		{
+			IMAGEMANAGER->findImage("WardenAttack")->setFrameX(0);
+		}
 		_pattenDely = TIMEMANAGER->getWorldTime();
 	}
 
@@ -192,9 +215,10 @@ void BossWarden::_inputPatten()
 
 void BossWarden::_inputAnimation()
 {
+	// 여기가 문제 
 	if (_state == UnitState::IDLE)
 	{
-		_image = IMAGEMANAGER->findImage("수호자대기");
+		_image = IMAGEMANAGER->findImage("WardenIdle");
 
 		if (_isLeft == 1)
 		{
@@ -226,7 +250,7 @@ void BossWarden::_inputAnimation()
 	}
 	else if (_state == UnitState::JUMPATTACK)
 	{
-		_image = IMAGEMANAGER->findImage("수호자점프");
+		_image = IMAGEMANAGER->findImage("WardenJump");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 175);
 
@@ -258,7 +282,7 @@ void BossWarden::_inputAnimation()
 	}
 	else if (_state == UnitState::JUMPIDLE)
 	{
-		_image = IMAGEMANAGER->findImage("수호자점프");
+		_image = IMAGEMANAGER->findImage("WardenJump");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 175);
 		if (_isLeft == 1)
@@ -289,7 +313,7 @@ void BossWarden::_inputAnimation()
 	}
 	else if (_state == UnitState::ATTACK)
 	{
-		_image = IMAGEMANAGER->findImage("수호자공격");
+		_image = IMAGEMANAGER->findImage("WardenAttack");
 
 		_image->setY(_Collider[BaseEnum::UNIT].top - 175);
 		if (_isLeft == 1)
@@ -307,38 +331,53 @@ void BossWarden::_inputAnimation()
 		{
 			return;
 		}
-
 		_fram = TIMEMANAGER->getWorldTime();
-		if (_image->getFrameX() < _image->getMaxFrameX())
+
+		if(_isLeft == 1)
+		{ 
+			if (_image->getFrameX() > 0)
+			{
+				_image->setFrameX(_image->getFrameX() - 1);
+			}
+		}
+		else
 		{
-			_image->setFrameX(_image->getFrameX() + 1);
+			if (_image->getFrameX() < _image->getMaxFrameX())
+			{
+				_image->setFrameX(_image->getFrameX() + 1);
+			}
 		}
 	}
 	else if (_state == UnitState::DIE)
 	{
-		_image = IMAGEMANAGER->findImage("수호자죽음");
-
+		_image = IMAGEMANAGER->findImage("WardenDead");
 		_image->setY(_Collider[BaseEnum::UNIT].top - 225);
+
 		if (_isLeft == 1)
 		{
-			_image->setFrameY(0);
-			_image->setX(_Collider[BaseEnum::UNIT].left - 125);
+			_image->setX(_Collider[BaseEnum::UNIT].left -510);
 		}
 		else
 		{
-			_image->setFrameY(1);
 			_image->setX(_Collider[BaseEnum::UNIT].left - 125);
 		}
 
-		if (0.1f + _fram >= TIMEMANAGER->getWorldTime())
-		{
-			return;
-		}
-
+		if (0.1f + _fram >= TIMEMANAGER->getWorldTime()) return;
 		_fram = TIMEMANAGER->getWorldTime();
-		if (_image->getFrameX() < _image->getMaxFrameX())
+
+		if (_isLeft == -1)
 		{
-			_image->setFrameX(_image->getFrameX() + 1);
+			if (_image->getFrameX() < _image->getMaxFrameX())
+			{
+				_image->setFrameX(_image->getFrameX() + 1);
+			}
+		}
+		else
+		{
+			if (_image->getFrameX() > 0)
+			{
+				_image->setFrameX(_image->getFrameX() - 1);
+			}
 		}
 	}
 }
@@ -351,23 +390,26 @@ void BossWarden::_updateIdle()
 
 void BossWarden::_updateJump()
 {
-	if (_state == UnitState::JUMPATTACK && IMAGEMANAGER->findImage("수호자점프")->getFrameX() < 9 )
+	if (_state == UnitState::JUMPATTACK && IMAGEMANAGER->findImage("WardenJump")->getFrameX() < 9 )
 	{ 
 		return; 
 	}
 
-	if (_isLeft == -1 && _Collider[BaseEnum::UNIT].left >= GAMESPEED)
+	if (_state != UnitState::JUMP && _state != UnitState::DIE)
 	{
-		_Collider[BaseEnum::UNIT].left += _isLeft * GAMESPEED;
-		_Collider[BaseEnum::UNIT].right += _isLeft * GAMESPEED;
-	}
-	else if (_isLeft == 1 && _Collider[BaseEnum::UNIT].right <= WINSIZE_X - GAMESPEED)
-	{
-		_Collider[BaseEnum::UNIT].left += _isLeft * GAMESPEED;
-		_Collider[BaseEnum::UNIT].right += _isLeft * GAMESPEED;
+		if (_isLeft == -1 && _Collider[BaseEnum::UNIT].left >= 10)
+		{
+			_Collider[BaseEnum::UNIT].left += _isLeft * GAMESPEED;
+			_Collider[BaseEnum::UNIT].right += _isLeft * GAMESPEED;
+		}
+		else if (_isLeft == 1 && _Collider[BaseEnum::UNIT].right <= floor[0]->right- 110)
+		{
+			_Collider[BaseEnum::UNIT].left += _isLeft * GAMESPEED;
+			_Collider[BaseEnum::UNIT].right += _isLeft * GAMESPEED;
+		}
 	}
 
-	_jump["Weight"] += -1 * 0.3f;
+	_jump["Weight"] += -1 * 0.05f;
 	_Collider[BaseEnum::UNIT].top += -1 * _jump["Weight"];
 	_Collider[BaseEnum::UNIT].bottom += -1 * _jump["Weight"];
 
@@ -390,7 +432,10 @@ void BossWarden::_updateJump()
 			}
 			else
 			{
-				_state = UnitState::END;
+				if (_state != UnitState::DIE)
+				{
+					_state = UnitState::END;
+				}
 			}
 		}
 	}
@@ -406,31 +451,50 @@ void BossWarden::_updateJumpIdle()
 
 void BossWarden::_updateAttack()
 {
-	if (_image->getFrameX() < 15)
+	if (_isLeft == -1)
 	{
-		return;
+		if (_image->getFrameX() < 15)	 return;
+	}
+	else
+	{
+		if (_image->getFrameX() > 7)	return;
 	}
 
-	if (0.15f + _pattenDely >= TIMEMANAGER->getWorldTime())
-	{
-		return;
-	}
+	if (0.15f + _pattenDely >= TIMEMANAGER->getWorldTime()) return;
 	_pattenDely = TIMEMANAGER->getWorldTime();
 	
-	if (smash.size() > 4 && IMAGEMANAGER->findImage("수호자공격")->getFrameX() >= IMAGEMANAGER->findImage("수호자공격")->getMaxFrameX())
+	if (smash.size() > 4)
 	{
-		_state = UnitState::END;
-		IMAGEMANAGER->findImage("수호자공격")->setFrameX(0);
-		smash.clear();
+		if (_isLeft == -1)
+		{
+			if (_image->getFrameX() >= _image->getMaxFrameX())
+			{
+				_state = UnitState::END;
+				IMAGEMANAGER->findImage("WardenAttack")->setFrameX(0);
+				smash.clear();
+			}
+		}
+		else
+		{
+			if (_image->getFrameX() <= 0)
+			{
+				_state = UnitState::END;
+				IMAGEMANAGER->findImage("WardenAttack")->setFrameX(0);
+				smash.clear();
+			}
+		}
+
 		return;
 	}
 
 	pair<RECT, Image> result;
 	effect.push_back({ 0,new Image });
 	effect.back().first = TIMEMANAGER->getWorldTime();
-	effect.back().second->init("Resources/Images/Boss/tutoBossEffect.bmp", 2560, 128, 20, 1);
+	effect.back().second->init("Resources/Images/Boss/tutoBossEffect.bmp", 2560, 128, 20, 1,true,RGB(0,0,255));
+
 	if (smash.size() == 0)
 	{
+
 		if (_isLeft != -1)
 		{
 			result.first = { _Collider[BaseEnum::UNIT].right, _Collider[BaseEnum::UNIT].bottom - 50,

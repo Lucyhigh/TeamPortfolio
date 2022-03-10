@@ -21,6 +21,7 @@ private:
 	UnitState _oldState;
 	UnitState _state;
 	float _Fram;
+	bool _prayer;
 	pair<bool, Animation*> _imageAni;
 
 	// ¿Œ«≤
@@ -62,6 +63,7 @@ private:
 
 public:
 	//±‚∫ª 
+	void setPrayer(bool);
 	UnitState getState();
 	void setCameraRect(RECT rect);
 	PlayerCharacter();

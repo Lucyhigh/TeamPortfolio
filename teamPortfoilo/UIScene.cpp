@@ -151,6 +151,20 @@ void UIScene::showPotion(void)
 	}
 }
 
+void UIScene::setPotion(void)
+{
+	_rviPotion = _vPotion.rbegin();
+	for (; _rviPotion != _vPotion.rend(); ++_rviPotion)
+	{
+		_rviPotion->use = false;
+	}
+}
+
+void UIScene::setPotion(int Lv, int Max, tagPotion potion)
+{
+	//Nothing!
+}
+
 
 void UIScene::showPoint(bool openInventory)
 {

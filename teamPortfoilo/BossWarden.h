@@ -23,7 +23,6 @@ class BossWarden : public BaseData, GameNode
 		vector<function<void()>> _pattenFunc;
 		float _pattenDely;
 		void _updateStart() {};
-		void _updateDie() {};
 		void _updateIdle();
 		void _updateJump();
 		void _updateJumpIdle();
@@ -33,6 +32,7 @@ class BossWarden : public BaseData, GameNode
 		vector<pair<float,Image*>> effect;
 
 		void clearSmash(int) override;
+		void setHit(int) override;
 	public:
 		BossWarden();
 		~BossWarden();

@@ -57,19 +57,9 @@ HRESULT MainGame::init(void) //초기화
 	SCENEMANAGER->addScene("Last", new LastScene);
 	SCENEMANAGER->addScene("Ending", new EndingScene);
 
-<<<<<<< HEAD
-	
-#pragma endregion 
-	// 테스트용 씬체인저
-	SCENEMANAGER->changeScene("BeforeBoss1");
 
-=======
-//<<<<<<< HEAD
-	SCENEMANAGER->changeScene("Last");
-//=======
-//	SCENEMANAGER->changeScene("Ending");
-//>>>>>>> 2d2b20b6327ba3be6030d8294fab9fa1e764b48d
->>>>>>> 4aeb2ac51c53316f9a438cab5dac3fb757d1a6ab
+	SCENEMANAGER->changeScene("Start");
+
 	return S_OK;
 }
 

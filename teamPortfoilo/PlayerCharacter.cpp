@@ -2,6 +2,14 @@
 #include "PlayerCharacter.h"
 #include "Animation.h"
 
+void PlayerCharacter::setPrayer(bool set)
+{
+	_prayer = set;
+	if (_isLeft == 1) { IMAGEMANAGER->findImage("p_paryer")->setFrameX(0); }
+	else { IMAGEMANAGER->findImage("p_paryer")->setFrameX(IMAGEMANAGER->findImage("p_paryer")->getMaxFrameX()); }
+}
+
+
 PlayerCharacter::UnitState PlayerCharacter::getState()
 {
 	return _state;

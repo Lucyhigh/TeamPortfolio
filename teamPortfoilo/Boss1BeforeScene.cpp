@@ -80,13 +80,13 @@ void Boss1BeforeScene::update(void)
 		{
 			_indexA = 1;
 			GAMEMANAGER->getPlayer()->setHp(GAMEMANAGER->getPlayer()->getHp(BaseEnum::MAX), 136);
-			GAMEMANAGER->getPlayer()->setParyer(true);
+			GAMEMANAGER->getPlayer()->setPrayer(true);
 			GAMEMANAGER->getUI()->setPotion();
 		}
 	}
 	else
 	{
-		GAMEMANAGER->getPlayer()->setParyer(false);
+		GAMEMANAGER->getPlayer()->setPrayer(false);
 	}
 
 	_symbolCenterX = (_SymbolRc.left + _SymbolRc.right) * 0.5;

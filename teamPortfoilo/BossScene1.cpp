@@ -1,5 +1,4 @@
 #include "Stdafx.h"
-#include "FirePillar.h"
 #include "BossScene1.h"
 
 HRESULT BossScene1::init(void)
@@ -20,10 +19,10 @@ HRESULT BossScene1::init(void)
 
 	GAMEMANAGER->getPlayer()->ObjectInit({ 100,600 }, _floor);
 	
-	boss = new BossWarden();
-	boss->init({ _image->getWidth()/2,CENTER_Y }, _floor);
-	_monster.push_back(boss);
-	GAMEMANAGER->setMonster(_monster);
+	//boss = new BossWarden();
+	//boss->init({ _image->getWidth()/2,CENTER_Y }, _floor);
+	//_monster.push_back(boss);
+	//GAMEMANAGER->setMonster(_monster);
 
     _camera = new Camera;
     _camera->init();
