@@ -114,20 +114,6 @@ void Boss1BeforeScene::render(void)
     if (getDistance(objectCenterX, objectCenterY, GAMEMANAGER->getPlayer()->getPoint().x, GAMEMANAGER->getPlayer()->getPoint().y) < 200)
     {
         IMAGEMANAGER->render("버튼", getMemDC(), objectPosCenterX-40, objectPosY - 30);
-        if (KEYMANAGER->isToggleKey('E'))
-        {
-            if (_ptMouse.x > CENTER_X - 300 && _ptMouse.y > CENTER_Y)
-            {
-                //IMAGEMANAGER->render("선택창2", getMemDC(), CENTER_X - 300, CENTER_Y - 250);
-            }
-            else
-            {
-                //IMAGEMANAGER->render("선택창1", getMemDC(), CENTER_X - 300, CENTER_Y - 250);
-            }
-        }
-        else
-        {
-        }
     }
     IMAGEMANAGER->render("보스1전FrontDoor", getMemDC(), -_camera->getScreenRect().left,0);
     _camera->render();

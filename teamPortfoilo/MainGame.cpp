@@ -11,8 +11,6 @@
 #include "PixelScene.h"//
 #include "Boss1BeforeScene.h"
 #include "BossScene1.h"
-#include "BossScene2.h"
-#include "FieldScene1.h"
 #include "EndingScene.h"
 #pragma endregion 
 
@@ -44,11 +42,7 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	SCENEMANAGER->addScene("BeforeBoss1", new Boss1BeforeScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
 
-
-	
 	// Stage2
-	SCENEMANAGER->addScene("Boss2", new BossScene2);
-	SCENEMANAGER->addScene("Field1", new FieldScene1);
 	SCENEMANAGER->addScene("Ending", new EndingScene);
 
 	

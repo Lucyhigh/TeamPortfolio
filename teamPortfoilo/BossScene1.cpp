@@ -15,10 +15,6 @@ HRESULT BossScene1::init(void)
 	_floor.push_back(floor2);
 
 	GAMEMANAGER->getPlayer()->ObjectInit({ 0,0 }, _floor);
-	boss = new BossWarden();
-	boss->init({ 0,0 }, _floor);
-	_monster.push_back(boss);
-	GAMEMANAGER->setMonster(_monster);
 
     _camera = new Camera;
     _camera->init();
@@ -29,11 +25,6 @@ HRESULT BossScene1::init(void)
 
 void BossScene1::release(void)
 {
-	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
-	{ 
-		GAMEMANAGER->getMonster()[i]->ObjectrRelease();
-	}
-
 	GAMEMANAGER->getPlayer()->ObjectrRelease();
 
     _camera->release();
@@ -43,10 +34,6 @@ void BossScene1::release(void)
 void BossScene1::update(void)
 {
 	_collider->update();
-	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
-	{ 
-		GAMEMANAGER->getMonster()[i]->ObjectUpdate(); 
-	}
 
     if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON) || GAMEMANAGER->getPlayer()->getPoint().x <= 0)
     {
@@ -70,11 +57,6 @@ void BossScene1::render(void)
                          _camera->getScreenRect().left, _camera->getScreenRect().top,
 						 WINSIZE_X, WINSIZE_Y);
    
-	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
-	{ 
-		GAMEMANAGER->getMonster()[i]->ObjectRender(); 
-	}
-
 	for (int i = 0; i < _floor.size(); i++)
 	{
 		Rectangle(getMemDC(),_floor[i]->left -_camera->getScreenRect().left, 

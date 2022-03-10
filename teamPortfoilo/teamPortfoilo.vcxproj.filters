@@ -13,9 +13,6 @@
     <ClCompile Include="BossScene1.cpp">
       <Filter>Blasphemous\Stage1</Filter>
     </ClCompile>
-    <ClCompile Include="BossScene2.cpp">
-      <Filter>Blasphemous\Stage2</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Blasphemous\Camera</Filter>
     </ClCompile>
@@ -140,9 +137,6 @@
     </ClInclude>
     <ClInclude Include="BossScene1.h">
       <Filter>Blasphemous\Stage1</Filter>
-    </ClInclude>
-    <ClInclude Include="BossScene2.h">
-      <Filter>Blasphemous\Stage2</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Blasphemous\Camera</Filter>

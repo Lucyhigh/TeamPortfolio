@@ -28,7 +28,6 @@ private:
 	Image* _mpFullBarEffect;
 
 public:
-	//HRESULT init(int x, int y, int width, int height);
 	HRESULT init(float hp, float mp); // player
 	HRESULT init(float hp); // boss
 	void release(void);

@@ -152,7 +152,6 @@
     <ClInclude Include="AniTextScene.h" />
     <ClInclude Include="Boss1BeforeScene.h" />
     <ClInclude Include="BossScene1.h" />
-    <ClInclude Include="BossScene2.h" />
     <ClInclude Include="BossUI.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Characters.h" />
@@ -198,7 +197,6 @@
     <ClCompile Include="AniTextScene.cpp" />
     <ClCompile Include="Boss1BeforeScene.cpp" />
     <ClCompile Include="BossScene1.cpp" />
-    <ClCompile Include="BossScene2.cpp" />
     <ClCompile Include="BossUI.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Characters.cpp" />
