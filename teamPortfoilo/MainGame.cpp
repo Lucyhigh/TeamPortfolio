@@ -55,7 +55,7 @@ HRESULT MainGame::init(void) //ÃÊ±âÈ­
 	SCENEMANAGER->addScene("Ending", new EndingScene);
 
 
-	SCENEMANAGER->changeScene("BeforeBoss2");
+	SCENEMANAGER->changeScene("Opening");
 
 	return S_OK;
 }
