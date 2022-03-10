@@ -22,9 +22,6 @@
     <ClCompile Include="Boss1BeforeScene.cpp">
       <Filter>Blasphemous\Stage1</Filter>
     </ClCompile>
-    <ClCompile Include="BossWarden.cpp">
-      <Filter>Blasphemous\Characters\Boss</Filter>
-    </ClCompile>
     <ClCompile Include="Characters.cpp">
       <Filter>Blasphemous\Characters</Filter>
     </ClCompile>
@@ -32,9 +29,6 @@
       <Filter>Blasphemous\Manager</Filter>
     </ClCompile>
     <ClCompile Include="EndingScene.cpp">
-      <Filter>Blasphemous\Stage2</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldScene1.cpp">
       <Filter>Blasphemous\Stage2</Filter>
     </ClCompile>
     <ClCompile Include="FontManager.cpp">
@@ -91,20 +85,11 @@
     <ClCompile Include="UIScene.cpp">
       <Filter>Blasphemous\UI</Filter>
     </ClCompile>
-    <ClCompile Include="KnifeMonster.cpp">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
-    </ClCompile>
     <ClCompile Include="PixelCollision.cpp">
       <Filter>Blasphemous\Pixel</Filter>
     </ClCompile>
     <ClCompile Include="PixelScene.cpp">
       <Filter>Blasphemous\Pixel</Filter>
-    </ClCompile>
-    <ClCompile Include="RockThrowMonster.cpp">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
-    </ClCompile>
-    <ClCompile Include="WheelMonster.cpp">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
@@ -165,9 +150,6 @@
     <ClInclude Include="Boss1BeforeScene.h">
       <Filter>Blasphemous\Stage1</Filter>
     </ClInclude>
-    <ClInclude Include="BossWarden.h">
-      <Filter>Blasphemous\Characters\Boss</Filter>
-    </ClInclude>
     <ClInclude Include="Characters.h">
       <Filter>Blasphemous\Characters</Filter>
     </ClInclude>
@@ -175,9 +157,6 @@
       <Filter>Blasphemous\Manager</Filter>
     </ClInclude>
     <ClInclude Include="EndingScene.h">
-      <Filter>Blasphemous\Stage2</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldScene1.h">
       <Filter>Blasphemous\Stage2</Filter>
     </ClInclude>
     <ClInclude Include="FontManager.h">
@@ -240,20 +219,11 @@
     <ClInclude Include="UIScene.h">
       <Filter>Blasphemous\UI</Filter>
     </ClInclude>
-    <ClInclude Include="KnifeMonster.h">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
-    </ClInclude>
     <ClInclude Include="PixelCollision.h">
       <Filter>Blasphemous\Pixel</Filter>
     </ClInclude>
     <ClInclude Include="PixelScene.h">
       <Filter>Blasphemous\Pixel</Filter>
-    </ClInclude>
-    <ClInclude Include="RockThrowMonster.h">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
-    </ClInclude>
-    <ClInclude Include="WheelMonster.h">
-      <Filter>Blasphemous\Characters\FieldMonster</Filter>
     </ClInclude>
     <ClInclude Include="SingletonBase.h">
       <Filter>API FrameWork\DesignPattern</Filter>
@@ -349,12 +319,6 @@
     </Filter>
     <Filter Include="Blasphemous\Characters\Player">
       <UniqueIdentifier>{1d6c32d3-f508-45fe-90af-fcb9997b9705}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blasphemous\Characters\Boss">
-      <UniqueIdentifier>{b03478ec-b6a6-425b-b2f4-cd3c4bf755a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blasphemous\Characters\FieldMonster">
-      <UniqueIdentifier>{9c066b6c-297c-4ba4-b6ed-7f9bc639193c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -20,8 +20,6 @@ int BaseData::getMp(BaseEnum getData)
 	else if (getData == BaseEnum::STATE) { return _mp[BaseEnum::MAX]; }
 	else return GETERROR;
 }
-
-
 #pragma endregion
 
 #pragma region 충돌체(위치)
@@ -85,9 +83,5 @@ POINT BaseData::getPoint()
 	return POINT{ (_Collider[BaseEnum::UNIT].right + _Collider[BaseEnum::UNIT].left) / 2,
 			 (_Collider[BaseEnum::UNIT].bottom + _Collider[BaseEnum::UNIT].top) / 2 };
 }
-
-
-
-
 #pragma endregion
 
