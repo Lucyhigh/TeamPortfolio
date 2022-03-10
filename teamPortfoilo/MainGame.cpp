@@ -12,6 +12,7 @@
 #include "OpeningScene.h"
 #include "Boss1BeforeScene.h"
 #include "BossScene1.h"
+
 #include "Boss2BeforeScene.h"
 #include "BossScene2.h"
 #include "LastScene.h"
@@ -25,8 +26,8 @@ HRESULT MainGame::init(void) //초기화
 	ImageClass imageClass = ImageClass();
 	imageClass.init();
 
-	//TempSoundTest sound = TempSoundTest();
-	//sound.init();
+	TempSoundTest sound = TempSoundTest();
+	sound.init();
 
 	TIMEMANAGER->init();
 
@@ -56,7 +57,7 @@ HRESULT MainGame::init(void) //초기화
 	SCENEMANAGER->addScene("Ending", new EndingScene);
 
 
-	SCENEMANAGER->changeScene("BeforeBoss1");
+	SCENEMANAGER->changeScene("Last");
 
 	return S_OK;
 }

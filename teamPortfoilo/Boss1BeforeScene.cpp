@@ -276,7 +276,7 @@ void Boss1BeforeScene::render(void)
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
 
-	IMAGEMANAGER->loopRender("boss1Bg", getMemDC(), &rc1,
+	IMAGEMANAGER->loopRender("boss1LastBG", getMemDC(), &rc1,
 		_camera->getScreenRect().left * bgSpeed,
 		_camera->getScreenRect().top * bgSpeed);
 

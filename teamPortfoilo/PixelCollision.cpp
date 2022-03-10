@@ -56,7 +56,7 @@ void PixelCollision::update(char* image)
 	if (_count >= 1 && _isWakeUp == false)
 	{
 		_count++;
-		if (_count > 1000)
+		if (_count > 900)
 		{
 			_ani->AniStart();
 			_ani2->AniStart();

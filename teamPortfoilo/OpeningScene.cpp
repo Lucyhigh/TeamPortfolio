@@ -59,9 +59,9 @@ void OpeningScene::update(void)
 		SCENEMANAGER->changeScene("BeforeBoss1");
 		TEMPSOUNDMANAGER->stopMp3WithKey("Luto");
 	}
-	else if (_pixel->getX() <= 390)
+	else if (_pixel->getX() <= 300)
 	{
-		_pixel->setX(390);
+		_pixel->setX(300);
 	}
 
 	POINT cameraPos;

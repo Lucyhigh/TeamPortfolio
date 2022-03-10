@@ -6,32 +6,28 @@
 class Boss2BeforeScene : public GameNode
 {
 private:
-	vector<RECT*> _floor;
-	Camera* _camera;
-	Image* _image;
-	Image* _npcsimage;
-	Image* _npcimage;
+    vector<RECT*> _floor;
+    Camera* _camera;
+    Image* _image;
+    Image* _npcsimage;
+    Image* _npcimage;
 
-	RECT* floor0;
-	RECT* floor1;
-	RECT* floor2;
+    RECT* floor0;
+    RECT* floor1;
+    RECT* floor2;
 
-	float _x, _y;
+    float _x, _y;
 
-	int _count;
-	int _indexA, _indexB;
-
-	bool _areaTextOn;
-	int _areaTextAlpha;
-
+    int _count;
+    int _indexA, _indexB;
 
 public:
-	Boss2BeforeScene() {}
-	~Boss2BeforeScene() {}
+    Boss2BeforeScene() {}
+    ~Boss2BeforeScene() {}
 
 public:
-	HRESULT init(void);
-	void release(void);
-	void update(void);
-	void render(void);
+    HRESULT init(void);
+    void release(void);
+    void update(void);
+    void render(void);
 };
