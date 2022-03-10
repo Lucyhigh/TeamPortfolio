@@ -5,20 +5,15 @@
 class TitleScene : public GameNode
 {
 private :
-
-	// Sequence--------------------------------------------------------
 	bool _anyButton;
 	bool _title;
 
-	// ANYBUTTON --------------------------------------------------------
 	RECT _logoRc;
 	bool _pushButton;
 	int _alpha;
 	
-	// TITLE -------------------------------------------------------------
 	AniSceneTitle* _ani;
-	int _menuIndex; // 순례, 옵션, 나가기 
-
+	int _menuIndex;  
 	
 public:
 	TitleScene() {}
@@ -28,6 +23,4 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
-
-
 };

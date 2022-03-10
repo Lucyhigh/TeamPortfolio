@@ -11,7 +11,6 @@ private:
 	ColliderManager* _collider;
 	vector<BaseData*> _monster;
 	vector<RECT*> _floor;
-
     Camera* _camera;
     Image* _image;
 	BossWarden* boss;

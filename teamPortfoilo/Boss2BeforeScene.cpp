@@ -3,8 +3,6 @@
 
 HRESULT Boss2BeforeScene::init(void)
 {
-
-
     _image = IMAGEMANAGER->findImage("Boss2beforeBG");
     _npcsimage = IMAGEMANAGER->findImage("SandNPCStanding");
     _npcimage = IMAGEMANAGER->findImage("SandNPC");
@@ -28,8 +26,8 @@ HRESULT Boss2BeforeScene::init(void)
 
     _indexA = _indexB = 0;
 
-	_areaTextOn = false;
-	_areaTextAlpha = 0;
+    _areaTextOn = false;
+    _areaTextAlpha = 0;
 
     return S_OK;
 }
@@ -44,21 +42,19 @@ void Boss2BeforeScene::release(void)
 
 void Boss2BeforeScene::update(void)
 {
-	if (_areaTextOn)
-	{
-		_areaTextAlpha -= 0.05f;
-		if (_areaTextAlpha <= 0) _areaTextAlpha = 0;
-	}
-	else
-	{
-		_areaTextAlpha++;
-		if (_areaTextAlpha >= 255)
-		{
-			_areaTextAlpha = 255; _areaTextOn = true;
-		}
-	}
-
-
+    if (_areaTextOn)
+    {
+        _areaTextAlpha -= 0.05f;
+        if (_areaTextAlpha <= 0) _areaTextAlpha = 0;
+    }
+    else
+    {
+        _areaTextAlpha++;
+        if (_areaTextAlpha >= 255)
+        {
+            _areaTextAlpha = 255; _areaTextOn = true;
+        }
+    }
     _count++;
 
     if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 50)
@@ -107,6 +103,6 @@ void Boss2BeforeScene::render(void)
 
     _camera->render();
 
-	IMAGEMANAGER->findImage("area3")->alphaRender(getMemDC(), 0, 130, _areaTextAlpha);
+    IMAGEMANAGER->findImage("area3")->alphaRender(getMemDC(), 0, 130, _areaTextAlpha);
     GAMEMANAGER->getUI()->render();
 }

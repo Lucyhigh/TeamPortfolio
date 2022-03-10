@@ -3,9 +3,8 @@
 class ImageClass
 {
 public:
+    HRESULT init(void);
 
-	HRESULT init(void);
-
-	ImageClass();
-	virtual ~ImageClass();
+    ImageClass();
+    virtual ~ImageClass();
 };

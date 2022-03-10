@@ -5,7 +5,6 @@
 class BossUI : public GameNode
 {
 private:
-	// Hp Áß¾Ó UI 
 	ProgressBarBoss* _hpBar;
 	float _hp;
 

@@ -1,7 +1,6 @@
 #pragma once
 #include"GameNode.h"
 
-
 class TempSoundTest:public GameNode
 {
 public:
@@ -10,6 +9,5 @@ public:
 
 	TempSoundTest() {};
 	~TempSoundTest() {};
-
 };
 

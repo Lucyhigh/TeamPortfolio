@@ -6,31 +6,26 @@
 
 struct tagOptionSlot
 {
-	int num; // 슬롯이미지 순번
-	float x; // 슬롯이미지 좌표 
+	int num; 
+	float x; 
 	float y;
 	Image* onImg;
-	bool select; // 선택여부
+	bool select;
 };
 
-// 옵션 : 동영상, 사운드 
-// 동영상 - 창모드(풀스크린/창), 해상도(기본(1200*675/ 추가2가지..?)
-// 사운드 - 전체음량, 배경음량, 효과음량, 음성음량 조정
 class OptionScene : public GameNode
 {
 private:
-	bool _isTitleMenu; // 타이틀에서 메뉴 진입시
+	bool _isTitleMenu;
 
-	// Title option ------------------------------------------------------------
 	vector<tagOptionSlot> _vTOption;
 	vector<tagOptionSlot>::iterator _viTOption;
-	int _TOptinIndex; // 동영상, 소리, 등등
+	int _TOptinIndex; 
 	tagOnlyText _TitleText[TITLEMENU];
 
-	// InGame option ------------------------------------------------------------
 	vector<tagOptionSlot> _vIOption;
 	vector<tagOptionSlot>::iterator _viIOption;
-	int _IOptinIndex; // 동영상, 소리, 등등
+	int _IOptinIndex; 
 	tagOnlyText _InGameText[INMENU];
 
 public:
@@ -67,12 +62,10 @@ public:
 	void update(void);
 	void render(void);
 
-	// option : T - Title / I - InGame
-	void setIsTitleOption(bool state) {  _isTitleMenu = state; } // 외부에서 옵션으로 진입 시 
+	void setIsTitleOption(bool state) {  _isTitleMenu = state; }
 	void selectTOption(int optionIndex);
 	void selectIOption(int optionIndex);
 	void showTOption(void);
 	void showIOption(void);
-
 };
 

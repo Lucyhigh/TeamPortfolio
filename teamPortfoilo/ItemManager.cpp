@@ -23,22 +23,17 @@ ItemManager::ItemManager()
 			ItemData->_att = atoi(vData[i + 8].c_str());
 			ItemData->_dff = atoi(vData[i + 9].c_str());
 			ItemData->_script2 = vData[i + 12].c_str();
-			// Item Image ------------------------------------------------------------------
-			ItemData->_iconX = atoi(vData[i + 10].c_str()); // icon Frame xy
+
+			ItemData->_iconX = atoi(vData[i + 10].c_str()); 
 			ItemData->_iconY = atoi(vData[i + 11].c_str());
-			ItemData->_iconImg = IMAGEMANAGER->findImage("items"); // icon 
+			ItemData->_iconImg = IMAGEMANAGER->findImage("items"); 
 			ItemData->_iconImg->setFrameX(ItemData->_iconX);
 			ItemData->_iconImg->setFrameY(ItemData->_iconY);
-			ItemData->_slotImg = IMAGEMANAGER->findImage("items"); // slot(none) 
+			ItemData->_slotImg = IMAGEMANAGER->findImage("items"); 
 			ItemData->_slotImg->setFrameX(atoi(vData[i + 3].c_str()));
 			ItemData->_slotImg->setFrameY(0);
-			ItemData->_equipImg = IMAGEMANAGER->findImage("items"); // icon(equip) 
-			// ETC ... Item Text Script -------------------------------------------------------------
-			//wstring stemp = FONTMANAGER->s2ws(vData[i + 5].c_str());
-			//LPCWSTR result = stemp.c_str();
-			//ItemData->_testScript = result;
-
-			// 아이템 별 위치 지정 
+			ItemData->_equipImg = IMAGEMANAGER->findImage("items"); 
+			
 			int j = 0;
 			switch (ItemData->_category)
 			{
@@ -160,19 +155,15 @@ ItemManager::ItemManager()
 				break;
 			}
 
-			ItemData->_equipPosX = 0; // 아이템 이미지 위치. 
+			ItemData->_equipPosX = 0; 
 			ItemData->_equipPosY = 0;
 			_vItem.push_back(ItemData);
 		}
-
 	}
 }
 
 HRESULT ItemManager::init(void)
 {
-
-	
-
 	return S_OK;
 }
 
@@ -227,7 +218,4 @@ void ItemManager::removeItem(int arrNum)
 {
 	SAFE_DELETE(_vItem[arrNum]);
 	_vItem.erase(_vItem.begin() + arrNum);
-
 }
-
-

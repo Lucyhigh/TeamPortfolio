@@ -9,7 +9,6 @@
 #define BIBLEMAX 1
 #define COLLECTIONMAX 1
 
-
 class ItemManager : public GameNode
 {
 private:

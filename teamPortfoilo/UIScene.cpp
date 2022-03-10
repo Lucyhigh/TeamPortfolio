@@ -3,11 +3,10 @@
 
 HRESULT UIScene::init(void)
 {
-	// 플레이어 정보 
-	_hp = (float)GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE); // 136
-	_mp = (float)GAMEMANAGER->getPlayer()->getMp(BaseEnum::STATE); // 96
+	_hp = (float)GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE);  
+	_mp = (float)GAMEMANAGER->getPlayer()->getMp(BaseEnum::STATE);  
 	
-	_potionLv =	0 ; // _pData->getPotionLevel(); // 프레임 x 
+	_potionLv =	0 ; 
 	switch (_potionLv)
 	{
 	case 0:
@@ -20,15 +19,11 @@ HRESULT UIScene::init(void)
 		_potionMax = 4;
 		break;
 	}
-	
-	// ---------------여기까지 연동 필요
-
 #pragma region Hp Mp Potion
 	_hpBar = new ProgressBar;
 	_hpBar->init(_hp, _mp);
 	_point = 0;
 
-	// 포션 
 	for (int i = 0; i < _potionMax; i++)
 	{
 		tagPotion potion;
@@ -44,9 +39,6 @@ HRESULT UIScene::init(void)
 		_vPotion.push_back(potion);
 	}
 #pragma endregion 
-
-
-	//--------------------인벤토리 테스트
 
 	_inven = new Inventory();
 	_inven->init();
@@ -93,12 +85,6 @@ void UIScene::update(void)
 	_inven->update();
 	if (KEYMANAGER->isOnceKeyDown('I')) _openInventory = true;
 	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _openInventory = false;
-
-	
-	// if (KEYMANAGER->isOnceKeyDown('O')) _openOption = true;
-	// if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _openOption = false;
-	// if(_openOption)_option->update();
-
 }
 
 void UIScene::render(void)
@@ -121,7 +107,6 @@ void UIScene::render(void)
 
 void UIScene::usePotion()
 {
-	// 마지막 포션부터 비우기 위해 reverse_iterator 사용
 	_rviPotion = _vPotion.rbegin();
 	for (; _rviPotion != _vPotion.rend(); ++_rviPotion)
 	{
@@ -167,24 +152,22 @@ void UIScene::showPoint(bool openInventory)
 {
 	if (openInventory == true)
 	{
-	// 소지금 오른쪽 정렬
 	SetTextAlign(getMemDC(), TA_RIGHT);
 
-	FONTMANAGER->drawTextValue(getMemDC(), _point,					 // 변수
-		1060, IMAGEMANAGER->findImage("point")->getY() -20,			 // 위치
-		"둥근모꼴", 23, 100, RGB(171, 154, 63));						 // 폰트
+	FONTMANAGER->drawTextValue(getMemDC(), _point,					 
+		1060, IMAGEMANAGER->findImage("point")->getY() -20,			 
+		"둥근모꼴", 23, 100, RGB(171, 154, 63));						 
 	}
 	else
 	{
 		IMAGEMANAGER->findImage("point")->render(getMemDC(),
 			(WINSIZE_X - 30) - IMAGEMANAGER->findImage("point")->getWidth(), IMAGEMANAGER->findImage("point")->getY());
 
-		// 소지금 오른쪽 정렬
 		SetTextAlign(getMemDC(), TA_RIGHT);
 
-		FONTMANAGER->drawTextValue(getMemDC(), _point,					 // 변수
-			1100, IMAGEMANAGER->findImage("point")->getY() + 27,		 // 위치
-			"둥근모꼴", 25, 100, RGB(171, 154, 63));						 // 폰트
+		FONTMANAGER->drawTextValue(getMemDC(), _point,					
+			1100, IMAGEMANAGER->findImage("point")->getY() + 27,		
+			"둥근모꼴", 25, 100, RGB(171, 154, 63));						
 	}
 }
 

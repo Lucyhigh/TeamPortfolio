@@ -17,9 +17,6 @@ HRESULT OpeningScene::init(void)
 	_camera->init();
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
 	_camera->setLimitsY(CENTER_Y, _image->getHeight());
-
-
-
 	_areaTextOn = false;
 	_areaTextAlpha = 0;
 
@@ -28,6 +25,7 @@ HRESULT OpeningScene::init(void)
 
 void OpeningScene::release(void)
 {
+    _pixel->release();
 	SAFE_DELETE(_pixel);
 
 	_camera->release();
@@ -103,7 +101,6 @@ void OpeningScene::render(void)
 	IMAGEMANAGER->render("openingSceneFrontDoor", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
-
 
 	_camera->render();
 

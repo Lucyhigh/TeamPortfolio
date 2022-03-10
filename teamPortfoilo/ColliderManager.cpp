@@ -10,7 +10,6 @@ ColliderManager::~ColliderManager() { }
 void ColliderManager::update(void)
 { 
 	smashCollider();
-	bodyCollider();
 
 	if (_effect.size() != 0)
 	{ 
@@ -113,9 +112,3 @@ void ColliderManager::updateEffect()
 		}
 	}
 }
-
-
-
-
-
-

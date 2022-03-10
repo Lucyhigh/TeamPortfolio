@@ -10,9 +10,6 @@ HRESULT BossScene1::init(void)
 	floor1 = new RECT{ 0, 0, 100, _image->getHeight() };
 	floor2 = new RECT{ _image->getWidth()-70, 0, _image->getWidth(), _image->getHeight() };
 	
-	//floor1 = new RECT{ _image->getWidth(), 0, _image->getWidth()+100, 1000 };
-	//floor2 = new RECT{ 0, 0, -100, 1000 };
-
 	_floor.push_back(floor0);
 	_floor.push_back(floor1);
 	_floor.push_back(floor2);
@@ -113,11 +110,6 @@ void BossScene1::render(void)
 	IMAGEMANAGER->render("boss1FrontDoor", getMemDC(), -_camera->getScreenRect().left, 0);
 	_collider->render();
 	_camera->render();
-
-	for (int i = 0; i < _floor.size(); i++)
-	{
-		//Rectangle(getMemDC(),_floor[i]->left, _floor[i]->top, _floor[i]->right, _floor[i]->bottom);
-	}
 
 	SetTextAlign(getMemDC(), TA_CENTER);
 	LPCWSTR script = L"Ä§¹¬ÀÇ ºñÅº ÆÄ¼ö²Û";

@@ -15,11 +15,8 @@ private:
     int _bgAlpha;
     int _alpha;
     int _textAlpha;
-
-
-	bool _areaTextOn;
 	int _areaTextAlpha;
-
+	bool _areaTextOn;
 
 public:
     HRESULT init(void);

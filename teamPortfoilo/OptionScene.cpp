@@ -1,13 +1,10 @@
 #include "Stdafx.h"
 #include "OptionScene.h"
 
-
 HRESULT OptionScene::init(void)
 {
-
 	_isTitleMenu = true;
 
-	// Title OPTION ------------
 	for (int i = 0; i < TITLEMENU; i++)
 	{
 		tagOptionSlot optionInfo;
@@ -21,7 +18,6 @@ HRESULT OptionScene::init(void)
 	}
 	_TOptinIndex = 1;
 
-	// InGame OPTION ------------
 	for (int i = 0; i < INMENU; i++)
 	{
 		tagOptionSlot optionInfo;
@@ -34,7 +30,6 @@ HRESULT OptionScene::init(void)
 		_vIOption.push_back(optionInfo);
 	}
 	_IOptinIndex = 1;
-
 
 	return S_OK;
 }
@@ -45,7 +40,6 @@ HRESULT OptionScene::init(bool isTitleMenu)
 	
 	_isTitleMenu = false;
 
-	// Title OPTION ------------
 	for (int i = 0; i < TITLEMENU; i++)
 	{
 		tagOptionSlot optionInfo;
@@ -59,7 +53,6 @@ HRESULT OptionScene::init(bool isTitleMenu)
 	}
 	_TOptinIndex = 1;
 
-	// InGame OPTION ------------
 	for (int i = 0; i < INMENU; i++)
 	{
 		tagOptionSlot optionInfo;
@@ -72,7 +65,6 @@ HRESULT OptionScene::init(bool isTitleMenu)
 		_vIOption.push_back(optionInfo);
 	}
 	_IOptinIndex = 1;
-
 
 	return S_OK;
 }
@@ -137,8 +129,6 @@ void OptionScene::render(void)
 	else showIOption();
 }
 
-
-// Title OPTION ------------------------------------------------------------------------------------
 void OptionScene::selectTOption( int optionIndex)
 {
 	_viTOption = _vTOption.begin();
@@ -154,17 +144,16 @@ void OptionScene::showTOption(void)
 	IMAGEMANAGER->findImage("enter")->render(getMemDC(), CENTER_X + 120, WINSIZE_Y - 100);
 	IMAGEMANAGER->findImage("esc")->render(getMemDC(), CENTER_X + 355, WINSIZE_Y - 100);
 
-	// Menu title 
 	_viTOption = _vTOption.begin();
 	FONTMANAGER->drawText(getMemDC(), _viTOption->x - 10, _viTOption->y - 5,
 		"둥근모꼴", 27, 100, _TitleText[_viTOption->num].text, wcslen(_TitleText[_viTOption->num].text), TTEXT);
 
 
-	_viTOption = _vTOption.begin() + 1; // 0은 타이틀 명 
-	for (; _viTOption != _vTOption.end() - 2; _viTOption++) // 2는 수락, 뒤로 
+	_viTOption = _vTOption.begin() + 1; 
+	for (; _viTOption != _vTOption.end() - 2; _viTOption++)
 	{
 		SetTextAlign(getMemDC(), TA_LEFT);
-		if (_viTOption->select) // 선택한 옵션은 노란색 + 마크
+		if (_viTOption->select) 
 		{
 			_viTOption->onImg->render(getMemDC(), _viTOption->x - 25, _viTOption->y - 2);
 
@@ -178,7 +167,6 @@ void OptionScene::showTOption(void)
 		}
 	}
 
-	// 수락, 뒤로 
 	_viTOption = _vTOption.end() - 2;
 	FONTMANAGER->drawText(getMemDC(), (CENTER_X + 120) + IMAGEMANAGER->findImage("enter")->getWidth() + 25, WINSIZE_Y - 98,
 		"둥근모꼴", 25, 100, _TitleText[_viTOption->num].text, wcslen(_TitleText[_viTOption->num].text), BTEXT);
@@ -186,12 +174,7 @@ void OptionScene::showTOption(void)
 	_viTOption = _vTOption.end() - 1;
 	FONTMANAGER->drawText(getMemDC(), (CENTER_X + 355) + IMAGEMANAGER->findImage("esc")->getWidth() + 25, WINSIZE_Y - 98,
 		"둥근모꼴", 25, 100, _TitleText[_viTOption->num].text, wcslen(_TitleText[_viTOption->num].text), BTEXT);
-
 }
-
-
-
-// InGame OPTION ------------------------------------------------------------------------------------
 
 void OptionScene::selectIOption(int optionIndex)
 {
@@ -209,17 +192,16 @@ void OptionScene::showIOption(void)
 	IMAGEMANAGER->findImage("enter")->render(getMemDC(), CENTER_X + 120, WINSIZE_Y - 100);
 	IMAGEMANAGER->findImage("esc")->render(getMemDC(), CENTER_X + 355, WINSIZE_Y - 100);
 
-	// Menu title 
 	_viIOption = _vIOption.begin();
 	FONTMANAGER->drawText(getMemDC(), _viIOption->x - 10, _viIOption->y - 5,
 		"둥근모꼴", 27, 100, _InGameText[_viIOption->num].text, wcslen(_InGameText[_viIOption->num].text), TTEXT);
 
 
-	_viIOption = _vIOption.begin() + 1; // 0은 타이틀 명 
-	for (; _viIOption != _vIOption.end() - 2; _viIOption++) // 2는 수락, 뒤로 
+	_viIOption = _vIOption.begin() + 1; 
+	for (; _viIOption != _vIOption.end() - 2; _viIOption++) 
 	{
 		SetTextAlign(getMemDC(), TA_LEFT);
-		if (_viIOption->select) // 선택한 옵션은 노란색 + 마크
+		if (_viIOption->select)
 		{
 			_viIOption->onImg->render(getMemDC(), _viIOption->x - 25, _viIOption->y - 2);
 
@@ -233,7 +215,6 @@ void OptionScene::showIOption(void)
 		}
 	}
 
-	// 수락, 뒤로 
 	_viIOption = _vIOption.end() - 2;
 	FONTMANAGER->drawText(getMemDC(), (CENTER_X + 120) + IMAGEMANAGER->findImage("enter")->getWidth() + 25, WINSIZE_Y - 98,
 		"둥근모꼴", 25, 100, _InGameText[_viIOption->num].text, wcslen(_InGameText[_viIOption->num].text), BTEXT);
@@ -241,5 +222,4 @@ void OptionScene::showIOption(void)
 	_viIOption = _vIOption.end() - 1;
 	FONTMANAGER->drawText(getMemDC(), (CENTER_X + 355) + IMAGEMANAGER->findImage("esc")->getWidth() + 25, WINSIZE_Y - 98,
 		"둥근모꼴", 25, 100, _InGameText[_viIOption->num].text, wcslen(_InGameText[_viIOption->num].text), BTEXT);
-
 }

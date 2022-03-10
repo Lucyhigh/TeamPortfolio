@@ -48,7 +48,6 @@ HRESULT PlayerCharacter::init(POINT point, vector<RECT*>floor)
 
 void PlayerCharacter::release(void)
 {
-
 }
 
 void PlayerCharacter::update(void)
@@ -65,29 +64,11 @@ void PlayerCharacter::update(void)
 	_state = _inputKey(_updateSide());
 	_inputUpdate();
 	_inputAnimation();
-	//_smashRender();
 
 }
 
 void PlayerCharacter::render(void)
 {
-	/*
-	HPEN hpen = CreatePen(PS_SOLID, 3, RGB(255, 0, 0));
-	HPEN hpenOld = (HPEN)::SelectObject(getMemDC(), (HGDIOBJ)hpen);
-	HBRUSH myBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
-	HBRUSH oldBrush = (HBRUSH)SelectObject(getMemDC(), myBrush);
-
-	float left = _Collider[BaseEnum::UNIT].left - _cameraRect.left;
-	float top = _Collider[BaseEnum::UNIT].top - _cameraRect.top;
-	float right = _Collider[BaseEnum::UNIT].right - _cameraRect.left;
-	float bottom = _Collider[BaseEnum::UNIT].bottom - _cameraRect.top;
-	Rectangle(getMemDC(), left, top, right, bottom);
-
-	SelectObject(getMemDC(), oldBrush);
-	DeleteObject(myBrush);
-	hpen = (HPEN)::SelectObject(getMemDC(), hpenOld);
-	*/
-
 	for (int i = 0; i < smash.size(); i++)
 	{
 		float smashX = smash[i].first.left - _cameraRect.left;
@@ -109,7 +90,6 @@ void PlayerCharacter::render(void)
 	}
 }
 
-// ! 키보드 입력
 PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 {
 	if (_paryer == true) { return UnitState::PARYER; }
@@ -195,7 +175,7 @@ PlayerCharacter::UnitState PlayerCharacter::_inputKey(int updateSide)
 	}
 	else if (KEYMANAGER->isOnceKeyDown('K'))
 	{
-		if (_state == UnitState::ATTACK)// && smash.size() == 0)
+		if (_state == UnitState::ATTACK) 
 		{
 			_isAttack = false;
 			if (_isLeft != -1)

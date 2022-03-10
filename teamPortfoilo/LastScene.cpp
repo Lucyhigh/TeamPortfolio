@@ -1,4 +1,3 @@
-
 #include "Stdafx.h"
 #include "LastScene.h"
 
@@ -24,7 +23,6 @@ HRESULT LastScene::init(void)
     _y = 1710;
     _npcRc = RectMakeCenter(_x, _y, _frameNpcImage->getFrameWidth(), _frameNpcImage->getFrameHeight());
 
-
 	_areaTextOn = false;
 	_areaTextAlpha = 0;
 
@@ -33,6 +31,7 @@ HRESULT LastScene::init(void)
 
 void LastScene::release(void)
 {
+    _pixel->release();
     SAFE_DELETE(_pixel);
 
     _camera->release();
@@ -41,7 +40,6 @@ void LastScene::release(void)
 
 void LastScene::update(void)
 {
-
 	if (_areaTextOn)
 	{
 		_areaTextAlpha -= 0.05f;
@@ -147,8 +145,6 @@ void LastScene::update(void)
     _textAlpha += 2;
     if (_bgAlpha >= 255) _bgAlpha = 255;
     if (_textAlpha >= 100) _textAlpha = 100;
-
-
 }
 
 void LastScene::render(void)

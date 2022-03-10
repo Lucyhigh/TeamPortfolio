@@ -4,9 +4,6 @@
     <ClCompile Include="BossScene1.cpp">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClCompile>
-    <ClCompile Include="Characters.cpp">
-      <Filter>Blasphemous\Characters</Filter>
-    </ClCompile>
     <ClCompile Include="ColliderManager.cpp">
       <Filter>Blasphemous\Manager</Filter>
     </ClCompile>
@@ -20,7 +17,7 @@
       <Filter>Blasphemous\Characters\Player</Filter>
     </ClCompile>
     <ClCompile Include="MainGame.cpp">
-      <Filter>Blasphemous\GameScene\MainGame</Filter>
+      <Filter>Blasphemous\MainGame</Filter>
     </ClCompile>
     <ClCompile Include="EndingScene.cpp">
       <Filter>Blasphemous\GameScene\Stage2</Filter>
@@ -103,9 +100,6 @@
     <ClCompile Include="Boss1BeforeScene.cpp">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Blasphemous\Characters\Player</Filter>
-    </ClCompile>
     <ClCompile Include="BossUI.cpp">
       <Filter>Blasphemous\GameScene\UI</Filter>
     </ClCompile>
@@ -130,13 +124,16 @@
     <ClCompile Include="PixelCollision.cpp">
       <Filter>Blasphemous\GameScene\Pixel</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Blasphemous\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Characters.cpp">
+      <Filter>Blasphemous\Characters\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BossScene1.h">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
-    </ClInclude>
-    <ClInclude Include="Characters.h">
-      <Filter>Blasphemous\Characters</Filter>
     </ClInclude>
     <ClInclude Include="ColliderManager.h">
       <Filter>Blasphemous\Manager</Filter>
@@ -151,7 +148,7 @@
       <Filter>Blasphemous\Characters\Player</Filter>
     </ClInclude>
     <ClInclude Include="MainGame.h">
-      <Filter>Blasphemous\GameScene\MainGame</Filter>
+      <Filter>Blasphemous\MainGame</Filter>
     </ClInclude>
     <ClInclude Include="EndingScene.h">
       <Filter>Blasphemous\GameScene\Stage2</Filter>
@@ -240,9 +237,6 @@
     <ClInclude Include="Boss1BeforeScene.h">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Blasphemous\Characters\Player</Filter>
-    </ClInclude>
     <ClInclude Include="BossUI.h">
       <Filter>Blasphemous\GameScene\UI</Filter>
     </ClInclude>
@@ -267,6 +261,12 @@
     <ClInclude Include="PixelCollision.h">
       <Filter>Blasphemous\GameScene\Pixel</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Blasphemous\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Characters.h">
+      <Filter>Blasphemous\Characters\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Blasphemous">
@@ -283,9 +283,6 @@
     </Filter>
     <Filter Include="Blasphemous\GameScene\Stage1">
       <UniqueIdentifier>{fd195f48-d8f8-44b7-babd-5348cdf574ee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blasphemous\GameScene\MainGame">
-      <UniqueIdentifier>{21d6a9ed-afab-4ca5-bc7f-8b5d83a033e6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blasphemous\Manager">
       <UniqueIdentifier>{5f7366de-9dad-40f8-90c6-679a8b16e27d}</UniqueIdentifier>
@@ -328,6 +325,12 @@
     </Filter>
     <Filter Include="Blasphemous\GameScene\Pixel">
       <UniqueIdentifier>{29367146-ea9a-4fdc-b47b-66b633d6288e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\Camera">
+      <UniqueIdentifier>{fc74fdf9-02f1-439b-af7d-0affb1762154}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blasphemous\MainGame">
+      <UniqueIdentifier>{21d6a9ed-afab-4ca5-bc7f-8b5d83a033e6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

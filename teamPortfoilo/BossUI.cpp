@@ -6,7 +6,7 @@ HRESULT BossUI::init(void)
 
 	_hp = (float)GAMEMANAGER->getMonster()[0]->getHp(BaseEnum::STATE); // 543
 	_hpBar = new ProgressBarBoss;
-	_hpBar->init(_hp); // init(_hp);
+	_hpBar->init(_hp);
 
 	_alpha = 255;
 	_alphaBack = false;
@@ -25,7 +25,6 @@ void BossUI::release(void)
 
 void BossUI::update(void)
 {
-
 	_hp = (float)GAMEMANAGER->getMonster()[0]->getHp(BaseEnum::STATE); // 543
 	_hpBar->setBossHpGauge(_hp);
 	_hpBar->update();
@@ -34,7 +33,6 @@ void BossUI::update(void)
 	{
 		_isBossDead = true;
 	}
-
 
 	if (_isBossDead)
 	{
@@ -49,7 +47,6 @@ void BossUI::update(void)
 			}
 		}
 	}
-
 }
 
 void BossUI::render(void)

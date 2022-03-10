@@ -1,10 +1,8 @@
 #include "Stdafx.h"
 #include "AniTextScene.h"
 
-
 HRESULT AniTextScene::init(void)
 {
-
 	_count     = 0;
 	_moveCount = 0;
 	_nameIndex = 0;
@@ -34,8 +32,6 @@ void AniTextScene::update(void)
 	{
 		_textIndex++ ;
 	}
-
-
 }
 
 void AniTextScene::render(void)
@@ -48,6 +44,4 @@ void AniTextScene::render(void)
 			"µÕ±Ù¸ð²Ã", 30, 100, _text[_textIndex].script,
 			SCRIPT_MAX_LENGTH_, RGB(255, 255, 255));
 	}
-
-
 }

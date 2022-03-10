@@ -91,7 +91,6 @@ HRESULT ImageClass::init(void)
 #pragma endregion
 
 #pragma region UI Scene 
-	// BG : Resources/Images/BackGround/UI
 	// BG : 640*360 (*1.875)-> 1200 * 640
 
 	// Title ANYBUTTON
@@ -175,8 +174,6 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("EndingScene5", "Resources/Images/Animation/ending5.bmp", WINSIZE_X, WINSIZE_Y);
 	IMAGEMANAGER->addImage("changeScene", "Resources/Images/Animation/sceneChange.bmp", WINSIZE_X, WINSIZE_Y);
 
-
-	// ���� �� �ڸ� ���� �̹��� 
 	IMAGEMANAGER->addImage("BossStage2_Bg", "Resources/Images/BackGround/bg3.bmp", 1200, 675);
 
 #pragma endregion
@@ -232,17 +229,12 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addFrameImage("deosgracias", "Resources/Images/Object/deosgracias.bmp", 1664, 1536, 13, 6, MGT); // 128,256
 	IMAGEMANAGER->addFrameImage("stand", "Resources/Images/Object/priedieuStand.bmp", 924, 310, 7, 1, MGT); // 462, 155
 	IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/Object/itemObject.bmp", 260, 91, 10, 1, MGT); // 260,91
-	//IMAGEMANAGER->addFrameImage("SymbolObj", "Resources/Images/Object/SymbolStatue.bmp", 162 * 2, 64 * 2, 6, 1, MGT);
 	IMAGEMANAGER->addFrameImage("SymbolObj", "Resources/Images/Object/SymbolStatue2.bmp", 162 * 2, 64 * 2, 6, 1, MGT);
-	//IMAGEMANAGER->addFrameImage("breakSymbolObj", "Resources/Images/Object/breakSymbolStatue.bmp", 550 * 2, 120 * 2, 10, 1, MGT);
 	IMAGEMANAGER->addFrameImage("breakSymbolObj", "Resources/Images/Object/breakSymbolStatue2.bmp", 550 * 2, 120 * 2, 10, 1, MGT);
-	//IMAGEMANAGER->addFrameImage("breakableSkeleton", "Resources/Images/Object/breakableSkeleton.bmp", 756 * 2, 101 * 2, 14, 1, MGT);
 	IMAGEMANAGER->addFrameImage("breakableSkeleton", "Resources/Images/Object/breakableSkeleton2.bmp", 756 * 2, 101 * 2, 14, 1, MGT);
 	IMAGEMANAGER->addFrameImage("frameNpc", "Resources/Images/Object/deosgracias.bmp", 1664, 1536, 13, 6, MGT);
 	IMAGEMANAGER->addFrameImage("SandNPCStanding", "Resources/Images/Object/sandNpcStand.bmp", 924, 840, 7, 7, MGT);
-	//IMAGEMANAGER->addFrameImage("SandNPCStanding", "Resources/Images/Object/sandNpcStand2.bmp", 924, 840, 7, 7, MGT);
 	IMAGEMANAGER->addFrameImage("SandNPC", "Resources/Images/Object/sandNpc.bmp", 924 * 2, 480 * 2, 7, 4, MGT);
-	//IMAGEMANAGER->addFrameImage("SandNPC", "Resources/Images/Object/sandNpc2.bmp", 924 * 2, 480 * 2, 7, 4, MGT);
 
 	// Item
 	IMAGEMANAGER->addFrameImage("items", "Resources/Images/item/items.bmp", 510 * 1.9, 510 * 1.9, 17, 17, MGT); // 510,510->969,969
@@ -256,8 +248,6 @@ HRESULT ImageClass::init(void)
 
 #pragma region AnimationCutScene
 
-	// AniScene Text BG
-	// Resources/Images/Animation
 	IMAGEMANAGER->addImage("GreenCorn", "Resources/Images/Animation/shot1_0.bmp", 553, 675, MGT); //640*781
 
 #pragma endregion

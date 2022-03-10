@@ -4,21 +4,17 @@
 #include "Inventory.h"
 #include "OptionScene.h"
 
-// 포션위치 수정여부 확인
 struct tagPotion
 {
 	POINT pos;
 	Image* on;
 	Image* off;
-//	int Idx; // 포션레벨 frameX Index
-	bool use; // 사용여부 
+	bool use; 
 };
 
 class UIScene : public GameNode
 {
 private:
-
-	// HpMp 관련 좌상단 UI 
 	ProgressBar* _hpBar;
 	float _hp;
 	float _mp;
@@ -27,23 +23,16 @@ private:
 	int _potionMax;
 	vector<tagPotion> _vPotion;
 	vector<tagPotion>::reverse_iterator _rviPotion;
-
-
 	Inventory* _inven;
-	bool _openInventory;
-	
 	OptionScene* _option;
-	bool _openOption;
-
-	// 소지포인트 관련 우상단 UI
+	
 	int _point;
-
-
+	bool _openInventory;
+	bool _openOption;
+    
 private:
-
 	int _popupAlpha;
 	bool _firstPotion;
-
 
 public:
 	UIScene() {}
@@ -61,6 +50,5 @@ public:
 	void showPopup();
 
 	void openOption(bool state) { _openOption = state; }
-	
 };
 

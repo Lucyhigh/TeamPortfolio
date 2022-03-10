@@ -28,8 +28,6 @@ void Camera::update(void)
 
 void Camera::render(void)
 {
-   //카메라 크기 및 이동 확인용 렉트
-   //Rectangle(getMemDC(),_screen.left,_screen.top,_screen.right,_screen.bottom);
 }
 
 RECT Camera::getScreenRect()

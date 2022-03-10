@@ -6,13 +6,10 @@
 class AniSceneTitle : public GameNode
 {
 private:
-
-	// aI : Animation Image
 	Image* _aITitleBg;
 	Image* _aITitleMain;
 	Image* _aITitleEff;
 	Image* _aITitleSelecte;
-	// aM : Animation
 	Animation* _aMTitleBg;
 	Animation* _aMTitleMain;
 	Animation* _aMTitleEff;
@@ -37,11 +34,7 @@ public:
 class AniSceneItem : public GameNode
 {
 private:
-
-	// aI : Animation Image
 	Image* _aIItemSelect;
-
-	// aM : Animation
 	Animation* _aMItemSelect;
 
 public:
@@ -59,11 +52,7 @@ public:
 class AniScene : public GameNode
 {
 private:
-
-	// aI : Animation Image
 	Image* _aITitleBg;
-
-	// aM : Animation
 	Animation* _aMTitleBg;
 
 public:
@@ -74,5 +63,4 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
-
 };

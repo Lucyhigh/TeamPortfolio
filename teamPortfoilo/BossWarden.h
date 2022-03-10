@@ -41,4 +41,3 @@ class BossWarden : public BaseData, GameNode
 		void update(void);
 		void render(void);
 };
-

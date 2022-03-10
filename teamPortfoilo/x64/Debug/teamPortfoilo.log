@@ -1,10 +1,23 @@
-﻿  BossScene1.cpp
-e:\포트폴리오\고깔원정대\teamportfolio\teamportfoilo\bossscene1.cpp(90): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
-e:\포트폴리오\고깔원정대\teamportfolio\teamportfoilo\bossscene1.cpp(91): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
-e:\포트폴리오\고깔원정대\teamportfolio\teamportfoilo\bossscene1.cpp(125): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  EndingScene.cpp
-e:\포트폴리오\고깔원정대\teamportfolio\teamportfoilo\endingscene.cpp(82): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  TempSoundTest.cpp
-  TitleScene.cpp
-  코드를 생성하고 있습니다...
-  teamPortfoilo.vcxproj -> E:\포트폴리오\고깔원정대\TeamPortfolio\x64\Debug\teamPortfoilo.exe
+﻿  Inventory.cpp
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(156): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(161): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(170): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(175): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(178): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(183): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(186): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(192): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(203): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(207): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(213): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(221): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(225): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(231): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(238): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(242): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(248): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(258): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(262): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(268): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\devarc1\documents\git projects\teamportfolio\teamportfoilo\inventory.cpp(300): warning C4715: 'Inventory::checkSelect': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  teamPortfoilo.vcxproj -> C:\Users\DevArc1\Documents\git projects\TeamPortfolio\x64\Debug\teamPortfoilo.exe

@@ -1,11 +1,8 @@
 #include "Stdafx.h"
 #include "Item.h"
 
-
 HRESULT Item::init(void)
 {
-	//_ani = new AniSceneItem;
-	//_ani->init();
 
 	return S_OK;
 }
@@ -38,38 +35,28 @@ void Item::draw(void)
 	{
 		switch (_state)
 		{
-			// 있다면 그리기 
 		case ItemState::HAVE:
 			_slotImg->frameRender(getMemDC(), _posX, _posY, 1, 0);
-
 			break;
 		case ItemState::SELECT:
 			_slotImg->frameRender(getMemDC(), _posX, _posY, 6, 0);
-
-		//	_ani->render(_posX, _posY); // 선택아이템은 테두리 강조
-
 			break;
 		case ItemState::MEACULPANONE:
 			_slotImg->frameRender(getMemDC(), _posX, _posY, 6, 0);
-
 			break;
 		}
-		//_iconImg->render(getMemDC(), _posX, _posY, _iconX *57, _iconY *57,57,57);
 		_iconImg->frameRender(getMemDC(), _posX, _posY, _iconX, _iconY);
 	}
 	if (_state == ItemState::SELECT)
 	{ 
-		_slotImg->frameRender(getMemDC(), _posX, _posY, 0, 0); // 선택아이템은 테두리 강조
+		_slotImg->frameRender(getMemDC(), _posX, _posY, 0, 0);
 	}
 }
-
-
 
 void Item::setItemState(ItemState state)
 {
 	_state = state;
 }
-
 
 void Item::setEquip(bool state, float x, float y)
 {
@@ -80,6 +67,6 @@ void Item::setEquip(bool state, float x, float y)
 
 void Item::setItem(float posX, float posY)
 {
-	_posX = posX; // 인벤토리에서 아이템 위치 
+	_posX = posX; 
 	_posY = posY;
 }

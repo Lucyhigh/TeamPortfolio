@@ -246,7 +246,6 @@ void Boss1BeforeScene::update(void)
 	if (_alpha <= 0) _alpha = 0;
 	if (_textAlpha >= 100) _textAlpha = 100;
 
-
 	GAMEMANAGER->getUI()->update();
 }
 

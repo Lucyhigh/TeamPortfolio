@@ -6,7 +6,6 @@ HRESULT TitleScene::init(void)
 	_anyButton = true;
 	_title = false;
 	
-	// ANYBUTTON ------------
 	_pushButton = false;
 
 	int w = IMAGEMANAGER->findImage("AnyButtonLogo")->getWidth();
@@ -14,8 +13,6 @@ HRESULT TitleScene::init(void)
 	_logoRc = RectMakeCenter(CENTER_X,CENTER_Y,w,h);
 
 	_alpha = 255;
-
-	// TITLE ------------
 	_ani = new AniSceneTitle;
 	_ani->init();
 	_menuIndex = 0;
@@ -72,7 +69,6 @@ void TitleScene::update(void)
 		IMAGEMANAGER->findImage("titleMenu")->setFrameX(_menuIndex);
 	}
 
-	// Title-Menu select
 	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
 	{
 		TEMPSOUNDMANAGER->stopMp3WithKey("Mia");
@@ -80,11 +76,6 @@ void TitleScene::update(void)
 		if (_menuIndex == 1)SCENEMANAGER->changeScene("Option");
 		if (_menuIndex == 2)PostQuitMessage(0);
 	}
-		//if (_menuIndex == 2)
-		//{
-		//	if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) PostQuitMessage(0);
-		//}
-
 }
 
 void TitleScene::render(void)
@@ -93,17 +84,12 @@ void TitleScene::render(void)
 	{
 		IMAGEMANAGER->findImage("AnyButtonBg")->render(getMemDC());
 		IMAGEMANAGER->findImage("AnyButtonLogo")->alphaRender(getMemDC(), _logoRc.left, _logoRc.top, _alpha);
-
 	}
-
 
 	if (_title)
 	{
 		_ani->render();
 		IMAGEMANAGER->findImage("titleMenu")->frameRender(getMemDC(), WINSIZE_X - 200, CENTER_Y + 150);
 		_ani->render(WINSIZE_X - 100, CENTER_Y + 140 + (_menuIndex * 45));
-	}
-
-
-	
+	}	
 }

@@ -12,9 +12,11 @@ public:
 	void update(void);
 	void render(void);
 
+public:
 	MainGame() {}
 	~MainGame() {}
 };
+
 /*
 이동키입니다.
 
