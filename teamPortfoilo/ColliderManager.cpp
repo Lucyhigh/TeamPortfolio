@@ -77,21 +77,6 @@ inline void ColliderManager::smashCollider()
 	}
 }
 
-void ColliderManager::bodyCollider()
-{
-	/*
-	for (int i = 0; i < _monster.size(); i++)
-	{
-		RECT temp;
-		if (IntersectRect(&temp, &_user->getCollider(), &_monster[i]->getCollider()))
-		{
-			_user->setHit();
-			return;
-		}
-	}
-	*/
-}
-
 void ColliderManager::addEffect(RECT effect)
 {
 	_effect.push_back({ 0, new Image });

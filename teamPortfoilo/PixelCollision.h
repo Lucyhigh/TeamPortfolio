@@ -7,15 +7,13 @@ class PixelCollision : public GameNode
 private:
 	Image* _playerIdleImage;
 	Image* _playerMoveImage;
-	Image* _playerIdleImageL;
-	Image* _playerMoveImageL;
+
 	Image* _playerWakeUpImage;
 	Image* _bgImage;
 	Animation* _ani;
 	Animation* _ani2;
 	Animation* _ani3;
-	Animation* _ani4;
-	Animation* _ani5;
+
 	RECT _rc;
 	RECT _cameraRect;
 
@@ -38,7 +36,6 @@ public:
 	void setX(int x);
 
 	bool getWakeUp();
-    void setWakeUp(bool state);
 	float getPlayerPosX();
 	void setPlayerPosX(float x);
 

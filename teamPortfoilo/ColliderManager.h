@@ -6,7 +6,6 @@ class ColliderManager  : public GameNode
 	private:
 		vector<pair<float,Image*>> _effect;
 		inline void smashCollider();
-		void bodyCollider();
 		void addEffect(RECT);
 		void updateEffect();
 

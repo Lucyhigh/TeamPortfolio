@@ -165,11 +165,6 @@ bool PixelCollision::getWakeUp()
 	return _isWakeUp;
 }
 
-void PixelCollision::setWakeUp(bool state)
-{
-    _isWakeUp = state;
-}
-
 float PixelCollision::getPlayerPosX()
 {
 	return _x;
