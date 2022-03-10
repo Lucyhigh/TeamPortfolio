@@ -1,9 +1,10 @@
 ﻿  BossScene1.cpp
-c:\users\rin00\desktop\0310\teamportfolio\teamportfoilo\bossscene1.cpp(85): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
-c:\users\rin00\desktop\0310\teamportfolio\teamportfoilo\bossscene1.cpp(86): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
-c:\users\rin00\desktop\0310\teamportfolio\teamportfoilo\bossscene1.cpp(120): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  MainGame.cpp
-c:\users\rin00\desktop\0310\teamportfolio\teamportfoilo\lastscene.h(7): warning C4005: 'TEXTNUM': 매크로 재정의
-  c:\users\rin00\desktop\0310\teamportfolio\teamportfoilo\boss1beforescene.h(6): note: 'TEXTNUM'의 이전 정의를 참조하십시오.
+e:\포트폴리오\고깔원정대\teamportfolio\teamportfoilo\bossscene1.cpp(90): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+e:\포트폴리오\고깔원정대\teamportfolio\teamportfoilo\bossscene1.cpp(91): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+e:\포트폴리오\고깔원정대\teamportfolio\teamportfoilo\bossscene1.cpp(125): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  EndingScene.cpp
+e:\포트폴리오\고깔원정대\teamportfolio\teamportfoilo\endingscene.cpp(82): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  TempSoundTest.cpp
+  TitleScene.cpp
   코드를 생성하고 있습니다...
-  teamPortfoilo.vcxproj -> C:\Users\rin00\Desktop\0310\TeamPortfolio\x64\Debug\teamPortfoilo.exe
+  teamPortfoilo.vcxproj -> E:\포트폴리오\고깔원정대\TeamPortfolio\x64\Debug\teamPortfoilo.exe

@@ -31,6 +31,9 @@ void TitleScene::release(void)
 
 void TitleScene::update(void)
 {
+	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
+	TEMPSOUNDMANAGER->playSoundWithKey("Mia");
+
 	if (!_pushButton)
 	{
 		if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
@@ -72,6 +75,7 @@ void TitleScene::update(void)
 	// Title-Menu select
 	if (KEYMANAGER->isOnceKeyDown(VK_RETURN))
 	{
+		TEMPSOUNDMANAGER->stopMp3WithKey("Mia");
 		if (_menuIndex == 0)SCENEMANAGER->changeScene("Save");
 		if (_menuIndex == 1)SCENEMANAGER->changeScene("Option");
 		if (_menuIndex == 2)PostQuitMessage(0);

@@ -17,6 +17,9 @@ void EndingScene::release(void)
 
 void EndingScene::update(void)
 {
+	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
+	TEMPSOUNDMANAGER->playSoundWithKey("Geli");
+
 	_timer += 0.1f;
 	if (_timer > 30)
 	{
@@ -40,6 +43,7 @@ void EndingScene::update(void)
 		if (_timer > 500)
 		{
 			SCENEMANAGER->changeScene("Title");
+			TEMPSOUNDMANAGER->stopMp3WithKey("Geli");
 		}
 	}
 	cout << _timer << endl;

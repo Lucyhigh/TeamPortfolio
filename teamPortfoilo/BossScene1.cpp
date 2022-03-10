@@ -53,6 +53,9 @@ void BossScene1::release(void)
 
 void BossScene1::update(void)
 {
+	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
+	TEMPSOUNDMANAGER->playSoundWithKey("Dame");
+
 	_collider->update();
 	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
 	{ 
@@ -62,10 +65,12 @@ void BossScene1::update(void)
     if (GAMEMANAGER->getPlayer()->getPoint().x <= 100)
     {
         SCENEMANAGER->changeScene("BeforeBoss1");
+		TEMPSOUNDMANAGER->stopMp3WithKey("Dame");
     }
     if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 100)
     {
         SCENEMANAGER->changeScene("BeforeBoss2");
+		TEMPSOUNDMANAGER->stopMp3WithKey("Dame");
     }
     POINT cameraPos;
 	cameraPos.x = GAMEMANAGER->getPlayer()->getPoint().x;
