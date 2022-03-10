@@ -9,11 +9,13 @@ private:
     int _count;
     float _leftLimit;
     float _rightLimit;
+    float _topLimit;
+    float _bottomLimit;
 
 public:
-	Camera();
-	~Camera() {}
-	HRESULT init(void);
+    Camera();
+    ~Camera() {}
+    HRESULT init(void);
     void release(void);
     void update(void);
     void render(void);
@@ -24,5 +26,6 @@ public:
     RECT getScreenRect();
     void setScreenRect(RECT screenRect);
 
-    void setLimits(float leftLimit, float rightLimit);
+    void setLimitsX(float leftLimit, float rightLimit);
+    void setLimitsY(float topLimit, float bottomLimit);
 };

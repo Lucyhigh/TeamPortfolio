@@ -6,28 +6,37 @@
 #include "TitleScene.h"
 #include "SaveScene.h"
 #include "OptionScene.h"
+#include "TempSoundTest.h"
+#include "UIScene.h"
 //Stage
 #include "StartScene.h"
-#include "PixelScene.h"//
+#include "OpeningScene.h"//
 #include "Boss1BeforeScene.h"
 #include "BossScene1.h"
+#include "Boss2BeforeScene.h"
+#include "BossScene2.h"
+#include "LastScene.h"
 #include "EndingScene.h"
 #pragma endregion 
-
-
 
 HRESULT MainGame::init(void) //초기화
 {
 	GameNode::init(TRUE);
+
+	ImageClass imageClass = ImageClass();
+	imageClass.init();
+
+	//TempSoundTest sound = TempSoundTest();
+	//sound.init();
+
 	TIMEMANAGER->init();
 
 	_player = new PlayerCharacter();
 	GAMEMANAGER->setPlayer(_player);
 
-	// 사용하는 이미지 전체 
-	ImageClass imageClass = ImageClass();
-	imageClass.init();
-
+	_ui = new UIScene();
+	_ui->init();
+	GAMEMANAGER->setUI(_ui);
 
 #pragma region SceneManager
 
@@ -38,18 +47,21 @@ HRESULT MainGame::init(void) //초기화
 
 	// Stage1
 	SCENEMANAGER->addScene("Start", new StartScene);
-	SCENEMANAGER->addScene("Pixel", new PixelScene);
+	SCENEMANAGER->addScene("Opening", new OpeningScene);
 	SCENEMANAGER->addScene("BeforeBoss1", new Boss1BeforeScene);
 	SCENEMANAGER->addScene("Boss1", new BossScene1);
 
 	// Stage2
+	SCENEMANAGER->addScene("BeforeBoss2", new Boss2BeforeScene);
+	SCENEMANAGER->addScene("Boss2", new BossScene2);
+	SCENEMANAGER->addScene("Last", new LastScene);
 	SCENEMANAGER->addScene("Ending", new EndingScene);
 
-	
-#pragma endregion 
-	// 테스트용 씬체인저
-	SCENEMANAGER->changeScene("Start");
-
+//<<<<<<< HEAD
+	SCENEMANAGER->changeScene("Last");
+//=======
+//	SCENEMANAGER->changeScene("Ending");
+//>>>>>>> 2d2b20b6327ba3be6030d8294fab9fa1e764b48d
 	return S_OK;
 }
 
@@ -60,26 +72,25 @@ void MainGame::release(void)
 	SCENEMANAGER->release();
 }
 
-void MainGame::update(void) // 갱신
+void MainGame::update(void)
 {
 	SCENEMANAGER->update();
 	GameNode::update();
 
 	SCENEMANAGER->update();
 
+	TempSoundTest sound = TempSoundTest();
+	sound.update();
 
 }
 
-void MainGame::render(void) // 그려줘
+void MainGame::render(void)
 {
-	//검은색 빈 비트맵
-	 //PatBlt() : 사각형 영역을 브러쉬로 채우는 함수
 	PatBlt(getMemDC(), 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 	TIMEMANAGER->render(getMemDC());
 
-	// ※ 씬 이미지 출력 ※
 	SCENEMANAGER->render();
 
-	this->getBackBuffer()->render(getHDC()); //백버퍼의 내용을 HDC에 그린다.
+	this->getBackBuffer()->render(getHDC());
 
 }

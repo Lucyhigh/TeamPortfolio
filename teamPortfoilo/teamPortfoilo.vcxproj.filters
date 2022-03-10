@@ -124,6 +124,12 @@
     <ClCompile Include="BossUI.cpp">
       <Filter>Blasphemous\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Boss2BeforeScene.cpp">
+      <Filter>Blasphemous\Stage2</Filter>
+    </ClCompile>
+    <ClCompile Include="BossScene2.cpp">
+      <Filter>Blasphemous\Stage2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -254,6 +260,12 @@
     </ClInclude>
     <ClInclude Include="BossUI.h">
       <Filter>Blasphemous\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="BossScene2.h">
+      <Filter>Blasphemous\Stage2</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss2BeforeScene.h">
+      <Filter>Blasphemous\Stage2</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

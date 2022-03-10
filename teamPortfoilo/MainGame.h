@@ -5,6 +5,7 @@ class MainGame : public GameNode
 {
 private:
 	PlayerCharacter* _player;
+	UIScene* _ui;
 public:
 	HRESULT init(void);
 	void release(void);
