@@ -46,7 +46,6 @@ void EndingScene::update(void)
 			TEMPSOUNDMANAGER->stopMp3WithKey("Geli");
 		}
 	}
-	cout << _timer << endl;
 }
 
 void EndingScene::render(void)

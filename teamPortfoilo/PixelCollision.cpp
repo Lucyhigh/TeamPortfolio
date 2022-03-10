@@ -121,7 +121,6 @@ void PixelCollision::update(char* image)
 		_rc = RectMakeCenter(_x, _y, _playerWakeUpImage->getFrameWidth(), _playerWakeUpImage->getFrameHeight());
 	}
 
-	//cout << _isWakeUp << endl;
 }
 
 void PixelCollision::render(void)
@@ -138,7 +137,6 @@ void PixelCollision::render(void)
 		else if (!_isWalk)
 		{
 			_playerIdleImage->aniRender(getMemDC(), cameraX, cameraY, _ani);
-			cout << _ani->getFrame() << endl;
 		}
 	}
 	else
@@ -165,6 +163,11 @@ void PixelCollision::setX(int x)
 bool PixelCollision::getWakeUp()
 {
 	return _isWakeUp;
+}
+
+void PixelCollision::setWakeUp(bool state)
+{
+    _isWakeUp = state;
 }
 
 float PixelCollision::getPlayerPosX()

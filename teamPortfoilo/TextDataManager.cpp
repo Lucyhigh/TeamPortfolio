@@ -142,7 +142,6 @@ vector<string> TextDataManager::loadFstream(const char* fileName)
 	{
 		cout << "파일 로드 실패" << endl;
 	}
-	//str.erase(remove(str.begin(), str.end(), '\n'), str.end());
 
 	char* cstr = new char[size + 1];
 	copy(str.begin(), str.end(), cstr);

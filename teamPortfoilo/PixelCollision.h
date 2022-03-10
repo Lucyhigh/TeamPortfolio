@@ -38,7 +38,7 @@ public:
 	void setX(int x);
 
 	bool getWakeUp();
-
+    void setWakeUp(bool state);
 	float getPlayerPosX();
 	void setPlayerPosX(float x);
 

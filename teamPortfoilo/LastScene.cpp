@@ -9,7 +9,7 @@ HRESULT LastScene::init(void)
 
     _pixel = new PixelCollision;
     _pixel->init(100, 1790, "LastScenePixel");
-
+    _pixel->setWakeUp(true);
     _textAlpha = 0;
     _bgAlpha = 0;
     _count = 0;
@@ -89,7 +89,6 @@ void LastScene::update(void)
 
     _npcRcCenterX = (_npcRc.left + _npcRc.right) * 0.5;
     _npcRcCenterY = (_npcRc.top + _npcRc.bottom) * 0.5;
-    // cout << _npcRcCenterX << " , " << _npcRcCenterY <<endl;
 
     if (getDistance(_npcRcCenterX, _npcRcCenterY, _pixel->getX(), _pixel->getY()) < 200)
     {

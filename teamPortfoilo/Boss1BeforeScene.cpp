@@ -17,7 +17,7 @@ HRESULT Boss1BeforeScene::init(void)
 	_floor.push_back(floor1);
 	_floor.push_back(floor2);
 
-	GAMEMANAGER->getPlayer()->ObjectInit({ 50,500 }, _floor);
+	GAMEMANAGER->getPlayer()->ObjectInit({ 50,600 }, _floor);
 
 	_x = _mapImage->getWidth()*0.5;
 	_y = WINSIZE_Y - 170;
@@ -145,8 +145,6 @@ void Boss1BeforeScene::update(void)
 	{
 		_isTalk = false;
 	}
-
-	//cout << _isTalk << " , " << _npcRcCenterY << " , " << GAMEMANAGER->getPlayer()->getPoint().y << endl;//
 
 	if (_indexA >= 1)
 	{

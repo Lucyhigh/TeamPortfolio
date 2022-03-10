@@ -12,7 +12,7 @@
 
 // 디버깅용 콘솔창
 //!라이브러리
-#pragma comment(linker,"/entry:WinMainCRTStartup /subsystem:console")
+//#pragma comment(linker,"/entry:WinMainCRTStartup /subsystem:console")
 #pragma comment(lib,"Winmm.lib")
 // 알파 블렌드를 사용하기 위한 라이브러리 추가 
 #pragma comment (lib,"msimg32.lib")
