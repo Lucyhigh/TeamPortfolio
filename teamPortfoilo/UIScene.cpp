@@ -7,7 +7,7 @@ HRESULT UIScene::init(void)
 	_hp = (float)GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE); // 136
 	_mp = (float)GAMEMANAGER->getPlayer()->getMp(BaseEnum::STATE); // 96
 	
-	_potionLv = 0 ; // _pData->getPotionLevel(); // 프레임 x 
+	_potionLv =	0 ; // _pData->getPotionLevel(); // 프레임 x 
 	switch (_potionLv)
 	{
 	case 0:
@@ -25,8 +25,8 @@ HRESULT UIScene::init(void)
 
 #pragma region Hp Mp Potion
 	_hpBar = new ProgressBar;
-	_hpBar->init(136, 50);
-	_point = 10000;
+	_hpBar->init(_hp, _mp);
+	_point = 0;
 
 	// 포션 
 	for (int i = 0; i < _potionMax; i++)
@@ -50,6 +50,11 @@ HRESULT UIScene::init(void)
 
 	_inven = new Inventory();
 	_inven->init();
+	_openInventory = false;
+
+	_openOption = false;
+	_option = new OptionScene;
+	_option->init(_openOption);
 
 	return S_OK;
 }
@@ -69,29 +74,30 @@ void UIScene::release(void)
 
 	_inven->release();
 	SAFE_DELETE(_inven);
+
+	_option->release();
+	SAFE_DELETE(_option);
 }
 
 void UIScene::update(void)
 {
-	if (_hp >= 0)	_hp -= 0.03f;
-	if (_mp >= 0)	_mp -= 0.01f;
 
 	_hp = GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE); // 136
-	_mp = GAMEMANAGER->getPlayer()->getHp(BaseEnum::STATE); // 116
+	_mp = GAMEMANAGER->getPlayer()->getMp(BaseEnum::STATE); // 96
 
-	_hpBar->setPlayerHpGauge(_hp);
+	_hpBar->setPlayerHpGauge(_hp); 
 	_hpBar->setPlayerMpGauge(_mp);
-
-	if (KEYMANAGER->isOnceKeyDown('F'))
-	{
-		usePotion();
-	}
-
+	
 	_hpBar->update();
 
 	_inven->update();
 	if (KEYMANAGER->isOnceKeyDown('I')) _openInventory = true;
 	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _openInventory = false;
+
+	
+	// if (KEYMANAGER->isOnceKeyDown('O')) _openOption = true;
+	// if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE)) _openOption = false;
+	// if(_openOption)_option->update();
 
 }
 
@@ -106,6 +112,11 @@ void UIScene::render(void)
 	}
 
 	showPoint(_openInventory);
+
+	if (_openOption)
+	{
+		_option->render();
+	}
 }
 
 void UIScene::usePotion()
@@ -151,20 +162,6 @@ void UIScene::showPotion(void)
 	}
 }
 
-void UIScene::setPotion(void)
-{
-	_rviPotion = _vPotion.rbegin();
-	for (; _rviPotion != _vPotion.rend(); ++_rviPotion)
-	{
-		_rviPotion->use = false;
-	}
-}
-
-void UIScene::setPotion(int Lv, int Max, tagPotion potion)
-{
-	//Nothing!
-}
-
 
 void UIScene::showPoint(bool openInventory)
 {
@@ -188,7 +185,15 @@ void UIScene::showPoint(bool openInventory)
 		FONTMANAGER->drawTextValue(getMemDC(), _point,					 // 변수
 			1100, IMAGEMANAGER->findImage("point")->getY() + 27,		 // 위치
 			"둥근모꼴", 25, 100, RGB(171, 154, 63));						 // 폰트
+	}
+}
 
+void UIScene::setPotion()
+{
+	_rviPotion = _vPotion.rbegin();
+	for (; _rviPotion != _vPotion.rend(); ++_rviPotion)
+	{
+		_rviPotion->use = false;
 	}
 }
 

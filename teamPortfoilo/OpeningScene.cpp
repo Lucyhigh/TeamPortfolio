@@ -3,10 +3,10 @@
 
 HRESULT OpeningScene::init(void)
 {
-	_image = IMAGEMANAGER->findImage("¿ÀÇÁ´×¾À ¹Ù´Ú");
+	_image = IMAGEMANAGER->findImage("openingSceneFloor");
 
 	_pixel = new PixelCollision;
-	_pixel->init(_image->getWidth()/2-150, 455, "¿ÀÇÁ´×¾À ÇÈ¼¿");
+	_pixel->init(_image->getWidth()/2-150, 455, "openingScenePixel");
 
 	_textAlpha = 0;
 	_alpha = 0;
@@ -17,6 +17,11 @@ HRESULT OpeningScene::init(void)
 	_camera->init();
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
 	_camera->setLimitsY(CENTER_Y, _image->getHeight());
+
+
+
+	_areaTextOn = false;
+	_areaTextAlpha = 0;
 
 	return S_OK;
 }
@@ -31,7 +36,20 @@ void OpeningScene::release(void)
 
 void OpeningScene::update(void)
 {
-	cout << _ptMouse.y << endl;
+	if (_areaTextOn)
+	{
+		_areaTextAlpha -= 0.05f;
+		if (_areaTextAlpha <= 0) _areaTextAlpha = 0;
+	}
+	else
+	{
+		_areaTextAlpha++;
+		if (_areaTextAlpha >= 255)
+		{
+			_areaTextAlpha = 255; _areaTextOn = true;
+		}
+	}
+
 
 	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
 	TEMPSOUNDMANAGER->playSoundWithKey("Luto");
@@ -54,18 +72,20 @@ void OpeningScene::update(void)
 	_camera->update();
 
 	_pixel->setCameraRect(_camera->getScreenRect());
-	_pixel->update("¿ÀÇÁ´×¾À ÇÈ¼¿");
+	_pixel->update("openingScenePixel");
+
+	GAMEMANAGER->getUI()->update();
 }
 
 void OpeningScene::render(void)
 {
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
-	IMAGEMANAGER->loopRender("¿ÀÇÁ´×¾À µÞ¹è°æ", getMemDC(), &rc1,
+	IMAGEMANAGER->loopRender("openingSceneLastBG", getMemDC(), &rc1,
 		_camera->getScreenRect().left * bgSpeed,
 		_camera->getScreenRect().top * bgSpeed);
 
-	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¹Ù´Ú", getMemDC(),
+	IMAGEMANAGER->render("openingSceneFloor", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
 
@@ -78,13 +98,16 @@ void OpeningScene::render(void)
 			_pixel->getY() - _camera->getScreenRect().top - 100);
 	}
 
-	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¾Õ½ÃÃ¼", getMemDC(),
+	IMAGEMANAGER->render("openingSceneFrontBody", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
-	IMAGEMANAGER->render("¿ÀÇÁ´×¾À ¾Õ¹®", getMemDC(),
+	IMAGEMANAGER->render("openingSceneFrontDoor", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
 
 
 	_camera->render();
+
+	IMAGEMANAGER->findImage("area1")->alphaRender(getMemDC(), 0, 130, _areaTextAlpha);
+	GAMEMANAGER->getUI()->render();
 }

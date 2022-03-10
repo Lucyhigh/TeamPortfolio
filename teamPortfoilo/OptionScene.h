@@ -1,9 +1,8 @@
 #pragma once
 #include "GameNode.h"
 
-#define TITLEMENU 6
-#define INMENU 9
-
+#define TITLEMENU 7
+#define INMENU 10
 
 struct tagOptionSlot
 {
@@ -20,7 +19,7 @@ struct tagOptionSlot
 class OptionScene : public GameNode
 {
 private:
-	bool _isTitleMenu; // 타이틀에서 메뉴 진입?
+	bool _isTitleMenu; // 타이틀에서 메뉴 진입시
 
 	// Title option ------------------------------------------------------------
 	vector<tagOptionSlot> _vTOption;
@@ -38,6 +37,7 @@ public:
 	OptionScene() :
 		_TitleText
 	{	
+		L"옵션",
 		L"게임",
 		L"접근성",
 		L"동영상",
@@ -47,6 +47,7 @@ public:
 	},
 	 _InGameText
 	{
+		L"옵션",
 		L"게임",
 		L"접근성",
 		L"동영상",
@@ -61,6 +62,7 @@ public:
 	~OptionScene() {}
 
 	HRESULT init(void);
+	HRESULT init(bool isTitleMenu);
 	void release(void);
 	void update(void);
 	void render(void);

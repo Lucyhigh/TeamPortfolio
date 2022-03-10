@@ -1,4 +1,5 @@
 #pragma once
+#include "BossIsadora.h"
 #include "GameNode.h"
 #include "BossUI.h"
 
@@ -8,6 +9,7 @@ private:
 	Image* _image;
 	ColliderManager* _collider;
 	Camera* _camera;
+	BossIsadora* isdora;
 
 	vector<RECT*> _floor;
 	POINT _cameraPos;

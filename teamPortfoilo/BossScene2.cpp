@@ -9,7 +9,7 @@ BossScene2::BossScene2(){
 
 HRESULT BossScene2::init(void)
 {
-	_image = IMAGEMANAGER->findImage("Boss2BG");
+	_image = IMAGEMANAGER->findImage("bg2");
 	_floor.resize(3);
 	_floor[0] = new RECT{ 0, 525, _image->getWidth(),670 };
 	_floor[1] = new RECT{ -100, 0, 0, _image->getHeight() };
@@ -22,6 +22,10 @@ HRESULT BossScene2::init(void)
 	_camera->init();
 	_camera->setLimitsX(CENTER_X, _image->getWidth());
 	_camera->setLimitsY(CENTER_Y, _image->getHeight());
+
+	isdora = new BossIsadora();
+	isdora->init({ _image->getWidth() / 2,CENTER_Y }, _floor);
+	GAMEMANAGER->setMonster(isdora);
 
 	_bossHp = new BossUI;
 	_bossHp->init();
@@ -44,6 +48,10 @@ void BossScene2::update(void)
 	GAMEMANAGER->getPlayer()->setCameraRect(_camera->getScreenRect());
 	GAMEMANAGER->getPlayer()->ObjectUpdate();
 
+	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
+	{
+		GAMEMANAGER->getMonster()[i]->ObjectUpdate();
+	}
 	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 70)
 	{
 		SCENEMANAGER->changeScene("Last");
@@ -57,9 +65,18 @@ void BossScene2::render(void)
 {
 	_image->render(getMemDC(),0,0);
 
+	for (int i = 0; i < GAMEMANAGER->getMonster().size(); i++)
+	{ GAMEMANAGER->getMonster()[i]->ObjectRender(); }
+
 	GAMEMANAGER->getPlayer()->ObjectRender();
+
+	_collider->render();
+
+	SetTextAlign(getMemDC(), TA_CENTER);
+	LPCWSTR script = L"죽은자들을 위해 노래하는 성녀, 이시도라";
+	FONTMANAGER->drawText(getMemDC(), CENTER_X, WINSIZE_Y - 90, "둥근모꼴", 22, 200,
+		script, wcslen(script), RGB(175, 175, 115));
 
 	GAMEMANAGER->getUI()->render();
 	_bossHp->render();
-	_collider->render();
 }

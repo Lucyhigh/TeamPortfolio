@@ -7,58 +7,165 @@ ItemManager::ItemManager()
 
 	for (int i = 0; i < vData.size(); i += 12)
 	{
-		Item* ItemData = new Item;
-		ItemData->_index = atoi(vData[i].c_str());
-		ItemData->_category = static_cast<Category>(atoi(vData[i + 1].c_str()));
-		ItemData->_state = static_cast<ItemState>(atoi(vData[i + 2].c_str()));
-		ItemData->_name = vData[i + 3].c_str();
-		ItemData->_script = vData[i + 4].c_str();
-		ItemData->_equip = false;
-		ItemData->_hp = atoi(vData[i + 6].c_str());
-		ItemData->_mp = atoi(vData[i + 7].c_str());
-		ItemData->_att = atoi(vData[i + 8].c_str());
-		ItemData->_dff = atoi(vData[i + 9].c_str());
-		// 이미지 관련 ------------------------------------------------------------------
-		ItemData->_iconX = atoi(vData[i + 10].c_str()); // 아이콘이미지 위치(프레임xy)
-		ItemData->_iconY = atoi(vData[i + 11].c_str());
-		ItemData->_iconImg = IMAGEMANAGER->findImage("items"); // 아이템 아이콘 프레임 
-		ItemData->_iconImg->setFrameX(ItemData->_iconX);
-		ItemData->_iconImg->setFrameY(ItemData->_iconY);
-		ItemData->_slotImg = IMAGEMANAGER->findImage("items"); // 아이템 슬롯 프레임(기본 미습득) 
-		ItemData->_slotImg->setFrameX(atoi(vData[i + 2].c_str()));
-		ItemData->_slotImg->setFrameY(0);
-
-		switch (ItemData->_category)
+		for (int i = 0; i < vData.size(); i += 13)
 		{
-		case Category::NONE:
-			break;
-		case Category::ROSARY:
-			break;
-		case Category::RELIC:
-			break;
-		case Category::QUEST:
-			break;
-		case Category::MEACULPA:
-			break;
-		case Category::BIBLE:
-			break;
-		case Category::SKILL:
-			break;
-		case Category::COLLECTION:
-			break;
-		default:
-			break;
+			Item* ItemData = new Item;
+			ItemData->_index = atoi(vData[i].c_str());
+			ItemData->_cateIndex = atoi(vData[i + 1].c_str());
+			ItemData->_category = static_cast<Category>(atoi(vData[i + 2].c_str()));
+			ItemData->_state = static_cast<ItemState>(atoi(vData[i + 3].c_str()));
+			ItemData->_name = vData[i + 4].c_str();
+			ItemData->_script = vData[i + 5].c_str();
+			ItemData->_equip = false;
+			ItemData->_isSelect = false;
+			ItemData->_hp = atoi(vData[i + 6].c_str());
+			ItemData->_mp = atoi(vData[i + 7].c_str());
+			ItemData->_att = atoi(vData[i + 8].c_str());
+			ItemData->_dff = atoi(vData[i + 9].c_str());
+			ItemData->_script2 = vData[i + 12].c_str();
+			// Item Image ------------------------------------------------------------------
+			ItemData->_iconX = atoi(vData[i + 10].c_str()); // icon Frame xy
+			ItemData->_iconY = atoi(vData[i + 11].c_str());
+			ItemData->_iconImg = IMAGEMANAGER->findImage("items"); // icon 
+			ItemData->_iconImg->setFrameX(ItemData->_iconX);
+			ItemData->_iconImg->setFrameY(ItemData->_iconY);
+			ItemData->_slotImg = IMAGEMANAGER->findImage("items"); // slot(none) 
+			ItemData->_slotImg->setFrameX(atoi(vData[i + 3].c_str()));
+			ItemData->_slotImg->setFrameY(0);
+			ItemData->_equipImg = IMAGEMANAGER->findImage("items"); // icon(equip) 
+			// ETC ... Item Text Script -------------------------------------------------------------
+			//wstring stemp = FONTMANAGER->s2ws(vData[i + 5].c_str());
+			//LPCWSTR result = stemp.c_str();
+			//ItemData->_testScript = result;
+
+			// 아이템 별 위치 지정 
+			int j = 0;
+			switch (ItemData->_category)
+			{
+			case Category::ROSARY:
+				if (ItemData->_cateIndex < 8)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 1;
+					j = 0;
+				}
+				else if (ItemData->_cateIndex < 16)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 9;
+					j = 1;
+				}
+				else if (ItemData->_cateIndex < 24)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 17;
+					j = 2;
+				}
+				ItemData->_posX = 172 + (ItemData->_cateIndex * 64);
+				ItemData->_posY = 425 + (j * 62);
+				break;
+			case Category::RELIC:
+				ItemData->_posX = 172 + (ItemData->_cateIndex * 57 + 7);
+				ItemData->_posY = 425;
+				break;
+			case Category::QUEST:
+				if (ItemData->_cateIndex < 5)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 1;
+					j = 0;
+				}
+				else if (ItemData->_cateIndex < 10)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 5;
+					j = 1;
+				}
+				else if (ItemData->_cateIndex < 15)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 10;
+					j = 2;
+				}
+				else if (ItemData->_cateIndex < 20)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 15;
+					j = 3;
+				}
+				else if (ItemData->_cateIndex < 25)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 20;
+					j = 4;
+				}
+				else if (ItemData->_cateIndex < 30)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 25;
+					j = 5;
+				}
+				else if (ItemData->_cateIndex < 35)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 30;
+					j = 6;
+				}
+				ItemData->_posX = 695 + (ItemData->_cateIndex * 64);
+				ItemData->_posY = 135;
+				break;
+			case Category::MEACULPA:
+				if (ItemData->_cateIndex < 8)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 1;
+					j = 0;
+				}
+				else if (ItemData->_cateIndex < 11)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 9;
+					j = 1;
+				}
+				ItemData->_posX = 172 + (ItemData->_cateIndex * 64);
+				ItemData->_posY = 425 + (j * 62);
+				break;
+			case Category::BIBLE:
+				if (ItemData->_cateIndex < 8)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 1;
+					j = 0;
+				}
+				else if (ItemData->_cateIndex < 16)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 9;
+					j = 1;
+				}
+				else if (ItemData->_cateIndex < 17)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 17;
+					j = 2;
+				}
+				ItemData->_posX = 172 + (ItemData->_cateIndex * 64);
+				ItemData->_posY = 427 + (j * 62);
+				break;
+			case Category::SKILL:
+				break;
+			case Category::COLLECTION:
+				if (ItemData->_cateIndex < 8)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 1;
+					j = 0;
+				}
+				else if (ItemData->_cateIndex < 16)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 9;
+					j = 1;
+				}
+				else if (ItemData->_cateIndex < 24)
+				{
+					ItemData->_cateIndex = ItemData->_cateIndex - 17;
+					j = 2;
+				}
+				ItemData->_posX = 172 + (ItemData->_cateIndex * 64);
+				ItemData->_posY = 425 + (j * 62);
+				break;
+			}
+
+			ItemData->_equipPosX = 0; // 아이템 이미지 위치. 
+			ItemData->_equipPosY = 0;
+			_vItem.push_back(ItemData);
 		}
 
-		//ItemData->_posX = 0; // 아이템 이미지 위치 -> 카테고리에 따라 다르게. 
-		//ItemData->_posY = 0;
-		ItemData->_posX = 172;
-		ItemData->_posY = 425;
-		ItemData->_equipPosX = 0; // 아이템 이미지 위치. 
-		ItemData->_equipPosY = 0;
-		_vItem.push_back(ItemData);
 	}
-
 }
 
 HRESULT ItemManager::init(void)
@@ -107,8 +214,6 @@ void ItemManager::render(int categoryIndex)
 		int i = (int)(*_viItem)->_category;
 		if (categoryIndex == i)
 		{
-			cout <<"아이템 카테고리+렌더 체크 : " << (*_viItem)->getName() << categoryIndex << " , " << i << endl;
-
 			(*_viItem)->render();
 		}
 	}

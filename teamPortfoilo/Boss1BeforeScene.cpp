@@ -3,7 +3,7 @@
 
 HRESULT Boss1BeforeScene::init(void)
 {
-	_mapImage = IMAGEMANAGER->findImage("º¸½º1Àü ¹Ù´Ú");
+	_mapImage = IMAGEMANAGER->findImage("boss1beforeSceneFloor");
 	_objectImage = IMAGEMANAGER->findImage("stand");
 	_symbolImage = IMAGEMANAGER->findImage("SymbolObj");
 	_breakSymbolImage = IMAGEMANAGER->findImage("breakSymbolObj");
@@ -52,6 +52,9 @@ HRESULT Boss1BeforeScene::init(void)
 	_alpha = 0;
 	_bgAlpha = 0;
 
+	_areaTextOn = false;
+	_areaTextAlpha = 0;
+
 	return S_OK;
 }
 
@@ -65,6 +68,20 @@ void Boss1BeforeScene::release(void)
 
 void Boss1BeforeScene::update(void)
 {
+	if (_areaTextOn)
+	{
+		_areaTextAlpha -= 0.05f;
+		if (_areaTextAlpha <= 0) _areaTextAlpha = 0;
+	}
+	else
+	{
+		_areaTextAlpha++;
+		if (_areaTextAlpha >= 255)
+		{
+			_areaTextAlpha = 255; _areaTextOn = true;
+		}
+	}
+
 	_count++;
 
 	if (GAMEMANAGER->getPlayer()->getPoint().x >= _mapImage->getWidth() - 100)
@@ -80,13 +97,13 @@ void Boss1BeforeScene::update(void)
 		{
 			_indexA = 1;
 			GAMEMANAGER->getPlayer()->setHp(GAMEMANAGER->getPlayer()->getHp(BaseEnum::MAX), 136);
-			GAMEMANAGER->getPlayer()->setPrayer(true);
+			GAMEMANAGER->getPlayer()->setParyer(true);
 			GAMEMANAGER->getUI()->setPotion();
 		}
 	}
 	else
 	{
-		GAMEMANAGER->getPlayer()->setPrayer(false);
+		GAMEMANAGER->getPlayer()->setParyer(false);
 	}
 
 	_symbolCenterX = (_SymbolRc.left + _SymbolRc.right) * 0.5;
@@ -230,6 +247,9 @@ void Boss1BeforeScene::update(void)
 	if (_bgAlpha >= 255) _bgAlpha = 255;
 	if (_alpha <= 0) _alpha = 0;
 	if (_textAlpha >= 100) _textAlpha = 100;
+
+
+	GAMEMANAGER->getUI()->update();
 }
 
 void Boss1BeforeScene::render(void)
@@ -256,11 +276,11 @@ void Boss1BeforeScene::render(void)
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
 
-	IMAGEMANAGER->loopRender("º¸½º1 µÞ¹è°æ", getMemDC(), &rc1,
+	IMAGEMANAGER->loopRender("boss1Bg", getMemDC(), &rc1,
 		_camera->getScreenRect().left * bgSpeed,
 		_camera->getScreenRect().top * bgSpeed);
 
-	IMAGEMANAGER->render("º¸½º1Àü ¹Ù´Ú", getMemDC(), 0, 0,
+	IMAGEMANAGER->render("boss1beforeSceneFloor", getMemDC(), 0, 0,
 		_camera->getScreenRect().left,
 		_camera->getScreenRect().top,
 		WINSIZE_X, WINSIZE_Y);
@@ -295,7 +315,7 @@ void Boss1BeforeScene::render(void)
 
 	GAMEMANAGER->getPlayer()->ObjectRender();
 
-	IMAGEMANAGER->render("º¸½º1ÀüFrontDoor", getMemDC(), -_camera->getScreenRect().left, 0);
+	IMAGEMANAGER->render("boss1beforeSceneFrontDoor", getMemDC(), -_camera->getScreenRect().left, 0);
 
 	_camera->render();
 
@@ -307,7 +327,7 @@ void Boss1BeforeScene::render(void)
 		}
 		else
 		{
-			IMAGEMANAGER->alphaRender("ÄÆÀüÈ¯", getMemDC(), 0, WINSIZE_Y - 150, _textAlpha);
+			IMAGEMANAGER->alphaRender("changeScene", getMemDC(), 0, WINSIZE_Y - 150, _textAlpha);
 			const int SCRIPT_MAX_LENGTH = 20;
 			SetTextAlign(getMemDC(), TA_CENTER);
 			FONTMANAGER->drawText(getMemDC(), CENTER_X, WINSIZE_Y*0.84, "µÕ±Ù¸ð²Ã", 30, 100, _text[_textIndex].text,
@@ -323,4 +343,7 @@ void Boss1BeforeScene::render(void)
 			IMAGEMANAGER->alphaRender("enter", getMemDC(), WINSIZE_X*0.90, WINSIZE_Y*0.90, _textAlpha + 100);
 		}
 	}
+
+	IMAGEMANAGER->findImage("area2")->alphaRender(getMemDC(), 0, 130, _areaTextAlpha);
+	GAMEMANAGER->getUI()->render();
 }

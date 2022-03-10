@@ -63,20 +63,19 @@ void Item::draw(void)
 	}
 }
 
-void Item::animation(void)
-{
-
-}
 
 
-void Item::setItem(ItemState state)
+void Item::setItemState(ItemState state)
 {
 	_state = state;
 }
 
-void Item::setEquip(bool state)
+
+void Item::setEquip(bool state, float x, float y)
 {
 	_equip = state;
+	_equipPosX = x;
+	_equipPosY = y;
 }
 
 void Item::setItem(float posX, float posY)

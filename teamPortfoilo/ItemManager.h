@@ -2,6 +2,14 @@
 #include "GameNode.h"
 #include "Item.h"
 
+#define ROSARYMAX 3
+#define RELICMAX 0
+#define QUESTMAX 1
+#define MEACULPAMAX 1
+#define BIBLEMAX 1
+#define COLLECTIONMAX 1
+
+
 class ItemManager : public GameNode
 {
 private:

@@ -75,8 +75,6 @@ public:
 	// 현재 밟고 있는 발판
 	RECT getStateFloor();
 
-	void setAttack(bool attack);
-
 #pragma endregion
 
 #pragma region 공격
@@ -90,6 +88,8 @@ public:
 	virtual void setHit(int damage);
 
 #pragma endregion
+
+	void setAttack(bool attack);
 
 	// 추가 본 
 	POINT getPoint();
@@ -105,4 +105,5 @@ public:
 			_hp[BaseEnum::STATE] -= num;
 		}
 	}
+
 };

@@ -27,6 +27,11 @@ private:
 	int _indexA, _indexB;
 
 	bool _isTalk;
+
+	bool _areaTextOn;
+	int _areaTextAlpha;
+
+
 public:
 	HRESULT init(void);
 	void release(void);

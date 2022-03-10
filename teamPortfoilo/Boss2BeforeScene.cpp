@@ -3,7 +3,7 @@
 
 HRESULT Boss2BeforeScene::init(void)
 {
-	_image = IMAGEMANAGER->findImage("보스2전 배경");
+	_image = IMAGEMANAGER->findImage("Boss2beforeBG");
 	_npcsimage = IMAGEMANAGER->findImage("SandNPCStanding");
 	_npcimage = IMAGEMANAGER->findImage("SandNPC");
 
@@ -15,7 +15,7 @@ HRESULT Boss2BeforeScene::init(void)
 	_floor.push_back(floor1);
 	_floor.push_back(floor2);
 
-	GAMEMANAGER->getPlayer()->ObjectInit({ 100,600 }, _floor);//
+	GAMEMANAGER->getPlayer()->ObjectInit({ 100,630 }, _floor);//
 
 	_camera = new Camera;
 	_camera->init();
@@ -25,6 +25,10 @@ HRESULT Boss2BeforeScene::init(void)
 	_count = 0;
 
 	_indexA = _indexB = 0;
+
+
+	_areaTextOn = false;
+	_areaTextAlpha = 0;
 
 	return S_OK;
 }
@@ -39,9 +43,23 @@ void Boss2BeforeScene::release(void)
 
 void Boss2BeforeScene::update(void)
 {
+	if (_areaTextOn)
+	{
+		_areaTextAlpha -= 0.05f;
+		if (_areaTextAlpha <= 0) _areaTextAlpha = 0;
+	}
+	else
+	{
+		_areaTextAlpha++;
+		if (_areaTextAlpha >= 255)
+		{
+			_areaTextAlpha = 255; _areaTextOn = true;
+		}
+	}
+
 	_count++;
 
-	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 50)
+	if (GAMEMANAGER->getPlayer()->getPoint().x >= _image->getWidth() - 100)
 	{
 		SCENEMANAGER->changeScene("Boss2");
 	}
@@ -74,18 +92,19 @@ void Boss2BeforeScene::update(void)
 
 void Boss2BeforeScene::render(void)
 {
-	IMAGEMANAGER->render("보스2전 배경", getMemDC(), 0, 0,
+	IMAGEMANAGER->render("Boss2beforeBG", getMemDC(), 0, 0,
 		_camera->getScreenRect().left,
 		_camera->getScreenRect().top,
 		WINSIZE_X, WINSIZE_Y);
 
-	IMAGEMANAGER->frameRender("SandNPC", getMemDC(), WINSIZE_X - 500, WINSIZE_Y - 160, _indexA, _indexB);
+	IMAGEMANAGER->frameRender("SandNPC", getMemDC(), WINSIZE_X - 500, WINSIZE_Y - 100, _indexA, _indexB);
 
 	GAMEMANAGER->getPlayer()->ObjectRender();
 
-	//IMAGEMANAGER->render("보스2전 FrontDoor", getMemDC(), -_camera->getScreenRect().left, 0);
+	IMAGEMANAGER->render("Boss2beforeFrontDoor", getMemDC(), -_camera->getScreenRect().left, 0);
 
 	_camera->render();
 
+	IMAGEMANAGER->findImage("area3")->alphaRender(getMemDC(), 0, 130, _areaTextAlpha);
 	GAMEMANAGER->getUI()->render();
 }

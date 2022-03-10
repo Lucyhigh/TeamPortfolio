@@ -74,12 +74,12 @@ void TitleScene::update(void)
 	{
 		if (_menuIndex == 0)SCENEMANAGER->changeScene("Save");
 		if (_menuIndex == 1)SCENEMANAGER->changeScene("Option");
-
+		if (_menuIndex == 2)PostQuitMessage(0);
 	}
-		if (_menuIndex == 2)
-		{
-			if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) PostQuitMessage(0);
-		}
+		//if (_menuIndex == 2)
+		//{
+		//	if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) PostQuitMessage(0);
+		//}
 
 }
 
@@ -97,7 +97,7 @@ void TitleScene::render(void)
 	{
 		_ani->render();
 		IMAGEMANAGER->findImage("titleMenu")->frameRender(getMemDC(), WINSIZE_X - 200, CENTER_Y + 150);
-		_ani->render(WINSIZE_X - 150, CENTER_Y + 100 + (_menuIndex * 40));
+		_ani->render(WINSIZE_X - 100, CENTER_Y + 140 + (_menuIndex * 45));
 	}
 
 

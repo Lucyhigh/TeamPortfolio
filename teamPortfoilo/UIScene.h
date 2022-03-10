@@ -2,6 +2,7 @@
 #include "GameNode.h"
 #include "ProgressBar.h"
 #include "Inventory.h"
+#include "OptionScene.h"
 
 // 포션위치 수정여부 확인
 struct tagPotion
@@ -30,9 +31,19 @@ private:
 
 	Inventory* _inven;
 	bool _openInventory;
+	
+	OptionScene* _option;
+	bool _openOption;
 
 	// 소지포인트 관련 우상단 UI
 	int _point;
+
+
+private:
+
+	int _popupAlpha;
+	bool _firstPotion;
+
 
 public:
 	UIScene() {}
@@ -45,11 +56,11 @@ public:
 
 	void usePotion();
 	void showPotion(void);
-	// 포션병 회복 또는 업그레이드
-	void setPotion(void);
-	void setPotion(int Lv, int Max, tagPotion potion);
-	
+	void setPotion();
 	void showPoint(bool openInventory);
+	void showPopup();
+
+	void openOption(bool state) { _openOption = state; }
 	
 };
 

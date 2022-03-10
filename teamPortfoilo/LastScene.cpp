@@ -3,11 +3,11 @@
 
 HRESULT LastScene::init(void)
 {
-	_image = IMAGEMANAGER->findImage("¶ó½ºÆ®¾À ¹Ù´Ú");
+	_image = IMAGEMANAGER->findImage("LastSceneFloor");
 	_frameNpcImage = IMAGEMANAGER->findImage("frameNpc");
 
 	_pixel = new PixelCollision;
-	_pixel->init(100, 1790, "¶ó½ºÆ®¾À ÇÈ¼¿");
+	_pixel->init(100, 1790, "LastScenePixel");
 
 	_textAlpha = 0;
 	_bgAlpha = 0;
@@ -24,6 +24,9 @@ HRESULT LastScene::init(void)
 	_y = 1710;
 	_npcRc = RectMakeCenter(_x, _y, _frameNpcImage->getFrameWidth(), _frameNpcImage->getFrameHeight());
 
+	_areaTextOn = false;
+	_areaTextAlpha = 0;
+
 	return S_OK;
 }
 
@@ -37,6 +40,23 @@ void LastScene::release(void)
 
 void LastScene::update(void)
 {
+
+	if (_areaTextOn)
+	{
+		_areaTextAlpha -= 0.05f;
+		if (_areaTextAlpha <= 0) _areaTextAlpha = 0;
+	}
+	else
+	{
+		_areaTextAlpha++;
+		if (_areaTextAlpha >= 255)
+		{
+			_areaTextAlpha = 255; _areaTextOn = true;
+		}
+	}
+
+
+
 	TEMPSOUNDMANAGER->stopMp3WithKey("Peldanos");
 	TEMPSOUNDMANAGER->playSoundWithKey("La");
 
@@ -94,7 +114,7 @@ void LastScene::update(void)
 	_camera->update();
 
 	_pixel->setCameraRect(_camera->getScreenRect());
-	_pixel->update("¶ó½ºÆ®¾À ÇÈ¼¿");
+	_pixel->update("LastScenePixel");
 
 	_indexCount++;
 	if (_indexCount % 20 == 0)
@@ -137,12 +157,12 @@ void LastScene::render(void)
 	cout << endl;
 	float bgSpeed = 0.9;
 	RECT rc1 = { 0,0, WINSIZE_X, WINSIZE_Y };
-	IMAGEMANAGER->loopRender("¶ó½ºÆ®¾À µÞ¹è°æ", getMemDC(), &rc1,
+	IMAGEMANAGER->loopRender("LastSceneBack", getMemDC(), &rc1,
 		_camera->getScreenRect().left * bgSpeed,
 		_camera->getScreenRect().top * bgSpeed);
 
 
-	IMAGEMANAGER->render("¶ó½ºÆ®¾À ¹Ù´Ú", getMemDC(),
+	IMAGEMANAGER->render("LastSceneFloor", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
 
@@ -156,10 +176,10 @@ void LastScene::render(void)
 
 	_pixel->render();
 
-	IMAGEMANAGER->render("¶ó½ºÆ®¾À ¾Õ¹è°æ", getMemDC(),
+	IMAGEMANAGER->render("LastSceneFront", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
-	IMAGEMANAGER->render("¶ó½ºÆ®¾À ¾Õ¹è°æ2", getMemDC(),
+	IMAGEMANAGER->render("LastSceneFront2", getMemDC(),
 		-_camera->getScreenRect().left,
 		-_camera->getScreenRect().top);
 
@@ -173,7 +193,7 @@ void LastScene::render(void)
 		}
 		else
 		{
-			IMAGEMANAGER->alphaRender("ÄÆÀüÈ¯", getMemDC(), 0, WINSIZE_Y - 150, _textAlpha);
+			IMAGEMANAGER->alphaRender("changeScene", getMemDC(), 0, WINSIZE_Y - 150, _textAlpha);
 			const int SCRIPT_MAX_LENGTH = 20;
 			SetTextAlign(getMemDC(), TA_CENTER);
 			FONTMANAGER->drawText(getMemDC(), CENTER_X, WINSIZE_Y*0.84, "µÕ±Ù¸ð²Ã", 30, 100, _text[_textIndex].text,
@@ -189,4 +209,7 @@ void LastScene::render(void)
 			IMAGEMANAGER->alphaRender("enter", getMemDC(), WINSIZE_X*0.90, WINSIZE_Y*0.90, _textAlpha + 70);
 		}
 	}
+
+	IMAGEMANAGER->findImage("area4")->alphaRender(getMemDC(), 0, 130, _areaTextAlpha);
+	//GAMEMANAGER->getUI()->render();
 }

@@ -39,6 +39,44 @@ HRESULT OptionScene::init(void)
 	return S_OK;
 }
 
+
+HRESULT OptionScene::init(bool isTitleMenu)
+{
+	
+	_isTitleMenu = false;
+
+	// Title OPTION ------------
+	for (int i = 0; i < TITLEMENU; i++)
+	{
+		tagOptionSlot optionInfo;
+		optionInfo.num = i;
+		optionInfo.x = 340;
+		optionInfo.y = 140 + (i * 57);
+		optionInfo.onImg = new Image;
+		optionInfo.onImg->init("Resources/Images/UI/optionSelect.bmp", optionInfo.x, optionInfo.y, 16, 31, MGT);
+		optionInfo.select = false;
+		_vTOption.push_back(optionInfo);
+	}
+	_TOptinIndex = 1;
+
+	// InGame OPTION ------------
+	for (int i = 0; i < INMENU; i++)
+	{
+		tagOptionSlot optionInfo;
+		optionInfo.num = i;
+		optionInfo.x = 340;
+		optionInfo.y = 140 + (i * 57);
+		optionInfo.onImg = new Image;
+		optionInfo.onImg->init("Resources/Images/UI/optionSelect.bmp", optionInfo.x, optionInfo.y, 16, 31, MGT);
+		optionInfo.select = false;
+		_vIOption.push_back(optionInfo);
+	}
+	_IOptinIndex = 1;
+
+
+	return S_OK;
+}
+
 void OptionScene::release(void)
 {
 	_viTOption = _vTOption.begin();
@@ -58,10 +96,6 @@ void OptionScene::release(void)
 
 void OptionScene::update(void)
 {
-	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE))
-	{
-		SCENEMANAGER->changeScene("Title");
-	}
 
 	if( _isTitleMenu)
 	{
