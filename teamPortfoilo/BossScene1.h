@@ -1,8 +1,6 @@
 #pragma once
 #include "GameNode.h"
 #include "BossWarden.h"
-#include "BossIsadora.h"
-#include "KnifeMonster.h"
 #include "ColliderManager.h"
 #include "Camera.h"
 #include "BossUI.h"

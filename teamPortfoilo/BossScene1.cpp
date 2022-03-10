@@ -1,5 +1,4 @@
 #include "Stdafx.h"
-#include "FirePillar.h"
 #include "BossScene1.h"
 
 HRESULT BossScene1::init(void)

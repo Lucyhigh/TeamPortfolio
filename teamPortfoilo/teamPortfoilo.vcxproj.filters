@@ -4,9 +4,6 @@
     <ClCompile Include="BossScene1.cpp">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
     </ClCompile>
-    <ClCompile Include="BossScene2.cpp">
-      <Filter>Blasphemous\GameScene\Stage2</Filter>
-    </ClCompile>
     <ClCompile Include="Characters.cpp">
       <Filter>Blasphemous\Characters</Filter>
     </ClCompile>
@@ -109,12 +106,6 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Blasphemous\Characters\Player</Filter>
     </ClCompile>
-    <ClCompile Include="BossIsadora.cpp">
-      <Filter>Blasphemous\Characters\Boss</Filter>
-    </ClCompile>
-    <ClCompile Include="FirePillar.cpp">
-      <Filter>Blasphemous\Characters\Boss</Filter>
-    </ClCompile>
     <ClCompile Include="BossUI.cpp">
       <Filter>Blasphemous\GameScene\UI</Filter>
     </ClCompile>
@@ -143,9 +134,6 @@
   <ItemGroup>
     <ClInclude Include="BossScene1.h">
       <Filter>Blasphemous\GameScene\Stage1</Filter>
-    </ClInclude>
-    <ClInclude Include="BossScene2.h">
-      <Filter>Blasphemous\GameScene\Stage2</Filter>
     </ClInclude>
     <ClInclude Include="Characters.h">
       <Filter>Blasphemous\Characters</Filter>
@@ -254,12 +242,6 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Blasphemous\Characters\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="BossIsadora.h">
-      <Filter>Blasphemous\Characters\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="FirePillar.h">
-      <Filter>Blasphemous\Characters\Boss</Filter>
     </ClInclude>
     <ClInclude Include="BossUI.h">
       <Filter>Blasphemous\GameScene\UI</Filter>
