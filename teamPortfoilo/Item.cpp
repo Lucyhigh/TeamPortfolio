@@ -26,7 +26,6 @@ void Item::draw(void)
 {
 	if (_state == ItemState::NONE) 
 	{
-		// 슬롯 Y 프레임 0 고정 
 		_slotImg->frameRender(getMemDC(), _posX, _posY, 2, 0);
 		_iconImg->frameRender(getMemDC(), _posX, _posY, _iconX, _iconY);
 

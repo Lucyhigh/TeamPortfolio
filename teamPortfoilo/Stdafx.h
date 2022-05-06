@@ -63,13 +63,13 @@ using namespace MY_UTIL;
 #define WINSIZE_X	 GetSystemMetrics(SM_CXSCREEN)
 #define WINSIZE_Y	 GetSystemMetrics(SM_CYSCREEN)
 #define WINSTYLE	 WS_POPUPWINDOW | WS_MAXWIZE
+#endif 
 
 #define WINSTART_X	 300
 #define WINSTART_Y	 0
 #define WINSIZE_X	 1200
 #define WINSIZE_Y	 675
 #define WINSTYLE	 WS_CAPTION | WS_SYSMENU
-#endif 
  
 #define CENTER_X WINSIZE_X/2
 #define CENTER_Y WINSIZE_Y/2

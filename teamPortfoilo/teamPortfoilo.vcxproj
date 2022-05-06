@@ -171,7 +171,6 @@
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="LastScene.h" />
     <ClInclude Include="MainGame.h" />
-    <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="OpeningScene.h" />
     <ClInclude Include="OptionScene.h" />
     <ClInclude Include="PixelCollision.h" />
@@ -217,7 +216,6 @@
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="LastScene.cpp" />
     <ClCompile Include="MainGame.cpp" />
-    <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="OpeningScene.cpp" />
     <ClCompile Include="OptionScene.cpp" />
     <ClCompile Include="PixelCollision.cpp" />
@@ -240,9 +238,6 @@
     <ClCompile Include="UIScene.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="WinAPI.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="MATH.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

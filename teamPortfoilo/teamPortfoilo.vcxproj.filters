@@ -40,9 +40,6 @@
     <ClCompile Include="ImageManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectManager.cpp">
-      <Filter>API FrameWork\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="TempSoundManager.cpp">
       <Filter>API FrameWork\Manager</Filter>
     </ClCompile>
@@ -172,9 +169,6 @@
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
     <ClInclude Include="ImageManager.h">
-      <Filter>API FrameWork\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectManager.h">
       <Filter>API FrameWork\Manager</Filter>
     </ClInclude>
     <ClInclude Include="TempSoundManager.h">
@@ -332,10 +326,5 @@
     <Filter Include="Blasphemous\MainGame">
       <UniqueIdentifier>{21d6a9ed-afab-4ca5-bc7f-8b5d83a033e6}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="MATH.txt">
-      <Filter>API FrameWork\Utility</Filter>
-    </Text>
   </ItemGroup>
 </Project>

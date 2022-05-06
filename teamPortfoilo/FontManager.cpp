@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "FontManager.h"
 
-//파일 경로 읽어오면서 할거면 이거 쓰셈
 void FontManager::drawText(HDC hdc, int destX, int destY, char* fileName, char* fontName, int fontSize, int fontWidth, char* printString, int Iength, COLORREF color)
 {
 }
@@ -80,7 +79,6 @@ void FontManager::drawTextValue(HDC hdc, int Value, int destX, int destY, char* 
 	SetTextColor(hdc, color);
 	char int2char[256];
 
-	//itoa(Value, int2char, 10);
 	wsprintf(int2char, "%d", Value);
  	TextOut(hdc, destX, destY, int2char, strlen(int2char));
 
@@ -107,7 +105,6 @@ void FontManager::drawTextValue(HDC hdc, float Value, int destX, int destY, char
 	SetTextColor(hdc, color);
 	char float2char[256];
 
-	//itoa((int)Value, float2char, 10);
 	wsprintf(float2char, "%d", Value);
 	TextOut(hdc, destX, destY, float2char, strlen(float2char));
 

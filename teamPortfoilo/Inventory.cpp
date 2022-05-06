@@ -202,7 +202,7 @@ void Inventory::render(void)
 			FONTMANAGER->drawText(getMemDC(), 275, 170,
 				"µÕ±Ù¸ð²Ã", 25, 100, quest[_selection].name, wcslen(quest[_selection].name), BTEXT);
 
-			// selected Item Script
+			
 			FONTMANAGER->drawText(getMemDC(), 195, 225, "µÕ±Ù¸ð²Ã", 22, 100, quest[_selection].script,
 				((20 > wcslen(quest[_selection].script)) ? wcslen(quest[_selection].script) : 20), MTEXT);
 
@@ -220,7 +220,7 @@ void Inventory::render(void)
 			FONTMANAGER->drawText(getMemDC(), 275, 170,
 				"µÕ±Ù¸ð²Ã", 25, 100, meaculpa[_selection].name, wcslen(meaculpa[_selection].name), BTEXT);
 
-			// selected Item Script
+			
 			FONTMANAGER->drawText(getMemDC(), 195, 225, "µÕ±Ù¸ð²Ã", 22, 100, meaculpa[_selection].script,
 				((20 > wcslen(meaculpa[_selection].script)) ? wcslen(meaculpa[_selection].script) : 20), MTEXT);
 
@@ -237,7 +237,7 @@ void Inventory::render(void)
 			FONTMANAGER->drawText(getMemDC(), 275, 170,
 				"µÕ±Ù¸ð²Ã", 25, 100, bible[_selection].name, wcslen(bible[_selection].name), BTEXT);
 
-			// selected Item Script
+			
 			FONTMANAGER->drawText(getMemDC(), 195, 225, "µÕ±Ù¸ð²Ã", 22, 100, bible[_selection].script,
 				((20 > wcslen(bible[_selection].script)) ? wcslen(bible[_selection].script) : 20), MTEXT);
 
@@ -257,7 +257,7 @@ void Inventory::render(void)
 			FONTMANAGER->drawText(getMemDC(), 275, 170,
 				"µÕ±Ù¸ð²Ã", 25, 100, collection[_selection].name, wcslen(collection[_selection].name), BTEXT);
 
-			// selected Item Script
+			
 			FONTMANAGER->drawText(getMemDC(), 195, 225, "µÕ±Ù¸ð²Ã", 22, 100, collection[_selection].script,
 				((20 > wcslen(collection[_selection].script)) ? wcslen(collection[_selection].script) : 20), MTEXT);
 

@@ -7,15 +7,15 @@ HRESULT Boss2BeforeScene::init(void)
     _npcsimage = IMAGEMANAGER->findImage("SandNPCStanding");
     _npcimage = IMAGEMANAGER->findImage("SandNPC");
 
-    floor0 = new RECT{ 0, 630, _image->getWidth(), 670 };//
+    floor0 = new RECT{ 0, 630, _image->getWidth(), 670 };
     floor1 = new RECT{ _image->getWidth(), 0, _image->getWidth() + 100, _image->getHeight() };
-    floor2 = new RECT{ 0, 0, 100, _image->getHeight() };//
+    floor2 = new RECT{ 0, 0, 100, _image->getHeight() };
 
     _floor.push_back(floor0);
     _floor.push_back(floor1);
     _floor.push_back(floor2);
 
-    GAMEMANAGER->getPlayer()->ObjectInit({ 100,600 }, _floor);//
+    GAMEMANAGER->getPlayer()->ObjectInit({ 100,600 }, _floor);
 
     _camera = new Camera;
     _camera->init();

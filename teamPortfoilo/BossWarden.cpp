@@ -215,7 +215,6 @@ void BossWarden::_inputPatten()
 
 void BossWarden::_inputAnimation()
 {
-	// 여기가 문제 
 	if (_state == UnitState::IDLE)
 	{
 		_image = IMAGEMANAGER->findImage("WardenIdle");

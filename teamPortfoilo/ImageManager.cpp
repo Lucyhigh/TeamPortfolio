@@ -14,7 +14,6 @@ void ImageManager::release(void)
 
 Image* ImageManager::addImage(string strKey, int width, int height)
 {
-	//추가하려는 이미지가 존재하는지 키값으로 확인
 	Image* img = findImage(strKey);
 	if (img) return img;
 
@@ -25,7 +24,6 @@ Image* ImageManager::addImage(string strKey, int width, int height)
 		return NULL;
 	}
 
-	//_mImagelist.insert(pair<string, Image*>(strKey, img));
 	_mImagelist.insert(make_pair(strKey, img));
 
 	return img;
@@ -104,13 +102,11 @@ Image* ImageManager::findImage(string strKey)
 {
 	auto key = _mImagelist.find(strKey);
 
-	//검색한 키를 찾았다면
 	if (key != _mImagelist.end())
 	{
 		return key->second;
 	}
 
-	// 검색한 키로 이미지를 못찾았다면 nullptr 리턴
 	return nullptr;
 }
 
@@ -133,7 +129,6 @@ bool ImageManager::deleteImage(string strKey)
 bool ImageManager::deleteAll()
 {
 	auto iter = _mImagelist.begin();
-	// auto 대신 mapImageIter < 써도댐
 	for (; iter != _mImagelist.end();)
 	{
 		if (iter->second != NULL)
@@ -147,13 +142,11 @@ bool ImageManager::deleteAll()
 			++iter;
 		}
 	}
-	//for (;) = while(true) 초기식을 잡아주지 않겠다는 뜻
 	_mImagelist.clear();
 
 	return true;
 }
 
-//이미지를 찾아서 렌더
 void ImageManager::render(string strKey, HDC hdc)
 {
 	Image* img = findImage(strKey);

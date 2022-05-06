@@ -9,7 +9,6 @@ public:
 
 	void drawText(HDC hdc, int destX, int destY, char* fontName, int fontSize, int fontWidth, string str, int Iength, COLORREF color);
 
-	// LPCWSTR (W) -> wide char -> Unicode
 	void drawText(HDC hdc, int destX, int destY, char* fontName, int fontSize, int fontWidth, LPCWSTR printStringArr, int Iength, COLORREF color);
 
 	void drawText(HDC hdc, int destX, int destY, char* fontName, int fontSize, int fontWidth, LPCWSTR* printString, int Iength, COLORREF color);

@@ -16,13 +16,12 @@ _loop(false)
 
 HRESULT Animation::init(int totalW, int totalH, int frameW, int frameH)
 {
-	// 가로 프레임 수
 	_frameWidth = frameW;
 	_frameNumWidth = totalW / _frameWidth;
-	// 세로 프레임 수
+	
 	_frameHeight = frameH;
 	_frameNumHeight = totalH / _frameHeight;
-	// 총 프레임 수
+
 	_frameNum = _frameNumWidth * _frameNumHeight;
 	_frameList.clear();
 
@@ -37,7 +36,6 @@ HRESULT Animation::init(int totalW, int totalH, int frameW, int frameH)
 			_frameList.push_back(framePos);
 		}
 	}
-	//기본 프레임으로 셋팅
 	setDefPlayFrame();
 
 	return S_OK;
@@ -47,22 +45,18 @@ void Animation::release(void) {
 	//! Do Notting
 }
 
-//기본 프레임 셋팅
 void Animation::setDefPlayFrame(bool reverse, bool loop)
 {
-	//루프 돌건지
 	_loop = loop;
 	_playList.clear();
 	if (reverse)
 	{
 		if (_loop)
 		{
-			//갈때 프레임
 			for (int i = 0; i < _frameNum; i++)
 			{
 				_playList.push_back(i);
 			}
-			//올때 프레임
 			for (int i = _frameNum - 2; i > 0; i--)
 			{
 				_playList.push_back(i);
@@ -70,12 +64,10 @@ void Animation::setDefPlayFrame(bool reverse, bool loop)
 		}
 		else
 		{
-			//갈때 프레임
 			for (int i = 0; i < _frameNum; i++)
 			{
 				_playList.push_back(i);
 			}
-			//올때 프레임
 			for (int i = _frameNum - 2; i >= 0; i--)
 			{
 				_playList.push_back(i);
@@ -91,7 +83,6 @@ void Animation::setDefPlayFrame(bool reverse, bool loop)
 	}
 }
 
-//원하는 프레임만 재생
 void Animation::setPlayFrame(int* playArr, int arrLen, bool loop)
 {
 	_loop = loop;
@@ -122,7 +113,6 @@ void Animation::setPlayFrame(int* playArr, int arrLen, bool loop)
 
 }
 
-// 구간을 잘라서 재생
 void Animation::setPlayFrame(int start, int end, bool reverse, bool loop)
 {
 	_loop = loop;
@@ -173,8 +163,8 @@ void Animation::setPlayReverseFrame(int start, int end, int framX, bool loop)
 		i--;
 		if (i == temp)
 		{
-			start += framX;   // 23 27 31
-			temp = start - (framX); // 20 24 29 
+			start += framX;  
+			temp = start - (framX); 
 			i = start;
 		}
 		_playList.push_back(i);
@@ -191,20 +181,17 @@ void Animation::setFPS(int framePerSec)
 	_frameUpdateSec = 1.0f / static_cast<float>(framePerSec);
 }
 
-// 초당 프레임 갱신 횟수
 void Animation::setFPS(int framePerSec, int maxSec)
 {
 	_frameUpdateSec = maxSec / static_cast<float>(framePerSec);
 }
 
-// 프레임 업데이트
 void Animation::frameUpdate(float elapsedTime)
 {
 	if (_isPlay)
 	{
 		_elapsedSec += elapsedTime;
 
-		//프레임 업데이트시간이 되었으면
 		if (_elapsedSec >= _frameUpdateSec)
 		{
 			_elapsedSec -= _frameUpdateSec;

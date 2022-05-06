@@ -61,7 +61,6 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("save", "Resources/test/save.bmp", 1200, 675);
 	IMAGEMANAGER->addImage("menu", "Resources/test/menu.bmp", 1200, 675);
 
-	// ================================================================================================================
 
 #pragma region UI Scene 
 
@@ -75,9 +74,8 @@ HRESULT ImageClass::init(void)
 
 #pragma region Stage Scene
 	// Stage 1
-	//IMAGEMANAGER->addImage("StartBG", "Resources/Images/BackGround/bg1.bmp", WINSIZE);
-	IMAGEMANAGER->addImage("StartBg", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675, MGT); //start Scene
-	IMAGEMANAGER->addImage("StartBgTop", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675, MGT); //start Scene
+	IMAGEMANAGER->addImage("StartBg", "Resources/Images/BackGround/boss1beforeScene.bmp", 4360, 675, MGT); 
+	IMAGEMANAGER->addImage("StartBgTop", "Resources/Images/BackGround/boss1beforeSceneFrontDoor.bmp", 4360, 675, MGT); 
 
 	// Stage 2
 	IMAGEMANAGER->addImage("Field1BG", "Resources/Images/BackGround/bg2.bmp", WINSIZE);
@@ -86,7 +84,7 @@ HRESULT ImageClass::init(void)
 #pragma endregion
 
 #pragma region Stage Object NPC
-	IMAGEMANAGER->addFrameImage("alter", "Resources/Images/Object/UI/menuNoButton.bmp", 272, 304, MGT); // �ӽ�
+	IMAGEMANAGER->addFrameImage("alter", "Resources/Images/Object/UI/menuNoButton.bmp", 272, 304, MGT); 
 
 #pragma endregion
 
@@ -146,7 +144,7 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("Boss2beforeFrontDoor", "Resources/Images/BackGround/Boss2beforeFG.bmp", 1200, 675,MGT);
 
 	IMAGEMANAGER->addImage("LastSceneFloor", "Resources/Images/BackGround/endingfloor.bmp", 5000, 1862, MGT);
-	IMAGEMANAGER->addImage("LastSceneTest", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);//
+	IMAGEMANAGER->addImage("LastSceneTest", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);
 	IMAGEMANAGER->addImage("LastSceneBG", "Resources/Images/BackGround/endingBG.bmp", 5000, 1862);
 	IMAGEMANAGER->addImage("LastSceneFG", "Resources/Images/BackGround/endingFG.bmp", 5000, 1862, MGT);
 	IMAGEMANAGER->addImage("LastSceneFG2", "Resources/Images/BackGround/endingFG2.bmp", 5000, 1862, MGT);
@@ -161,7 +159,7 @@ HRESULT ImageClass::init(void)
 
 
 	IMAGEMANAGER->addImage("LastSceneFloor", "Resources/Images/BackGround/endingfloor.bmp", 5000, 1862, MGT);
-	IMAGEMANAGER->addImage("LastSceneTest", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);//
+	IMAGEMANAGER->addImage("LastSceneTest", "Resources/Images/BackGround/endingAll.bmp", 5000, 1862);
 	IMAGEMANAGER->addImage("LastSceneBack", "Resources/Images/BackGround/endingBG.bmp", 5000, 1862);
 	IMAGEMANAGER->addImage("LastSceneFront", "Resources/Images/BackGround/endingFG.bmp", 5000, 1862, MGT);
 	IMAGEMANAGER->addImage("LastSceneFront2", "Resources/Images/BackGround/endingFG2.bmp", 5000, 1862, MGT);
@@ -181,20 +179,19 @@ HRESULT ImageClass::init(void)
 
 #pragma region UI Object
 	// system
-	IMAGEMANAGER->addFrameImage("lodingIcon", "Resources/Images/UI/LoadingSpinningIco.bmp", 500, 500, 5, 5, MGT); // 500,500
+	IMAGEMANAGER->addFrameImage("lodingIcon", "Resources/Images/UI/LoadingSpinningIco.bmp", 500, 500, 5, 5, MGT);
 	IMAGEMANAGER->addFrameImage("titleSelecte", "Resources/Images/UI/alliedCherub.bmp", 528,48, 11, 1, MGT); // 264,24
 	IMAGEMANAGER->addImage("saveOn", "Resources/Images/UI/saveOn.bmp", 848, 112, MGT); // 385,51
 	IMAGEMANAGER->addImage("saveOff", "Resources/Images/UI/saveOff.bmp", 848, 112, MGT); // 385,51
 	IMAGEMANAGER->addImage("saveNoData", "Resources/Images/UI/saveNoData.bmp", 848, 112, MGT); // 385,51
-	IMAGEMANAGER->addImage("AreaBg", "Resources/Images/UI/message_area.bmp", 1200, 131, MGT); // ��������� ��ܾ��ķ���
-	IMAGEMANAGER->addImage("optionSelect", "Resources/Images/UI/optionSelect.bmp", 16, 31, MGT); // �ɼǸ޴� ���ý� ��� 
+	IMAGEMANAGER->addImage("AreaBg", "Resources/Images/UI/message_area.bmp", 1200, 131, MGT); 
+	IMAGEMANAGER->addImage("optionSelect", "Resources/Images/UI/optionSelect.bmp", 16, 31, MGT); 
 
 	
 	// Animation 
 	IMAGEMANAGER->addFrameImage("itemSelect", "Resources/Images/UI/selectItem.bmp", 120, 120, 4, 4, MGT);
-	IMAGEMANAGER->addFrameImage("stand", "Resources/Images/UI/priedieuStand.bmp", 462, 155, 7, 1, MGT); // 462, 155
-	IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/UI/itemObject.bmp", 260, 91, 10, 1, MGT); // 260,91
-
+	IMAGEMANAGER->addFrameImage("stand", "Resources/Images/UI/priedieuStand.bmp", 462, 155, 7, 1, MGT); 
+	IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/UI/itemObject.bmp", 260, 91, 10, 1, MGT); 
 
 	// player
 	IMAGEMANAGER->addImage("pHpBarEmpty", "Resources/Images/UI/UI_emptyHpBar.bmp", 40, 40, 222, 90, MGT);
@@ -210,8 +207,8 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("bHpBarB", "Resources/Images/UI/bossHPBar2.bmp", 320, WINSIZE_Y - 30, 543, 15, MGT);
 
 	// button
-	IMAGEMANAGER->addImage("e", "Resources/Images/UI/Button/E.bmp", 35, 38, MGT); //35,38
-	IMAGEMANAGER->addImage("k", "Resources/Images/UI/Button/K.bmp", 35, 38, MGT); //35,38
+	IMAGEMANAGER->addImage("e", "Resources/Images/UI/Button/E.bmp", 35, 38, MGT); 
+	IMAGEMANAGER->addImage("k", "Resources/Images/UI/Button/K.bmp", 35, 38, MGT); 
 	IMAGEMANAGER->addImage("esc", "Resources/Images/UI/Button/ESC.bmp", 39, 35, MGT); //20,18
 	IMAGEMANAGER->addImage("enter", "Resources/Images/UI/Button/ENTER.bmp", 56, 35, MGT); //29,18
 	IMAGEMANAGER->addImage("space", "Resources/Images/UI/Button/SPACE.bmp", 56, 35, MGT); //29,18
@@ -228,7 +225,7 @@ HRESULT ImageClass::init(void)
 	IMAGEMANAGER->addImage("button", "Resources/Images/Object/buttomE.bmp", 35 * 1.9, 38 * 1.9, true, RGB(255, 0, 255));
 	IMAGEMANAGER->addFrameImage("deosgracias", "Resources/Images/Object/deosgracias.bmp", 1664, 1536, 13, 6, MGT); // 128,256
 	IMAGEMANAGER->addFrameImage("stand", "Resources/Images/Object/priedieuStand.bmp", 924, 310, 7, 1, MGT); // 462, 155
-	IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/Object/itemObject.bmp", 260, 91, 10, 1, MGT); // 260,91
+	IMAGEMANAGER->addFrameImage("itemObj", "Resources/Images/Object/itemObject.bmp", 260, 91, 10, 1, MGT);
 	IMAGEMANAGER->addFrameImage("SymbolObj", "Resources/Images/Object/SymbolStatue2.bmp", 162 * 2, 64 * 2, 6, 1, MGT);
 	IMAGEMANAGER->addFrameImage("breakSymbolObj", "Resources/Images/Object/breakSymbolStatue2.bmp", 550 * 2, 120 * 2, 10, 1, MGT);
 	IMAGEMANAGER->addFrameImage("breakableSkeleton", "Resources/Images/Object/breakableSkeleton2.bmp", 756 * 2, 101 * 2, 14, 1, MGT);
